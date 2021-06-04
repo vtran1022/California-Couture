@@ -7,8 +7,16 @@
     "react-dev": "webpack --mode development --watch",
     "server": "npx nodemon server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bug-Busters-HRSJO/FEC.git"
+  },
   "author": "",
-  "license": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bug-Busters-HRSJO/FEC/issues"
+  },
+  "homepage": "https://github.com/Bug-Busters-HRSJO/FEC#readme",
   "dependencies": {
     "axios": "^0.21.0",
     "jquery": "^3.1.1",
@@ -23,6 +31,8 @@
     "babel-loader": "^8.2.1",
     "webpack": "^4.44.2",
     "webpack-cli": "^4.2.0",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "@testing-library/react": "^11.2.7",
+    "jest": "^27.0.4"
   }
 }
