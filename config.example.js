@@ -1,3 +1,3 @@
-export default = {
-  TOKEN: 'YOUR TOKEN HERE'
+export var auth = {
+  TOKEN: ''
 };
