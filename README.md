@@ -11,10 +11,10 @@ After you fork, set this repo as an upstream with `git remote add upstream hhttp
 Before you begin coding for the day, pull from the upstream master branch with `git pull upstream master`.
 
 ## How to Run
-Navigate to the root directory of FEC, then install the required packages by running `npm install` in your terminal. To begin, first compile the by running `npm run react-dev`, then start the server by running `npm run server-dev`. Lastly, navigate to `http://localhost:3000` in your browser.
+Navigate to the root directory of FEC, then install the required packages by running `npm install` in your terminal. To begin, first compile the client-side files by running `npm run react-dev`, then start the server by running `npm run server`. Lastly, navigate to `http://localhost:3000` in your browser.
 
 ## Opening a PR
-When you're ready to merge your fork with FEC:Master, open a PR and merge.
+When you're ready to merge your fork with FEC:Main, open a PR and merge.
 
 ## To Resolve a Conflict
 
