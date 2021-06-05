@@ -1,11 +1,11 @@
 import React from 'react';
 import axios from 'axios';
+import Atelier from '../Atelier.js';
 import Overview from './overview/Overview.jsx';
 
 class App extends React.Component {
   constructor (props) {
     super(props);
-
     this.state = {
       holder: ''
     }
