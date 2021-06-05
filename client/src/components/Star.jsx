@@ -13,17 +13,24 @@ class Star extends React.Component {
     }
 
     this._fetchRatings = this._fetchRatings.bind(this);
+    this._averageScore = this._averageScore.bind(this);
+  }
+
+  _averageScore() {
+    const ratings = this.state.ratings;
+    const average = Math.round(ratings.reduce((a, b) => Number(a) + Number(b) / ratings.length)).toFixed(2);
+    this.setState({ avgScore: average});
   }
 
   _fetchRatings() {
-    const productId = this.state.product_id
+    const productId = this.state.productId;
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/reviews/meta/?product_id=${productId}`,
     { headers: { 'Authorization': auth.TOKEN } })
       .then((data) => {
         const ratings = Object.values(data.data.ratings);
         this.setState({ ratings: ratings });
 
-        console.log(Math.round(this.state.ratings.reduce((accum, val) => Number(accum) + Number(val) / this.state.ratings.length)).toFixed(2));
+        this._averageScore();
       })
       .catch((err) => {
         console.log(`Error fetching ratings ${err}`);
