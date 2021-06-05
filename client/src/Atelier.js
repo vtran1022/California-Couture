@@ -13,6 +13,9 @@ class Atelier {
   getStyles(productId) {
     return this.fetchAPI('products/' + productId + '/styles');
   }
+  getReviewsMeta(productId) {
+    return this.fetchAPI(`reviews/meta/?product_id=${productId}`);
+  }
 
   fetchAPI(endpoint) {
     fetch(this.baseURL + endpoint, {
