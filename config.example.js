@@ -1,3 +1,0 @@
-export var auth = {
-  TOKEN: ''
-};
