@@ -7,22 +7,24 @@ const Star = () => {
   const [ratings, setRatings] = useState([]);
   const [avgScore, setAverage] = useState(0);
 
-  const averageScore = (array) => {
+  function averageScore(array) {
     const average = Math.round(array.reduce((a, b) => Number(a) + Number(b) / array.length)).toFixed(2);
     return average;
   }
 
-  const fetchRatings = () => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/reviews/meta/?product_id=${productId}`,
+  async function fetchRatings() {
+    try {
+      let reviewData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/reviews/meta/?product_id=${productId}`,
     { headers: { 'Authorization': auth.TOKEN } })
-      .then((data) => {
-        const ratings = Object.values(data.data.ratings);
-        setRatings(ratings);
-        setAverage(averageScore(ratings));
-      })
-      .catch((err) => {
-        console.log(`Error fetching ratings ${err}`);
-      })
+
+      let ratings = Object.values(reviewData.data.ratings);
+
+      setRatings(ratings);
+      setAverage(averageScore(ratings));
+    }
+    catch(err) {
+      console.log(`Error fetching ratings: ${err}`);
+    }
   }
 
   useEffect(() => {
