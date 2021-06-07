@@ -5,12 +5,17 @@ import { auth } from '../../../config.js';
 // take in destructing {productId}
 function ProductCard() {
   const productId = 13027; //placeholder for testing
+  // const []
 
   async function fetchProducts() {
     let productData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${productId}`,
-    { headers: { 'Authorization': auth.TOKEN } })
+    { headers: { 'Authorization': auth.TOKEN } });
+
+    let productStyles = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${productId}/styles`,
+    { headers: { 'Authorization': auth.TOKEN } });
 
     console.log(productData.data);
+    console.log(productStyles.data);
   };
 
   useEffect(() => {
