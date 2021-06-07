@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Atelier from '../Atelier.js';
 import { auth } from '../../../config.js';
 
 const Star = () => {
@@ -26,11 +25,15 @@ const Star = () => {
       })
   }
 
+  useEffect(() => {
+    fetchRatings();
+  }, [avgScore])
+
     return (
       <div>
         <h1>Second Holder</h1>
         <button onClick={fetchRatings}>Star Rating</button>
-        <button onClick={averageScore}>Average</button>
+        <div>{ratings}</div>
       </div>
     );
 };
