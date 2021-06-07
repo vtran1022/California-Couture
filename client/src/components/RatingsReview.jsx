@@ -28,11 +28,29 @@ const Ratings = (props) => {
     }
     fetchAPI();
   }, []);
-  return <div>{JSON.stringify(reviews)}</div>
+  if (Object.keys(reviews).length > 0) {
+    console.log(reviews)
+    return <div>
+      <table>
+        {reviews.results.map(r => {
+          return <ReviewTile review={r} />
+        })}
+      </table>
+    </div>
+  } else {
+    return <div>Waiting for API response.</div>
+  }
+
 };
 
 const ReviewTile = (props) => {
-
+  console.log(props.review);
+  var fields = [];
+  var out = [];
+  for(var f in props.review) {
+    out.push(props.review[f]);
+  }
+  return <tr>{out.map(f => <td>{JSON.stringify(f)}</td>)}</tr>;
 };
 
 
