@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { auth } from '../../../config.js';
+import starImg from '../../dist/star.png';
 
 const Star = () => {
   const [productId, setProdId] = useState(13027);
@@ -29,8 +30,8 @@ const Star = () => {
     return (
       <div>
         <h1>Second Holder</h1>
-        <button onClick={fetchRatings}>Star Rating</button>
         <div>{avgScore}</div>
+        <img src={starImg} alt="five stars"></img>
       </div>
     );
 };
