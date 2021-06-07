@@ -13,10 +13,12 @@ module.exports = {
       {
         test: /\.jsx?/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
+        use: { loader: 'babel-loader' },
       },
+     {
+       test: /\.(png|jpg|jpeg|gif)$/i,
+       use: { loader: 'url-loader' },
+     },
     ],
   },
 };
