@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { auth } from '../../../config.js';
+import AvgRating from './AvgRating.jsx';
 
 // take in destructing { productId }
 function ProductCard() {
@@ -44,6 +45,8 @@ function ProductCard() {
         <div>{category}</div>
         <div>{name}</div>
         <div>${price}</div>
+        <AvgRating
+          productId={productId}/>
       </div>
     </div>
   );
