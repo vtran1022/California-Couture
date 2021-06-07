@@ -29,7 +29,7 @@ const Star = () => {
 
   useEffect(() => {
     fetchRatings();
-  }, [avgScore])
+  }, [productId])
 
     return (
       <div>
