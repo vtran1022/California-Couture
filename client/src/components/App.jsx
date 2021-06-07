@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Atelier from '../Atelier.js';
+import RatingsReview from './RatingsReview.jsx';
 
 class App extends React.Component {
   constructor (props) {
@@ -15,6 +16,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>Holder</h1>
+        <RatingsReview />
       </div>
     );
   }
