@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { auth } from '../../../config.js';
-import starImg from '../../dist/star.png';
 
 function AvgRating() {
   const [productId, setProdId] = useState(13027);
