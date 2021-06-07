@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { auth } from '../../../config.js';
 
-// take in destructing {productId}
+// take in destructing { productId }
 function ProductCard() {
   const productId = 13027; //placeholder for testing
-  // const []
+  const [image, setImage] = useState('');
+  const [category, setCategory] = useState('');
+  const [name, setName] = useState('');
+  const [price, setPrice] = useState(0);
+  const [salePrice, setSale] = useState(0);
 
   async function fetchProducts() {
     let productData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${productId}`,
@@ -14,8 +18,18 @@ function ProductCard() {
     let productStyles = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${productId}/styles`,
     { headers: { 'Authorization': auth.TOKEN } });
 
-    console.log(productData.data);
-    console.log(productStyles.data);
+    const product = productData.data;
+    const firstStyle = productStyles.data.results[0];
+
+    setCategory(product.category);
+    setName(product.name);
+    setImage(firstStyle.photos[0].thumbnail_url);
+    setPrice(firstStyle.original_price);
+
+    // set sale price only if exists
+    if (firstStyle.sale_price !== null) {
+      setSale(firstStyle.sale_price);
+    };
   };
 
   useEffect(() => {
@@ -25,7 +39,12 @@ function ProductCard() {
   return (
     <div>
       <h1>Testing-ProductCard</h1>
-      <div></div>
+      <div>
+        <img src={image} alt={name}></img>
+        <div>{category}</div>
+        <div>{name}</div>
+        <div>${price}</div>
+      </div>
     </div>
   );
 };
@@ -38,7 +57,8 @@ export default ProductCard;
 
 1) product preview image
 2) product category
-3) product price
-4) star rating
+3) product name
+4) product price
+5) star rating
 
 */
