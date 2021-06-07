@@ -1,0 +1,17 @@
+.reviews-table {
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.review-elem {
+  border-bottom: 1px solid black;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 5px;
+}
+
+table {
+  border: 1px solid black;
+  border-spacing: 0;
+  border-bottom: none;
+}

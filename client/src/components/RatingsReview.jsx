@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Atelier from '../Atelier.js';
+import StarRating from './StarRating.jsx';
 
 
 /*
@@ -29,13 +30,16 @@ const Ratings = (props) => {
     fetchAPI();
   }, []);
   if (Object.keys(reviews).length > 0) {
-    console.log(reviews)
-    return <div>
+    return <div className='reviews-table'>
       <table>
-        {reviews.results.map(r => {
-          return <ReviewTile review={r} />
-        })}
+        <tbody>
+          <tr><td>Stars</td><td>Date</td><td>Summary</td><td>Body</td><td>Recommended</td><td>Name</td><td>Response</td><td>Helpfulness</td></tr>
+          { reviews.results.map(r => {
+            return <ReviewTile review={r} key={r.review_id} />
+          })}
+        </tbody>
       </table>
+      <button >Load More</button> <button>Add a Review</button>
     </div>
   } else {
     return <div>Waiting for API response.</div>
@@ -44,13 +48,16 @@ const Ratings = (props) => {
 };
 
 const ReviewTile = (props) => {
-  console.log(props.review);
-  var fields = [];
+  //console.log(props.review);
+  var fields = ['date', 'summary', 'body', 'recommend', 'reviewer_name', 'response', 'helpfulness'];
   var out = [];
-  for(var f in props.review) {
-    out.push(props.review[f]);
+  for (var i = 0; i < fields.length; i++) {
+    out.push(JSON.stringify(props.review[fields[i]]));
   }
-  return <tr>{out.map(f => <td>{JSON.stringify(f)}</td>)}</tr>;
+  return <tr >
+    <td className='review-elem'><StarRating rating={props.review.rating} key={props.review.review_id} /></td>
+    {out.map(f => <td className='review-elem'>{f}</td>)}
+    </tr>;
 };
 
 
