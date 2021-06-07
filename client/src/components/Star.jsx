@@ -1,51 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Atelier from '../Atelier.js';
 import { auth } from '../../../config.js';
 
-class Star extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      productId: 13027,
-      ratings: [],
-      avgScore: 0
-    }
+const Star = () => {
+  const [productId, setProdId] = useState(13027);
+  const [ratings, setRatings] = useState([]);
+  const [avgScore, setAverage] = useState(0);
 
-    this._fetchRatings = this._fetchRatings.bind(this);
-    this._averageScore = this._averageScore.bind(this);
+  const averageScore = (array) => {
+    const average = Math.round(array.reduce((a, b) => Number(a) + Number(b) / array.length)).toFixed(2);
+    return average;
   }
 
-  _averageScore() {
-    const ratings = this.state.ratings;
-    const average = Math.round(ratings.reduce((a, b) => Number(a) + Number(b) / ratings.length)).toFixed(2);
-    this.setState({ avgScore: average});
-  }
-
-  _fetchRatings() {
-    const productId = this.state.productId;
+  const fetchRatings = () => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/reviews/meta/?product_id=${productId}`,
     { headers: { 'Authorization': auth.TOKEN } })
       .then((data) => {
         const ratings = Object.values(data.data.ratings);
-        this.setState({ ratings: ratings });
-
-        this._averageScore();
+        setRatings(ratings);
+        setAverage(averageScore(ratings));
       })
       .catch((err) => {
         console.log(`Error fetching ratings ${err}`);
-      });
-
+      })
   }
 
-  render() {
+  useEffect(() => {
+    fetchRatings();
+  }, [avgScore])
+
     return (
       <div>
         <h1>Second Holder</h1>
-        <button onClick={this._fetchRatings}>Star Rating</button>
+        <button onClick={fetchRatings}>Star Rating</button>
+        <div>{avgScore}</div>
       </div>
     );
-  }
 };
 
 
