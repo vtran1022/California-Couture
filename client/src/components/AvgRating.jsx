@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { auth } from '../../../config.js';
+import StarRating from './StarRating.jsx';
 
-function AvgRating() {
-  const [productId, setProdId] = useState(13027);
+function AvgRating({ productId }) {
   const [ratings, setRatings] = useState([]);
   const [avgScore, setAverage] = useState(0);
 
@@ -28,8 +28,8 @@ function AvgRating() {
 
     return (
       <div>
-        <h1>Testing-AvgScore</h1>
-        <div>{avgScore}</div>
+        <StarRating
+          rating={avgScore}/>
       </div>
     );
 };
