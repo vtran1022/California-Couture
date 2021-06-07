@@ -13,7 +13,6 @@ const Star = () => {
   }
 
   async function fetchRatings() {
-    try {
       let reviewData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/reviews/meta/?product_id=${productId}`,
     { headers: { 'Authorization': auth.TOKEN } })
 
@@ -21,14 +20,10 @@ const Star = () => {
 
       setRatings(ratings);
       setAverage(averageScore(ratings));
-    }
-    catch(err) {
-      console.log(`Error fetching ratings: ${err}`);
-    }
   }
 
   useEffect(() => {
-    fetchRatings();
+    fetchRatings().catch((err) => console.log(`Error fetching ratings: ${err}`));
   }, [productId])
 
     return (
