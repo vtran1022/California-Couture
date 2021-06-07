@@ -41,7 +41,6 @@ class Atelier {
   }
 
   async fetchAPI(endpoint) {
-    console.log('async')
     var res = await fetch(this.baseURL + endpoint, {
       method: 'GET',
       headers: new Headers({
