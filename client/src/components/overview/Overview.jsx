@@ -21,7 +21,7 @@ function Overview (props) {
 
   useEffect( () => {
     async function fetchData () {
-      setLoading(true)
+      setLoading(true);
       var product = await Atelier.getInfo(13023)
       var styleList = await Atelier.getStyles(13023)
       setStyleList(styleList.results);
