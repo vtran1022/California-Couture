@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import OutfitList from './RIC Widget/OutfitList.jsx';
+import RICWidget from './RIC-Widget.jsx';
 
 class App extends React.Component {
   constructor (props) {
@@ -30,7 +30,7 @@ class App extends React.Component {
           <div key={item} onClick={this.handleItem}>{item}</div>
         ))}
         <div>
-          <OutfitList
+          <RICWidget
             productId={this.state.product}/>
         </div>
       </div>
