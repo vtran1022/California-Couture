@@ -18,6 +18,10 @@ function OutfitList({ productId }) {
     currentOutfits.splice(index, 1);
 
     setOutfit(currentOutfits);
+
+    if (currentOutfits.length === 0) {
+      setExists(false);
+    };
   });
 
   return (
@@ -30,7 +34,7 @@ function OutfitList({ productId }) {
         {ifOutfit
           ? <div> {outfitItems.map((id, index) => (
             <ProductCard
-              productId={id}
+              productId={id} key={index}
               index={index}
               listState={listState}
               triggerDelete={triggerDelete}/>))}
