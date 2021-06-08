@@ -22,14 +22,14 @@ function Overview (props) {
   useEffect( () => {
     async function fetchData () {
       setLoading(true)
-      await Atelier.getInfo(13023)
-      .then(data => setCurrentProduct(data));
-      await Atelier.getStyles(13023)
-      .then(data => {
-        setStyleList(data.results);
-        return data})
-        .then(data => setStyle(data.results[0].skus))
+      var product = await Atelier.getInfo(13023)
+      var styleList = await Atelier.getStyles(13023)
+      setStyleList(styleList.results);
+      setStyle(styleList.results[0]);
+      setCurrentProduct(product);
       setLoading(false)
+      console.log('this is the stylesList: ', styleList.results)
+      console.log('this is the currentStyle: ', styleList.results[0])
       }
     fetchData()
     }, [])

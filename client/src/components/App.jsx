@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import Atelier from '../Atelier.js';
-import RatingsReview from './RatingsReview.jsx';
+// import RatingsReview from './RatingsReview.jsx';
 import Overview from './overview/Overview.jsx';
+import Ratings from './RatingsReview.jsx';
 
 class App extends React.Component {
   constructor (props) {
@@ -16,7 +17,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>Holder</h1>
-        <RatingsReview />
+        {/* <RatingsReview /> */}
         <Overview className='overview' />
       </div>
     );

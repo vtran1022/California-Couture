@@ -4,37 +4,42 @@ const Cart = ( props ) => {
   // const [cartItems, serCurrentCart] = await useState({}) need to pull a user's cart
 
   const [styleId, setStyleId] = useState('');
-  const [selectedStyle, setStyle] = useState(props.styleList);
+  const [styleList, setStyleList] = useState([])
+  const [selectedStyle, setStyle] = useState({});
   const [sizes, setSizes] = useState ([]);
   const [quantity, setQuantities] = useState ([]);
   const [selectedSize, setSize] = useState('');
   const [selectedQuantity, setQuantity] = useState('');
 
   useEffect( () => {
-    setStyle(props.styleList);
+    setStyleList(props.styleList);
+    setStyle(props.style);
+    setStyleId(selectedStyle.style_id);
   }, [])
 
   function handleStyleClick(value) {
-    // iterate over the stylesList.
-    // if the stylesList contains the value as a value
-    // setStyle that style
-    let list = props.styleList;
-    // let listed = list.styleList;
+    let list = styleList;
     for (var i = 0; i < list.length; i++) {
-      if (Object.values(list[i]).includes(Number(value))){
-        setStyle(list[i])
+      if (list[i].style_id === Number(value)){
+        setStyle(list[i]);
+        return
       }
     }
   }
 
   return (
     <div >Cart
+
+    <span className='price'>{props.defaultPrice}</span>
+    {/* <span className='sales'></span> */}
+
       <div>
-      {selectedStyle.length
-      ? (props.styleList.map(
-        style => <div
+      {selectedStyle
+      ? (styleList.map(style =>
+        <div
         key={style.style_id}
-        onClick={(e) => handleStyleClick(e.target.getAttribute('key'))}>
+        id={style.style_id}
+        onClick={(e) => handleStyleClick(e.currentTarget.id)}>
           {style.name}
         </div>))
       : <p>No Product Selected</p>
