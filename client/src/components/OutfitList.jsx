@@ -3,12 +3,21 @@ import axios from 'axios';
 import { auth } from '../../../config.js';
 import ProductCard from './ProductCard.jsx';
 
-function OutfitList() {
+// expecting this productId to be linked to current Overview Product
+function OutfitList({ productId }) {
+  const [ifOutfit, setExists] = useState(false);
   const [outfitItems, setOutfit] = useState([]);
 
-  function handleItem() {
-
+  function addItem() {
+    if (productId !== 0 && outfitItems.indexOf(productId) === -1) {
+      setOutfit(prevArray => [...prevArray, productId]);
+      setExists(true);
+    }
   };
+
+  useEffect(() => {
+    addItem();
+  }, [productId]);
 
   return (
     <div>
@@ -16,9 +25,15 @@ function OutfitList() {
       <div className='AddCard'>
         <div>+</div>
         <div>Add to Outfit</div>
-
       </div>
-
+      <div>
+        {ifOutfit
+          ? <div> {outfitItems.map((id, index) => (
+            <ProductCard
+              productId={id} key={index}/>))} </div>
+          : null
+        }
+      </div>
     </div>
   );
 
