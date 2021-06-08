@@ -4,7 +4,7 @@ import Atelier from '../Atelier.js';
 import Ratings from './RatingsReview.jsx';
 
 class App extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       holder: ''
@@ -14,7 +14,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Holder</h1>
+        <Ratings id={13023} />
       </div>
     );
   }

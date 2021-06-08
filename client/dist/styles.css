@@ -1,0 +1,19 @@
+.review-table {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+.list-container {
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.review-elem {
+  border-bottom: 1px solid black;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 5px;
+}
+.breakdown {
+  border: 1px solid black;
+  margin: 10px;
+}

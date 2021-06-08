@@ -27,7 +27,9 @@ const StarRating = (props) => {
       stars.push(renderEmpty());
     }
   }
-  return <div>{stars}</div>
-}
+  
+  return stars
+
+};
 
 export default StarRating;
