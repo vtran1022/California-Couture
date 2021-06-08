@@ -3,9 +3,7 @@ import axios from 'axios';
 import { auth } from '../../../config.js';
 import AvgRating from './AvgRating.jsx';
 
-// take in destructing { productId }
-function ProductCard() {
-  const productId = 13027; //placeholder for testing
+function ProductCard({ productId }) {
   const [image, setImage] = useState('');
   const [category, setCategory] = useState('');
   const [name, setName] = useState('');
@@ -27,7 +25,6 @@ function ProductCard() {
     setImage(firstStyle.photos[0].thumbnail_url);
     setPrice(firstStyle.original_price);
 
-    // set sale price only if exists
     if (firstStyle.sale_price !== null) {
       setSale(firstStyle.sale_price);
     };
@@ -35,11 +32,10 @@ function ProductCard() {
 
   useEffect(() => {
     fetchProducts().catch((err) => console.log(`Error fetching product info: ${err}`))
-  }, []);
+  }, [productId]);
 
   return (
     <div>
-      <h1>Testing-ProductCard</h1>
       <div>
         <img src={image} alt={name}></img>
         <div>{category}</div>
