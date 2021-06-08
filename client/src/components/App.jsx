@@ -6,7 +6,7 @@ import Overview from './overview/Overview.jsx';
 import Ratings from './RatingsReview.jsx';
 
 class App extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       holder: ''
@@ -16,9 +16,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Holder</h1>
         {/* <RatingsReview /> */}
         <Overview className='overview' />
+        <Ratings id={13023} />
       </div>
     );
   }
