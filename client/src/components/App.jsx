@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import Atelier from '../Atelier.js';
+// import RatingsReview from './RatingsReview.jsx';
+import Overview from './overview/Overview.jsx';
 import Ratings from './RatingsReview.jsx';
 
 class App extends React.Component {
@@ -14,6 +16,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        {/* <RatingsReview /> */}
+        <Overview className='overview' />
         <Ratings id={13023} />
       </div>
     );

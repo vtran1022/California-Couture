@@ -44,7 +44,9 @@ class Atelier {
     var res = await fetch(this.baseURL + endpoint, {
       method: 'GET',
       headers: new Headers({
-        'Authorization': auth.TOKEN
+        'Authorization': auth.TOKEN,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       })
     });
     return await res.json();
