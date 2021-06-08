@@ -1,4 +1,8 @@
-.reviews-table {
+.review-table {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+.list-container {
   height: 400px;
   overflow-y: scroll;
 }
@@ -9,9 +13,7 @@
   margin-right: 0px;
   margin-bottom: 5px;
 }
-
-table {
+.breakdown {
   border: 1px solid black;
-  border-spacing: 0;
-  border-bottom: none;
+  margin: 10px;
 }
