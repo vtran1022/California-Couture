@@ -4,6 +4,7 @@ import { auth } from '../../../../config.js';
 import ProductCard from './ProductCard.jsx';
 
 function RelatedList({ productId }) {
+  const listState = 'related';
   const [relatedItems, setRelated] = useState([]);
 
   async function fetchRelated() {
@@ -22,7 +23,8 @@ function RelatedList({ productId }) {
       <div>
         {relatedItems.map((id, index) => (
           <ProductCard
-            productId={id} key={index}/>))}
+            productId={id} key={index}
+            listState={listState}/>))}
       </div>
     </div>
   );
