@@ -1,38 +1,20 @@
 import React from 'react';
 import axios from 'axios';
-import RICWidget from './RIC-Widget.jsx';
+import Atelier from '../Atelier.js';
+import Ratings from './RatingsReview.jsx';
 
 class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      product: 13030,
-      idArr: [
-        13027,
-        13031,
-        13029,
-        13024,
-        13023
-      ]
+      holder: ''
     }
-
-    this.handleItem = this.handleItem.bind(this);
-  }
-
-  handleItem(event) {
-    this.setState({product: event.target.innerText});
   }
 
   render() {
     return (
       <div>
-        {this.state.idArr.map((item) => (
-          <div key={item} onClick={this.handleItem}>{item}</div>
-        ))}
-        <div>
-          <RICWidget
-            productId={this.state.product}/>
-        </div>
+        <h1>Holder</h1>
       </div>
     );
   }
