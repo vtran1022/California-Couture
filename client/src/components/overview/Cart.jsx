@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 const Cart = ( props ) => {
   // const [cartItems, serCurrentCart] = await useState({}) need to pull a user's cart
-  const [isLoading, setLoading] = useState(false)
-  const [styleId, setStyleId] = useState('');
-  const [styleList, setStyleList] = useState([])
+  // const [styleId, setStyleId] = useState('');
+  const [isLoading, setLoading] = useState(false);
+  const [styleList, setStyleList] = useState([]);
   const [selectedStyle, setStyle] = useState({});
   const [skus, setSKUs] = useState([]);
   const [currentSKU, setSKU] = useState({});
@@ -13,54 +13,45 @@ const Cart = ( props ) => {
   const [selectedQuantity, setQuantity] = useState('');
 
   useEffect( () => {
+    // setStyleId(selectedStyle.style_id);
     setLoading(true);
     setStyleList(props.styleList);
     setStyle(props.style);
-    setStyleId(selectedStyle.style_id);
     setLoading(false);
   }, [])
 
   useEffect( () => {
     setSKUs(parseSKUs(selectedStyle));
-  }, [selectedStyle])
+  }, [selectedStyle]);
 
   useEffect( () => {
     for (var i = 0; i < skus.length; i++) {
       if (Object.values(skus[i]).includes(selectedSize)) {
         setSKU(skus[i]);
-        var arrayOfQuantities = []
+        var arrayOfQuantities = [];
         for (var j = 0; j < skus[i].quantity; j++) {
-          arrayOfQuantities.push(j + 1)
+          arrayOfQuantities.push(j + 1);
         }
       }
     }
     setQuantities(arrayOfQuantities);
 
-  }, [selectedSize])
-
-  // useEffect( () => {
-
-  // }, [currentSKU])
-
-
+  }, [selectedSize]);
 
   function handleStyleClick(value) {
     let list = styleList;
     for (var i = 0; i < list.length; i++) {
       if (list[i].style_id === Number(value)){
         setStyle(list[i]);
-        setSKUs(parseSKUs(list[i]));
-        return
+        return;
       }
     }
   }
 
   return (
     <div >
-
     <span className='price'>Price: {props.defaultPrice}</span>
     {/* <span className='sales'></span> */}
-
       <div>
       {
       isLoading
@@ -68,7 +59,6 @@ const Cart = ( props ) => {
         : (styleList.map(style =>
           <div
           key={style.style_id}
-          id={style.style_id}
           onClick={(e) => handleStyleClick(e.currentTarget.id)}>
             {style.name}
           </div>))
@@ -90,8 +80,10 @@ const Cart = ( props ) => {
       {
         !quantities
           ? null
-          : quantities.map ( quantity =>
-            <option>{quantity}</option>
+          : quantities.map ( (quantity, index) =>
+            {if (index < 15) {
+              return <option>{quantity}</option>
+            }}
           )
       }
     </select>
@@ -99,15 +91,15 @@ const Cart = ( props ) => {
   )
 
   function parseSKUs (style) {
-      let arrayOfSizesAndQuantities = []
+      let arrayOfSizesAndQuantities = [];
       for (var key in style.skus) {
         arrayOfSizesAndQuantities.push({
             skuID: key,
             size: style.skus[key].size,
             quantity: style.skus[key].quantity
-          })
+          });
         }
-      return arrayOfSizesAndQuantities
+      return arrayOfSizesAndQuantities;
   }
 
 
