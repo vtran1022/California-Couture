@@ -3,9 +3,7 @@ import axios from 'axios';
 import { auth } from '../../../../config.js';
 import ProductCard from './ProductCard.jsx';
 
-// take in destructing { productId } from overview design product
-function RelatedList() {
-  const productId = 13027; //placeholder for testing
+function RelatedList({ productId }) {
   const [relatedItems, setRelated] = useState([]);
 
   async function fetchRelated() {
