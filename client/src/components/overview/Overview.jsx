@@ -30,7 +30,7 @@ function Overview (props) {
       setLoading(false);
       }
     fetchData()
-    }, [])
+    }, []);
 
 
   return (
