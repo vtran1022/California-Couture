@@ -14,7 +14,6 @@ function OutfitList({ productId }) {
 
   return (
     <div>
-      <h1>Testing-OutfitList</h1>
       <div className='AddCard' onClick={() => addItem(productId)}>
         <div>+</div>
         <div>Add to Outfit</div>

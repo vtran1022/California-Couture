@@ -19,7 +19,6 @@ function RelatedList({ productId }) {
 
   return (
     <div>
-      <h1>Testing-RelatedList</h1>
       <div>
         {relatedItems.map((id, index) => (
           <ProductCard
