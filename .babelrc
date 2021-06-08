@@ -8,6 +8,8 @@
         }
       }
     ],
-    "@babel/preset-react"
+    "@babel/preset-react" ],
+  "plugins": [
+    ["@babel/transform-runtime"]
   ]
 }

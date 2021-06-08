@@ -1,5 +1,4 @@
 import React from 'react';
-import Atelier from '../Atelier.js';
 
 const StarRating = (props) => {
   //TODO: pull out star rendering to a function passed from props i.e. props.renderQuarterStar()
@@ -28,7 +27,9 @@ const StarRating = (props) => {
       stars.push(renderEmpty());
     }
   }
+  
   return stars
-}
+
+};
 
 export default StarRating;
