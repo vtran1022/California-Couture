@@ -8,21 +8,17 @@ function OutfitList({ productId }) {
   const [ifOutfit, setExists] = useState(false);
   const [outfitItems, setOutfit] = useState([]);
 
-  function addItem() {
-    if (productId !== 0 && outfitItems.indexOf(productId) === -1) {
-      setOutfit(prevArray => [...prevArray, productId]);
+  function addItem(id) {
+    if (outfitItems.indexOf(id) === -1) {
+      setOutfit(prevArray => [...prevArray, id]);
       setExists(true);
     }
   };
 
-  useEffect(() => {
-    addItem();
-  }, [productId]);
-
   return (
     <div>
       <h1>Testing-OutfitList</h1>
-      <div className='AddCard'>
+      <div className='AddCard' onClick={() => addItem(productId)}>
         <div>+</div>
         <div>Add to Outfit</div>
       </div>
