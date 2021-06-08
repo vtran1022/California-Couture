@@ -27,9 +27,7 @@ function Overview (props) {
       setStyleList(styleList.results);
       setStyle(styleList.results[0]);
       setCurrentProduct(product);
-      setLoading(false)
-      console.log('this is the stylesList: ', styleList.results)
-      console.log('this is the currentStyle: ', styleList.results[0])
+      setLoading(false);
       }
     fetchData()
     }, [])
@@ -40,7 +38,9 @@ function Overview (props) {
       Overview
 
       <ImageGallery
+      className='image-gallery'
       productId={ currentProduct.id }
+      product={ currentProduct }
       />
 
       {/* Star rating will have be an another component */}
@@ -58,6 +58,7 @@ function Overview (props) {
         {isLoading
         ? <div>Loading</div>
         : <Cart
+        className='cart'
         key={ currentProduct.id }
         styleList={ styles }
         style={ style }
