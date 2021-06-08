@@ -19,7 +19,10 @@ function AvgRating({ productId }) {
       let ratings = Object.values(reviewData.data.ratings);
 
       setRatings(ratings);
-      setAverage(averageScore(ratings));
+
+      if (ratings.length !== 0) {
+        setAverage(averageScore(ratings));
+      }
   };
 
   useEffect(() => {
