@@ -50,7 +50,7 @@ const Cart = ( props ) => {
       if (list[i].style_id === Number(value)){
         setStyle(list[i]);
         setSKUs(parseSKUs(list[i]));
-        return
+        return;
       }
     }
   }
