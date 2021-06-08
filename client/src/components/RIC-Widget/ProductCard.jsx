@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { auth } from '../../../../config.js';
 import AvgRating from '../AvgRating.jsx';
+import ActionButton from './ActionButton.jsx';
 
-function ProductCard({ productId }) {
+function ProductCard({ productId, index, listState, triggerDelete }) {
   const [image, setImage] = useState('');
   const [category, setCategory] = useState('');
   const [name, setName] = useState('');
@@ -36,7 +37,11 @@ function ProductCard({ productId }) {
 
   return (
     <div>
-      <div>
+      <div className='ProductCard'>
+        <ActionButton
+          index={index}
+          listState={listState}
+          triggerDelete={triggerDelete}/>
         <img src={image} alt={name}></img>
         <div>{category}</div>
         <div>{name}</div>
@@ -51,13 +56,10 @@ function ProductCard({ productId }) {
 export default ProductCard;
 
 /*
+action buttons:
+☆ or x
 
-- pull productId from relatedList
-
-1) product preview image
-2) product category
-3) product name
-4) product price
-5) star rating
+'☆' - will open up comparison modal component
+x - will delete the product card
 
 */

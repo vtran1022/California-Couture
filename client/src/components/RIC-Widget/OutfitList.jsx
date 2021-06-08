@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import ProductCard from './ProductCard.jsx';
 
 function OutfitList({ productId }) {
+  const listState = 'outfit';
   const [ifOutfit, setExists] = useState(false);
   const [outfitItems, setOutfit] = useState([]);
 
@@ -11,6 +12,13 @@ function OutfitList({ productId }) {
       setExists(true);
     }
   };
+
+  const triggerDelete = useCallback((index) => {
+    let currentOutfits = outfitItems.map((item) => item);
+    currentOutfits.splice(index, 1);
+
+    setOutfit(currentOutfits);
+  });
 
   return (
     <div>
@@ -22,7 +30,11 @@ function OutfitList({ productId }) {
         {ifOutfit
           ? <div> {outfitItems.map((id, index) => (
             <ProductCard
-              productId={id} key={index}/>))} </div>
+              productId={id}
+              index={index}
+              listState={listState}
+              triggerDelete={triggerDelete}/>))}
+            </div>
           : null
         }
       </div>
