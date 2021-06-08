@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import ProductCard from './ProductCard.jsx';
 
 // expecting this productId to be linked to current Overview Product
