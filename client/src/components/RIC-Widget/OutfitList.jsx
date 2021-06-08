@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ProductCard from './ProductCard.jsx';
 
-// expecting this productId to be linked to current Overview Product
 function OutfitList({ productId }) {
   const [ifOutfit, setExists] = useState(false);
   const [outfitItems, setOutfit] = useState([]);
