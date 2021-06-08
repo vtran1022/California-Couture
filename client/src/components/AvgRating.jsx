@@ -13,16 +13,16 @@ function AvgRating({ productId }) {
   };
 
   async function fetchRatings() {
-      let reviewData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/reviews/meta/?product_id=${productId}`,
+    let reviewData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/reviews/meta/?product_id=${productId}`,
     { headers: { 'Authorization': auth.TOKEN } });
 
-      let ratings = Object.values(reviewData.data.ratings);
+    let ratings = Object.values(reviewData.data.ratings);
 
-      setRatings(ratings);
+    setRatings(ratings);
 
-      if (ratings.length !== 0) {
-        setAverage(averageScore(ratings));
-      }
+    if (ratings.length !== 0) {
+      setAverage(averageScore(ratings));
+    }
   };
 
   useEffect(() => {
