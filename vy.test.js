@@ -36,3 +36,8 @@ describe('App', () => {
     screen.getByRole('button');
   });
 });
+
+/*
+use 'queryBy' to search for elements that shouldn't be there
+use 'findBy'for asynchronous elements which will be there eventually
+*/
