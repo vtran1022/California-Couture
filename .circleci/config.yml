@@ -4,18 +4,18 @@ version: 2.1
 orbs:
   node: circleci/node@4.1
 
-workflows:
-  fec-workflow:
-    jobs:
-      - fec-test:
-        context: FEC-context
-      - node/test:
-        version: '15.1'
-
 jobs:
   fec-test:
-    steps:
-      - run: echo FEC_GIT
+    docker:
+      - image: circleci/node:14.16.0
+      environment:
+        FEC_TOKEN: $FEC_TOKEN
+
+workflows:
+  fec-test:
+    jobs:
+      - node/test:
+          version: '15.1'
         # This is the node version to use for the `cimg/node` tag
         # https://circleci.com/developer/images/image/cimg/node
         # Relevant tags can be found on the CircleCI Developer Hub
