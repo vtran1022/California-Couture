@@ -13,14 +13,14 @@ function ImageGallery (props) {
     setPhoto(props.photos[0]);
     setPhotoList(props.photos);
     setPhotoIndex(0);
-  }, [props.photos])
+  }, [props.photos]);
 
   function handleThumbnailClick (url, thumbnail_url, index) {
     setPhoto({
       url: url,
       thumbnail_url: thumbnail_url
       });
-    setPhotoIndex(index)
+    setPhotoIndex(index);
   }
 
    function handleLeftClick () {

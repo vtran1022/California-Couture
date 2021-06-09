@@ -9,6 +9,18 @@ const Cart = ( props ) => {
   const [selectedSize, setSize] = useState('');
   const [quantities, setQuantities] = useState([]);
   const [selectedQuantity, setQuantity] = useState('');
+  const [price, setPrice] = useState({
+    default: props.defaultPrice,
+    sale: props.style.sale_price
+  })
+
+  useEffect( () => {
+    setPrice({
+      default: props.defaultPrice,
+      sale: props.style.sale_price
+    });
+    console.log(props.style.sale_price)
+  }, [props.style])
 
   useEffect( () => {
     for (var i = 0; i < skus.length; i++) {
@@ -26,8 +38,9 @@ const Cart = ( props ) => {
   return (
     <div data-testid="cart-1">
 
-      <span className='price'>Price: {props.defaultPrice}</span>
-      {/* <span className='sales'></span> */}
+      {!price.sale
+        ?<span className='price'>Price: {price.default}</span>
+        :<span className='price'>Price: <strike>{price.default}</strike>{price.sale}</span>}
 
       <div className='styles'>
         <h1>Style Selector</h1>

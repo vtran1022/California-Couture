@@ -62,9 +62,9 @@
   float: right
 }
 
-/* .price {
-
-} */
+.price {
+  float:right
+}
 
 .styles {
   display: inline;
@@ -83,11 +83,11 @@
   border-radius: 50%;
 }
 
-/* .size {
-
+#size-select {
+  float: right;
 }
 
-.quantity {
-
-} */
+#quantity-select {
+  float: right;
+}
 
