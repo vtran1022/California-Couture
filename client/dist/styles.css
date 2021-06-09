@@ -17,3 +17,72 @@
   border: 1px solid black;
   margin: 10px;
 }
+
+.overview {
+  display: grid;
+  position: relative
+}
+
+.image-gallery {
+  width: 500px;
+  height: 300px;
+  border: 1px solid black;
+
+}
+
+.preview {
+  width: 500px;
+  height: 300px;
+}
+
+.thumbnails {
+  display: flex;
+  justify-content: center;
+}
+
+.thumbnail {
+  width:100px;
+  height:100px;
+  margin:5px;
+}
+
+.category {
+
+}
+
+.name {
+
+}
+
+.cart {
+  float: right
+}
+
+.price {
+
+}
+
+.styles {
+  display: inline;
+  overflow: hidden;
+  width: 440px;
+  height: auto;
+  float: right;
+}
+
+.style {
+  width:100px;
+  height:100px;
+  margin:5px;
+  display:inline;
+  border-radius: 50%;
+}
+
+.size {
+
+}
+
+.quantity {
+
+}
+

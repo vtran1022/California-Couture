@@ -17,7 +17,7 @@ class App extends React.Component {
     return (
       <div>
         {/* <RatingsReview /> */}
-        <Overview className='overview' />
+        <Overview />
         <Ratings id={13023} />
       </div>
     );
