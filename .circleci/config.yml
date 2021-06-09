@@ -9,12 +9,11 @@ workflows:
     jobs:
       - fec-test:
         context: FEC-context
+      - node/test:
+        version: '15.1'
 
 jobs:
   fec-test:
-    # docker:
-    - node/test:
-        version: '15.1'
     steps:
       - run: echo FEC_GIT
         # This is the node version to use for the `cimg/node` tag
