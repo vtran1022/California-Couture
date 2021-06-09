@@ -23,19 +23,19 @@ function ImageGallery (props) {
     setPhotoIndex(index)
   }
 
-  async function handleLeftClick () {
+   function handleLeftClick () {
     if (photoIndex > 0) {
       let next = photoIndex - 1;
-      await setPhotoIndex(next);
-      await setPhoto(photoList[next]);
+      setPhotoIndex(next);
+      setPhoto(photoList[next]);
     }
   }
 
-  async function handleRightClick () {
+   function handleRightClick () {
     if (photoIndex < photoList.length - 1) {
       let next = photoIndex + 1;
-      await setPhotoIndex(next);
-      await setPhoto(photoList[next]);
+      setPhotoIndex(next);
+      setPhoto(photoList[next]);
     }
   }
 
@@ -44,11 +44,9 @@ function ImageGallery (props) {
     className='image-gallery'
     // onClick={() => setView( 'expanded' )}
     >
-      <button onClick={() => handleLeftClick()}>Left Arrow</button>
       <img className='preview' src={currentPhoto.url}></img>
       <div className='thumbnails'>
-        {
-          photoList.map(photo =>
+        {photoList.map(photo =>
           <Thumbnails
           key={photoList.indexOf(photo)}
           thumbnailUrl={photo.thumbnail_url}
@@ -57,7 +55,8 @@ function ImageGallery (props) {
           handleThumbnailClick={handleThumbnailClick}/>
           )}
         </div>
-        <button onClick={() => handleRightClick()}>Right Arrow</button>
+      <button onClick={() => handleLeftClick()}>Left Arrow</button>
+      <button onClick={() => handleRightClick()}>Right Arrow</button>
     </div>
   )
 }

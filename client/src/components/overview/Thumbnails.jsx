@@ -12,7 +12,7 @@ function Thumbnail (props) {
         break;
       }
     }
-    props.handleThumbnailClick(url, thumbnail_url, index)
+    props.handleThumbnailClick(url, thumbnail_url, index);
   }
 
   return (

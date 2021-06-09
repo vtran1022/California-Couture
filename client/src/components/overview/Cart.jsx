@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const Cart = ( props ) => {
   // const [cartItems, serCurrentCart] = await useState({}) need to pull a user's cart
   // const [styleId, setStyleId] = useState('');
-  const [isLoading, setLoading] = useState(false);
+  // const [isLoading, setLoading] = useState(false);
   const [skus, setSKUs] = useState(parseSKUs(props.style));
   const [currentSKU, setSKU] = useState({});
   const [selectedSize, setSize] = useState('');
@@ -31,26 +31,20 @@ const Cart = ( props ) => {
 
       <div className='styles'>
         <h1>Style Selector</h1>
-      {
-      props.stylesList.map(style =>
-      <img
-      className='style'
-      key={style.style_id}
-      id={style.style_id}
-      src={style.photos[0].thumbnail_url}
-      onClick={(e) => props.handleStyleSelect(e.currentTarget.id)}>
-      </img>)
-      }
+        {props.stylesList.map(style =>
+        <img
+        className='style'
+        key={style.style_id}
+        id={style.style_id}
+        src={style.photos[0].thumbnail_url}
+        onClick={(e) => props.handleStyleSelect(e.currentTarget.id)}>
+        </img>)}
       </div>
 
     <select name='size' id='size-select' onChange={(e) => setSize(e.target.value)}>
       <option>Select Size</option>
-      {
-        isLoading
-          ? null
-          : skus.map(sku =>
-            <option key={sku.quantity + 50}>{sku.size}</option>)
-        }
+      {skus.map(sku =>
+      <option key={sku.quantity + 50}>{sku.size}</option>)}
     </select>
 
     <select name='quantity' id='quantity-select' onChange={(e) => setQuantity(e.target.value)}>
@@ -58,8 +52,8 @@ const Cart = ( props ) => {
       {
         !quantities
           ? null
-          : quantities.map ( (quantity, index) =>
-            {if (index < 15) {
+          : quantities.map ((quantity, index) =>{
+            if (index < 15) {
               return <option key={quantity + 20}>{quantity}</option>
             }}
           )
