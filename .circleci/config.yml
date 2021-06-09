@@ -18,7 +18,7 @@ jobs:
       - checkout
       - run:
           name: "echo environment variable from FEC context"
-          command: echo export FEC_GIT="FEC_GIT" >> $BASH_ENV/.circlerc
+          command: echo export TOKEN="FEC_GIT" >> $BASH_ENV
       - run: npm install
       - run: npm test
 
