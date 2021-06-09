@@ -18,9 +18,11 @@ jobs:
       - checkout
       - run:
           name: "echo environment variable from FEC context"
-          command: echo FEC_GIT
+          command: echo "export var auth = { TOKEN: \'FEC_GIT \' };" > config.js
       - run: npm install
       - run: npm test
+
+
 
 # workflows:
 #   fec-test:
