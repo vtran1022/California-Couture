@@ -4,14 +4,21 @@ version: 2.1
 # orbs:
 #   node: circleci/node@4.1
 
+workflows:
+  fec:
+    jobs:
+      - run-tests:
+          context: FEC-context
+
 jobs:
-  build:
+  run-tests:
     docker:
       - image: circleci/node:14.16.0
-    environment:
-      FEC_TOKEN: FEC_TOKEN
     steps:
       - checkout
+      - run:
+          name: "echo environment variable from FEC context"
+          command: echo FEC_GIT
       - run: npm install
       - run: npm test
 
