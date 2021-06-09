@@ -37,6 +37,7 @@ class App extends React.Component {
           <RICWidget
             productId={this.state.product}/>
         </div>
+        <button>Testings</button>
       </div>
     );
   }
