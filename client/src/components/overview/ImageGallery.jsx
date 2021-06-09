@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Thumbnails from './Thumbnails.jsx';
-// import Atelier from '/Users/julianzthong/Desktop/Hack_Reactor/FEC/client/src/Atelier.js';
+import Atelier from '../../Atelier.js';
 
 
 function ImageGallery (props) {

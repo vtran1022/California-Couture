@@ -2,8 +2,8 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import ImageGallery from './ImageGallery.jsx';
 import Cart from './Cart.jsx';
-// import Atelier from '/Users/julianzthong/Desktop/Hack_Reactor/FEC/client/src/Atelier.js';
-// import { auth } from '/Users/julianzthong/Desktop/Hack_Reactor/FEC/config.js';
+import Atelier from '../../Atelier.js';
+import { auth } from '../../../../config.js';
 
 /*
 Need to get ONE product from the database
