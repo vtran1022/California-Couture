@@ -5,18 +5,19 @@ orbs:
   node: circleci/node@4.1
 
 workflows:
-  test-env-vars:
+  fec-workflow:
     jobs:
-      - build:
+      - fec-test:
         context: FEC-context
 
   # sample:
     jobs:
-      build:
-      - node/test:
-          version: '15.1'
-          steps:
-            - run: echo FEC_GIT
-          # This is the node version to use for the `cimg/node` tag
-          # Relevant tags can be found on the CircleCI Developer Hub
-          # https://circleci.com/developer/images/image/cimg/node
+      fec-tests:
+        docker:
+        - node/test:
+            version: '15.1'
+        steps:
+          - run: echo FEC_GIT
+            # This is the node version to use for the `cimg/node` tag
+            # Relevant tags can be found on the CircleCI Developer Hub
+            # https://circleci.com/developer/images/image/cimg/node
