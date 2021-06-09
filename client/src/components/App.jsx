@@ -18,7 +18,7 @@ class App extends React.Component {
       <div>
         {/* <RatingsReview /> */}
         <Overview />
-        <Ratings id={13023} />
+        {/* <Ratings id={13023} /> */}
       </div>
     );
   }

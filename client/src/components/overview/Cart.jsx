@@ -30,14 +30,16 @@ const Cart = ( props ) => {
       {/* <span className='sales'></span> */}
 
       <div className='styles'>
-      {(props.stylesList.map(style =>
+      {
+      props.stylesList.map(style =>
       <img
       className='style'
       key={style.style_id}
       id={style.style_id}
       src={style.photos[0].thumbnail_url}
       onClick={(e) => props.handleStyleSelect(e.currentTarget.id)}>
-      </img>))}
+      </img>)
+      }
       </div>
 
     <select name='size' id='size-select' onChange={(e) => setSize(e.target.value)}>

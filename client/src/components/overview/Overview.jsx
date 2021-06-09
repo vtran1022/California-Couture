@@ -14,27 +14,29 @@ Styles also contains all the inventory of the product styles
 function Overview (props) {
   // const [cartItems, serCurrentCart] = await useState({}) need to pull a user's cart
   // const [productList, setProductList] = useState(sampleData); don't think this is necessary.
-  // const [currentProduct, setCurrentProduct] = useState({});
-  // const [styleId, setStyleId] = useState('');
+  const [currentProduct, setCurrentProduct] = useState({});
+  const [styleId, setStyleId] = useState('');
   const [isLoading, setLoading] = useState(true);
   const [styles, setStyleList] = useState([]);
   const [style, setStyle] = useState({});
   const [currentPhoto, setPhoto] = useState('');
 
-  useEffect( () => {
+  useEffect(() => {
     async function fetchData () {
       setLoading(true);
-      var product = await Atelier.getInfo(13023);
-      var styleList = await Atelier.getStyles(13023);
-      await setStyleList(styleList.results);
-      await setStyle(styleList.results[0]);
-      await setCurrentProduct(product);
-      await setStyleId(styleList.results[0].style_id)
+      var product = await Atelier.getInfo(13023).catch((err) => console.log(err));
+      var styleList = await Atelier.getStyles(13023).catch((err) => console.log(err));
+      setStyleList(styleList.results);
+      setStyle(styleList.results[0]);
+      setCurrentProduct(product);
+      setStyleId(styleList.results[0].style_id)
       setLoading(false);
       }
     fetchData();
     }, []);
 
+    // useEffect(() => {
+    // }, [style])
 
   function handleStyleSelect (value) {
     let list = styles;
@@ -50,8 +52,7 @@ function Overview (props) {
     <div className='overview'>
       Overview
 
-      {
-        isLoading
+      {isLoading
         ? null
         : <ImageGallery
           key='999999'
@@ -61,8 +62,7 @@ function Overview (props) {
         />
       }
 
-      {
-        isLoading
+      {isLoading
         ? null
         : <Cart
         key='899999'
