@@ -10,8 +10,9 @@ workflows:
       - build:
         context: FEC-context
 
-  sample:
+  # sample:
     jobs:
+      build:
       - node/test:
           version: '15.1'
           steps:
