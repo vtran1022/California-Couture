@@ -23,15 +23,18 @@ function Overview (props) {
 
   useEffect(() => {
     async function fetchData () {
-      setLoading(true);
-      var product = await Atelier.getInfo(13023).catch((err) => console.log(err));
-      var styleList = await Atelier.getStyles(13023).catch((err) => console.log(err));
-      setStyleList(styleList.results);
-      setStyle(styleList.results[0]);
-      setCurrentProduct(product);
-      setStyleId(styleList.results[0].style_id)
-      setLoading(false);
-      }
+      try {
+        setLoading(true);
+        var product = await Atelier.getInfo(13023).catch((err) => console.log(err));
+        var styleList = await Atelier.getStyles(13023).catch((err) => console.log(err));
+        setStyleList(styleList.results);
+        setStyle(styleList.results[0]);
+        setCurrentProduct(product);
+        setStyleId(styleList.results[0].style_id)
+        setLoading(false);
+      } catch (err) {
+        console.log(err)
+      }}
     fetchData();
     }, []);
 
@@ -49,7 +52,7 @@ function Overview (props) {
   }
 
   return (
-    <div className='overview'>
+    <div data-testid="overview-1" className='overview'>
       Overview
 
       {isLoading

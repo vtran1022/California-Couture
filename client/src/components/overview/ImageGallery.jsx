@@ -6,8 +6,8 @@ import Thumbnails from './Thumbnails.jsx';
 function ImageGallery (props) {
   // const [viewState, setView] = useState('default');
   const [currentPhoto, setPhoto] = useState(props.photos[0]);
-  const [photoList, setPhotoList] = useState(props.photos); // Will be used to for the left and right buttons
-  const [photoIndex, setPhotoIndex] = useState(0); // Will be used to for the left and right buttons
+  const [photoList, setPhotoList] = useState(props.photos);
+  const [photoIndex, setPhotoIndex] = useState(0);
 
   useEffect(() => {
     setPhoto(props.photos[0]);
@@ -21,12 +21,20 @@ function ImageGallery (props) {
       });
   }
 
-  function handleLeftClick () {
-
+  async function handleLeftClick () {
+    if (photoIndex > 0) {
+      let next = photoIndex - 1;
+      await setPhotoIndex(next);
+      await setPhoto(photoList[next]);
+    }
   }
 
-  function handleRightClick () {
-
+  async function handleRightClick () {
+    if (photoIndex < photoList.length - 1) {
+      let next = photoIndex + 1;
+      await setPhotoIndex(next);
+      await setPhoto(photoList[next]);
+    }
   }
 
   return (
@@ -38,9 +46,9 @@ function ImageGallery (props) {
       <img className='preview' src={currentPhoto.url}></img>
       <div className='thumbnails'>
         {
-          props.photos.map(photo =>
+          photoList.map(photo =>
           <Thumbnails
-          key={props.photos.indexOf(photo)}
+          key={photoList.indexOf(photo)}
           thumbnailUrl={photo.thumbnail_url}
           photoUrl={photo.url}
           handleThumbnailClick={handleThumbnailClick}/>

@@ -24,12 +24,13 @@ const Cart = ( props ) => {
   }, [selectedSize]);
 
   return (
-    <div>
+    <div data-testid="cart-1">
 
       <span className='price'>Price: {props.defaultPrice}</span>
       {/* <span className='sales'></span> */}
 
       <div className='styles'>
+        <h1>Style Selector</h1>
       {
       props.stylesList.map(style =>
       <img
