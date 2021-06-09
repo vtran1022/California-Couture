@@ -20,7 +20,7 @@ jobs:
       - run:
           name: "echo environment variable from FEC context and run npm test"
           command: |
-            echo export var auth={TOKEN:"$FEC_GIT"} >> config.js
+            echo export var auth={TOKEN:"${FEC_GIT}"} >> config.js
             npm test
       # - run: npm install
       # - run: npm test
