@@ -2,10 +2,17 @@ import React from 'react';
 
 function Thumbnail (props) {
 
-  function getBothUrls (e) {
+  function getPhotoInfo (e) {
     var url = e.target.getAttribute('photo-url');
     var thumbnail_url = e.target.src;
-    props.handleThumbnailClick(url, thumbnail_url)
+
+    for (var i = 0; i < props.photoList.length; i++) {
+      if (props.photoList[i].url === url) {
+        var index = i;
+        break;
+      }
+    }
+    props.handleThumbnailClick(url, thumbnail_url, index)
   }
 
   return (
@@ -13,7 +20,7 @@ function Thumbnail (props) {
     className='thumbnail'
     src={props.thumbnailUrl}
     photo-url={props.photoUrl}
-    onClick={(e) => getBothUrls(e)}></img>
+    onClick={(e) => getPhotoInfo(e)}></img>
   )
 }
 

@@ -12,13 +12,15 @@ function ImageGallery (props) {
   useEffect(() => {
     setPhoto(props.photos[0]);
     setPhotoList(props.photos);
+    setPhotoIndex(0);
   }, [props.photos])
 
-  function handleThumbnailClick (url, thumbnail_url) {
+  function handleThumbnailClick (url, thumbnail_url, index) {
     setPhoto({
       url: url,
       thumbnail_url: thumbnail_url
       });
+    setPhotoIndex(index)
   }
 
   async function handleLeftClick () {
@@ -51,6 +53,7 @@ function ImageGallery (props) {
           key={photoList.indexOf(photo)}
           thumbnailUrl={photo.thumbnail_url}
           photoUrl={photo.url}
+          photoList={photoList}
           handleThumbnailClick={handleThumbnailClick}/>
           )}
         </div>

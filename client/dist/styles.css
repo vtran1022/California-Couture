@@ -39,6 +39,7 @@
 }
 
 .thumbnails {
+  float: left;
   display: flex;
   justify-content: center;
 }
