@@ -21,9 +21,10 @@ function RelatedList({ productId }) {
   return (
     <div>
       <div>
-        {relatedItems.map((id, index) => (
+        {relatedItems.map((id) => (
           <ProductCard
-            productId={id} key={index}
+            key={id}
+            productId={id}
             listState={listState}/>))}
       </div>
     </div>
