@@ -16,11 +16,14 @@ jobs:
       - image: circleci/node:14.16.0
     steps:
       - checkout
-      - run:
-          name: "echo environment variable from FEC context"
-          command: echo export var auth={TOKEN:"$FEC_GIT"} >> config.js
       - run: npm install
-      - run: npm test
+      - run:
+          name: "echo environment variable from FEC context and run npm test"
+          command: |
+            echo export var auth={TOKEN:"$FEC_GIT"} >> config.js
+            npm test
+      # - run: npm install
+      # - run: npm test
 
 # workflows:
 #   fec-test:
