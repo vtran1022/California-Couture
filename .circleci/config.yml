@@ -12,7 +12,7 @@ workflows:
 
   # sample:
     jobs:
-      fec-tests:
+      fec-test:
         docker:
         - node/test:
             version: '15.1'
