@@ -4,16 +4,9 @@ version: 2.1
 orbs:
   node: circleci/node@4.1
 
-jobs:
-  write-config:
-    steps:
-      run: echo 'export var auth = { TOKEN: \'$TOKEN \' };' >> config.js
-
-
 workflows:
   FEC-test:
     jobs:
-      - write-config
       - node/test:
           version: '15.1'
           # This is the node version to use for the `cimg/node` tag
