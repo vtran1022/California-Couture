@@ -1,17 +1,23 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import ProductCard from './ProductCard.jsx';
 
 function OutfitList({ productId }) {
   const listState = 'outfit';
   const [ifOutfit, setExists] = useState(false);
   const [outfitItems, setOutfit] = useState([]);
+  const [ifAdded, setAdded] = useState(true);
 
   function addItem(id) {
     if (outfitItems.indexOf(id) === -1) {
       setOutfit(prevArray => [...prevArray, id]);
       setExists(true);
     }
+    setAdded(false);
   };
+
+  useEffect(() => {
+    setAdded(true);
+  }, [productId]);
 
   const triggerDelete = useCallback((index) => {
     let currentOutfits = outfitItems.map((item) => item);
@@ -29,7 +35,10 @@ function OutfitList({ productId }) {
       <h3>Your Outfit</h3>
       <div className='RICList'>
         <div className='AddCard' onClick={() => addItem(productId)}>
-          <div>+ Add to Outfit</div>
+          {ifAdded
+            ? <div>+ Add to Outfit</div>
+            : <div>Item Already Added</div>
+          }
         </div>
           {ifOutfit
             ? <div className='RICList'>
