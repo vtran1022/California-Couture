@@ -34,7 +34,8 @@ function OutfitList({ productId }) {
         {ifOutfit
           ? <div> {outfitItems.map((id, index) => (
             <ProductCard
-              productId={id} key={index}
+              key={id}
+              productId={id}
               index={index}
               listState={listState}
               triggerDelete={triggerDelete}/>))}

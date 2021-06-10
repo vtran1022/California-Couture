@@ -1,14 +1,23 @@
 # This config is equivalent to both the '.circleci/extended/orb-free.yml' and the base '.circleci/config.yml'
 version: 2.1
 
-orbs:
-  node: circleci/node@4.1
-
 workflows:
-  FEC-test:
+  fec:
     jobs:
-      - node/test:
-          version: '15.1'
-          # This is the node version to use for the `cimg/node` tag
-          # Relevant tags can be found on the CircleCI Developer Hub
-          # https://circleci.com/developer/images/image/cimg/node
+      - run-tests:
+          context: FEC-context
+
+jobs:
+  run-tests:
+    docker:
+      - image: circleci/node:14.16.0
+    steps:
+      - checkout
+      - run: npm install
+      - run:
+          name: "echo environment variable from FEC context and run npm test"
+          command: |
+            echo export var auth={TOKEN:\'${FEC_GIT}\'} >> config.js
+            npm test
+
+
