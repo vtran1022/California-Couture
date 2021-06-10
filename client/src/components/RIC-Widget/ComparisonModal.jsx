@@ -77,15 +77,15 @@ const ComparisonModal = ({}) => {
     <div className='c-modal'>
       <p>Comparing</p>
       <table>
-        <th>{prodName}</th>
-        <th></th>
-        <th>{relatedName}</th>
+        <th className="c-side">{prodName}</th>
+        <th className="c-mid"></th>
+        <th className="c-side">{relatedName}</th>
         <tbody>
           {allChars.map((item, index) => (
             <tr key={index}>
-              <td>{prodCheck[index]}</td>
-              <td>{item}</td>
-              <td>{relatedCheck[index]}</td>
+              <td className="c-side">{prodCheck[index]}</td>
+              <td className="c-mid">{item}</td>
+              <td className="c-side">{relatedCheck[index]}</td>
             </tr>
           ))}
         </tbody>
