@@ -8,9 +8,7 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal 
   const [image, setImage] = useState('');
   const [category, setCategory] = useState('');
   const [name, setName] = useState('');
-  const [price, setPrice] = useState(0);
-  const [salePrice, setSaleprice] = useState(0);
-  const [isSale, setSale] = useState(false);
+  const [price, setPrice] = useState({default: 0, salePrice: false});
 
   const fetchProducts = async () => {
     let productData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${productId}`,
@@ -25,11 +23,17 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal 
     setCategory(product.category);
     setName(product.name);
     setImage(firstStyle.photos[0].thumbnail_url);
-    setPrice(firstStyle.original_price);
 
-    if (firstStyle.sale_price !== null) {
-      setSaleprice(firstStyle.sale_price);
-      setSale(true);
+    if (firstStyle.sale_price === null) {
+      setPrice({
+        default: firstStyle.original_price,
+        salePrice: false
+      });
+    } else {
+      setPrice({
+        default: firstStyle.original_price,
+        salePrice: firstStyle.sale_price
+      });
     };
   };
 
@@ -48,9 +52,9 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal 
       <img src={image} alt={name} className='ProductImage'></img>
       <div>{category}</div>
       <b>{name}</b>
-        {isSale
-          ? <div>${salePrice} <strike>${price}</strike></div>
-          : <div>${price}</div>
+        {price.salePrice
+          ? <div><span id="salePrice">${price.salePrice}</span> <strike>${price.default}</strike></div>
+          : <div>${price.default}</div>
         }
       <AvgRating
         productId={productId}/>

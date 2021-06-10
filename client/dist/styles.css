@@ -175,3 +175,7 @@
   background-color: darkcyan;
   overflow-y: scroll;
 }
+
+#salePrice {
+  color: red
+}
