@@ -44,7 +44,8 @@ const RelatedList = ({ productId }) => {
       {isModal
         ? <ComparisonModal
             productId={productId}
-            relatedId={relatedId}/>
+            relatedId={relatedId}
+            trigger={triggerModal}/>
         : null}
     </div>
   );

@@ -3,10 +3,7 @@ import axios from 'axios';
 import { auth } from '../../../../config.js';
 
 //should receive productId from overview and productId from relatedList
-const ComparisonModal = ({}) => {
-  let productId = 13023;
-  let relatedId = 13024;
-
+const ComparisonModal = ({ productId, relatedId, trigger }) => {
   const [allChars, setAllChars] = useState([]);
   const [prodChars, setProd] = useState([]);
   const [relatedChars, setRelated] = useState([]);
@@ -74,18 +71,18 @@ const ComparisonModal = ({}) => {
   }, [allChars]);
 
   return (
-    <div className='c-modal'>
+    <div className='c-modal' onClick={trigger}>
       <p>Comparing</p>
       <table>
-        <th className="c-side">{prodName}</th>
+        <th className="c-left">{prodName}</th>
         <th className="c-mid"></th>
-        <th className="c-side">{relatedName}</th>
+        <th className="c-right">{relatedName}</th>
         <tbody>
           {allChars.map((item, index) => (
             <tr key={index}>
-              <td className="c-side">{prodCheck[index]}</td>
+              <td className="c-left">{prodCheck[index]}</td>
               <td className="c-mid">{item}</td>
-              <td className="c-side">{relatedCheck[index]}</td>
+              <td className="c-right">{relatedCheck[index]}</td>
             </tr>
           ))}
         </tbody>
