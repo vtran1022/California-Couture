@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Thumbnails from './Thumbnails.jsx';
 
 
-
 function ImageGallery (props) {
   // const [viewState, setView] = useState('default');
   const [currentPhoto, setPhoto] = useState(props.photos[0]);

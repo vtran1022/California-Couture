@@ -19,8 +19,8 @@ function ActionButton({ index, listState, triggerDelete }) {
   return (
     <div>
       {isStar
-        ? <button key={index}>☆</button>
-        : <button key={index} onClick={() => {triggerDelete(index)}}>x</button>
+        ? <input type="button" value='☆' />
+        : <input key={index} type="button" value='x' onClick={() => {triggerDelete(index)}} />
       }
     </div>
   )

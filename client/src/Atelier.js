@@ -51,6 +51,21 @@ class Atelier {
     });
     return await res.json();
   }
+
+  async postAPI(endpoint, data) {
+    console.log(JSON.stringify(data));
+    var res = await fetch(this.baseURL + endpoint, {
+      method: 'POST',
+      headers: new Headers({
+        'Authorization': auth.TOKEN,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }),
+      body: JSON.stringify(data)
+    });
+    console.log(res);
+    return res.json();
+  }
 }
 
 export default new Atelier();
