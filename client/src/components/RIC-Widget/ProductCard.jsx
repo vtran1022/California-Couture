@@ -4,7 +4,7 @@ import { auth } from '../../../../config.js';
 import AvgRating from '../AvgRating.jsx';
 import ActionButton from './ActionButton.jsx';
 
-const ProductCard = ({ productId, index, listState, triggerDelete }) => {
+const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal }) => {
   const [image, setImage] = useState('');
   const [category, setCategory] = useState('');
   const [name, setName] = useState('');
@@ -41,8 +41,10 @@ const ProductCard = ({ productId, index, listState, triggerDelete }) => {
     <div className='ProductCard'>
       <ActionButton
         index={index}
+        id={productId}
         listState={listState}
-        triggerDelete={triggerDelete}/>
+        triggerDelete={triggerDelete}
+        triggerModal={triggerModal}/>
       <img src={image} alt={name} className='ProductImage'></img>
       <div>{category}</div>
       <b>{name}</b>

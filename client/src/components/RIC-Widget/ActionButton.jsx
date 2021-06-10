@@ -1,6 +1,6 @@
 import React, { useState, useEffect }  from 'react';
 
-const ActionButton = ({ index, listState, triggerDelete }) => {
+const ActionButton = ({ id, index, listState, triggerDelete, triggerModal }) => {
   const [isStar, setStar] = useState(true);
   const [button, setButton] = useState('☆');
 
@@ -19,7 +19,7 @@ const ActionButton = ({ index, listState, triggerDelete }) => {
   return (
     <div className='ActionButton'>
       {isStar
-        ? <input type="button" value='☆' />
+        ? <input key={id} type="button" value='☆' onClick={() => {triggerModal(id)}}/>
         : <input key={index} type="button" value='ⓧ' onClick={() => {triggerDelete(index)}} />
       }
     </div>
