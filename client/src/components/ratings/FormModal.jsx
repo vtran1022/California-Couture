@@ -13,9 +13,10 @@ const FormModal = (props) => {
 
   var charObj = {};
   for (var k in props.characteristics) {
-    charObj[k] = -1;
+    var id = props.characteristics[k].id;
+    charObj[id] = -1;
   }
-  const [formData, setData] = useState({ rating: -1, recommended: true, summary: '', body: '', name: '', email: '', ...charObj });
+  const [formData, setData] = useState({ rating: -1, recommend: true, summary: '', body: '', name: '', email: '', photos: [], characteristics: charObj });
 
   const handleChange = (value, field) => {
     setData(state => {
@@ -23,6 +24,14 @@ const FormModal = (props) => {
       s[field] = value;
       return s;
     })
+  };
+
+  const handleCharacteristicChange = (value, name) => {
+    setData(state => {
+      var obj = formData.characteristics;
+      obj[props.characteristics[name].id] = value;
+      return {...state, characteristics: obj};
+    });
   };
 
   const handleSubmit = (e) => {
@@ -52,8 +61,6 @@ const FormModal = (props) => {
     return true;
   };
 
-  console.log('fd:', formData);
-  //console.log('characteristics:', props.characteristics);
   return (
     <div className='modal'>
       <form className='modal-form' onSubmit={handleSubmit}>
@@ -62,13 +69,13 @@ const FormModal = (props) => {
         </div>
         <div>
           <label>Recommended:</label>
-          <label>Yes</label><input type='radio' checked={formData.recommended} onChange={e => handleChange(e.target.value === 'on', 'recommended')}></input>
-          <label>No</label><input type='radio' checked={!formData.recommended} onChange={e => handleChange(e.target.value === 'off', 'recommended')}></input>
+          <label>Yes</label><input type='radio' checked={formData.recommend} onChange={e => handleChange(e.target.value === 'on', 'recommended')}></input>
+          <label>No</label><input type='radio' checked={!formData.recommend} onChange={e => handleChange(e.target.value === 'off', 'recommended')}></input>
         </div>
         <div>
           {Object.keys(props.characteristics).map(k => {
             return <div key={k}>
-              <label>{k}:</label> <RatingSelector onChange={val => handleChange(val, k)} default={-1} />
+              <label>{k}:</label> <RatingSelector onChange={val => handleCharacteristicChange(val, k)} default={-1} />
               <label>{characteristicBreakdown[k][formData[k]] || 'Select your rating for ' + k}</label>
             </div>
           })}
@@ -104,11 +111,11 @@ const RatingSelector = (props) => {
     setChecked(value);
   }
   return (<div>
-    <input type='radio' value='0' checked={checked === 0} onChange={e => onChange(e.target.value)}></input>
     <input type='radio' value='1' checked={checked === 1} onChange={e => onChange(e.target.value)}></input>
     <input type='radio' value='2' checked={checked === 2} onChange={e => onChange(e.target.value)}></input>
     <input type='radio' value='3' checked={checked === 3} onChange={e => onChange(e.target.value)}></input>
     <input type='radio' value='4' checked={checked === 4} onChange={e => onChange(e.target.value)}></input>
+    <input type='radio' value='5' checked={checked === 5} onChange={e => onChange(e.target.value)}></input>
   </div>)
 };
 

@@ -95,14 +95,16 @@ const Ratings = (props) => {
   };
 
   const addNewReview = (fd) => {
+    Atelier.postAPI('reviews', {
+      product_id: props.id,
+      ...fd
+    }).then(d => console.log(d)).catch(err => console.log(err));
 
   };
 
-  console.log(meta);
-
   if (Object.keys(reviews).length > 0) {
     return (<div className='review-container'>
-      {showForm ? <FormModal characteristics={meta.characteristics} submitData={addNewReview}/> : null}
+      {showForm ? <FormModal characteristics={meta.characteristics} submitData={addNewReview} /> : null}
       <div className='list-container'>
         <form>
           {/* sort drop down */}

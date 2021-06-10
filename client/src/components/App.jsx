@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: 13030,
+      product: 13023,
       idArr: [
         13027,
         13031,
@@ -24,18 +24,20 @@ class App extends React.Component {
   }
 
   handleItem(event) {
-    this.setState({product: event.target.innerText});
+    this.setState({ product: event.target.innerText });
   }
 
   render() {
     return (
       <div>
+        <Ratings id={this.state.product} />
+
         {this.state.idArr.map((item) => (
           <div key={item} onClick={this.handleItem}>{item}</div>
         ))}
         <div>
           <RICWidget
-            productId={this.state.product}/>
+            productId={this.state.product} />
         </div>
       </div>
     );
