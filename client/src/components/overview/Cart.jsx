@@ -16,7 +16,7 @@ const Cart = ( props ) => {
 
   useEffect( () => {
     setPrice({
-      default: props.defaultPrice,
+      default: props.currentProduct.default_price,
       sale: props.style.sale_price
     });
   }, [props.style])
@@ -35,14 +35,18 @@ const Cart = ( props ) => {
   }, [selectedSize]);
 
   return (
-    <div data-testid="cart-1">
+    <form className='cart' data-testid="cart-1">
+
+      <span id='name'>{props.currentProduct.name}</span><br></br>
+
+      <span id='category'>{props.currentProduct.category}</span><br></br>
 
       {!price.sale
         ?<span className='price'>Price: {price.default}</span>
         :<span className='price-sale'>Price: <strike>{price.default}</strike>{price.sale}</span>}
 
       <div className='styles-box'>
-        <h1>Style Selector</h1>
+        <h1>Style: {props.style.name}</h1>
         <div className='styles'>
 
         {props.stylesList.map(style => {
@@ -59,25 +63,31 @@ const Cart = ( props ) => {
         </div>
       </div>
 
-    <select name='size' id='size-select' onChange={(e) => setSize(e.target.value)}>
-      <option>Select Size</option>
-      {skus.map(sku =>
-      <option key={sku.quantity + 50}>{sku.size}</option>)}
-    </select>
-
-    <select name='quantity' id='quantity-select' onChange={(e) => setQuantity(e.target.value)}>
-      <option></option>
-      {
-        !quantities
+      <div>
+      <select name='quantity' id='quantity-select' onChange={(e) => setQuantity(e.target.value)}>
+        <option></option>
+        {
+          !quantities
           ? null
           : quantities.map ((quantity, index) =>{
             if (index < 15) {
               return <option key={quantity + 20}>{quantity}</option>
             }}
-          )
-      }
-    </select>
-      </div>
+            )
+          }
+      </select>
+          </div>
+
+      <div>
+      <select name='size' id='size-select' onChange={(e) => setSize(e.target.value)}>
+        <option>Select Size</option>
+        {skus.map(sku =>
+        <option key={sku.quantity + 50}>{sku.size}</option>)}
+      </select>
+        </div>
+
+
+    </form>
   )
 
   function parseSKUs (style) {

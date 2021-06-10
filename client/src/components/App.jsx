@@ -31,10 +31,7 @@ class App extends React.Component {
     return (
       <div>
 
-        {/* <RatingsReview /> */}
         <Overview />
-        {/* <Ratings id={13023} /> */}
-
         <Ratings id={this.state.product} />
 
         {this.state.idArr.map((item) => (

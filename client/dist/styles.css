@@ -1,4 +1,4 @@
-/* Ratings & Reviews ----------------------------*/
+/* ---------------------------- Ratings & Reviews ---------------------------- */
 .review-table {
   border: 1px solid black;
   border-collapse: collapse;
@@ -37,7 +37,7 @@
   width: 400px;
 }
 
-/* Overview --------------------- */
+/* ---------------------------- Overview ---------------------------- */
 .overview {
   display: grid;
   position: relative
@@ -70,13 +70,13 @@
   margin:5px;
 }
 
-/* .category {
-
+#category {
+float: right;
 }
 
-.name {
-
-} */
+#name {
+float: right;
+}
 
 .cart {
   float: right
