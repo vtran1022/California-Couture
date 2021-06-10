@@ -4,7 +4,7 @@
   "description": "creating a UI for Cat-Walk retail",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watch",
+    "test": "jest",
     "react-dev": "webpack --mode development --watch",
     "server": "npx nodemon server.js"
   },
