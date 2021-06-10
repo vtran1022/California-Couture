@@ -8,7 +8,7 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal 
   const [image, setImage] = useState('');
   const [category, setCategory] = useState('');
   const [name, setName] = useState('');
-  const [price, setPrice] = useState({default: 0, salePrice: false});
+  const [price, setPrice] = useState({default: 0, salePrice: null});
 
   const fetchProducts = async () => {
     let productData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${productId}`,
@@ -23,18 +23,10 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal 
     setCategory(product.category);
     setName(product.name);
     setImage(firstStyle.photos[0].thumbnail_url);
-
-    if (firstStyle.sale_price === null) {
-      setPrice({
-        default: firstStyle.original_price,
-        salePrice: false
+    setPrice({
+      default: firstStyle.original_price,
+      salePrice: firstStyle.sale_price
       });
-    } else {
-      setPrice({
-        default: firstStyle.original_price,
-        salePrice: firstStyle.sale_price
-      });
-    };
   };
 
   useEffect(() => {
