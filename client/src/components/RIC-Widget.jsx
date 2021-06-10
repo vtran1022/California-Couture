@@ -7,7 +7,8 @@ import ComparisonModal from './RIC-Widget/ComparisonModal.jsx';
 const RICWidget = ({ productId }) => {
   return (
     <div id='RICWid'>
-      <ComparisonModal />
+      <ComparisonModal
+        productId={productId}/>
       <RelatedList
         productId={productId}/>
       <OutfitList
