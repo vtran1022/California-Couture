@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { auth } from '../../../../config.js';
 import ProductCard from './ProductCard.jsx';
+import ComparisonModal from './ComparisonModal.jsx';
 
 const RelatedList = ({ productId }) => {
   const listState = 'related';
@@ -28,6 +29,8 @@ const RelatedList = ({ productId }) => {
             productId={id}
             listState={listState}/>))}
       </div>
+      <ComparisonModal
+        productId={productId}/>
     </div>
   );
 
