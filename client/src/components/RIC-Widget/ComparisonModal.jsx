@@ -9,8 +9,7 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
   const [relatedChars, setRelated] = useState([]);
   const [prodCheck, setPCheck] = useState([]);
   const [relatedCheck, setRCheck] = useState([]);
-  const [prodName, setPname] = useState('Product 1');
-  const [relatedName, setRname] = useState('Product 2');
+  const [itemName, setName] = useState({ product: 'Product 1', related: 'Product 2' });
 
   const fetchItems = async () => {
     let productData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${productId}`,
@@ -22,14 +21,14 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
     const pd = productData.data.features;
     const rd = relatedData.data.features;
     const all = pd.concat(rd);
-    const pname = productData.data.name;
-    const rname = relatedData.data.name;
 
     setProd(transformFeatures(pd));
     setRelated(transformFeatures(rd));
     setAllChars(transformFeatures(all));
-    setPname(pname);
-    setRname(rname);
+    setName({
+      product: productData.data.name,
+      related: relatedData.data.name
+    });
   };
 
   const transformFeatures = (array) => {
@@ -74,9 +73,9 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
     <div className='c-modal' onClick={trigger}>
       <p>Comparing</p>
       <table>
-        <th className="c-left">{prodName}</th>
+        <th className="c-left">{itemName.product}</th>
         <th className="c-mid"></th>
-        <th className="c-right">{relatedName}</th>
+        <th className="c-right">{itemName.related}</th>
         <tbody>
           {allChars.map((item, index) => (
             <tr key={index}>
