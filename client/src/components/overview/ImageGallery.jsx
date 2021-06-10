@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Thumbnails from './Thumbnails.jsx';
+import ViewModal from './ViewModal.jsx'
 
 
 function ImageGallery (props) {
-  // const [viewState, setView] = useState('default');
+  const [showView, setView] = useState(false);
   const [currentPhoto, setPhoto] = useState(props.photos[0]);
   const [photoList, setPhotoList] = useState(props.photos);
   const [photoIndex, setPhotoIndex] = useState(0);
@@ -13,6 +14,10 @@ function ImageGallery (props) {
     setPhotoList(props.photos);
     setPhotoIndex(0);
   }, [props.photos]);
+
+  function handleViewClick () {
+    setView(!showView);
+  }
 
   function handleThumbnailClick (url, thumbnail_url, index) {
     setPhoto({
@@ -41,11 +46,33 @@ function ImageGallery (props) {
   return (
     <div
     className='image-gallery'
-    // onClick={() => setView( 'expanded' )}
     >
-      <img className='preview' src={currentPhoto.url}></img>
+      {showView
+      ? <div className='modal-view'>
+        <ViewModal
+        picture={currentPhoto.url}
+        handleLeft={handleLeftClick}
+        handleRight={handleRightClick}
+        close={handleViewClick}/>
+        <div className='thumbnails-view'>
+        {photoList.map(photo => //clean up later. Not DRY
+          <Thumbnails
+          key={photoList.indexOf(photo)}
+          thumbnailUrl={photo.thumbnail_url}
+          photoUrl={photo.url}
+          photoList={photoList}
+          handleThumbnailClick={handleThumbnailClick}/>
+          )}
+        </div>
+          </div>
+      : null}
+      <img
+      className='preview'
+      src={currentPhoto.url}
+      onClick={() => handleViewClick()}
+      />
       <div className='thumbnails'>
-        {photoList.map(photo =>
+        {photoList.map(photo => //clean up later. Not DRY
           <Thumbnails
           key={photoList.indexOf(photo)}
           thumbnailUrl={photo.thumbnail_url}
@@ -56,6 +83,7 @@ function ImageGallery (props) {
         </div>
       <button onClick={() => handleLeftClick()}>Left Arrow</button>
       <button onClick={() => handleRightClick()}>Right Arrow</button>
+
     </div>
   )
 }

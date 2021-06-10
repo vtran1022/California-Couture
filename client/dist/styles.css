@@ -93,13 +93,14 @@ float: right;
 
 .styles {
   display: flex;
-  overflow: scroll;
+  overflow-wrap:normal;
   width: 500px;
   height: auto;
   float: right;
 }
 .styles-box {
   float: right;
+  flex-wrap: wrap;
   width: 500px;
   height: auto;
 }
@@ -119,4 +120,25 @@ float: right;
   float: right;
 }
 
+.modal-view {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: auto;
+  height: auto;
+}
 
+.close-view {
+  height: 25px;
+  width: 25px
+}
+
+.thumbnails-view {
+  position:sticky;
+  max-width: 1000px;
+  max-height: 1000px;
+  width: auto;
+  height: auto;
+}

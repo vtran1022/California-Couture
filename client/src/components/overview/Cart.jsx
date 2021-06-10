@@ -48,7 +48,6 @@ const Cart = ( props ) => {
       <div className='styles-box'>
         <h1>Style: {props.style.name}</h1>
         <div className='styles'>
-
         {props.stylesList.map(style => {
           return <div className='style' key={style.style_id}>
             <span id='style-name'>{style.name}</span>
@@ -76,7 +75,7 @@ const Cart = ( props ) => {
             )
           }
       </select>
-          </div>
+      </div>
 
       <div>
       <select name='size' id='size-select' onChange={(e) => setSize(e.target.value)}>
@@ -84,9 +83,11 @@ const Cart = ( props ) => {
         {skus.map(sku =>
         <option key={sku.quantity + 50}>{sku.size}</option>)}
       </select>
-        </div>
+      </div>
 
-
+      <div className="cart-submit">
+        <input type="submit" value="Add to Cart"></input>
+      </div>
     </form>
   )
 
@@ -101,7 +102,6 @@ const Cart = ( props ) => {
         }
       return arrayOfSizesAndQuantities;
   }
-
 
 }
 
