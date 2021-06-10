@@ -126,7 +126,7 @@
   display: inline-flex;
   border: 1px solid black;
   width: 1000px;
-  height: 320px;
+  height: 300px;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
@@ -137,7 +137,7 @@
   display: float;
   border: 1px solid red;
   width: 200px;
-  height: 300px;
+  height: 280px;
   margin-right: 20px;
 }
 
@@ -146,4 +146,21 @@
   height: 200px;
   object-fit: contain;
   background-color: rgb(112, 112, 112);
+}
+
+.ActionButton {
+  position: relative;
+}
+
+.ActionButton input{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  font-weight: bold;
 }
