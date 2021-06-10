@@ -3,11 +3,11 @@ import axios from 'axios';
 import { auth } from '../../../../config.js';
 import ProductCard from './ProductCard.jsx';
 
-function RelatedList({ productId }) {
+const RelatedList = ({ productId }) => {
   const listState = 'related';
   const [relatedItems, setRelated] = useState([]);
 
-  async function fetchRelated() {
+  const fetchRelated = async () => {
     let relatedData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${productId}/related`,
     { headers: { 'Authorization': auth.TOKEN } });
 

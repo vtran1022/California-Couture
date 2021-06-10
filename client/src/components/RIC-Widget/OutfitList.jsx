@@ -1,13 +1,13 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import ProductCard from './ProductCard.jsx';
 
-function OutfitList({ productId }) {
+const OutfitList = ({ productId }) => {
   const listState = 'outfit';
   const [ifOutfit, setExists] = useState(false);
   const [outfitItems, setOutfit] = useState([]);
   const [ifAdded, setAdded] = useState(true);
 
-  function addItem(id) {
+  const addItem = (id) => {
     if (outfitItems.indexOf(id) === -1) {
       setOutfit(prevArray => [...prevArray, id]);
       setExists(true);

@@ -1,10 +1,10 @@
 import React, { useState, useEffect }  from 'react';
 
-function ActionButton({ index, listState, triggerDelete }) {
+const ActionButton = ({ index, listState, triggerDelete }) => {
   const [isStar, setStar] = useState(true);
   const [button, setButton] = useState('☆');
 
-  function setAction() {
+  const setAction = () => {
     if (listState === 'related') {
       setStar(true);
     } else if (listState === 'outfit') {

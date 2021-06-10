@@ -4,7 +4,7 @@ import { auth } from '../../../../config.js';
 import AvgRating from '../AvgRating.jsx';
 import ActionButton from './ActionButton.jsx';
 
-function ProductCard({ productId, index, listState, triggerDelete }) {
+const ProductCard = ({ productId, index, listState, triggerDelete }) => {
   const [image, setImage] = useState('');
   const [category, setCategory] = useState('');
   const [name, setName] = useState('');
@@ -12,7 +12,7 @@ function ProductCard({ productId, index, listState, triggerDelete }) {
   const [salePrice, setSaleprice] = useState(0);
   const [isSale, setSale] = useState(false);
 
-  async function fetchProducts() {
+  const fetchProducts = async () => {
     let productData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${productId}`,
     { headers: { 'Authorization': auth.TOKEN } });
 
