@@ -48,7 +48,7 @@ describe('Add to Outfit card showing up', () => {
   test('check for outfit text', () => {
     render(<OutfitList />);
 
-    expect(screen.getByText('Add to Outfit')).toBeInTheDocument();
+    expect(screen.getByText(/Add to Outfit/)).toBeInTheDocument();
   });
 });
 
