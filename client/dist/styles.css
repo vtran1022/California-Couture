@@ -135,7 +135,7 @@
 .AddCard,
 .ProductCard {
   display: float;
-  border: 1px solid red;
+  border: 1px solid gray;
   width: 200px;
   height: 280px;
   margin-right: 20px;
@@ -145,7 +145,7 @@
   width: 200px;
   height: 200px;
   object-fit: contain;
-  background-color: rgb(112, 112, 112);
+  background-color: gray;
 }
 
 .ActionButton {
