@@ -18,12 +18,31 @@
   margin: 10px;
 }
 
+
+/*Relating Items & Comparisions ---------------*/
+
 .RICList {
-  /* display: grid; */
+  display: inline-flex;
   border: 1px solid black;
+  width: 1000px;
+  height: 320px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
 }
 
+.AddCard,
 .ProductCard {
-  display: inline-grid;
-  border: 1px solid black;
+  display: float;
+  border: 1px solid red;
+  width: 200px;
+  height: 300px;
+  margin-right: 20px;
+}
+
+.ProductImage {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  background-color: rgb(112, 112, 112);
 }

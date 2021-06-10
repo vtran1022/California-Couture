@@ -41,7 +41,7 @@ function ProductCard({ productId, index, listState, triggerDelete }) {
         index={index}
         listState={listState}
         triggerDelete={triggerDelete}/>
-      <img src={image} alt={name}></img>
+      <img src={image} alt={name} className='ProductImage'></img>
       <div>{category}</div>
       <div>{name}</div>
       <div>${price}</div>

@@ -29,12 +29,11 @@ function OutfitList({ productId }) {
       <h3>Your Outfit</h3>
       <div className='RICList'>
         <div className='AddCard' onClick={() => addItem(productId)}>
-          <div>+</div>
-          <div>Add to Outfit</div>
+          <div>+ Add to Outfit</div>
         </div>
-        <div>
           {ifOutfit
-            ? <div> {outfitItems.map((id, index) => (
+            ? <div className='RICList'>
+              {outfitItems.map((id, index) => (
               <ProductCard
                 key={id}
                 productId={id}
@@ -44,7 +43,6 @@ function OutfitList({ productId }) {
               </div>
             : null
           }
-        </div>
       </div>
     </div>
   );
