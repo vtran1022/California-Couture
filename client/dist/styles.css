@@ -66,20 +66,28 @@
   float:right
 }
 
+.price-sale {
+  float:right;
+  color:red
+}
+
 .styles {
-  display: inline;
-  overflow: hidden;
-  width: 440px;
+  display: flex;
+  overflow: scroll;
+  width: 500px;
   height: auto;
   float: right;
 }
+.styles-box {
+  float: right;
+  width: 500px;
+  height: auto;
+}
 
-.style {
-
+#style-pic {
   height:100px;
   width:100px;
   margin:5px;
-  display:inline;
   border-radius: 50%;
 }
 

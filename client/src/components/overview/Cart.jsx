@@ -19,7 +19,6 @@ const Cart = ( props ) => {
       default: props.defaultPrice,
       sale: props.style.sale_price
     });
-    console.log(props.style.sale_price)
   }, [props.style])
 
   useEffect( () => {
@@ -40,18 +39,24 @@ const Cart = ( props ) => {
 
       {!price.sale
         ?<span className='price'>Price: {price.default}</span>
-        :<span className='price'>Price: <strike>{price.default}</strike>{price.sale}</span>}
+        :<span className='price-sale'>Price: <strike>{price.default}</strike>{price.sale}</span>}
 
-      <div className='styles'>
+      <div className='styles-box'>
         <h1>Style Selector</h1>
-        {props.stylesList.map(style =>
-        <img
-        className='style'
-        key={style.style_id}
-        id={style.style_id}
-        src={style.photos[0].thumbnail_url}
-        onClick={(e) => props.handleStyleSelect(e.currentTarget.id)}>
-        </img>)}
+        <div className='styles'>
+
+        {props.stylesList.map(style => {
+          return <div className='style' key={style.style_id}>
+            <span id='style-name'>{style.name}</span>
+            <img
+            id='style-pic'
+            key={style.style_id}
+            pic-id={style.style_id}
+            src={style.photos[0].thumbnail_url}
+            onClick={(e) => props.handleStyleSelect(e.currentTarget.getAttribute('pic-id'))}/>
+          </div>
+        })}
+        </div>
       </div>
 
     <select name='size' id='size-select' onChange={(e) => setSize(e.target.value)}>
