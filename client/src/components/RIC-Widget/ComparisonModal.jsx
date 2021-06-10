@@ -7,8 +7,7 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
   const [allChars, setAllChars] = useState([]);
   const [prodChars, setProd] = useState([]);
   const [relatedChars, setRelated] = useState([]);
-  const [prodCheck, setPCheck] = useState([]);
-  const [relatedCheck, setRCheck] = useState([]);
+  const [itemCheck, setCheck] = useState({ product: [], related: [] });
   const [itemName, setName] = useState({ product: 'Product 1', related: 'Product 2' });
 
   const fetchItems = async () => {
@@ -65,8 +64,10 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
   }, [relatedId]);
 
   useEffect(() => {
-    setPCheck(checkFeatures(allChars, prodChars));
-    setRCheck(checkFeatures(allChars, relatedChars));
+    setCheck({
+      product: checkFeatures(allChars, prodChars),
+      related: checkFeatures(allChars, relatedChars)
+    });
   }, [allChars]);
 
   return (
@@ -79,9 +80,9 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
         <tbody>
           {allChars.map((item, index) => (
             <tr key={index}>
-              <td className="c-left">{prodCheck[index]}</td>
+              <td className="c-left">{itemCheck.product[index]}</td>
               <td className="c-mid">{item}</td>
-              <td className="c-right">{relatedCheck[index]}</td>
+              <td className="c-right">{itemCheck.related[index]}</td>
             </tr>
           ))}
         </tbody>
