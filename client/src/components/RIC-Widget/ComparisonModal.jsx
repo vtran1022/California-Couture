@@ -1,11 +1,66 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { auth } from '../../../../config.js';
 
+//should receive productId from overview and productId from relatedList
 const ComparisonModal = ({}) => {
+  let productId = 13023;
+  let relatedId = 13024;
+
+  const [allFeatures, setAllfeatures] = useState([]);
+  const [prodFeatures, setPfeatures] = useState([]);
+  const [relatedFeatures, setRfeatures] = useState([]);
+
+  const fetchItems = async () => {
+    let productData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${productId}`,
+    { headers: { 'Authorization': auth.TOKEN } });
+
+    let relatedData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${relatedId}`,
+    { headers: { 'Authorization': auth.TOKEN } });
+
+    const pd = productData.data.features;
+    const rd = relatedData.data.features;
+    const all = pd.concat(rd);
+
+    setPfeatures(transformFeatures(pd));
+    setRfeatures(transformFeatures(rd));
+    setAllfeatures(transformFeatures(all));
+  };
+
+  const transformFeatures = (array) => {
+    let transformed = [];
+
+    array.forEach((item) => {
+      if (item.value === null) {
+        var itemStr = `${item.feature}`;
+      } else {
+        var itemStr = `${item.feature}: ${item.value}`;
+      }
+      transformed.push(itemStr);
+    });
+
+    return transformed;
+  }
+
+  useEffect(() => {
+    fetchItems().catch((err) => console.log(`Error fetching product info: ${err}`))
+  }, [relatedId]);
 
   return (
     <div className='CompModal'>
+      <p>Comparing</p>
       <table>
-        <thead>Comparing Items</thead>
+        <th>Product 1</th>
+        <th> </th>
+        <th>Product 2</th>
+        <tbody>
+          <tr>
+            <td>☑</td>
+            <td>chars</td>
+            <td>☑</td>
+          </tr>
+          <tr></tr>
+        </tbody>
       </table>
     </div>
   )
