@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { auth } from '../../../../config.js';
 import ProductCard from './ProductCard.jsx';
@@ -7,6 +7,8 @@ import ComparisonModal from './ComparisonModal.jsx';
 const RelatedList = ({ productId }) => {
   const listState = 'related';
   const [relatedItems, setRelated] = useState([]);
+  const [isModal, setModal] = useState(false);
+  const [relatedId, setId] = useState(0);
 
   const fetchRelated = async () => {
     let relatedData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${productId}/related`,
@@ -19,6 +21,15 @@ const RelatedList = ({ productId }) => {
     fetchRelated().catch((err) => console.log(`Error fetching product info: ${err}`))
   }, [productId]);
 
+  const triggerModal = useCallback((id) => {
+    if (!isModal) {
+      setId(id);
+      setModal(true);
+    } else if (isModal) {
+      setModal(false);
+    }
+  });
+
   return (
     <div>
       <h3>Related Products</h3>
@@ -27,10 +38,14 @@ const RelatedList = ({ productId }) => {
           <ProductCard
             key={id}
             productId={id}
-            listState={listState}/>))}
+            listState={listState}
+            triggerModal={triggerModal}/>))}
       </div>
-      <ComparisonModal
-        productId={productId}/>
+      {isModal
+        ? <ComparisonModal
+            productId={productId}
+            relatedId={relatedId}/>
+        : null}
     </div>
   );
 
