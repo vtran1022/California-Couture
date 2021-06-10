@@ -20,7 +20,8 @@ function RelatedList({ productId }) {
 
   return (
     <div>
-      <div>
+      <h3>Related Products</h3>
+      <div className='RICList'>
         {relatedItems.map((id) => (
           <ProductCard
             key={id}

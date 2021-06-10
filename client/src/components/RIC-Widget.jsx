@@ -5,7 +5,7 @@ import OutfitList from './RIC-Widget/OutfitList.jsx';
 // expecting this productId to be linked to current Overview Product
 function RICWidget({ productId }) {
   return (
-    <div>
+    <div id='RICWid'>
       <RelatedList
         productId={productId}/>
       <OutfitList

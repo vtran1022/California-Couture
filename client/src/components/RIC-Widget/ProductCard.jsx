@@ -36,19 +36,17 @@ function ProductCard({ productId, index, listState, triggerDelete }) {
   }, [productId]);
 
   return (
-    <div>
-      <div className='ProductCard'>
-        <ActionButton
-          index={index}
-          listState={listState}
-          triggerDelete={triggerDelete}/>
-        <img src={image} alt={name}></img>
-        <div>{category}</div>
-        <div>{name}</div>
-        <div>${price}</div>
-        <AvgRating
-          productId={productId}/>
-      </div>
+    <div className='ProductCard'>
+      <ActionButton
+        index={index}
+        listState={listState}
+        triggerDelete={triggerDelete}/>
+      <img src={image} alt={name}></img>
+      <div>{category}</div>
+      <div>{name}</div>
+      <div>${price}</div>
+      <AvgRating
+        productId={productId}/>
     </div>
   );
 };

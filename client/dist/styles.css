@@ -17,3 +17,13 @@
   border: 1px solid black;
   margin: 10px;
 }
+
+.RICList {
+  /* display: grid; */
+  border: 1px solid black;
+}
+
+.ProductCard {
+  display: inline-grid;
+  border: 1px solid black;
+}
