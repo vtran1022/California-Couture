@@ -24,6 +24,7 @@ function OutfitList({ productId }) {
     currentOutfits.splice(index, 1);
 
     setOutfit(currentOutfits);
+    setAdded(true);
 
     if (currentOutfits.length === 0) {
       setExists(false);
