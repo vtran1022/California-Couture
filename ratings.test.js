@@ -8,7 +8,6 @@ import Breakdown from './client/src/components/ratings/Breakdown.jsx';
 import FormModal from './client/src/components/ratings/FormModal.jsx';
 import ReviewTile from './client/src/components/ratings/ReviewTile.jsx';
 
-console.log('in test')
 
 describe('Ratings & Reviews', () => {
   test('render the Ratings and Reviews component', () => {
