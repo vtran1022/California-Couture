@@ -1,9 +1,8 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
-import App from './client/src/components/App.jsx';
 import RICWidget from './client/src/components/RIC-Widget.jsx';
 import ActionButton from './client/src/components/RIC-Widget/ActionButton.jsx';
 import OutfitList from './client/src/components/RIC-Widget/OutfitList.jsx';
@@ -11,16 +10,25 @@ import ProductCard from './client/src/components/RIC-Widget/ProductCard.jsx';
 import RelatedList from './client/src/components/RIC-Widget/RelatedList.jsx';
 import ComparisonModal from './client/src/components/RIC-Widget/ComparisonModal.jsx';
 
+// this cleans up everything after each test to avoid memory leaks
+afterEach(cleanup);
+
 // basic render testing, screen.debug() will log the HTML output in test terminal
-describe('App', () => {
-  test('renders App component', () => {
-    render(<App />);
+describe('RICWidget', () => {
+  test('renders RIC-Widget component', () => {
+    const { asFragment } = render(<RICWidget />);
+
+    expect(asFragment(<RICWidget />)).toMatchSnapshot();
   });
 });
 
+
 describe('RICWidget', () => {
-  test('renders RIC-Widget component - holds both lists', () => {
+  test('checking both lists render', () => {
     render(<RICWidget />);
+
+    expect(screen.getByText(/Your Outfit/)).toBeInTheDocument();
+    expect(screen.getByText(/Related Products/)).toBeInTheDocument();
   });
 });
 
@@ -41,7 +49,19 @@ describe('Action Button', () => {
 });
 
 describe('Action Button', () => {
-  test('calls the onClick callback handler', async () => {
+  test('calls the onClick callback handler for star button', async () => {
+    const onClick = jest.fn();
+
+    render( <input type="button" value='☆' onClick={onClick} /> );
+
+    await userEvent.click(screen.getByDisplayValue('☆'));
+
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('Action Button', () => {
+  test('calls the onClick callback handler for delete button', async () => {
     const onClick = jest.fn();
 
     render( <input type="button" value='x' onClick={onClick} /> );
@@ -85,5 +105,13 @@ describe('Product Card', () => {
 describe('Related List', () => {
   test('check existance', () => {
     render(<RelatedList />);
+  });
+});
+
+describe('Comparison Modal', () => {
+  test('comparison modal to not exist on initial render', () => {
+    render(<RelatedList />);
+
+    expect(screen.queryByText('Comparing')).toBeNull();
   });
 });
