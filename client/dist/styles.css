@@ -1,3 +1,4 @@
+/* Ratings & Reviews ----------------------------*/
 .review-table {
   border: 1px solid black;
   border-collapse: collapse;
@@ -13,9 +14,109 @@
   margin-right: 0px;
   margin-bottom: 5px;
 }
+
 .breakdown {
   border: 1px solid black;
   margin: 10px;
+  height: 500px;
+}
+
+.modal {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  top: 25%;
+  left: 25%;
+  border: 1px solid black;
+  text-align: center;
+  background-color: darkcyan;
+
+}
+
+.modal-form {
+  width: 400px;
+}
+
+/* Overview --------------------- */
+.overview {
+  display: grid;
+  position: relative
+}
+
+.image-gallery {
+  width: 500px;
+  height: 300px;
+  border: 1px solid black;
+
+}
+
+.preview {
+  display: block;
+  max-width:500px;
+  max-height:300px;
+  width: auto;
+  height: auto;
+}
+
+.thumbnails {
+  float: left;
+  display: flex;
+  justify-content: center;
+}
+
+.thumbnail {
+  max-width:100px;
+  max-height:100px;
+  margin:5px;
+}
+
+/* .category {
+
+}
+
+.name {
+
+} */
+
+.cart {
+  float: right
+}
+
+.price {
+  float:right
+}
+
+.price-sale {
+  float:right;
+  color:red
+}
+
+.styles {
+  display: flex;
+  overflow: scroll;
+  width: 500px;
+  height: auto;
+  float: right;
+}
+.styles-box {
+  float: right;
+  width: 500px;
+  height: auto;
+}
+
+#style-pic {
+  height:100px;
+  width:100px;
+  margin:5px;
+  border-radius: 50%;
+}
+
+#size-select {
+  float: right;
+}
+
+#quantity-select {
+  float: right;
 }
 
 
