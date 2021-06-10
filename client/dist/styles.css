@@ -164,3 +164,14 @@
   outline:none;
   font-weight: bold;
 }
+
+.c-modal {
+  position: fixed;
+  width: 500px;
+  height: 400px;
+  top: 25%;
+  left: 25%;
+  border: 1px solid black;
+  background-color: darkcyan;
+  overflow-y: scroll;
+}

@@ -7,9 +7,13 @@ const ComparisonModal = ({}) => {
   let productId = 13023;
   let relatedId = 13024;
 
-  const [allFeatures, setAllfeatures] = useState([]);
-  const [prodFeatures, setPfeatures] = useState([]);
-  const [relatedFeatures, setRfeatures] = useState([]);
+  const [allChars, setAllChars] = useState([]);
+  const [prodChars, setProd] = useState([]);
+  const [relatedChars, setRelated] = useState([]);
+  const [prodCheck, setPCheck] = useState([]);
+  const [relatedCheck, setRCheck] = useState([]);
+  const [prodName, setPname] = useState('Product 1');
+  const [relatedName, setRname] = useState('Product 2');
 
   const fetchItems = async () => {
     let productData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${productId}`,
@@ -21,10 +25,14 @@ const ComparisonModal = ({}) => {
     const pd = productData.data.features;
     const rd = relatedData.data.features;
     const all = pd.concat(rd);
+    const pname = productData.data.name;
+    const rname = relatedData.data.name;
 
-    setPfeatures(transformFeatures(pd));
-    setRfeatures(transformFeatures(rd));
-    setAllfeatures(transformFeatures(all));
+    setProd(transformFeatures(pd));
+    setRelated(transformFeatures(rd));
+    setAllChars(transformFeatures(all));
+    setPname(pname);
+    setRname(rname);
   };
 
   const transformFeatures = (array) => {
@@ -42,24 +50,44 @@ const ComparisonModal = ({}) => {
     return transformed;
   }
 
+  const checkFeatures = (array1, array2) => {
+    let result = [];
+
+    array1.forEach((item) => {
+      if (array2.includes(item)) {
+        result.push('✓');
+      } else {
+        result.push(' ');
+      }
+    });
+
+    return result;
+  }
+
   useEffect(() => {
     fetchItems().catch((err) => console.log(`Error fetching product info: ${err}`))
   }, [relatedId]);
 
+  useEffect(() => {
+    setPCheck(checkFeatures(allChars, prodChars));
+    setRCheck(checkFeatures(allChars, relatedChars));
+  }, [allChars]);
+
   return (
-    <div className='CompModal'>
+    <div className='c-modal'>
       <p>Comparing</p>
       <table>
-        <th>Product 1</th>
-        <th> </th>
-        <th>Product 2</th>
+        <th>{prodName}</th>
+        <th></th>
+        <th>{relatedName}</th>
         <tbody>
-          <tr>
-            <td>☑</td>
-            <td>chars</td>
-            <td>☑</td>
-          </tr>
-          <tr></tr>
+          {allChars.map((item, index) => (
+            <tr key={index}>
+              <td>{prodCheck[index]}</td>
+              <td>{item}</td>
+              <td>{relatedCheck[index]}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
@@ -69,6 +97,7 @@ const ComparisonModal = ({}) => {
 export default ComparisonModal;
 
 /*
+☑
 - popUp on the page
 - title: "Comparing"
 - comparing the current selected related product to the overview product
