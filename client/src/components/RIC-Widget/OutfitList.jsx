@@ -37,7 +37,9 @@ const OutfitList = ({ productId }) => {
       <div className='RICList'>
         <div className='AddCard' onClick={() => addItem(productId)}>
           {ifAdded
-            ? <div>⊕ Add to Outfit</div>
+            ? <div>
+                <div>⊕</div>
+                <div>Add to Outfit</div></div>
             : <div>Item Already Added</div>
           }
         </div>
