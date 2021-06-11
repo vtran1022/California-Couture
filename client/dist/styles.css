@@ -263,8 +263,6 @@ float: right;
   height: 280px;
   float: left;
 
-  /* grid-area: 1 / -1; */
-
   transform: translateX(calc(100% * var(--offset)));
   transition: transform 0.5s ease-in-out;
 }
