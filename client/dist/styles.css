@@ -8,13 +8,6 @@
   overflow-y: scroll;
 }
 
-.review-elem {
-  border-bottom: 1px solid black;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-bottom: 5px;
-}
-
 .breakdown {
   border: 1px solid black;
   margin: 10px;
@@ -30,11 +23,32 @@
   border: 1px solid black;
   text-align: center;
   background-color: darkcyan;
+  display: block;
 
 }
 
 .modal-form {
   width: 400px;
+}
+
+.review-elem {
+  border-bottom: 1px solid black;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 5px;
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  grid-template-rows: 40px 200px 40px;
+}
+
+.tile-reviewer .tile-date {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.tile-body {
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 
 /* ---------------------------- Overview ---------------------------- */
@@ -188,7 +202,7 @@ float: right;
   max-width: 90vw;
   object-fit: cover;
 }
-=======
+
 /*Relating Items & Comparisions ---------------*/
 
 .RICList {
