@@ -7,7 +7,7 @@ import { initialState, reducer } from './Reducer.jsx';
 
 const RelatedList = ({ productId }) => {
   const listState = 'related';
-  const initialState = { slideIndex: 0 };
+  const initialState = { slideIndex: -1 };
   const [relatedItems, setRelated] = useState([]);
   const [isModal, setModal] = useState(false);
   const [relatedId, setId] = useState(0);
@@ -39,7 +39,7 @@ const RelatedList = ({ productId }) => {
       case 'next':
         return { slideIndex: state.slideIndex === len ? len : state.slideIndex + 1 };
       case 'previous':
-        return { slideIndex: state.slideIndex === 0 ? 0 : state.slideIndex - 1 };
+        return { slideIndex: state.slideIndex === -1 ? -1 : state.slideIndex - 1 };
       default:
         throw new Error();
     }
@@ -62,7 +62,7 @@ const RelatedList = ({ productId }) => {
             productId={id}
             listState={listState}
             triggerModal={triggerModal}
-            offset={state.slideIndex + i}/>
+            offset={relatedItems.length + (state.slideIndex - i)}/>
         ))}
 
         <button onClick={() => dispatch({ type: 'next' })}>›</button>
