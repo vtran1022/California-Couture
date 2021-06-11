@@ -105,7 +105,7 @@ const Ratings = (props) => {
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
-  }
+  };
 
   if (Object.keys(reviews).length > 0) {
     return (<div className='review-container'>
