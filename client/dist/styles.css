@@ -124,20 +124,51 @@
 
 .RICList {
   display: grid;
-  border: 1px solid black;
   width: 1010px;
-  height: 320px;
+  height: 285px;
   overflow: hidden;
   /* white-space: nowrap; */
 }
 
+.buttonL {
+  appearance: none;
+  background: transparent;
+  border: none;
+  color: black;
+  position: absolute;
+  font-size: 70px;
+  width: 70px;
+  height: 70px;
+  top: 30%;
+  transition: opacity 0.3s;
+  opacity: 0.7;
+  z-index: 5;
+}
+
+.buttonR {
+  appearance: none;
+  background: transparent;
+  border: none;
+  color: black;
+  position: absolute;
+  font-size: 70px;
+  width: 70px;
+  height: 70px;
+  top: 30%;
+  right: 7%;
+  transition: opacity 0.3s;
+  opacity: 0.7;
+  z-index: 5;
+}
+
 .AddCard,
 .ProductCard {
-  border: 1px solid gray;
+  border: 1px solid red;
   width: 200px;
   height: 280px;
 
   grid-area: 1 / -1;
+  column-gap: 10px;
 
   transform: translateX(calc(100% * var(--offset)));
   transition: transform 0.5s ease-in-out;
@@ -149,6 +180,8 @@
   object-fit: contain;
   background-color: gray;
 }
+
+
 
 .ActionButton {
   position: relative;
