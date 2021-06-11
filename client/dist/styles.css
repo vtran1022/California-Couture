@@ -216,7 +216,6 @@ float: right;
   width: 1010px;
   height: 285px;
   overflow: hidden;
-
 }
 
 .buttonL {
@@ -225,8 +224,8 @@ float: right;
   border: none;
   color: black;
   position: absolute;
-  font-size: 70px;
-  width: 70px;
+  font-size: 50px;
+  width: 50px;
   height: 250px;
   transition: opacity 0.3s;
   opacity: 0.7;
@@ -239,8 +238,8 @@ float: right;
   border: none;
   color: black;
   position: absolute;
-  font-size: 70px;
-  width: 70px;
+  font-size: 50px;
+  width: 50px;
   height: 250px;
   right: 7%;
   transition: opacity 0.3s;
@@ -253,6 +252,7 @@ float: right;
   border: 1px solid teal;
   width: 200px;
   height: 280px;
+  display: block;
   float: left;
 
   transform: translateX(calc(100% * var(--offset)));
@@ -264,7 +264,7 @@ float: right;
   height: 200px;
   object-fit: contain;
   position: center;
-  background-color: rgba(109, 139, 190, 0.6);
+  background-color: rgba(109, 139, 190);
 }
 
 .ProductInfo {

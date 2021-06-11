@@ -16,7 +16,6 @@ const RelatedList = ({ productId }) => {
     { headers: { 'Authorization': auth.TOKEN } });
 
     setRelated(relatedData.data);
-    // setIndex(relatedData.data.length);
   };
 
   useEffect(() => {

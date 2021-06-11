@@ -37,7 +37,7 @@ const OutfitList = ({ productId }) => {
 
     switch (action.type) {
       case 'next':
-        return setIndex(prevState => prevState === len ? len : prevState - 1);
+        return setIndex(prevState => len < 4 ? 0 : prevState - 1);
       case 'previous':
         return setIndex(prevState => prevState === 0 ? 0 : prevState + 1);
     }
