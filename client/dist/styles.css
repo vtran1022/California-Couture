@@ -1,4 +1,4 @@
-/* Ratings & Reviews ----------------------------*/
+/* ---------------------------- Ratings & Reviews ---------------------------- */
 .review-table {
   border: 1px solid black;
   border-collapse: collapse;
@@ -37,16 +37,32 @@
   width: 400px;
 }
 
-/* Overview --------------------- */
+/* ---------------------------- Overview ---------------------------- */
 .overview {
+  width: 90vw;
+  height: 100vh;
   display: grid;
-  position: relative
+  grid-template-columns: 1fr, 1fr, 1fr, 1fr, 1fr;
+  grid-template-rows: 1fr, 1fr, 1fr, 1fr, 1fr;
+  position: relative;
 }
 
 .image-gallery {
+  grid-column-start: 1;
+  grid-row-start: 1;
   width: 500px;
   height: 300px;
   border: 1px solid black;
+}
+
+.cart {
+  grid-column-start: 5
+
+}
+
+.description {
+  grid-column-start: 1;
+  grid-row-start: 2;
 
 }
 
@@ -64,23 +80,20 @@
   justify-content: center;
 }
 
-.thumbnail {
+.default {
   max-width:100px;
   max-height:100px;
   margin:5px;
 }
 
-/* .category {
-
+#category {
+float: right;
 }
 
-.name {
-
-} */
-
-.cart {
-  float: right
+#name {
+float: right;
 }
+
 
 .price {
   float:right
@@ -91,17 +104,32 @@
   color:red
 }
 
-.styles {
-  display: flex;
-  overflow: scroll;
-  width: 500px;
-  height: auto;
-  float: right;
-}
+/* Entire Container for Styles */
 .styles-box {
   float: right;
+  flex-wrap: wrap;
   width: 500px;
   height: auto;
+}
+/* Container for Styles Listing */
+.styles {
+  display: flex;
+  flex-wrap: wrap;
+  width: 400px;
+  height: auto;
+}
+
+/* Each style Div - contains Picture and Name */
+.style {
+  height: 130px;
+  width: 100px
+}
+
+/* Needs to be right on top of style-pic */
+#style-name {
+  text-align:center;
+  height: 25px;
+  width:100px
 }
 
 #style-pic {
@@ -112,14 +140,55 @@
 }
 
 #size-select {
-  float: right;
+
 }
 
 #quantity-select {
-  float: right;
+
 }
 
+.thumbnails-view {
+  max-width: 100%;
+  max-height: 25%;
+  width: auto;
+  height: auto;
+}
 
+#lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: grey;
+  z-index: 1002;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.close-cursor {
+  position:absolute;
+}
+
+.modal-thumbnails {
+  width: 144px;
+  float: left;
+  box-sizing: border-box;
+  display: block;
+}
+
+.modal-thumbnail {
+  width: 10vw;
+  height: 10vw;
+  object-fit: cover;
+}
+
+#lightbox-pic {
+  height: 80vh;
+  max-width: 90vw;
+  object-fit: cover;
+}
+=======
 /*Relating Items & Comparisions ---------------*/
 
 .RICList {

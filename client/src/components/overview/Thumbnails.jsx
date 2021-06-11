@@ -17,7 +17,7 @@ function Thumbnail (props) {
 
   return (
     <img
-    className='thumbnail'
+    className={props.cname}
     src={props.thumbnailUrl}
     photo-url={props.photoUrl}
     onClick={(e) => getPhotoInfo(e)}></img>

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Thumbnails from './Thumbnails.jsx';
-
+import ViewModal from './ViewModal.jsx'
+import Left from '../../imgs/Navigate-left_36746.png';
+import Right from '../../imgs/Navigate-right_36745.png';
 
 function ImageGallery (props) {
-  // const [viewState, setView] = useState('default');
+  const [showView, setView] = useState(false);
   const [currentPhoto, setPhoto] = useState(props.photos[0]);
   const [photoList, setPhotoList] = useState(props.photos);
   const [photoIndex, setPhotoIndex] = useState(0);
@@ -13,6 +15,10 @@ function ImageGallery (props) {
     setPhotoList(props.photos);
     setPhotoIndex(0);
   }, [props.photos]);
+
+  function handleViewClick () {
+    setView(!showView);
+  }
 
   function handleThumbnailClick (url, thumbnail_url, index) {
     setPhoto({
@@ -41,21 +47,38 @@ function ImageGallery (props) {
   return (
     <div
     className='image-gallery'
-    // onClick={() => setView( 'expanded' )}
     >
-      <img className='preview' src={currentPhoto.url}></img>
+      {showView
+      ? <div id='lightbox' className='modal'>
+          <ViewModal
+          photos={photoList}
+          photo={currentPhoto}
+          handleLeft={handleLeftClick}
+          handleRight={handleRightClick}
+          close={handleViewClick}
+          handleThumbnailClick={handleThumbnailClick}/>
+        </div>
+      : null}
+
+      <img
+      className='preview'
+      src={currentPhoto.url}
+      onClick={() => handleViewClick()}
+      />
       <div className='thumbnails'>
-        {photoList.map(photo =>
+        {photoList.map(photo => //clean up later. Not DRY
           <Thumbnails
           key={photoList.indexOf(photo)}
+          cname='default'
           thumbnailUrl={photo.thumbnail_url}
           photoUrl={photo.url}
           photoList={photoList}
           handleThumbnailClick={handleThumbnailClick}/>
           )}
         </div>
-      <button onClick={() => handleLeftClick()}>Left Arrow</button>
-      <button onClick={() => handleRightClick()}>Right Arrow</button>
+      <img src={Left} onClick={() => handleLeftClick()}></img>
+      <img src={Right} onClick={() => handleRightClick()}></img>
+
     </div>
   )
 }

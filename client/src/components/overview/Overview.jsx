@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import ImageGallery from './ImageGallery.jsx';
 import Cart from './Cart.jsx';
+import Description from './Description.jsx';
 import Atelier from '../../Atelier.js';
 import { auth } from '../../../../config.js';
 
@@ -24,9 +25,8 @@ function Overview (props) {
   useEffect(() => {
     async function fetchData () {
       try {
-        setLoading(true);
-        var product = await Atelier.getInfo(13023).catch((err) => console.log(err));
-        var styleList = await Atelier.getStyles(13023).catch((err) => console.log(err));
+        var product = await Atelier.getInfo(13025).catch((err) => console.log(err));
+        var styleList = await Atelier.getStyles(13025).catch((err) => console.log(err));
         setStyleList(styleList.results);
         setStyle(styleList.results[0]);
         setCurrentProduct(product);
@@ -37,9 +37,6 @@ function Overview (props) {
       }}
     fetchData();
     }, []);
-
-    // useEffect(() => {
-    // }, [style])
 
   function handleStyleSelect (value) {
     let list = styles;
@@ -53,8 +50,6 @@ function Overview (props) {
 
   return (
     <div data-testid="overview-1" className='overview'>
-      Overview
-
       {isLoading
         ? null
         : <ImageGallery
@@ -72,12 +67,19 @@ function Overview (props) {
         stylesList={ styles }
         style={ style }
         handleStyleSelect={ handleStyleSelect }
-        defaultPrice={ currentProduct.default_price }
+        currentProduct={ currentProduct }
         />
       }
 
+      {isLoading
+        ? null
+        : <Description
+        key='799999'
+        currentProduct={ currentProduct }
+        />
+      }
 
-      <button>
+      {/* <button>
         Facebook
       </button>
       <button>
@@ -85,7 +87,9 @@ function Overview (props) {
       </button>
       <button>
         Pinterest
-      </button>
+      </button> */}
+
+
     </div>)
 
 }
