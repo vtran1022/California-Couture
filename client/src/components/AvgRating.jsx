@@ -3,16 +3,16 @@ import axios from 'axios';
 import { auth } from '../../../config.js';
 import StarRating from './StarRating.jsx';
 
-function AvgRating({ productId }) {
+const AvgRating = ({ productId }) => {
   const [ratings, setRatings] = useState([]);
   const [avgScore, setAverage] = useState(0);
 
-  function averageScore(array) {
+  const averageScore = (array) => {
     const average = Math.round(array.reduce((a, b) => Number(a) + Number(b) / array.length)).toFixed(2);
     return average;
   };
 
-  async function fetchRatings() {
+  const fetchRatings = async () => {
     let reviewData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/reviews/meta/?product_id=${productId}`,
     { headers: { 'Authorization': auth.TOKEN } });
 

@@ -30,13 +30,6 @@ class App extends React.Component {
   render() {
     return (
       <div>
-
-        {/* <RatingsReview /> */}
-        <Overview />
-        {/* <Ratings id={13023} /> */}
-
-        <Ratings id={this.state.product} />
-
         {this.state.idArr.map((item) => (
           <div key={item} onClick={this.handleItem}>{item}</div>
         ))}

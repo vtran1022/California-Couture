@@ -120,3 +120,62 @@
 }
 
 
+/*Relating Items & Comparisions ---------------*/
+
+.RICList {
+  display: inline-flex;
+  border: 1px solid black;
+  width: 1000px;
+  height: 300px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.AddCard,
+.ProductCard {
+  display: float;
+  border: 1px solid gray;
+  width: 200px;
+  height: 280px;
+  margin-right: 20px;
+}
+
+.ProductImage {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  background-color: gray;
+}
+
+.ActionButton {
+  position: relative;
+}
+
+.ActionButton input{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  font-weight: bold;
+}
+
+.c-modal {
+  position: fixed;
+  width: 500px;
+  height: 400px;
+  top: 25%;
+  left: 25%;
+  border: 1px solid black;
+  background-color: darkcyan;
+  overflow-y: scroll;
+}
+
+#salePrice {
+  color: red
+}
