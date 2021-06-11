@@ -1,13 +1,16 @@
 import React from 'react';
+import RelatedList from './RelatedList.jsx';
 
-export const initialState = {count: 0};
+export const initialState = { slideIndex: 0 };
 
 export const reducer = (state, action) => {
   switch (action.type) {
     case 'next':
-      return {count: state.count + 1};
+      return { slideIndex: state.slideIndex + 1 };
     case 'previous':
-      return {count: state.count - 1};
+      return {
+        slideIndex: state.slideIndex === 0 ? 0 : state.slideIndex - 1
+      };
     default:
       throw new Error();
   }

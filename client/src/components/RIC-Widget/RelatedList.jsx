@@ -7,11 +7,10 @@ import { initialState, reducer } from './Reducer.jsx';
 
 const RelatedList = ({ productId }) => {
   const listState = 'related';
+  const initialState = { slideIndex: 0 };
   const [relatedItems, setRelated] = useState([]);
   const [isModal, setModal] = useState(false);
   const [relatedId, setId] = useState(0);
-
-  const [state, dispatch] = useReducer(reducer, initialState)
 
   const fetchRelated = async () => {
     let relatedData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${productId}/related`,
@@ -33,19 +32,38 @@ const RelatedList = ({ productId }) => {
     }
   });
 
+  const reducer = (state, action) => {
+    let len = relatedItems.length - 1;
+
+    switch (action.type) {
+      case 'next':
+        return { slideIndex: state.slideIndex === len ? len : state.slideIndex + 1 };
+      case 'previous':
+        return { slideIndex: state.slideIndex === 0 ? 0 : state.slideIndex - 1 };
+      default:
+        throw new Error();
+    }
+  };
+
+  //state needs to go here b/c reducer has to initialize first
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+
   return (
     <div>
       <h3>Related Products</h3>
-      <div>Count: {state.count}</div>
+      <div>Index: {state.slideIndex}</div>
       <div className='RICList'>
         <button onClick={() => dispatch({ type: 'previous' })}>‹</button>
 
-        {relatedItems.map((id) => (
+        {relatedItems.map((id, i) => (
           <ProductCard
             key={id}
             productId={id}
             listState={listState}
-            triggerModal={triggerModal}/>))}
+            triggerModal={triggerModal}
+            offset={state.slideIndex + i}/>
+        ))}
 
         <button onClick={() => dispatch({ type: 'next' })}>›</button>
       </div>
@@ -58,7 +76,6 @@ const RelatedList = ({ productId }) => {
         : null}
     </div>
   );
-
 };
 
 export default RelatedList;
