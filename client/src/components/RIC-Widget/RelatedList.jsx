@@ -63,7 +63,7 @@ const RelatedList = ({ productId }) => {
     <div>
       <h3>Related Products</h3>
       <div className='RICList'>
-        <button className='buttonL' onClick={() => dispatch({ type: 'previous' })}>‹</button>
+        <button className='buttonL brl' onClick={() => dispatch({ type: 'previous' })}>‹</button>
 
         {relatedItems.map((id, i) => (
           <ProductCard
@@ -74,7 +74,7 @@ const RelatedList = ({ productId }) => {
             offset={(state.slideIndex - i)}/>
         ))}
 
-        <button className='buttonR' onClick={() => dispatch({ type: 'next' })}>›</button>
+        <button className='buttonR brl' onClick={() => dispatch({ type: 'next' })}>›</button>
       </div>
 
       {isModal

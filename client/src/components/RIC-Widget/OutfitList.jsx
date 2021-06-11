@@ -1,9 +1,8 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useReducer } from 'react';
 import ProductCard from './ProductCard.jsx';
 
 const OutfitList = ({ productId }) => {
   const listState = 'outfit';
-  const [initialIndex, setIndex] = useState([0]);
   const [ifOutfit, setExists] = useState(false);
   const [outfitItems, setOutfit] = useState([]);
   const [ifAdded, setAdded] = useState(true);
@@ -36,27 +35,39 @@ const OutfitList = ({ productId }) => {
     <div>
       <h3>Your Outfit</h3>
       <div className='RICList'>
-        <div className='AddCard' onClick={() => addItem(productId)}>
-          {ifAdded
-            ? <div>
-                <div>⊕</div>
-                <div>Add to Outfit</div>
-              </div>
-            : <div>Item Already Added</div>
-          }
-        </div>
+
           {ifOutfit
             ? <div>
-              {outfitItems.map((id, index) => (
+                <div className='AddCard' onClick={() => addItem(productId)}>
+                  {ifAdded
+                    ? <div>
+                        <div>⊕</div>
+                        <div>Add to Outfit</div>
+                      </div>
+                    : <div>Item Already Added</div>
+                  }
+                </div>
+              {outfitItems.map((id, i) => (
               <ProductCard
                 key={id}
                 productId={id}
-                index={index}
+                index={i}
                 listState={listState}
                 triggerDelete={triggerDelete}/>))}
               </div>
-            : null
+
+            : <div className='AddCard' onClick={() => addItem(productId)}>
+                {ifAdded
+                  ? <div>
+                      <div>⊕</div>
+                      <div>Add to Outfit</div>
+                    </div>
+                  : <div>Item Already Added</div>
+                }
+              </div>
           }
+
+
       </div>
     </div>
   );
