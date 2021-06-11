@@ -127,7 +127,6 @@
   width: 1010px;
   height: 285px;
   overflow: hidden;
-  /* white-space: nowrap; */
 }
 
 .buttonL {
@@ -182,7 +181,6 @@
 }
 
 
-
 .ActionButton {
   position: relative;
 }
@@ -191,8 +189,7 @@
   position: absolute;
   top: 5px;
   right: 5px;
-  background-color: transparent;
-  background-repeat:no-repeat;
+  background: transparent;
   border: none;
   cursor:pointer;
   overflow: hidden;
