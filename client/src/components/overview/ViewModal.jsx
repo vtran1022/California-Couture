@@ -1,17 +1,30 @@
 import React, { useState, useEffect } from 'react';
-
-const ViewModal = ({ picture, handleLeft, handleRight, close }) => {
+import Thumbnails from './Thumbnails.jsx'
+import Left from '../../imgs/Navigate-left_36746.png';
+import Right from '../../imgs/Navigate-right_36745.png';
+const ViewModal = ({ photos, photo, handleLeft, handleRight, close, handleThumbnailClick }) => {
   const [viewPicture, setPicture] = useState()
 
   return (
     <React.Fragment >
-    {/* <img src='client/src/imgs/Navigate-left_36746.png' onClick={() => handleLeft()} />
-    <img src='client/src/imgs/Navigate-right_36745.png' onClick={() => handleRight()} /> */}
-    {/* <img
-    id='enlarged-view'
-    src={picture}
-    /> */}
-    <span class="close cursor" onclick={() => close()}>&times;</span>
+    <span className="close-cursor" onClick={() => close()}>&times;</span>
+    <img src={Left} onClick={() => handleLeft()} />
+    <img
+    id='lightbox-pic'
+    src={photo.url}
+    />
+    <img src={Right} onClick={() => handleRight()} />
+    <div id='modal-thumbnails'>
+      {photos.map(photo => //clean up later. Not DRY
+        <Thumbnails
+        key={photos.indexOf(photo)}
+        cname='modal-thumbnail'
+        thumbnailUrl={photo.thumbnail_url}
+        photoUrl={photo.url}
+        photoList={photos}
+        handleThumbnailClick={handleThumbnailClick}/>
+        )}
+    </div>
     </React.Fragment>
   )
 }

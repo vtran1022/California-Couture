@@ -48,23 +48,14 @@ function ImageGallery (props) {
     className='image-gallery'
     >
       {showView
-      ? <div id='modal-view' class='modal'>
+      ? <div id='lightbox' class='modal'>
           <ViewModal
-          picture={currentPhoto.url}
+          photos={photoList}
+          photo={currentPhoto}
           handleLeft={handleLeftClick}
           handleRight={handleRightClick}
-          close={handleViewClick}/>
-          <div id='thumbnails-view'>
-          {photoList.map(photo => //clean up later. Not DRY
-            <Thumbnails
-            key={photoList.indexOf(photo)}
-            cname='modal-thumbnails'
-            thumbnailUrl={photo.thumbnail_url}
-            photoUrl={photo.url}
-            photoList={photoList}
-            handleThumbnailClick={handleThumbnailClick}/>
-            )}
-          </div>
+          close={handleViewClick}
+          handleThumbnailClick={handleThumbnailClick}/>
         </div>
       : null}
       <img
