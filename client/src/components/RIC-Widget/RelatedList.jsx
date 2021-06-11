@@ -3,7 +3,6 @@ import axios from 'axios';
 import { auth } from '../../../../config.js';
 import ProductCard from './ProductCard.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
-import { initialState, reducer } from './Reducer.jsx';
 
 const RelatedList = ({ productId }) => {
   const listState = 'related';

@@ -162,7 +162,7 @@
 
 .AddCard,
 .ProductCard {
-  border: 1px solid red;
+  border: 1px solid teal;
   width: 200px;
   height: 280px;
 
@@ -177,7 +177,11 @@
   height: 200px;
   object-fit: contain;
   position: center;
-  background-color: gray;
+  background-color: rgba(109, 139, 190, 0.6);
+}
+
+.ProductInfo {
+  padding-left: 5px;
 }
 
 
