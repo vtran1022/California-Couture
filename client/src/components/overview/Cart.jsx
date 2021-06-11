@@ -67,6 +67,14 @@ const Cart = ( props ) => {
       </div>
 
       <div>
+      <select name='size' id='size-select' onChange={(e) => setSize(e.target.value)}>
+        <option>Select Size</option>
+        {skus.map(sku =>
+        <option key={sku.quantity + 50}>{sku.size}</option>)}
+      </select>
+      </div>
+
+      <div>
       <select name='quantity' id='quantity-select' onChange={(e) => setQuantity(e.target.value)}>
         <option></option>
         {
@@ -81,18 +89,11 @@ const Cart = ( props ) => {
       </select>
       </div>
 
-      <div>
-      <select name='size' id='size-select' onChange={(e) => setSize(e.target.value)}>
-        <option>Select Size</option>
-        {skus.map(sku =>
-        <option key={sku.quantity + 50}>{sku.size}</option>)}
-      </select>
-      </div>
-
       <div className="cart-submit">
         <input type="submit" value="Add to Cart" onSubmit={(e) => handleSubmit(e)}></input>
       </div>
     </form>
+
   )
 
   function parseSKUs (style) {

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Thumbnails from './Thumbnails.jsx';
 import ViewModal from './ViewModal.jsx'
-
+import Left from '../../imgs/Navigate-left_36746.png';
+import Right from '../../imgs/Navigate-right_36745.png';
 
 function ImageGallery (props) {
   const [showView, setView] = useState(false);
@@ -48,7 +49,7 @@ function ImageGallery (props) {
     className='image-gallery'
     >
       {showView
-      ? <div id='lightbox' class='modal'>
+      ? <div id='lightbox' className='modal'>
           <ViewModal
           photos={photoList}
           photo={currentPhoto}
@@ -58,6 +59,7 @@ function ImageGallery (props) {
           handleThumbnailClick={handleThumbnailClick}/>
         </div>
       : null}
+
       <img
       className='preview'
       src={currentPhoto.url}
@@ -74,8 +76,8 @@ function ImageGallery (props) {
           handleThumbnailClick={handleThumbnailClick}/>
           )}
         </div>
-      <button onClick={() => handleLeftClick()}>Left Arrow</button>
-      <button onClick={() => handleRightClick()}>Right Arrow</button>
+      <img src={Left} onClick={() => handleLeftClick()}></img>
+      <img src={Right} onClick={() => handleRightClick()}></img>
 
     </div>
   )

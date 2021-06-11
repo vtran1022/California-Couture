@@ -38,9 +38,6 @@ function Overview (props) {
     fetchData();
     }, []);
 
-    // useEffect(() => {
-    // }, [style])
-
   function handleStyleSelect (value) {
     let list = styles;
     for (var i = 0; i < list.length; i++) {
@@ -53,8 +50,6 @@ function Overview (props) {
 
   return (
     <div data-testid="overview-1" className='overview'>
-      Overview
-
       {isLoading
         ? null
         : <ImageGallery
@@ -84,7 +79,7 @@ function Overview (props) {
         />
       }
 
-      <button>
+      {/* <button>
         Facebook
       </button>
       <button>
@@ -92,7 +87,9 @@ function Overview (props) {
       </button>
       <button>
         Pinterest
-      </button>
+      </button> */}
+
+
     </div>)
 
 }
