@@ -3,6 +3,7 @@ import ProductCard from './ProductCard.jsx';
 
 const OutfitList = ({ productId }) => {
   const listState = 'outfit';
+  const [initialIndex, setIndex] = useState([0]);
   const [ifOutfit, setExists] = useState(false);
   const [outfitItems, setOutfit] = useState([]);
   const [ifAdded, setAdded] = useState(true);
