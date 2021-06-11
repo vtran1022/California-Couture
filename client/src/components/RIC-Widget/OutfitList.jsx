@@ -17,7 +17,11 @@ const OutfitList = ({ productId }) => {
   };
 
   useEffect(() => {
-    setAdded(true);
+    if (outfitItems.indexOf(productId) !== -1) {
+      setAdded(false);
+    } else {
+      setAdded(true);
+    }
   }, [productId]);
 
   const triggerDelete = useCallback((index) => {
