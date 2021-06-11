@@ -53,7 +53,6 @@ class Atelier {
   }
 
   async postAPI(endpoint, data) {
-    console.log(JSON.stringify(data));
     var res = await fetch(this.baseURL + endpoint, {
       method: 'POST',
       headers: new Headers({
@@ -63,7 +62,6 @@ class Atelier {
       }),
       body: JSON.stringify(data)
     });
-    console.log(res);
     return res.json();
   }
 }
