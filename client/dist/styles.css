@@ -123,28 +123,25 @@
 /*Relating Items & Comparisions ---------------*/
 
 .RICList {
+  display: grid;
   border: 1px solid black;
   width: 1010px;
-  height: 300px;
-  /* overflow-x: scroll;
-  overflow-y: scroll;
-  white-space: nowrap; */
-  /* display: inline-flex; */
-  display: grid;
+  height: 320px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  /* white-space: nowrap; */
 }
 
 .AddCard,
 .ProductCard {
-  /* display: float; */
   border: 1px solid gray;
   width: 200px;
   height: 280px;
-  margin-right: 20px;
 
   grid-area: 1 / -1;
+
   transform: translateX(calc(100% * var(--offset)));
   transition: transform 0.5s ease-in-out;
-
 }
 
 .ProductImage {
