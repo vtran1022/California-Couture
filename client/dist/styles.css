@@ -213,7 +213,7 @@ float: right;
 
 .RICList {
   display: inline-flex;
-  width: 1010px;
+  width: 1110px;
   height: 285px;
   overflow: hidden;
 }
@@ -252,10 +252,10 @@ float: right;
   border: 1px solid teal;
   width: 200px;
   height: 280px;
-  display: block;
+  margin-right: 20px;
   float: left;
 
-  transform: translateX(calc(100% * var(--offset)));
+  transform: translateX(calc(109% * var(--offset)));
   transition: transform 0.5s ease-in-out;
 }
 
@@ -264,7 +264,7 @@ float: right;
   height: 200px;
   object-fit: contain;
   position: center;
-  background-color: rgba(109, 139, 190);
+  background-color: rgb(148, 178, 230);
 }
 
 .ProductInfo {
