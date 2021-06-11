@@ -41,6 +41,8 @@ const Cart = ( props ) => {
   return (
     <form className='cart' data-testid="cart-1">
 
+      {/* Star Rating goes here */} <span className='cart-ratings'>Star Rating PlaceHolder</span>
+
       <span id='name'>{props.currentProduct.name}</span><br></br>
 
       <span id='category'>{props.currentProduct.category}</span><br></br>
@@ -54,19 +56,23 @@ const Cart = ( props ) => {
         <div className='styles'>
         {props.stylesList.map(style => {
           return <div className='style' key={style.style_id}>
-            <span id='style-name'>{style.name}</span>
-            <img
-            id='style-pic'
-            key={style.style_id}
-            pic-id={style.style_id}
-            src={style.photos[0].thumbnail_url}
-            onClick={(e) => props.handleStyleSelect(e.currentTarget.getAttribute('pic-id'))}/>
+            <label>
+              <span className='style-caption'>
+                <span>{style.name}</span>
+                </span>
+              <input type="radio" name="check" className='check'/>
+              <img
+              key={style.style_id}
+              pic-id={style.style_id}
+              src={style.photos[0].thumbnail_url}
+              onClick={(e) => props.handleStyleSelect(e.currentTarget.getAttribute('pic-id'))}/>
+            </label>
           </div>
         })}
         </div>
       </div>
 
-      <div>
+      <div className='size-select'>
       <select name='size' id='size-select' onChange={(e) => setSize(e.target.value)}>
         <option>Select Size</option>
         {skus.map(sku =>
@@ -74,7 +80,7 @@ const Cart = ( props ) => {
       </select>
       </div>
 
-      <div>
+      <div className='quantity-select'>
       <select name='quantity' id='quantity-select' onChange={(e) => setQuantity(e.target.value)}>
         <option></option>
         {

@@ -69,7 +69,7 @@ function ImageGallery (props) {
         {photoList.map(photo => //clean up later. Not DRY
           <Thumbnails
           key={photoList.indexOf(photo)}
-          cname='default'
+          cname='default-thumbs'
           thumbnailUrl={photo.thumbnail_url}
           photoUrl={photo.url}
           photoList={photoList}

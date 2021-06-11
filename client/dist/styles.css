@@ -56,13 +56,13 @@
   width: 90vw;
   height: 100vh;
   display: grid;
-  grid-template-columns: 1fr, 1fr, 1fr, 1fr, 1fr;
-  grid-template-rows: 1fr, 1fr, 1fr, 1fr, 1fr;
+  grid-template-columns: 5% 35% 20% 20% 20%;
+  grid-template-rows: 20% 20% 20% 20% 20%;
   position: relative;
 }
 
 .image-gallery {
-  grid-column-start: 1;
+  grid-column-start: 2;
   grid-row-start: 1;
   width: 500px;
   height: 300px;
@@ -70,13 +70,25 @@
 }
 
 .cart {
-  grid-column-start: 5
-
+  grid-column-start: 4;
+  display: grid;
+  grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+  grid-template-rows: 5% 5% 5% 5% 2.5% 7.5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%;
+  width: 500px;
+  height: 700px;
 }
 
 .description {
-  grid-column-start: 1;
-  grid-row-start: 2;
+  grid-column-start: 2;
+  grid-row-start: 4;
+  display: grid;
+}
+
+.description h1 {
+
+}
+
+.description span {
 
 }
 
@@ -88,77 +100,143 @@
   height: auto;
 }
 
-.thumbnails {
-  float: left;
-  display: flex;
-  justify-content: center;
-}
-
-.default {
+.default-thumbs {
   max-width:100px;
   max-height:100px;
+  width: auto;
+  height: auto;
   margin:5px;
 }
 
+.cart-ratings {
+  grid-row-start: 2;
+  grid-column-start: 1;
+  grid-column-end: span col4-start;
+}
+
 #category {
-float: right;
+  grid-row-start: 3;
 }
 
 #name {
-float: right;
+  grid-row-start: 4;
+  grid-column-start: 1;
+  grid-column-end: span col4-start;
 }
 
-
 .price {
-  float:right
+  grid-row-start: 5;
+  grid-column-start: 1;
+  grid-column-end: span col4-start;
 }
 
 .price-sale {
-  float:right;
+  grid-row-start: 5;
+  grid-column-start: 1;
+  grid-column-end: span col4-start;
   color:red
+}
+
+.size-select {
+  grid-row-start: 17;
+  grid-column-start: 3;
+}
+
+.size-select select {
+  width: 120px;
+  height: 40px;
+}
+
+.quantity-select {
+  grid-row-start: 17;
+  grid-column-start: 7;
+}
+.quantity-select select {
+  width: 120px;
+  height: 40px;
+}
+
+.cart-submit {
+  grid-row-start: 19;
+  grid-column-start: 3;
+}
+
+.cart-submit input {
+  width: 321px;
+  height: 40px;
 }
 
 /* Entire Container for Styles */
 .styles-box {
+  grid-row-start: 6;
   float: right;
   flex-wrap: wrap;
   width: 500px;
   height: auto;
 }
+.styles-box h1 {
+  margin: 0;
+  margin-bottom: .67em;
+  position: relative;
+  height: auto;
+  text-align: center;
+}
 /* Container for Styles Listing */
 .styles {
   display: flex;
   flex-wrap: wrap;
-  width: 400px;
-  height: auto;
+  width: 440px;
+  height: 300px;
 }
 
 /* Each style Div - contains Picture and Name */
 .style {
+  display: inline-block;
+  padding-left: 10px;
   height: 130px;
   width: 100px
 }
-
+.style label {
+  position: relative;
+  display: inline-block;
+}
 /* Needs to be right on top of style-pic */
-#style-name {
-  text-align:center;
+.style span {
+  position: relative;
+  text-align: center;
+  display: inline-block;
   height: 25px;
   width:100px
 }
 
-#style-pic {
+.style img{
+  opacity: .5;
+  display: block;
   height:100px;
   width:100px;
-  margin:5px;
   border-radius: 50%;
 }
 
-#size-select {
-
+.check {
+  display: none;
 }
 
-#quantity-select {
+.style input:checked + .style-caption {
+  background: rgba(0,0,0,0.5);
+}
 
+.style input:checked + .style-caption::after {
+  content: '✔';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 70px; height: 70px;
+  transform: translate(-50%,-50%);
+  color: red;
+  font-size: 60px;
+  line-height: 80px;
+  text-align: center;
+  border: 2px solid red;
+  border-radius: 50%;
 }
 
 .thumbnails-view {
