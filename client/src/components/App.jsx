@@ -30,6 +30,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
+
+        <Overview />
         <Ratings id={this.state.product} />
 
         {this.state.idArr.map((item) => (
@@ -39,6 +41,7 @@ class App extends React.Component {
           <RICWidget
             productId={this.state.product} />
         </div>
+
       </div>
     );
   }

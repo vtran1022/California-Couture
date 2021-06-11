@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import ImageGallery from './ImageGallery.jsx';
 import Cart from './Cart.jsx';
+import Description from './Description.jsx';
 import Atelier from '../../Atelier.js';
 import { auth } from '../../../../config.js';
 
@@ -12,60 +13,73 @@ Styles contains all the pictures related to the styles. Also contains all the sa
 Styles also contains all the inventory of the product styles
 */
 function Overview (props) {
-
+  // const [cartItems, serCurrentCart] = await useState({}) need to pull a user's cart
   // const [productList, setProductList] = useState(sampleData); don't think this is necessary.
-  const [isLoading, setLoading] = useState(false)
   const [currentProduct, setCurrentProduct] = useState({});
+  const [styleId, setStyleId] = useState('');
+  const [isLoading, setLoading] = useState(true);
   const [styles, setStyleList] = useState([]);
   const [style, setStyle] = useState({});
+  const [currentPhoto, setPhoto] = useState('');
 
-  useEffect( () => {
+  useEffect(() => {
     async function fetchData () {
-      setLoading(true);
-      var product = await Atelier.getInfo(13023)
-      var styleList = await Atelier.getStyles(13023)
-      setStyleList(styleList.results);
-      setStyle(styleList.results[0]);
-      setCurrentProduct(product);
-      setLoading(false);
-      }
-    fetchData()
+      try {
+        var product = await Atelier.getInfo(13025).catch((err) => console.log(err));
+        var styleList = await Atelier.getStyles(13025).catch((err) => console.log(err));
+        setStyleList(styleList.results);
+        setStyle(styleList.results[0]);
+        setCurrentProduct(product);
+        setStyleId(styleList.results[0].style_id)
+        setLoading(false);
+      } catch (err) {
+        console.log(err)
+      }}
+    fetchData();
     }, []);
 
+  function handleStyleSelect (value) {
+    let list = styles;
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].style_id === Number(value)){
+        setStyle(list[i]);
+        return;
+      }
+    }
+  }
 
   return (
-    <div>
-      Overview
-
-      <ImageGallery
-      className='image-gallery'
-      productId={ currentProduct.id }
-      product={ currentProduct }
-      />
-
-      {/* Star rating will have be an another component */}
-      <span className='category'>
-        { currentProduct.category }
-        </span>
-        <br></br>
-      <span className='name'>
-        { currentProduct.name }
-        </span>
-
-        {/* {if (currentProduct.description) {
-          <p className='product-info'}>{currentProduct.description}</p>
-        } */}
-        {isLoading
-        ? <div>Loading</div>
-        : <Cart
-        className='cart'
-        key={ currentProduct.id }
-        styleList={ styles }
-        style={ style }
-        defaultPrice={ currentProduct.default_price }
+    <div data-testid="overview-1" className='overview'>
+      {isLoading
+        ? null
+        : <ImageGallery
+          key='999999'
+          className='image-gallery'
+          photos={ style.photos }
+          styleid={ styleId }
         />
       }
-      <button>
+
+      {isLoading
+        ? null
+        : <Cart
+        key='899999'
+        stylesList={ styles }
+        style={ style }
+        handleStyleSelect={ handleStyleSelect }
+        currentProduct={ currentProduct }
+        />
+      }
+
+      {isLoading
+        ? null
+        : <Description
+        key='799999'
+        currentProduct={ currentProduct }
+        />
+      }
+
+      {/* <button>
         Facebook
       </button>
       <button>
@@ -73,8 +87,11 @@ function Overview (props) {
       </button>
       <button>
         Pinterest
-      </button>
+      </button> */}
+
+
     </div>)
+
 }
 
 
