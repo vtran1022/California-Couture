@@ -298,6 +298,7 @@ float: right;
   border: 1px solid black;
   background-color: darkcyan;
   overflow-y: scroll darkcyan;
+  z-index: 10;
 }
 
 #salePrice {
