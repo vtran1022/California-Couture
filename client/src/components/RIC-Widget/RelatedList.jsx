@@ -47,24 +47,25 @@ const RelatedList = ({ productId }) => {
       <h3>Related Products</h3>
       <div className='RICList'>
         <button className='buttonL' onClick={() => handleClick({ type: 'previous' })}>‹</button>
-        <button className='buttonR' onClick={() => handleClick({ type: 'next' })}>›</button>
 
         {relatedItems.map((id, i) => (
           <ProductCard
-            key={id}
-            productId={id}
-            listState={listState}
-            triggerModal={triggerModal}
-            offset={initialIndex}/>
-        ))}
+          key={id}
+          productId={id}
+          listState={listState}
+          triggerModal={triggerModal}
+          offset={initialIndex}/>
+          ))}
       </div>
 
       {isModal
         ? <ComparisonModal
-            productId={productId}
-            relatedId={relatedId}
-            trigger={triggerModal}/>
+        productId={productId}
+        relatedId={relatedId}
+        trigger={triggerModal}/>
         : null}
+
+        <button className='buttonR' onClick={() => handleClick({ type: 'next' })}>›</button>
     </div>
   );
 };

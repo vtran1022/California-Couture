@@ -52,7 +52,6 @@ const OutfitList = ({ productId }) => {
       <h3>Your Outfit</h3>
       <div className='RICList'>
       <button className='buttonL' onClick={() => handleClick({ type: 'previous' })}>‹</button>
-      <button className='buttonR' onClick={() => handleClick({ type: 'next' })}>›</button>
 
           {ifOutfit
             ? <div>
@@ -66,7 +65,7 @@ const OutfitList = ({ productId }) => {
                   }
                 </div>
               {outfitItems.map((id, i) => (
-              <ProductCard
+                <ProductCard
                 key={id}
                 productId={id}
                 index={i}
@@ -85,6 +84,8 @@ const OutfitList = ({ productId }) => {
                 }
               </div>
           }
+
+      <button className='buttonR' onClick={() => handleClick({ type: 'next' })}>›</button>
       </div>
     </div>
   );

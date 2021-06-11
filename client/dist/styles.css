@@ -213,7 +213,7 @@ float: right;
 
 .RICList {
   display: inline-flex;
-  width: 1110px;
+  width: 1080px;
   height: 285px;
   overflow: hidden;
 }
@@ -223,9 +223,9 @@ float: right;
   background: transparent;
   border: none;
   color: black;
-  position: absolute;
-  font-size: 50px;
-  width: 50px;
+  position: relative;
+  font-size: 40px;
+  width: 40px;
   height: 250px;
   transition: opacity 0.3s;
   opacity: 0.7;
@@ -237,11 +237,10 @@ float: right;
   background: transparent;
   border: none;
   color: black;
-  position: absolute;
-  font-size: 50px;
-  width: 50px;
+  position: relative;
+  font-size: 40px;
+  width: 40px;
   height: 250px;
-  right: 7%;
   transition: opacity 0.3s;
   opacity: 0.7;
   z-index: 5;
@@ -252,19 +251,17 @@ float: right;
   border: 1px solid teal;
   width: 200px;
   height: 280px;
-  margin-right: 20px;
+  margin-right: 10px;
   float: left;
 
-  transform: translateX(calc(109% * var(--offset)));
+  transform: translateX(calc(104% * var(--offset)));
   transition: transform 0.5s ease-in-out;
 }
 
 .ProductImage {
   width: 200px;
   height: 200px;
-  object-fit: contain;
-  position: center;
-  background-color: rgb(148, 178, 230);
+  object-fit: fill;
 }
 
 .ProductInfo {
@@ -283,6 +280,12 @@ float: right;
 #outfit,
 #item-added {
   display: block;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+#plus-wrapper {
+  outline: rgb(148, 178, 230);
 }
 
 
@@ -300,7 +303,7 @@ float: right;
   cursor:pointer;
   overflow: hidden;
   outline:none;
-  font-weight: bold;
+  font-size: 20px;
 }
 
 .c-modal {
