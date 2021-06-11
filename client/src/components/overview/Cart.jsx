@@ -14,6 +14,10 @@ const Cart = ( props ) => {
     sale: props.style.sale_price
   })
 
+  function handleSubmit (e) {
+    e.preventDefault();
+  }
+
   useEffect( () => {
     setPrice({
       default: props.currentProduct.default_price,
@@ -86,7 +90,7 @@ const Cart = ( props ) => {
       </div>
 
       <div className="cart-submit">
-        <input type="submit" value="Add to Cart"></input>
+        <input type="submit" value="Add to Cart" onSubmit={(e) => handleSubmit(e)}></input>
       </div>
     </form>
   )

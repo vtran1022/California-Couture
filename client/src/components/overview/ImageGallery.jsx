@@ -48,23 +48,24 @@ function ImageGallery (props) {
     className='image-gallery'
     >
       {showView
-      ? <div className='modal-view'>
-        <ViewModal
-        picture={currentPhoto.url}
-        handleLeft={handleLeftClick}
-        handleRight={handleRightClick}
-        close={handleViewClick}/>
-        <div className='thumbnails-view'>
-        {photoList.map(photo => //clean up later. Not DRY
-          <Thumbnails
-          key={photoList.indexOf(photo)}
-          thumbnailUrl={photo.thumbnail_url}
-          photoUrl={photo.url}
-          photoList={photoList}
-          handleThumbnailClick={handleThumbnailClick}/>
-          )}
-        </div>
+      ? <div id='modal-view' class='modal'>
+          <ViewModal
+          picture={currentPhoto.url}
+          handleLeft={handleLeftClick}
+          handleRight={handleRightClick}
+          close={handleViewClick}/>
+          <div id='thumbnails-view'>
+          {photoList.map(photo => //clean up later. Not DRY
+            <Thumbnails
+            key={photoList.indexOf(photo)}
+            cname='modal-thumbnails'
+            thumbnailUrl={photo.thumbnail_url}
+            photoUrl={photo.url}
+            photoList={photoList}
+            handleThumbnailClick={handleThumbnailClick}/>
+            )}
           </div>
+        </div>
       : null}
       <img
       className='preview'
@@ -75,6 +76,7 @@ function ImageGallery (props) {
         {photoList.map(photo => //clean up later. Not DRY
           <Thumbnails
           key={photoList.indexOf(photo)}
+          cname='default'
           thumbnailUrl={photo.thumbnail_url}
           photoUrl={photo.url}
           photoList={photoList}

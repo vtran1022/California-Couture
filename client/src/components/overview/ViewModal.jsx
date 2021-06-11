@@ -5,12 +5,13 @@ const ViewModal = ({ picture, handleLeft, handleRight, close }) => {
 
   return (
     <React.Fragment >
-    <img src='client/src/imgs/Navigate-left_36746.png' onClick={() => handleLeft()} /> {/* Need to fix path */}
-    <img src='client/src/imgs/Navigate-right_36745.png' onClick={() => handleRight()} /> {/* Need to fix path */}
-    <img
+    {/* <img src='client/src/imgs/Navigate-left_36746.png' onClick={() => handleLeft()} />
+    <img src='client/src/imgs/Navigate-right_36745.png' onClick={() => handleRight()} /> */}
+    {/* <img
+    id='enlarged-view'
     src={picture}
-    />
-    <button className='close-view' onClick={() => close()}>x</button>
+    /> */}
+    <span class="close cursor" onclick={() => close()}>&times;</span>
     </React.Fragment>
   )
 }
