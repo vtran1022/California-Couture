@@ -32,7 +32,7 @@ const RelatedList = ({ productId }) => {
   });
 
   const handleClick = (action) => {
-    let len = relatedItems.length
+    let len = relatedItems.length;
 
     switch (action.type) {
       case 'next':
