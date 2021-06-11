@@ -30,7 +30,7 @@ const FormModal = (props) => {
     setData(state => {
       var obj = formData.characteristics;
       obj[props.characteristics[name].id] = value;
-      return {...state, characteristics: obj};
+      return { ...state, characteristics: obj };
     });
   };
 
@@ -53,8 +53,8 @@ const FormModal = (props) => {
     ) {
       return false;
     }
-    for(var char in props.characteristics) {
-      if(formData[char] === -1) {
+    for (var char in props.characteristics) {
+      if (formData[char] === -1) {
         return false;
       }
     }
@@ -63,20 +63,24 @@ const FormModal = (props) => {
 
   return (
     <div className='modal'>
+
       <form className='modal-form' onSubmit={handleSubmit}>
+        <h2>Write Your Review</h2>
+        <h4>About the {props.productName}</h4>
         <div>
           <label>Rating:</label> <RatingSelector onChange={val => handleChange(val, 'rating')} default={-1} />
+          <label>{[undefined,'Poor', 'Fair', 'Average', 'Good', 'Great'][formData.rating] || null}</label>
         </div>
         <div>
           <label>Recommended:</label>
-          <label>Yes</label><input type='radio' checked={formData.recommend} onChange={e => handleChange(e.target.value === 'on', 'recommended')}></input>
-          <label>No</label><input type='radio' checked={!formData.recommend} onChange={e => handleChange(e.target.value === 'off', 'recommended')}></input>
+          <label>Yes</label><input type='radio' checked={formData.recommend} onChange={e => handleChange(e.target.value === 'on', 'recommend')}></input>
+          <label>No</label><input type='radio' checked={!formData.recommend} onChange={e => handleChange(e.target.value === 'off', 'recommend')}></input>
         </div>
         <div>
           {Object.keys(props.characteristics).map(k => {
             return <div key={k}>
               <label>{k}:</label> <RatingSelector onChange={val => handleCharacteristicChange(val, k)} default={-1} />
-              <label>{characteristicBreakdown[k][formData[k]] || 'Select your rating for ' + k}</label>
+              <label>{characteristicBreakdown[k][formData.characteristics[props.characteristics[k].id] - 1] || 'Select your rating for ' + k}</label>
             </div>
           })}
         </div>
@@ -87,6 +91,7 @@ const FormModal = (props) => {
         <div>
           <label>Body:</label>
           <input type='textarea' placeholder='Why did you like the product or not?' value={formData.body} onChange={e => handleChange(e.target.value, 'body')}></input>
+          <span>{formData.body.length >= 50 ? <span>Minimum reached</span> : <span>Minimum required characters left: {50 - formData.body.length}</span>}</span>
         </div>
         <div>
           <label>Nickname:</label>

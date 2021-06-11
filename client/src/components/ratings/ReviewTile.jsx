@@ -1,17 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
 import StarRating from '../StarRating.jsx';
 
 const ReviewTile = (props) => {
-  var fields = ['date', 'summary', 'body', 'recommend', 'reviewer_name', 'response', 'helpfulness'];
-  var out = [];
-  for (var i = 0; i < fields.length; i++) {
-    out.push(JSON.stringify(props.review[fields[i]]));
+  const [imgModal, setModal] = useState({id: -1, url: ''});
+
+  var re = RegExp(props.search);
+  var arr = props.review.body.split(re);
+  var out = [arr[0]];
+  for (var i = 1; i < arr.length; i++) {
+    out.push(<mark key={i}>{props.search}</mark>)
+    out.push(arr[i]);
   }
+  const openModal = (id, url) => {
+    if(imgModal.id === -1) {
+      setModal({id: id, url: url});
+    }
+  };
+  const onClose = () => {
+    setModal({id: -1, url: ''});
+  };
   //create row for each review tile
   return <tr >
-    <td className='review-elem'><StarRating rating={props.review.rating} key={props.review.review_id} /></td>
-    {out.map(f => <td key={f} className='review-elem'>{f}</td>)}
+    <td>
+      <div className='review-elem'>
+        <span><StarRating rating={props.review.rating} key={props.review.review_id} /></span>
+        <span className='tile-reviewer'>{props.review.reviewer_name}</span>
+        <span className='tile-date'>{props.review.date}</span>
+        <span className='tile-summary'>{props.review.summary}</span>
+        <span className='tile-body'>{out}</span>
+        <span className='tile-recommend'>{props.review.recommend}</span>
+        <span className='tile-response'>{props.review.response}</span>
+        <span className='tile-helpful'>{props.review.helpfulness}</span>
+        <span className='tile-images'>{props.review.photos.map(p => <img key={p.id} id={p.id} src={p.url} width={50} height={50} onClick={e => openModal(p.id, p.url)}></img>)}</span>
+        {imgModal.id !== -1 ? <ImageModal img={imgModal} onClose={onClose} /> : null}
+      </div>
+    </td>
   </tr>;
 };
 
+
+const ImageModal = (props) => {
+  return <img id={props.img.id} src={props.img.url} className='modal' onClick={props.onClose}/>
+};
+/*
+{out.map((f, idx) => {
+          if (fields[idx] === 'body' && props.search && props.search.length >= 3) {
+            var re = RegExp(props.search);
+            var arr = f.split(re);
+            var out = [arr[0]];
+            for (var i = 1; i < arr.length; i++) {
+              out.push(<mark key={i}>{props.search}</mark>)
+              out.push(arr[i]);
+            }
+            return <td key={f} className='review-elem'>{out}</td>
+          }
+          return <td key={f} className='review-elem'>{f}</td>
+        })}
+*/
 export default ReviewTile;

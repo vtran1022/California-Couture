@@ -46,6 +46,7 @@ const Ratings = (props) => {
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState('relevant');
   const [showForm, setShowForm] = useState(false);
+  const [search, setSearch] = useState('');
 
   //effects
   //runs when the sorting method is changed, fetch reviews with new sorting methods
@@ -102,9 +103,13 @@ const Ratings = (props) => {
 
   };
 
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  }
+
   if (Object.keys(reviews).length > 0) {
     return (<div className='review-container'>
-      {showForm ? <FormModal characteristics={meta.characteristics} submitData={addNewReview} /> : null}
+      {showForm ? <FormModal characteristics={meta.characteristics} submitData={addNewReview} productName={'PLACEHOLDER'} /> : null}
       <div className='list-container'>
         <form>
           {/* sort drop down */}
@@ -115,21 +120,22 @@ const Ratings = (props) => {
             <option value='relevant'>Relevance</option>
           </select>
         </form>
+        <form>
+          <label>Search Reviews:</label>
+          <input type='text' value={search} onChange={handleSearch}></input>
+        </form>
         {/* main review table */}
         <table className='review-table'>
           <tbody>
-            <tr>
-              <td>Stars</td>
-              <td>Date</td>
-              <td>Summary</td>
-              <td>Body</td>
-              <td>Recommended</td>
-              <td>Name</td>
-              <td>Response</td>
-              <td>Helpfulness</td>
-            </tr>
-            {reviews.map(r => {
-              return <ReviewTile review={r} key={r.review_id} />
+            {reviews.filter(review => {
+              if (search.length < 3) {
+                return true;
+              }
+              var regex = '^.*' + search + '.*$';
+              var re = new RegExp(regex);
+              return re.test(review.body);
+            }).map(r => {
+              return <ReviewTile review={r} search={search} key={r.review_id} />
             })}
           </tbody>
         </table>
