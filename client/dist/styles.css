@@ -212,11 +212,11 @@ float: right;
 /*Relating Items & Comparisions ---------------*/
 
 .RICList {
-  /* display: grid; */
+  display: inline-flex;
   width: 1010px;
   height: 285px;
   overflow: hidden;
-  display: inline-flex;
+
 }
 
 .buttonL {
@@ -261,12 +261,11 @@ float: right;
   border: 1px solid teal;
   width: 200px;
   height: 280px;
-  display: block;
   float: left;
 
-  /* grid-area: 1 / -1;
+  /* grid-area: 1 / -1; */
 
-  transform: translateX(calc(100% * var(--offset))); */
+  transform: translateX(calc(100% * var(--offset)));
   transition: transform 0.5s ease-in-out;
 }
 

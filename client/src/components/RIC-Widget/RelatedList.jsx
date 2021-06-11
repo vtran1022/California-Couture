@@ -6,44 +6,16 @@ import ComparisonModal from './ComparisonModal.jsx';
 
 const RelatedList = ({ productId }) => {
   const listState = 'related';
-  const initialState = { slideIndex: 0 };
+  const [initialIndex, setIndex] = useState(0);
   const [relatedItems, setRelated] = useState([]);
   const [isModal, setModal] = useState(false);
   const [relatedId, setId] = useState(0);
-
-  const reducer = (state, action) => {
-    let len = relatedItems.length - 1;
-
-    switch (action.type) {
-      case "PRODUCTS_FETCHED":
-        return {
-          ...state,
-          slideIndex: action.data - 1
-        };
-      case 'previous':
-        return {
-          ...state,
-          slideIndex: state.slideIndex === len ? len : state.slideIndex + 1
-        };
-      case 'next':
-        return {
-          ...state,
-          slideIndex: state.slideIndex === 0 ? 0 : state.slideIndex - 1
-        };
-      default:
-        throw new Error();
-    }
-  };
-
-  //state needs to go here b/c reducer has to initialize first
-  const [state, dispatch] = useReducer(reducer, initialState)
 
   const fetchRelated = async () => {
     let relatedData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${productId}/related`,
     { headers: { 'Authorization': auth.TOKEN } });
 
     setRelated(relatedData.data);
-    dispatch({ type: "PRODUCTS_FETCHED", data: relatedData.data.length});
   };
 
   useEffect(() => {
@@ -59,11 +31,23 @@ const RelatedList = ({ productId }) => {
     }
   });
 
+  const handleClick = (action) => {
+    let len = relatedItems.length - 1;
+
+    switch (action.type) {
+      case 'previous':
+        return setIndex(prevState => prevState === len ? len : prevState - 1);
+      case 'next':
+        return setIndex(prevState => prevState === len ? len : prevState + 1);
+    }
+  }
+
   return (
     <div>
       <h3>Related Products</h3>
       <div className='RICList'>
-        <button className='buttonL brl' onClick={() => dispatch({ type: 'previous' })}>‹</button>
+        <button className='buttonL brl' onClick={() => handleClick({ type: 'previous' })}>‹</button>
+        <button className='buttonR brl' onClick={() => handleClick({ type: 'next' })}>›</button>
 
         {relatedItems.map((id, i) => (
           <ProductCard
@@ -71,10 +55,8 @@ const RelatedList = ({ productId }) => {
             productId={id}
             listState={listState}
             triggerModal={triggerModal}
-            offset={(state.slideIndex - i)}/>
+            offset={initialIndex}/>
         ))}
-
-        <button className='buttonR brl' onClick={() => dispatch({ type: 'next' })}>›</button>
       </div>
 
       {isModal

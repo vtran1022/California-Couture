@@ -3,6 +3,7 @@ import ProductCard from './ProductCard.jsx';
 
 const OutfitList = ({ productId }) => {
   const listState = 'outfit';
+  const [initialIndex, setIndex] = useState(0);
   const [ifOutfit, setExists] = useState(false);
   const [outfitItems, setOutfit] = useState([]);
   const [ifAdded, setAdded] = useState(true);
@@ -31,10 +32,23 @@ const OutfitList = ({ productId }) => {
     };
   });
 
+  const handleClick = (action) => {
+    let len = outfitItems.length - 1;
+
+    switch (action.type) {
+      case 'previous':
+        return setIndex(prevState => prevState === len ? len : prevState - 1);
+      case 'next':
+        return setIndex(prevState => prevState === len ? len : prevState + 1);
+    }
+  }
+
   return (
     <div>
       <h3>Your Outfit</h3>
       <div className='RICList'>
+      <button className='buttonL brl' onClick={() => handleClick({ type: 'previous' })}>‹</button>
+      <button className='buttonR brl' onClick={() => handleClick({ type: 'next' })}>›</button>
 
           {ifOutfit
             ? <div>
@@ -53,7 +67,8 @@ const OutfitList = ({ productId }) => {
                 productId={id}
                 index={i}
                 listState={listState}
-                triggerDelete={triggerDelete}/>))}
+                triggerDelete={triggerDelete}
+                offset={initialIndex}/>))}
               </div>
 
             : <div className='AddCard' onClick={() => addItem(productId)}>

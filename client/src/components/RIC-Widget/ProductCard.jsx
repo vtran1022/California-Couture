@@ -41,6 +41,7 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
         listState={listState}
         triggerDelete={triggerDelete}
         triggerModal={triggerModal}/>
+
       <img src={image} alt={name} className='ProductImage'></img>
       <div className='ProductInfo'>
         <div>{category}</div>
