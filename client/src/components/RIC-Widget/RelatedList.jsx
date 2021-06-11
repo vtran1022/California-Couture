@@ -36,7 +36,7 @@ const RelatedList = ({ productId }) => {
 
     switch (action.type) {
       case 'next':
-        return setIndex(prevState => len < 5 ? 0 : prevState - 1);
+        return setIndex(prevState => len < 5 ? 0 : Math.max(prevState - 1));
       case 'previous':
         return setIndex(prevState => prevState === 0 ? 0 : prevState + 1);
     }
@@ -46,8 +46,8 @@ const RelatedList = ({ productId }) => {
     <div>
       <h3>Related Products</h3>
       <div className='RICList'>
-        <button className='buttonL brl' onClick={() => handleClick({ type: 'previous' })}>‹</button>
-        <button className='buttonR brl' onClick={() => handleClick({ type: 'next' })}>›</button>
+        <button className='buttonL' onClick={() => handleClick({ type: 'previous' })}>‹</button>
+        <button className='buttonR' onClick={() => handleClick({ type: 'next' })}>›</button>
 
         {relatedItems.map((id, i) => (
           <ProductCard

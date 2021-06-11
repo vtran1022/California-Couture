@@ -51,18 +51,18 @@ const OutfitList = ({ productId }) => {
     <div>
       <h3>Your Outfit</h3>
       <div className='RICList'>
-      <button className='buttonL brl' onClick={() => handleClick({ type: 'previous' })}>‹</button>
-      <button className='buttonR brl' onClick={() => handleClick({ type: 'next' })}>›</button>
+      <button className='buttonL' onClick={() => handleClick({ type: 'previous' })}>‹</button>
+      <button className='buttonR' onClick={() => handleClick({ type: 'next' })}>›</button>
 
           {ifOutfit
             ? <div>
                 <div className='AddCard' onClick={() => addItem(productId)}>
                   {ifAdded
-                    ? <div>
-                        <div>⊕</div>
-                        <div>Add to Outfit</div>
-                      </div>
-                    : <div>Item Already Added</div>
+                    ? <span>
+                        <span id='plus'>⊕</span>
+                        <span id='outfit'>Add to Outfit</span>
+                      </span>
+                    : <span id='item-added'>Item Added</span>
                   }
                 </div>
               {outfitItems.map((id, i) => (
@@ -77,11 +77,11 @@ const OutfitList = ({ productId }) => {
 
             : <div className='AddCard' onClick={() => addItem(productId)}>
                 {ifAdded
-                  ? <div>
-                      <div>⊕</div>
-                      <div>Add to Outfit</div>
-                    </div>
-                  : <div>Item Already Added</div>
+                  ? <span>
+                      <span id='plus'>⊕</span>
+                      <span id='outfit'>Add to Outfit</span>
+                    </span>
+                  : <span id='item-added'>Item Added</span>
                 }
               </div>
           }

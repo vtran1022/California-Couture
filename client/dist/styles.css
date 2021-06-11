@@ -271,6 +271,20 @@ float: right;
   padding-left: 5px;
 }
 
+.AddCard {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+#plus,
+#outfit,
+#item-added {
+  display: block;
+}
+
 
 .ActionButton {
   position: relative;
