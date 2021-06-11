@@ -39,12 +39,13 @@ const OutfitList = ({ productId }) => {
           {ifAdded
             ? <div>
                 <div>⊕</div>
-                <div>Add to Outfit</div></div>
+                <div>Add to Outfit</div>
+              </div>
             : <div>Item Already Added</div>
           }
         </div>
           {ifOutfit
-            ? <div className='RICList'>
+            ? <div>
               {outfitItems.map((id, index) => (
               <ProductCard
                 key={id}
