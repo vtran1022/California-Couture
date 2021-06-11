@@ -16,6 +16,7 @@ const RelatedList = ({ productId }) => {
     { headers: { 'Authorization': auth.TOKEN } });
 
     setRelated(relatedData.data);
+    // setIndex(relatedData.data.length);
   };
 
   useEffect(() => {
@@ -32,13 +33,13 @@ const RelatedList = ({ productId }) => {
   });
 
   const handleClick = (action) => {
-    let len = relatedItems.length - 1;
+    let len = relatedItems.length
 
     switch (action.type) {
-      case 'previous':
-        return setIndex(prevState => prevState === len ? len : prevState - 1);
       case 'next':
-        return setIndex(prevState => prevState === len ? len : prevState + 1);
+        return setIndex(prevState => len < 5 ? 0 : prevState - 1);
+      case 'previous':
+        return setIndex(prevState => prevState === 0 ? 0 : prevState + 1);
     }
   }
 

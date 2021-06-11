@@ -36,10 +36,10 @@ const OutfitList = ({ productId }) => {
     let len = outfitItems.length - 1;
 
     switch (action.type) {
-      case 'previous':
-        return setIndex(prevState => prevState === len ? len : prevState - 1);
       case 'next':
-        return setIndex(prevState => prevState === len ? len : prevState + 1);
+        return setIndex(prevState => prevState === len ? len : prevState - 1);
+      case 'previous':
+        return setIndex(prevState => prevState === 0 ? 0 : prevState + 1);
     }
   }
 
@@ -81,8 +81,6 @@ const OutfitList = ({ productId }) => {
                 }
               </div>
           }
-
-
       </div>
     </div>
   );
