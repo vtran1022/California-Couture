@@ -1,23 +1,30 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import ProductCard from './ProductCard.jsx';
 
-function OutfitList({ productId }) {
+const OutfitList = ({ productId }) => {
   const listState = 'outfit';
   const [ifOutfit, setExists] = useState(false);
   const [outfitItems, setOutfit] = useState([]);
+  const [ifAdded, setAdded] = useState(true);
 
-  function addItem(id) {
+  const addItem = (id) => {
     if (outfitItems.indexOf(id) === -1) {
       setOutfit(prevArray => [...prevArray, id]);
       setExists(true);
     }
+    setAdded(false);
   };
+
+  useEffect(() => {
+    setAdded(true);
+  }, [productId]);
 
   const triggerDelete = useCallback((index) => {
     let currentOutfits = outfitItems.map((item) => item);
     currentOutfits.splice(index, 1);
 
     setOutfit(currentOutfits);
+    setAdded(true);
 
     if (currentOutfits.length === 0) {
       setExists(false);
@@ -26,22 +33,28 @@ function OutfitList({ productId }) {
 
   return (
     <div>
-      <div className='AddCard' onClick={() => addItem(productId)}>
-        <div>+</div>
-        <div>Add to Outfit</div>
-      </div>
-      <div>
-        {ifOutfit
-          ? <div> {outfitItems.map((id, index) => (
-            <ProductCard
-              key={id}
-              productId={id}
-              index={index}
-              listState={listState}
-              triggerDelete={triggerDelete}/>))}
-            </div>
-          : null
-        }
+      <h3>Your Outfit</h3>
+      <div className='RICList'>
+        <div className='AddCard' onClick={() => addItem(productId)}>
+          {ifAdded
+            ? <div>
+                <div>⊕</div>
+                <div>Add to Outfit</div></div>
+            : <div>Item Already Added</div>
+          }
+        </div>
+          {ifOutfit
+            ? <div className='RICList'>
+              {outfitItems.map((id, index) => (
+              <ProductCard
+                key={id}
+                productId={id}
+                index={index}
+                listState={listState}
+                triggerDelete={triggerDelete}/>))}
+              </div>
+            : null
+          }
       </div>
     </div>
   );

@@ -1,10 +1,10 @@
 import React, { useState, useEffect }  from 'react';
 
-function ActionButton({ index, listState, triggerDelete }) {
+const ActionButton = ({ id, index, listState, triggerDelete, triggerModal }) => {
   const [isStar, setStar] = useState(true);
   const [button, setButton] = useState('☆');
 
-  function setAction() {
+  const setAction = () => {
     if (listState === 'related') {
       setStar(true);
     } else if (listState === 'outfit') {
@@ -17,10 +17,10 @@ function ActionButton({ index, listState, triggerDelete }) {
   }, [listState]);
 
   return (
-    <div>
+    <div className='ActionButton'>
       {isStar
-        ? <input type="button" value='☆' />
-        : <input key={index} type="button" value='x' onClick={() => {triggerDelete(index)}} />
+        ? <input key={id} type="button" value='☆' onClick={() => {triggerModal(id)}}/>
+        : <input key={index} type="button" value='ⓧ' onClick={() => {triggerDelete(index)}} />
       }
     </div>
   )
