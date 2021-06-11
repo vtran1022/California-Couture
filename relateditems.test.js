@@ -15,15 +15,6 @@ afterEach(cleanup);
 
 // basic render testing, screen.debug() will log the HTML output in test terminal
 describe('RICWidget', () => {
-  test('renders RIC-Widget component', () => {
-    const { asFragment } = render(<RICWidget />);
-
-    expect(asFragment(<RICWidget />)).toMatchSnapshot();
-  });
-});
-
-
-describe('RICWidget', () => {
   test('checking both lists render', () => {
     render(<RICWidget />);
 
