@@ -63,7 +63,6 @@ const RelatedList = ({ productId }) => {
   return (
     <div>
       <h3>Related Products</h3>
-      <div>Index: {state.slideIndex}</div>
       <div className='RICList'>
         <button className='buttonL' onClick={() => dispatch({ type: 'previous' })}>‹</button>
 
