@@ -141,10 +141,10 @@
   height: 280px;
   margin-right: 20px;
 
-  /* display: grid;
-  align-content: center; */
   grid-area: 1 / -1;
-  transform: translateX(calc(100% * var(--offset)))
+  transform: translateX(calc(100% * var(--offset)));
+  transition: transform 0.5s ease-in-out;
+
 }
 
 .ProductImage {
