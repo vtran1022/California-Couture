@@ -1,20 +1,13 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import ImageGallery from './ImageGallery.jsx';
-import Cart from './Cart.jsx';
-import Description from './Description.jsx';
-import Atelier from '../../Atelier.js';
-import { auth } from '../../../../config.js';
+import ImageGallery from './overview/ImageGallery.jsx';
+import Cart from './overview/Cart.jsx';
+import Description from './overview/Description.jsx';
+import Atelier from '../Atelier.js';
+import { auth } from '../../../config.js';
 
-/*
-Need to get ONE product from the database
-With that one product id we need to get all the STYLES that the product has
-Styles contains all the pictures related to the styles. Also contains all the sales pricing for the style.
-Styles also contains all the inventory of the product styles
-*/
 function Overview (props) {
   // const [cartItems, serCurrentCart] = await useState({}) need to pull a user's cart
-  // const [productList, setProductList] = useState(sampleData); don't think this is necessary.
   const [currentProduct, setCurrentProduct] = useState({});
   const [styleId, setStyleId] = useState('');
   const [isLoading, setLoading] = useState(true);

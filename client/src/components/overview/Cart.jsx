@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import AvgRating from '../AvgRating.jsx';
 
 const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
   // const [cartItems, serCurrentCart] = await useState({}) need to pull a user's cart
@@ -41,7 +42,11 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
   return (
     <form className='cart' data-testid="cart-1">
 
-      {/* Star Rating goes here */} <span className='cart-ratings'>Star Rating PlaceHolder</span>
+
+      <div className='cart-ratings'>
+      <AvgRating productId={ currentProduct.id } />
+
+      </div>
 
       <span id='name'>{currentProduct.name}</span><br></br>
 
