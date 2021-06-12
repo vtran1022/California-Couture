@@ -30,17 +30,10 @@ class App extends React.Component {
     return (
       <div>
 
-        {/* <Overview />
-        <Ratings id={this.state.product} /> */}
-
-        {this.state.idArr.map((item) => (
-          <div key={item} onClick={this.handleItem}>{item}</div>
-        ))}
-        {/* <RICWidget
-          productId={this.state.product} /> */}
-
-        <AvgRating
-        productId={this.state.product}/>
+        <Overview />
+        <Ratings id={this.state.product} />
+        <RICWidget
+          productId={this.state.product} />
       </div>
     );
   }

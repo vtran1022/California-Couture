@@ -323,19 +323,20 @@ float: right;
 
 /* Star Rating Component --------------*/
 .star {
-  height: 36px;
-  width: 31px;
+  height: 20px;
+  width: 15px;
 }
 
 .star-fill {
   position: relative;
   display: inline-block;
-  height: 36px;
+  height: 20px;
+  width: 15px;
   background-color: black;
 }
 
 .star-container {
-  height: 36px;
-  width: 31px;
+  height: 20px;
+  width: 15px;
   display: inline-block;
 }
