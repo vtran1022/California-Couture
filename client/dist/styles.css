@@ -13,7 +13,7 @@ body, html {
 }
 
 .announcement-container {
-  height: 50px;
+  height: 40px;
   background-color: #60c7cb;
   display: flex;
   justify-content: center;
@@ -268,7 +268,7 @@ float: right;
 
 .AddCard,
 .ProductCard {
-  border: 1px solid black;
+  border: 1px solid #3c4149;
   width: 200px;
   height: 280px;
   margin-right: 10px;
@@ -303,11 +303,6 @@ float: right;
   font-size: 20px;
 }
 
-#plus-wrapper {
-  outline: rgb(148, 178, 230);
-}
-
-
 .ActionButton {
   position: relative;
 }
@@ -323,9 +318,9 @@ float: right;
   overflow: hidden;
   outline:none;
   font-size: 20px;
-  color: white;
-  -webkit-text-stroke: 1px white;
-  text-stroke: 1px white;
+  color: #e4f3f4;
+  -webkit-text-stroke: 1px #e4f3f4;
+  text-stroke: 1px #e4f3f4;
 }
 
 .c-modal {
@@ -340,26 +335,36 @@ float: right;
   z-index: 10;
 }
 
-#salePrice {
+#prod-price,
+#sale-price,
+#prod-category {
+  font-size: 10px;
+}
+
+#prod-name {
+  font-size: 13px;
+}
+
+#sale-price {
   color: red
 }
 
 /* Star Rating Component --------------*/
 .star {
-  height: 20px;
+  height: 18px;
   width: 15px;
 }
 
 .star-fill {
   position: relative;
   display: inline-block;
-  height: 20px;
+  height: 18px;
   width: 15px;
   background-color: black;
 }
 
 .star-container {
-  height: 20px;
+  height: 18px;
   width: 15px;
   display: inline-block;
 }

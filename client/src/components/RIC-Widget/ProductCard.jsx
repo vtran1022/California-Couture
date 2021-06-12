@@ -44,11 +44,13 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
 
       <img src={image} alt={name} className='ProductImage'></img>
       <div className='ProductInfo'>
-        <div>{category}</div>
-        <b>{name}</b>
+        <span id='prod-category'>{category}</span>
+        <br />
+        <b id='prod-name'>{name}</b>
+        <br />
         {price.salePrice
-          ? <div> <span id="salePrice">${price.salePrice}</span> <strike>${price.default}</strike> </div>
-          : <div>${price.default}</div>
+          ? <span id="sale-price">${price.salePrice}<strike>${price.default}</strike> </span>
+          : <span id='prod-price'>${price.default}</span>
         }
         <AvgRating
           productId={productId}/>
