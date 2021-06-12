@@ -586,6 +586,10 @@ td {
   font-size: 13px;
 }
 
+#prod-name:hover {
+  color: #60c7cb;
+}
+
 #sale-price {
   color: red
 }
