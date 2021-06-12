@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Thumbnails from './Thumbnails.jsx';
-import ViewModal from './ViewModal.jsx'
-import Left from '../../imgs/Navigate-left_36746.png';
-import Right from '../../imgs/Navigate-right_36745.png';
+// import ViewModal from './ViewModal.jsx'
+import Enlarge from '../../imgs/expand-32.png';
+
 
 function ImageGallery (props) {
   const [showView, setView] = useState(false);
@@ -46,9 +46,14 @@ function ImageGallery (props) {
 
   return (
     <div
-    className='image-gallery'
+    className={
+      showView
+      ? 'image-gallery-enlarged'
+      : 'image-gallery'}
     >
-      {showView
+
+
+      {/* {showView
       ? <div id='lightbox' className='modal'>
           <ViewModal
           photos={photoList}
@@ -58,27 +63,29 @@ function ImageGallery (props) {
           close={handleViewClick}
           handleThumbnailClick={handleThumbnailClick}/>
         </div>
-      : null}
+      : null} */}
 
       <img
       className='preview'
       src={currentPhoto.url}
       onClick={() => handleViewClick()}
       />
-      <div className='thumbnails'>
+      <div className='default-thumbs-overlay'>
         {photoList.map(photo => //clean up later. Not DRY
           <Thumbnails
           key={photoList.indexOf(photo)}
-          cname='default-thumbs'
+          cname='default-thumb'
           thumbnailUrl={photo.thumbnail_url}
           photoUrl={photo.url}
           photoList={photoList}
           handleThumbnailClick={handleThumbnailClick}/>
           )}
         </div>
-      <img src={Left} onClick={() => handleLeftClick()}></img>
-      <img src={Right} onClick={() => handleRightClick()}></img>
-
+      {/* <img class='left-button' src={Left} onClick={() => handleLeftClick()}></img>
+      <img class='right-button' src={Right} onClick={() => handleRightClick()}></img> */}
+      <a className='left-button' onClick={() => handleLeftClick()}>&#10094;</a>
+      <a className='right-button' onClick={() => handleRightClick()}>&#10095;</a>
+      <img className='enlarge-button' src={Enlarge} onClick={()=>handleViewClick()}/>
     </div>
   )
 }

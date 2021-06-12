@@ -96,7 +96,7 @@ const Cart = ( props ) => {
       </div>
 
       <div className="cart-submit">
-        <input type="submit" value="Add to Cart" onSubmit={(e) => handleSubmit(e)}></input>
+        <input type="submit" value="Add to Cart" ></input>
       </div>
     </form>
 

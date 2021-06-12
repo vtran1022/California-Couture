@@ -62,11 +62,31 @@
 }
 
 .image-gallery {
+  background-color: black;
   grid-column-start: 2;
   grid-row-start: 1;
-  width: 500px;
-  height: 300px;
-  border: 1px solid black;
+  display: flex;
+  width: 600px;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  object-fit: cover;
+}
+
+.image-gallery-enlarged {
+  background-color: black;
+  grid-column-start: 2;
+  grid-row-start: 1;
+  z-index: 20;
+  display: flex;
+  width: 1000px;
+  height: 600px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  object-fit: cover;
 }
 
 .cart {
@@ -84,7 +104,7 @@
   display: grid;
 }
 
-.description h1 {
+/* .description h1 {
 
 }
 
@@ -92,20 +112,57 @@
 
 }
 
-.preview {
-  display: block;
-  max-width:500px;
-  max-height:300px;
-  width: auto;
-  height: auto;
+.features {
+
 }
 
-.default-thumbs {
+.features span {
+
+} */
+
+.preview {
+  display: block;
+  max-height: 100%;
+  height: 100%;
+  max-width: auto;
+  width: auto;
+}
+
+.default-thumbs-overlay {
+  z-index: 10;
+  position: absolute;
+  left: 0px;
+  overflow: scroll;
+  height: 500px;
+  width: 100px;
+}
+
+.default-thumb {
   max-width:100px;
   max-height:100px;
   width: auto;
   height: auto;
   margin:5px;
+}
+
+.left-button {
+  color:white;
+  z-index: 20;
+  position: absolute;
+  left: 110px;
+}
+
+.right-button {
+  color:white;
+  z-index: 20;
+  position: absolute;
+  right: 20px;
+}
+
+.enlarge-button {
+  position: absolute;
+  right: 20px;
+  top: 10px;
 }
 
 .cart-ratings {
@@ -206,12 +263,13 @@
   text-align: center;
   display: inline-block;
   height: 25px;
-  width:100px
+  width: 100px
 }
 
 .style img{
-  opacity: .5;
   display: block;
+  max-width: 100px;
+  max-height: 100px;
   height:100px;
   width:100px;
   border-radius: 50%;
