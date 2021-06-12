@@ -82,7 +82,7 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
 
       <div className='quantity-select'>
       <select name='quantity' id='quantity-select' onChange={(e) => setQuantity(e.target.value)}>
-        <option></option>
+        <option>------</option>
         {
           !quantities
           ? null

@@ -12,9 +12,11 @@ const Description = ({ currentProduct }) => {
   }, [currentProduct]);
 
   return (
-    <div className='description'>
+    <div className='description-features'>
+      <div className='description'>
       <h1>{slogan}</h1>
       <span>{description}</span><br></br>
+      </div>
 
       <div className='features'>
         {features.map((feature, index) => // clean this up later. Not DRY

@@ -126,31 +126,34 @@ img {
 
 /* ---------------------------- Overview ---------------------------- */
 .overview {
+  top: 20px;
+  min-width: 90vw;
+  min-height: 100vh;
   width: 90vw;
   height: 100vh;
   display: grid;
-  grid-template-columns: 5% 35% 25% 15% 20%;
+  grid-template-columns: 5% 20% 40% 15% 20%;
   grid-template-rows: 20% 20% 20% 10% 30%;
   position: relative;
 }
 
 .image-gallery {
+  background-color: #60c7cb;
   grid-column-start: 2;
   grid-row-start: 1;
-  background-color: black;
   display: flex;
   padding: 30px;
   width: 600px;
   height: 475px;
   overflow: hidden;
-  position: relative;
+  position: absolute;
   align-items: center;
   justify-content: center;
   object-fit: cover;
 }
 
 .image-gallery-enlarged {
-  background-color: black;
+  background-color: #60c7cb;
   grid-column-start: 2;
   grid-row-start: 1;
   z-index: 20;
@@ -158,28 +161,40 @@ img {
   padding: 30px;
   width: 1150px;
   height: 600px;
-  position: relative;
+  position: absolute;
   align-items: center;
   justify-content: center;
   object-fit: cover;
 }
 
 .cart {
+  position:absolute;
+  background-color: #60c7cb;
   grid-column-start: 4;
   display: grid;
   grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
   grid-template-rows: 5% 5% 5% 5% 2.5% 7.5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%;
   width: 500px;
-  height: 700px;
+  height: 535px;
 }
 
-.description {
+.description-features {
+  position:absolute;
+  background-color: #60c7cb;
+  display: flex;
+  align-items: center;
+  width: 1245px;
   grid-column-start: 2;
   grid-row-start: 5;
-  display: grid;
 }
 
-/* .description h1 {
+
+
+.description {
+
+}
+
+.description h1 {
 
 }
 
@@ -193,7 +208,7 @@ img {
 
 .features span {
 
-} */
+}
 
 .preview {
   padding: 30px;
@@ -258,36 +273,41 @@ img {
 
 .cart-ratings {
   grid-row-start: 2;
-  grid-column-start: 1;
+  grid-column-start: 2;
   grid-column-end: span col4-start;
+  left: 20px;
 }
 
 #category {
+  grid-column-start: 2;
   grid-row-start: 3;
+  left: 20px;
 }
 
 #name {
   grid-row-start: 4;
-  grid-column-start: 1;
+  grid-column-start: 2;
   grid-column-end: span col4-start;
+  left: 20px;
 }
 
 .price {
   grid-row-start: 5;
-  grid-column-start: 1;
+  grid-column-start: 2;
   grid-column-end: span col4-start;
+  left: 20px;
 }
 
 .price-sale {
   grid-row-start: 5;
-  grid-column-start: 1;
+  grid-column-start: 2;
   grid-column-end: span col4-start;
   color:red
 }
 
 .size-select {
   grid-row-start: 17;
-  grid-column-start: 2;
+  grid-column-start: 3;
 }
 
 .size-select select {
@@ -297,7 +317,7 @@ img {
 
 .quantity-select {
   grid-row-start: 17;
-  grid-column-start: 6;
+  grid-column-start: 7;
 }
 .quantity-select select {
   width: 120px;
@@ -306,7 +326,7 @@ img {
 
 .cart-submit {
   grid-row-start: 19;
-  grid-column-start: 2;
+  grid-column-start: 3;
 }
 
 .cart-submit input {
@@ -318,7 +338,7 @@ img {
 .styles-box {
   grid-row-start: 6;
   flex-wrap: wrap;
-  width: 340px;
+  width: 500px;
   height: auto;
 }
 .styles-box h1 {
@@ -329,24 +349,24 @@ img {
   overflow: visible;
   position: relative;
   height: auto;
-  width: 400px;
+  width: 500px;
   text-align: center;
 }
 /* Container for Styles Listing */
 .styles {
   display: flex;
   flex-wrap: wrap;
-  padding-left: .5em;
-  width: 360px;
-  height: 300px;
+  width: 500px;
+  height: 250px;
 }
 
 /* Each style Div - contains Picture and Name */
 .style {
-  display: inline-block;
-  padding-left: 15px;
+  display: flex;
+  align-items: center;
+  padding-right: 15px;
   height: 120px;
-  width: 75px
+  width: 110px
 }
 .style label {
   position: relative;
@@ -359,11 +379,13 @@ img {
   text-align: center;
   display: inline-block;
   height: 25px;
-  width: 75px
+  width: 110px
 }
 
 .style img{
-  display: block;
+  position: relative;
+  padding-left: 17.5px;
+  padding-right: 17.5px;
   height:75px;
   width:75px;
   border-radius: 50%;
