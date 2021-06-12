@@ -216,21 +216,19 @@ float: right;
   width: 1075px;
   height: 285px;
   overflow: hidden;
+  margin-left: 100px;
 }
 
 .buttonL {
   appearance: none;
-  background: transparent;
+  background: white;
   border: none;
   color: black;
-  -webkit-text-stroke: 1px white;
-  text-stroke: 1px white;
   position: relative;
   font-size: 40px;
   width: 40px;
-  height: 250px;
+  height: 285px;
   transition: opacity 0.3s;
-  opacity: 0.7;
   z-index: 5;
   display: block;
 }
@@ -240,20 +238,17 @@ float: right;
   background: transparent;
   border: none;
   color: black;
-  -webkit-text-stroke: 1px white;
-  text-stroke: 1px white;
   position: relative;
   font-size: 40px;
   width: 40px;
-  height: 250px;
+  height: 285px;
   transition: opacity 0.3s;
-  opacity: 0.7;
   z-index: 5;
 }
 
 .AddCard,
 .ProductCard {
-  border: 1px solid teal;
+  border: 1px solid black;
   width: 200px;
   height: 280px;
   margin-right: 10px;
