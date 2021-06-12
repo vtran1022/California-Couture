@@ -219,7 +219,7 @@ float: right;
   margin-left: 100px;
 }
 
-.buttonL {
+.button1 {
   appearance: none;
   background: white;
   border: none;
@@ -230,14 +230,13 @@ float: right;
   height: 285px;
   transition: opacity 0.3s;
   z-index: 5;
-  display: block;
 }
 
-.buttonR {
+.button2 {
   appearance: none;
-  background: transparent;
+  background: white;
   border: none;
-  color: black;
+  color: white;
   position: relative;
   font-size: 40px;
   width: 40px;
@@ -304,6 +303,8 @@ float: right;
   overflow: hidden;
   outline:none;
   font-size: 20px;
+  -webkit-text-stroke: 1px white;
+  text-stroke: 1px white;
 }
 
 .c-modal {

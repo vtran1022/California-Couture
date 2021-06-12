@@ -12,7 +12,6 @@ class App extends React.Component {
     this.state = {
       product: '13029',
       idArr: [
-        13027,
         13031,
         13029,
         13024,
