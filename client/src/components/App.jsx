@@ -1,10 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import Atelier from '../Atelier.js';
-// import RatingsReview from './RatingsReview.jsx';
 import Overview from './overview/Overview.jsx';
 import Ratings from './RatingsReview.jsx';
 import RICWidget from './RIC-Widget.jsx';
+import AvgRating from './AvgRating.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -36,11 +36,11 @@ class App extends React.Component {
         {this.state.idArr.map((item) => (
           <div key={item} onClick={this.handleItem}>{item}</div>
         ))}
-        <div>
-          <RICWidget
-            productId={this.state.product} />
-        </div>
+        {/* <RICWidget
+          productId={this.state.product} /> */}
 
+        <AvgRating
+        productId={this.state.product}/>
       </div>
     );
   }

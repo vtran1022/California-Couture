@@ -320,3 +320,22 @@ float: right;
 #salePrice {
   color: red
 }
+
+/* Star Rating Component --------------*/
+.star {
+  height: 36px;
+  width: 31px;
+}
+
+.star-fill {
+  position: relative;
+  display: inline-block;
+  height: 36px;
+  background-color: black;
+}
+
+.star-container {
+  height: 36px;
+  width: 31px;
+  display: inline-block;
+}
