@@ -4,7 +4,7 @@ import { auth } from '../../../../config.js';
 import AvgRating from '../AvgRating.jsx';
 import ActionButton from './ActionButton.jsx';
 
-const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal }) => {
+const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal, offset }) => {
   const [image, setImage] = useState('');
   const [category, setCategory] = useState('');
   const [name, setName] = useState('');
@@ -34,22 +34,27 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal 
   }, [productId]);
 
   return (
-    <div className='ProductCard'>
+    <div className='ProductCard' style={{ '--offset': offset }}>
       <ActionButton
         index={index}
         id={productId}
         listState={listState}
         triggerDelete={triggerDelete}
         triggerModal={triggerModal}/>
+
       <img src={image} alt={name} className='ProductImage'></img>
-      <div>{category}</div>
-      <b>{name}</b>
+      <div className='ProductInfo'>
+        <span id='prod-category'>{category}</span>
+        <br />
+        <b id='prod-name'>{name}</b>
+        <br />
         {price.salePrice
-          ? <div><span id="salePrice">${price.salePrice}</span> <strike>${price.default}</strike></div>
-          : <div>${price.default}</div>
+          ? <span id="sale-price">${price.salePrice}<strike>${price.default}</strike> </span>
+          : <span id='prod-price'>${price.default}</span>
         }
-      <AvgRating
-        productId={productId}/>
+        <AvgRating
+          productId={productId}/>
+      </div>
     </div>
   );
 };
