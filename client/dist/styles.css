@@ -560,8 +560,8 @@ td {
   outline:none;
   font-size: 20px;
   color: #e4f3f4;
-  -webkit-text-stroke: 1px #e4f3f4;
-  text-stroke: 1px #e4f3f4;
+  -webkit-text-stroke: 0.5px #e4f3f4;
+  text-stroke: 0.5px #e4f3f4;
 }
 
 .c-modal {
