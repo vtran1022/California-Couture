@@ -215,7 +215,7 @@ float: right;
   display: inline-flex;
   width: 1075px;
   height: 285px;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 .buttonL {
@@ -223,6 +223,8 @@ float: right;
   background: transparent;
   border: none;
   color: black;
+  -webkit-text-stroke: 1px white;
+  text-stroke: 1px white;
   position: relative;
   font-size: 40px;
   width: 40px;
@@ -230,6 +232,7 @@ float: right;
   transition: opacity 0.3s;
   opacity: 0.7;
   z-index: 5;
+  display: block;
 }
 
 .buttonR {
@@ -237,6 +240,8 @@ float: right;
   background: transparent;
   border: none;
   color: black;
+  -webkit-text-stroke: 1px white;
+  text-stroke: 1px white;
   position: relative;
   font-size: 40px;
   width: 40px;
@@ -244,9 +249,6 @@ float: right;
   transition: opacity 0.3s;
   opacity: 0.7;
   z-index: 5;
-
-  transform: translateX(calc(104% * var(--offset)));
-  transition: transform 0.5s ease-in-out;
 }
 
 .AddCard,
@@ -257,7 +259,7 @@ float: right;
   margin-right: 10px;
   float: left;
 
-  transform: translateX(calc(104% * var(--offset)));
+  transform: translateX(calc(105% * var(--offset)));
   transition: transform 0.5s ease-in-out;
 }
 
