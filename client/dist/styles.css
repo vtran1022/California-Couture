@@ -4,11 +4,26 @@ body, html {
   padding: 0;
   background-color: #f4f4f4;
   font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
 }
 
 #logo {
   width: auto;
   height: 80px;
+}
+
+.announcement-container {
+  height: 50px;
+  background-color: #60c7cb;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.announcement {
+  color: #ecf4f4;
 }
 
 /* ---------------------------- Ratings & Reviews ---------------------------- */
@@ -227,26 +242,26 @@ float: right;
 
 .button1 {
   appearance: none;
-  background: white;
+  background: #f4f4f4;;
   border: none;
   color: black;
   position: relative;
   font-size: 40px;
   width: 40px;
-  height: 250px;
+  height: 180px;
   transition: opacity 0.3s;
   z-index: 5;
 }
 
 .button2 {
   appearance: none;
-  background: white;
+  background: #f4f4f4;;
   border: none;
-  color: white;
+  color: #f4f4f4;;
   position: relative;
   font-size: 40px;
   width: 40px;
-  height: 250px;
+  height: 180px;
   transition: opacity 0.3s;
   z-index: 5;
 }

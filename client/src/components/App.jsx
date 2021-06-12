@@ -33,13 +33,15 @@ class App extends React.Component {
       <nav className='navbar'>
         <img id='logo' src={lightLogo} alt='Company Logo'></img>
       </nav>
-      <div>SITE-WID ANNOUNCEMENT MESSAGE! -- SALE / DISCOUNT <b>OFFER</b> -- NEW PRODUCT HIGHLIGHT</div>
+      <div className='announcement-container'>
+        <span className='announcement'>SITE-WIDE ANNOUNCEMENT MESSAGE! ─	SALE / DISCOUNT <b>OFFER</b> ─ NEW PRODUCT HIGHLIGHT</span>
+      </div>
       <div>
 
         {/* <Overview />
         <Ratings id={this.state.product} /> */}
-        <RICWidget
-          productId={this.state.product} />
+        {/* <RICWidget
+          productId={this.state.product} /> */}
       </div>
       </div>
     );
