@@ -30,6 +30,7 @@ body, html {
 .review-table {
   border: 1px solid black;
   border-collapse: collapse;
+  width: auto;
 }
 .list-container {
   height: 400px;
@@ -42,12 +43,16 @@ body, html {
   height: 500px;
 }
 
+td {
+  margin: 5px;
+}
+
 .modal {
   position: fixed;
-  width: 500px;
-  height: 500px;
-  top: 25%;
-  left: 25%;
+  width: 400px;
+  height: 600px;
+  top: 10%;
+  left: 20%;
   border: 1px solid black;
   text-align: center;
   background-color: darkcyan;
@@ -60,23 +65,63 @@ body, html {
 }
 
 .review-elem {
+  height: fit-content(200px);
+  width: 1000px;
   border-bottom: 1px solid black;
   margin-left: 0px;
   margin-right: 0px;
   margin-bottom: 5px;
   display: grid;
-  grid-template-columns: 30% 40% 30%;
-  grid-template-rows: 40px 200px 40px;
+  grid-template-columns: 300px 300px auto auto;
+  grid-template-rows: 20px 20px 10px auto auto 50px 50px;
 }
 
-.tile-reviewer .tile-date {
+.tile-summary {
+  grid-column: 1;
+  grid-row: 2;
+}
+.tile-date {
+  grid-column: 4;
+  grid-row: 1;
+  font-size: 11px;
+  font-weight: lighter;
+}
+
+.tile-reviewer {
   grid-column: 3;
   grid-row: 1;
+  font-size: 11px;
+  font-weight: lighter;
+  text-align: right;
+  margin-right: 5px;
+}
+
+.tile-images {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row: 5;
+}
+img {
+  margin: 3px;
 }
 
 .tile-body {
   grid-column-start: 1;
   grid-column-end: 3;
+
+  grid-row-start: 4;
+  grid-row-end: 4;
+}
+
+.tile-recommend {
+  grid-column-start: 1;
+  grid-row: 6;
+  vertical-align: center;
+}
+
+.tile-helpful {
+  grid-row: 7;
+  grid-column: 1;
 }
 
 /* ---------------------------- Overview ---------------------------- */

@@ -49,7 +49,8 @@ const FormModal = (props) => {
       formData.rating === -1 ||
       formData.body.length < 50 ||
       formData.name.length === 0 ||
-      formData.email.length === 0
+      formData.email.length === 0 ||
+      !/^[A-Za-z]+@[A-Za-z]+\.[A-Za-z]+$/.test(formData.email)
     ) {
       return false;
     }
@@ -91,16 +92,20 @@ const FormModal = (props) => {
         <div>
           <label>Body:</label>
           <input type='textarea' placeholder='Why did you like the product or not?' value={formData.body} onChange={e => handleChange(e.target.value, 'body')}></input>
+          <br />
           <span>{formData.body.length >= 50 ? <span>Minimum reached</span> : <span>Minimum required characters left: {50 - formData.body.length}</span>}</span>
         </div>
         <div>
           <label>Nickname:</label>
           <input type='text' placeholder='Example: jackson11!' value={formData.name} onChange={e => handleChange(e.target.value, 'name')}></input>
+          <br />
           <label>For privacy reasons, do not use your full name or email address</label>
         </div>
         <div>
           <label>Email:</label>
           <input type='text' placeholder='Example: jackson11@email.com' value={formData.email} onChange={e => handleChange(e.target.value, 'email')}></input>
+          <br />
+          <label>For authentication reasons, you will not be emailed</label>
         </div>
         <input type='submit'></input>
       </form>

@@ -6,39 +6,6 @@ import ReviewTile from './ratings/ReviewTile.jsx';
 import FormModal from './ratings/FormModal.jsx';
 
 
-/*
-TODO: figure out why /reviews/meta is returning more reviews than /reviews
-const higherOrderComponent = (component) => {
-  return class extends React.Component {
-    state = {option : 2}
-    handleChange = (e) => this.setState({option: e.target.value})
-    render() {
-      return  (
-        <React.Fragment>
-          <input id="mood-range" type="range" min={0} max={4} value={this.state.option} onChange={this.handleChange} />
-          <Component option={this.state.option} />
-        </React.Fragment>
-      )
-    }
-  }
-};
-I think we could also do this functionally:
-const higherOrderComponent = (Component) => {
-  return (props) => {
-    const [option, setOption] = useState(2);
-    handleChange = (e) => setOption(e.target.value)
-      return  (
-        <React.Fragment>
-          <input id="mood-range" type="range" min={0} max={4} value={option} onChange={this.handleChange} />
-          <Component option={option} />
-        </React.Fragment>
-      )
-  }
-};
-*/
-
-
-
 const Ratings = (props) => {
   const [reviews, setReviews] = useState([]);
   const [meta, setMeta] = useState({});
@@ -47,6 +14,7 @@ const Ratings = (props) => {
   const [sort, setSort] = useState('relevant');
   const [showForm, setShowForm] = useState(false);
   const [search, setSearch] = useState('');
+  const [filter, setFilter] = useState([true, true, true, true, true]);
 
   //effects
   //runs when the sorting method is changed, fetch reviews with new sorting methods
@@ -55,7 +23,6 @@ const Ratings = (props) => {
     setReviews([]);
     async function fetchAPI() {
       var res = await Atelier.getReviews(props.id, 2, 1, sort);
-      //console.log('res: ' + JSON.stringify(res));
       return res.results;
     }
     fetchAPI().then(res => {
@@ -107,43 +74,55 @@ const Ratings = (props) => {
     setSearch(e.target.value);
   };
 
+  const handleFilter = (rating) => {
+    setFilter(filter => {
+      var idx = rating - 1;
+      filter[idx] = !filter[idx];
+      return [...filter];
+    });
+  };
+
+
   if (Object.keys(reviews).length > 0) {
     return (<div className='review-container'>
       {showForm ? <FormModal characteristics={meta.characteristics} submitData={addNewReview} productName={'PLACEHOLDER'} /> : null}
+      <form>
+        {/* sort drop down */}
+        <label>Sort by:</label>
+        <select value={sort} onChange={handleChange}>
+          <option value='helpful'>Helpful</option>
+          <option value='newest'>Newest</option>
+          <option value='relevant'>Relevance</option>
+        </select>
+      </form>
+      <form>
+        <label>Search Reviews:</label>
+        <input type='text' value={search} onChange={handleSearch}></input>
+      </form>
       <div className='list-container'>
-        <form>
-          {/* sort drop down */}
-          <label>Sort by:</label>
-          <select value={sort} onChange={handleChange}>
-            <option value='helpful'>Helpful</option>
-            <option value='newest'>Newest</option>
-            <option value='relevant'>Relevance</option>
-          </select>
-        </form>
-        <form>
-          <label>Search Reviews:</label>
-          <input type='text' value={search} onChange={handleSearch}></input>
-        </form>
         {/* main review table */}
         <table className='review-table'>
           <tbody>
             {reviews.filter(review => {
-              if (search.length < 3) {
-                return true;
+              if (!filter[review.rating - 1]) {
+                return false;
               }
-              var regex = '^.*' + search + '.*$';
-              var re = new RegExp(regex);
-              return re.test(review.body);
+              if (search.length > 3) {
+                var regex = '^.*' + search + '.*$';
+                var re = new RegExp(regex, 'i');
+                return re.test(review.body);
+              }
+              return true;
             }).map(r => {
-              return <ReviewTile review={r} search={search} key={r.review_id} />
+              return <ReviewTile review={r} search={search} key={r.review_id} putHelpful={(id) => Atelier.putHelpful(id)} />
             })}
           </tbody>
         </table>
-        <button onClick={handleLoad}>Load More</button> <button onClick={() => setShowForm(!showForm)}>Add a Review</button>
       </div>
+      <button onClick={handleLoad}>Load More</button> <button onClick={() => setShowForm(!showForm)}>Add a Review</button>
       {/* product breakdown */}
       <div className='breakdown'>
-        {Object.keys(meta).length > 0 ? <Breakdown data={meta} key={props.id} /> : <div></div>}
+        {Object.keys(meta).length > 0 ? <Breakdown data={meta} key={props.id} handleFilter={handleFilter}/> : <div></div>}
       </div>
     </div>)
   } else {

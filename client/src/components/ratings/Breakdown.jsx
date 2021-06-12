@@ -33,7 +33,8 @@ const Breakdown = (props) => {
   const makeBreakdown = (data) => {
     var res = [];
     for (var stars = 5; stars >= 1; stars--) {
-      res.push(<div key={stars} ><StarRating rating={stars} />: {data[stars]} </div>)
+      let i = stars;
+      res.push(<div key={stars} onClick={() => props.handleFilter(i)} ><StarRating rating={stars} />: {data[stars]} {stars}</div>)
     }
     return res;
   };
