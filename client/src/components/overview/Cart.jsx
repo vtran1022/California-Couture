@@ -45,7 +45,6 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
 
       <div className='cart-ratings'>
       <AvgRating productId={ currentProduct.id } />
-
       </div>
 
       <span id='name'>{currentProduct.name}</span><br></br>
