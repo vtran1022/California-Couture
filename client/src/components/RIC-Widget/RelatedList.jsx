@@ -10,7 +10,6 @@ const RelatedList = ({ productId }) => {
   const [relatedItems, setRelated] = useState([]);
   const [isModal, setModal] = useState(false);
   const [relatedId, setId] = useState(0);
-  // const [imageCarousel, setCarousel] = useState([]);
   const [isRight, setRight] = useState(false);
   const [isLeft, setLeft] = useState(false);
 
@@ -19,7 +18,6 @@ const RelatedList = ({ productId }) => {
     { headers: { 'Authorization': auth.TOKEN } });
 
     setRelated(relatedData.data);
-    // setCarousel(relatedData.data.slice(0, 5));
   };
 
   useEffect(() => {
@@ -71,33 +69,6 @@ const RelatedList = ({ productId }) => {
           setIndex(prevState => prevState + 1);
         }
     }
-
-    // switch (action.type) {
-    //   case 'next':
-    //     let lastE = imageCarousel[imageCarousel.length - 1];
-    //     let nextI = relatedItems.indexOf(lastE);
-    //     let updatedNext = relatedItems.slice(nextI + 1, nextI + 6);
-
-    //     if (updatedNext.length !== 5) {
-    //       updatedNext = relatedItems.slice(-5);
-    //     }
-
-    //     return setCarousel(prevState => prevState = updatedNext);
-
-    //   case 'previous':
-    //     let firstE = imageCarousel[0];
-    //     let prevI = relatedItems.indexOf(firstE);
-    //     let updatedPrev;
-
-    //     if (prevI > 4) {
-    //       let i = prevI - 5;
-    //       updatedPrev = relatedItems.slice(i, prevI);
-    //     } else {
-    //       updatedPrev = relatedItems.slice(0, 5);
-    //     }
-
-    //     return setCarousel(prevState => prevState = updatedPrev);
-    // }
   }
 
   return (
