@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 
-const Cart = ( props ) => {
+const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
   // const [cartItems, serCurrentCart] = await useState({}) need to pull a user's cart
   // const [styleId, setStyleId] = useState('');
   // const [isLoading, setLoading] = useState(false);
-  const [skus, setSKUs] = useState(parseSKUs(props.style));
+  const [skus, setSKUs] = useState(parseSKUs(style));
   const [currentSKU, setSKU] = useState({});
   const [selectedSize, setSize] = useState('');
   const [quantities, setQuantities] = useState([]);
   const [selectedQuantity, setQuantity] = useState('');
   const [price, setPrice] = useState({
-    default: props.defaultPrice,
-    sale: props.style.sale_price
+    default: currentProduct.default_Price,
+    sale: style.sale_price
   })
 
   function handleSubmit (e) {
@@ -20,10 +20,10 @@ const Cart = ( props ) => {
 
   useEffect( () => {
     setPrice({
-      default: props.currentProduct.default_price,
-      sale: props.style.sale_price
+      default: currentProduct.default_price,
+      sale: style.sale_price
     });
-  }, [props.style])
+  }, [style])
 
   useEffect( () => {
     for (var i = 0; i < skus.length; i++) {
@@ -43,18 +43,18 @@ const Cart = ( props ) => {
 
       {/* Star Rating goes here */} <span className='cart-ratings'>Star Rating PlaceHolder</span>
 
-      <span id='name'>{props.currentProduct.name}</span><br></br>
+      <span id='name'>{currentProduct.name}</span><br></br>
 
-      <span id='category'>{props.currentProduct.category}</span><br></br>
+      <span id='category'>{currentProduct.category}</span><br></br>
 
       {!price.sale
         ?<span className='price'>Price: {price.default}</span>
         :<span className='price-sale'>Price: <strike>{price.default}</strike>{price.sale}</span>}
 
       <div className='styles-box'>
-        <h1>Style: {props.style.name}</h1>
+        <h1><strong>Style</strong> > <em>{style.name}</em></h1>
         <div className='styles'>
-        {props.stylesList.map(style => {
+        {stylesList.map(style => {
           return <div className='style' key={style.style_id}>
             <label>
               <span className='style-caption'>
@@ -65,7 +65,7 @@ const Cart = ( props ) => {
               key={style.style_id}
               pic-id={style.style_id}
               src={style.photos[0].thumbnail_url}
-              onClick={(e) => props.handleStyleSelect(e.currentTarget.getAttribute('pic-id'))}/>
+              onClick={(e) => handleStyleSelect(e.currentTarget.getAttribute('pic-id'))}/>
             </label>
           </div>
         })}

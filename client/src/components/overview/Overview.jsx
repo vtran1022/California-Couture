@@ -54,12 +54,10 @@ function Overview (props) {
         ? null
         : <ImageGallery
           key='999999'
-          className='image-gallery'
           photos={ style.photos }
           styleid={ styleId }
         />
       }
-
       {isLoading
         ? null
         : <Cart

@@ -17,17 +17,15 @@ const Description = ({ currentProduct }) => {
       <span>{description}</span><br></br>
 
       <div className='features'>
-        {features.map(feature => // clean this up later. Not DRY
+        {features.map((feature, index) => // clean this up later. Not DRY
           feature.value !== null
-          ? <React.Fragment>
+          ? <React.Fragment key={index + 500}>
           <span
-          key={features.indexOf(feature) + 500}
           className='feature'>
           ✓{feature.feature} - {feature.value}</span><br></br>
           </React.Fragment>
-          : <React.Fragment>
+          : <React.Fragment key={index + 500}>
           <span
-          key={features.indexOf(feature) + 500}
           className='feature'>
           ✓{feature.feature}</span><br></br>
           </React.Fragment>)}
