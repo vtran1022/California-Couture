@@ -49,7 +49,7 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
 
       {!price.sale
         ?<span className='price'>Price: {price.default}</span>
-        :<span className='price-sale'>Price: <strike>{price.default}</strike>{price.sale}</span>}
+        :<span className='price-sale'>Price: {price.sale} <strike>{price.default}</strike></span>}
 
       <div className='styles-box'>
         <h1><strong>Style</strong> > <em>{style.name}</em></h1>
