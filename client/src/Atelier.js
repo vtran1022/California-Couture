@@ -40,6 +40,10 @@ class Atelier {
     return await this.fetchAPI(`reviews/?product_id=${productId}&count=${count}&page=${page}&sort=newest`)
   }
 
+  async putHelpful(productId) {
+    return await this.putAPI(`reviews/${productId}/helpful`);
+  }
+
   async fetchAPI(endpoint) {
     var res = await fetch(this.baseURL + endpoint, {
       method: 'GET',
@@ -63,6 +67,16 @@ class Atelier {
       body: JSON.stringify(data)
     });
     return res.json();
+  }
+
+  async putAPI(endpoint) {
+    var res = await fetch(this.baseURL + endpoint, {
+      method: 'PUT',
+      headers: new Headers({
+        'Authorization': auth.TOKEN
+      }),
+    });
+    return true;
   }
 }
 
