@@ -274,10 +274,8 @@ float: right;
   text-align: center;
 }
 
-#plus,
-#outfit,
+#plus-outfit,
 #item-added {
-  display: block;
   margin-bottom: 10px;
   font-size: 20px;
 }
