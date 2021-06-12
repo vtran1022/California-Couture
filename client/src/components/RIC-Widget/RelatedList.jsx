@@ -103,12 +103,11 @@ const RelatedList = ({ productId }) => {
   return (
     <div>
       <h3>Related Products</h3>
-      <div className='RICList' style={{ '--offset': initialIndex }}>
-        {isLeft
+      {isLeft
           ? <button className='button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>
           : <button className='button2'>‹</button>
         }
-
+      <div className='RICList' style={{ '--offset': initialIndex }}>
         {relatedItems.map((id, i) => (
           <ProductCard
           key={id}

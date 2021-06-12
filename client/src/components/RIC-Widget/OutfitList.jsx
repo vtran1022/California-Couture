@@ -7,6 +7,8 @@ const OutfitList = ({ productId }) => {
   const [ifOutfit, setExists] = useState(false);
   const [outfitItems, setOutfit] = useState([]);
   const [ifAdded, setAdded] = useState(true);
+  const [isRight, setRight] = useState(false);
+  const [isLeft, setLeft] = useState(false);
 
   const addItem = (id) => {
     if (outfitItems.indexOf(id) === -1) {
@@ -24,6 +26,14 @@ const OutfitList = ({ productId }) => {
     }
   }, [productId]);
 
+  useEffect(() => {
+    if (outfitItems.length > 5) {
+      setRight(true);
+    } else {
+      setRight(false);
+    }
+  }, [outfitItems]);
+
   const triggerDelete = useCallback((index) => {
     let currentOutfits = outfitItems.map((item) => item);
     currentOutfits.splice(index, 1);
@@ -38,21 +48,40 @@ const OutfitList = ({ productId }) => {
 
   const handleClick = (action) => {
     let len = outfitItems.length - 1;
+    let stopper = -(len - 4);
 
     switch (action.type) {
       case 'next':
-        return setIndex(prevState => len < 4 ? 0 : prevState - 1);
+        setLeft(true);
+
+        if (len < 4) {
+          return setIndex(prevState => prevState = 0);
+        } else if (initialIndex > stopper) {
+            return setIndex(prevState => prevState - 1);
+        } else if (initialIndex === stopper) {
+          return setRight(false);
+        }
+
       case 'previous':
-        return setIndex(prevState => prevState === 0 ? 0 : prevState + 1);
+        setRight(true);
+
+        if (initialIndex === 0) {
+          setLeft(false);
+          setIndex(prevState => prevState = 0);
+        } else {
+          setIndex(prevState => prevState + 1);
+        }
     }
   }
 
   return (
     <div>
       <h3>Your Outfit</h3>
+      {isLeft
+          ? <button className='button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>
+          : <button className='button2'>‹</button>
+        }
       <div className='RICList'>
-      <button className='buttonL' onClick={() => handleClick({ type: 'previous' })}>‹</button>
-
           {ifOutfit
             ? <div>
                 <div className='AddCard' onClick={() => addItem(productId)}>
@@ -73,7 +102,6 @@ const OutfitList = ({ productId }) => {
                 triggerDelete={triggerDelete}
                 offset={initialIndex}/>))}
               </div>
-
             : <div className='AddCard' onClick={() => addItem(productId)}>
                 {ifAdded
                   ? <span>
@@ -84,9 +112,11 @@ const OutfitList = ({ productId }) => {
                 }
               </div>
           }
-
-      <button className='buttonR' onClick={() => handleClick({ type: 'next' })}>›</button>
       </div>
+      {isRight
+        ? <button className='button1' onClick={() => handleClick({ type: 'next' })}>›</button>
+        : <button className='button2'>›</button>
+      }
     </div>
   );
 

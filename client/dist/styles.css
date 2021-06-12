@@ -213,10 +213,9 @@ float: right;
 
 .RICList {
   display: inline-flex;
-  width: 1075px;
+  width: 1058px;
   height: 285px;
   overflow: hidden;
-  margin-left: 100px;
 }
 
 .button1 {
@@ -227,7 +226,7 @@ float: right;
   position: relative;
   font-size: 40px;
   width: 40px;
-  height: 285px;
+  height: 250px;
   transition: opacity 0.3s;
   z-index: 5;
 }
@@ -240,7 +239,7 @@ float: right;
   position: relative;
   font-size: 40px;
   width: 40px;
-  height: 285px;
+  height: 250px;
   transition: opacity 0.3s;
   z-index: 5;
 }
@@ -303,6 +302,7 @@ float: right;
   overflow: hidden;
   outline:none;
   font-size: 20px;
+  color: white;
   -webkit-text-stroke: 1px white;
   text-stroke: 1px white;
 }
