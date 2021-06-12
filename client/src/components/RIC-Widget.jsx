@@ -8,6 +8,8 @@ const RICWidget = ({ productId }) => {
     <div id='RICWid'>
       <RelatedList
         productId={productId}/>
+        <br />
+        <br />
       <OutfitList
         productId={productId}/>
     </div>

@@ -458,6 +458,13 @@ td {
 
 /*Relating Items & Comparisions ---------------*/
 
+#RICWid {
+  width: auto;
+  height: auto;
+  display: grid;
+  grid-row: span 2;
+}
+
 .RICList {
   display: inline-flex;
   width: 1058px;

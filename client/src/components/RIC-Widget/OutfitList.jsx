@@ -86,7 +86,7 @@ const OutfitList = ({ productId }) => {
             ? <div>
                 <div className='AddCard' onClick={() => addItem(productId)}>
                   {ifAdded
-                    ? <span id='plus-outfit'>⊕ <br /> Add to Outfit</span>
+                    ? <span id='plus-outfit'>＋ <br /> Add to Outfit</span>
                     : <span id='item-added'>Item Added</span>
                   }
                 </div>
@@ -101,7 +101,7 @@ const OutfitList = ({ productId }) => {
               </div>
             : <div className='AddCard' onClick={() => addItem(productId)}>
                 {ifAdded
-                  ? <span id='plus-outfit'>⊕ <br /> Add to Outfit</span>
+                  ? <span id='plus-outfit'>＋ <br /> Add to Outfit</span>
                   : <span id='item-added'>Item Added</span>
                 }
               </div>
