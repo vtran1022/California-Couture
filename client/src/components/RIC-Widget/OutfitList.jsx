@@ -1,11 +1,14 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useReducer } from 'react';
 import ProductCard from './ProductCard.jsx';
 
 const OutfitList = ({ productId }) => {
   const listState = 'outfit';
+  const [initialIndex, setIndex] = useState(0);
   const [ifOutfit, setExists] = useState(false);
   const [outfitItems, setOutfit] = useState([]);
   const [ifAdded, setAdded] = useState(true);
+  const [isRight, setRight] = useState(false);
+  const [isLeft, setLeft] = useState(false);
 
   const addItem = (id) => {
     if (outfitItems.indexOf(id) === -1) {
@@ -16,8 +19,20 @@ const OutfitList = ({ productId }) => {
   };
 
   useEffect(() => {
-    setAdded(true);
+    if (outfitItems.indexOf(productId) !== -1) {
+      setAdded(false);
+    } else {
+      setAdded(true);
+    }
   }, [productId]);
+
+  useEffect(() => {
+    if (outfitItems.length > 5) {
+      setRight(true);
+    } else {
+      setRight(false);
+    }
+  }, [outfitItems]);
 
   const triggerDelete = useCallback((index) => {
     let currentOutfits = outfitItems.map((item) => item);
@@ -31,31 +46,71 @@ const OutfitList = ({ productId }) => {
     };
   });
 
+  const handleClick = (action) => {
+    let len = outfitItems.length - 1;
+    let stopper = -(len - 4);
+
+    switch (action.type) {
+      case 'next':
+        setLeft(true);
+
+        if (len < 4) {
+          return setIndex(prevState => prevState = 0);
+        } else if (initialIndex > stopper) {
+            return setIndex(prevState => prevState - 1);
+        } else if (initialIndex === stopper) {
+          return setRight(false);
+        }
+
+      case 'previous':
+        setRight(true);
+
+        if (initialIndex === 0) {
+          setLeft(false);
+          setIndex(prevState => prevState = 0);
+        } else {
+          setIndex(prevState => prevState + 1);
+        }
+    }
+  }
+
   return (
     <div>
       <h3>Your Outfit</h3>
+      {isLeft
+          ? <button className='button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>
+          : <button className='button2'>‹</button>
+        }
       <div className='RICList'>
-        <div className='AddCard' onClick={() => addItem(productId)}>
-          {ifAdded
-            ? <div>
-                <div>⊕</div>
-                <div>Add to Outfit</div></div>
-            : <div>Item Already Added</div>
-          }
-        </div>
           {ifOutfit
-            ? <div className='RICList'>
-              {outfitItems.map((id, index) => (
-              <ProductCard
+            ? <div>
+                <div className='AddCard' onClick={() => addItem(productId)}>
+                  {ifAdded
+                    ? <span id='plus-outfit'>⊕ <br /> Add to Outfit</span>
+                    : <span id='item-added'>Item Added</span>
+                  }
+                </div>
+              {outfitItems.map((id, i) => (
+                <ProductCard
                 key={id}
                 productId={id}
-                index={index}
+                index={i}
                 listState={listState}
-                triggerDelete={triggerDelete}/>))}
+                triggerDelete={triggerDelete}
+                offset={initialIndex}/>))}
               </div>
-            : null
+            : <div className='AddCard' onClick={() => addItem(productId)}>
+                {ifAdded
+                  ? <span id='plus-outfit'>⊕ <br /> Add to Outfit</span>
+                  : <span id='item-added'>Item Added</span>
+                }
+              </div>
           }
       </div>
+      {isRight
+        ? <button className='button1' onClick={() => handleClick({ type: 'next' })}>›</button>
+        : <button className='button2'>›</button>
+      }
     </div>
   );
 
