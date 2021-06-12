@@ -13,13 +13,14 @@ body, html {
 }
 
 .announcement-container {
-  height: 40px;
+  height: 30px;
   background-color: #60c7cb;
   display: flex;
   justify-content: center;
   align-content: center;
   flex-direction: column;
   text-align: center;
+  font-size: 13px;
 }
 
 .announcement {
@@ -101,9 +102,9 @@ td {
   grid-column-end: 4;
   grid-row: 5;
 }
-img {
+/* img {
   margin: 3px;
-}
+} */
 
 .tile-body {
   grid-column-start: 1;
@@ -464,13 +465,20 @@ img {
   overflow: hidden;
 }
 
+.RIC-Title {
+  width: auto;
+  height: 20px;
+  margin-left: 40px;
+}
+
 .button1 {
   appearance: none;
   background: #f4f4f4;;
   border: none;
   color: #44c4c4;
   position: relative;
-  font-size: 40px;
+  font-size: 27px;
+  font-weight: 700;
   width: 40px;
   height: 180px;
   transition: opacity 0.3s;
@@ -484,7 +492,8 @@ img {
   border: none;
   color: #f4f4f4;;
   position: relative;
-  font-size: 40px;
+  font-size: 27px;
+  font-weight: 700;
   width: 40px;
   height: 180px;
   transition: opacity 0.3s;

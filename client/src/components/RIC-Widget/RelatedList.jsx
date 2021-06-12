@@ -73,7 +73,7 @@ const RelatedList = ({ productId }) => {
 
   return (
     <div>
-      <h3>Related Products</h3>
+      <h4 className='RIC-Title'>Related Products</h4>
       {isLeft
           ? <button className='button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>
           : <button className='button2'>‹</button>

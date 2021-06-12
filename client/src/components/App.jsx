@@ -39,7 +39,7 @@ class App extends React.Component {
       <div>
 
         <Overview />
-        <Ratings id={this.state.product} />
+        {/* <Ratings id={this.state.product} /> */}
         <RICWidget
           productId={this.state.product} />
       </div>
