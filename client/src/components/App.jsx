@@ -5,6 +5,7 @@ import Overview from './overview/Overview.jsx';
 import Ratings from './RatingsReview.jsx';
 import RICWidget from './RIC-Widget.jsx';
 import AvgRating from './AvgRating.jsx';
+import lightLogo from '../imgs/lightLogo.png';
 
 class App extends React.Component {
   constructor(props) {
@@ -29,11 +30,17 @@ class App extends React.Component {
   render() {
     return (
       <div>
+      <nav className='navbar'>
+        <img id='logo' src={lightLogo} alt='Company Logo'></img>
+      </nav>
+      <div>SITE-WID ANNOUNCEMENT MESSAGE! -- SALE / DISCOUNT <b>OFFER</b> -- NEW PRODUCT HIGHLIGHT</div>
+      <div>
 
-        <Overview />
-        <Ratings id={this.state.product} />
+        {/* <Overview />
+        <Ratings id={this.state.product} /> */}
         <RICWidget
           productId={this.state.product} />
+      </div>
       </div>
     );
   }

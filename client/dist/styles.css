@@ -2,6 +2,13 @@ body, html {
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color: #f4f4f4;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#logo {
+  width: auto;
+  height: 80px;
 }
 
 /* ---------------------------- Ratings & Reviews ---------------------------- */
@@ -251,6 +258,7 @@ float: right;
   height: 280px;
   margin-right: 10px;
   float: left;
+  background-color: white;
 
   transform: translateX(calc(105% * var(--offset)));
   transition: transform 0.5s ease-in-out;
