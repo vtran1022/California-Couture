@@ -38,8 +38,8 @@ class App extends React.Component {
       </div>
       <div>
 
-        {/* <Overview />
-        <Ratings id={this.state.product} /> */}
+        <Overview />
+        <Ratings id={this.state.product} />
         <RICWidget
           productId={this.state.product} />
       </div>
