@@ -4,14 +4,13 @@ import { auth } from '../../../../config.js';
 import AvgRating from '../AvgRating.jsx';
 import ActionButton from './ActionButton.jsx';
 
-function ProductCard({ productId, index, listState, triggerDelete }) {
+const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal }) => {
   const [image, setImage] = useState('');
   const [category, setCategory] = useState('');
   const [name, setName] = useState('');
-  const [price, setPrice] = useState(0);
-  const [salePrice, setSale] = useState(0);
+  const [price, setPrice] = useState({default: 0, salePrice: null});
 
-  async function fetchProducts() {
+  const fetchProducts = async () => {
     let productData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${productId}`,
     { headers: { 'Authorization': auth.TOKEN } });
 
@@ -24,11 +23,10 @@ function ProductCard({ productId, index, listState, triggerDelete }) {
     setCategory(product.category);
     setName(product.name);
     setImage(firstStyle.photos[0].thumbnail_url);
-    setPrice(firstStyle.original_price);
-
-    if (firstStyle.sale_price !== null) {
-      setSale(firstStyle.sale_price);
-    };
+    setPrice({
+      default: firstStyle.original_price,
+      salePrice: firstStyle.sale_price
+      });
   };
 
   useEffect(() => {
@@ -36,19 +34,22 @@ function ProductCard({ productId, index, listState, triggerDelete }) {
   }, [productId]);
 
   return (
-    <div>
-      <div className='ProductCard'>
-        <ActionButton
-          index={index}
-          listState={listState}
-          triggerDelete={triggerDelete}/>
-        <img src={image} alt={name}></img>
-        <div>{category}</div>
-        <div>{name}</div>
-        <div>${price}</div>
-        <AvgRating
-          productId={productId}/>
-      </div>
+    <div className='ProductCard'>
+      <ActionButton
+        index={index}
+        id={productId}
+        listState={listState}
+        triggerDelete={triggerDelete}
+        triggerModal={triggerModal}/>
+      <img src={image} alt={name} className='ProductImage'></img>
+      <div>{category}</div>
+      <b>{name}</b>
+        {price.salePrice
+          ? <div><span id="salePrice">${price.salePrice}</span> <strike>${price.default}</strike></div>
+          : <div>${price.default}</div>
+        }
+      <AvgRating
+        productId={productId}/>
     </div>
   );
 };
