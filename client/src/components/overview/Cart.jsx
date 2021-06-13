@@ -4,7 +4,6 @@ import AvgRating from '../AvgRating.jsx';
 const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
   // const [cartItems, serCurrentCart] = await useState({}) need to pull a user's cart
   // const [styleId, setStyleId] = useState('');
-  // const [isLoading, setLoading] = useState(false);
   const [skus, setSKUs] = useState(parseSKUs(style));
   const [currentSKU, setSKU] = useState({});
   const [selectedSize, setSize] = useState('');

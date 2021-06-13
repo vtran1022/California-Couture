@@ -408,11 +408,11 @@ img {
   display: none;
 }
 
-/* .style input:checked + .style-caption {
+.style input:checked + .style-caption {
   background: rgba(0,0,0,0.5);
 }
 
-.style input:checked {
+.style img input:checked {
   content: '✔';
   position: absolute;
   top: 50%; left: 50%;
@@ -425,7 +425,7 @@ img {
   border: 2px solid red;
   border-radius: 50%;
   z-index: 50;
-} */
+}
 
 /*Relating Items & Comparisions ---------------*/
 
