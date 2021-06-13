@@ -63,6 +63,7 @@ body, html {
 
 .button1 {
   appearance: none;
+  background: #2e343c
   border: none;
   position: relative;
   font-size: 27px;
@@ -86,9 +87,9 @@ body, html {
 
 .button2 {
   appearance: none;
-  background: #f4f4f4;;
+  background: #2e343c;
   border: none;
-  color: #f4f4f4;;
+  color: #2e343c;
   position: relative;
   font-size: 27px;
   font-weight: 700;

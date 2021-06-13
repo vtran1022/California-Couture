@@ -488,7 +488,7 @@ body, html {
 
 .button1 {
   appearance: none;
-  background: #f4f4f4;;
+  background: #f4f4f4;
   border: none;
   color: #44c4c4;
   position: relative;
@@ -503,9 +503,9 @@ body, html {
 
 .button2 {
   appearance: none;
-  background: #f4f4f4;;
+  background: #f4f4f4;
   border: none;
-  color: #f4f4f4;;
+  color: #f4f4f4;
   position: relative;
   font-size: 27px;
   font-weight: 700;
