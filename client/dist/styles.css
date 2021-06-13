@@ -49,9 +49,9 @@ body, html {
   height: 500px;
 }
 
-td {
+/* td {
   margin: 5px;
-}
+} */
 
 .modal {
   position: fixed;
@@ -549,6 +549,25 @@ td {
   font-size: 20px;
 }
 
+#prod-price,
+#sale-price,
+#prod-category {
+  font-size: 10px;
+}
+
+#prod-name,
+#c-title {
+  font-size: 13px;
+}
+
+#prod-name:hover {
+  color: #60c7cb;
+}
+
+#sale-price {
+  color: red
+}
+
 .ActionButton {
   position: relative;
 }
@@ -565,8 +584,8 @@ td {
   outline:none;
   font-size: 20px;
   color: #e4f3f4;
-  -webkit-text-stroke: 0.5px #e4f3f4;
-  text-stroke: 0.5px #e4f3f4;
+  -webkit-text-stroke: 1px black;
+  text-stroke: 1px black;
 }
 
 .c-modal {
@@ -581,23 +600,7 @@ td {
   z-index: 10;
 }
 
-#prod-price,
-#sale-price,
-#prod-category {
-  font-size: 10px;
-}
 
-#prod-name {
-  font-size: 13px;
-}
-
-#prod-name:hover {
-  color: #60c7cb;
-}
-
-#sale-price {
-  color: red
-}
 
 /* Star Rating Component --------------*/
 .star {
