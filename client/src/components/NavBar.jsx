@@ -2,11 +2,14 @@ import React from 'react';
 import lightLogo from '../imgs/lightLogo.png';
 import darkLogo from '../imgs/darkLogo.png';
 
-const NavBar = ({ highlight }) => {
+const NavBar = ({ highlight, theme }) => {
   return (
     <div>
       <nav className='navbar'>
-        <img id='logo' src={darkLogo} alt='Company Logo'></img>
+        {theme === 'light'
+          ? <img id='logo' src={lightLogo} alt='Company Logo'></img>
+          : <img id='logo' src={darkLogo} alt='Company Logo'></img>
+        }
       </nav>
       <div className='announcement-container'>
         <span className='announcement'>
