@@ -18,7 +18,7 @@ body, html {
 
 .announcement-container {
   height: 30px;
-  background-color: #1ab8b0;
+  background-color: #168e7f;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -66,7 +66,7 @@ body, html {
   appearance: none;
   background: #2e343c;
   border: none;
-  color: #1ab8b0;
+  color: #168e7f;
   position: relative;
   font-size: 27px;
   font-weight: 700;
@@ -93,14 +93,15 @@ body, html {
 
 .AddCard,
 .ProductCard {
-  border: 1px solid #1ab8b0;
+  border: 1px solid #168e7f;
   width: 200px;
   height: 280px;
   margin-right: 10px;
   padding-bottom: 1.5px;
   float: left;
-  background-color: #454a51;
+  background-color: #373d45;
   text-align: left;
+  color: #f4f4f4;
 
   transform: translateX(calc(105% * var(--offset)));
   transition: transform 0.5s ease-in-out;
@@ -128,7 +129,7 @@ body, html {
 #plus-outfit,
 #item-added {
   margin-bottom: 10px;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 #prod-price,
@@ -144,7 +145,7 @@ body, html {
 }
 
 #prod-name:hover {
-  color: #60c7cb;
+  color: #168e7f;
 }
 
 #sale-price {
@@ -167,9 +168,9 @@ body, html {
   outline:none;
   font-size: 20px;
   color: #c9cbcd;
-  -webkit-text-stroke: 1px #1ab8b0;
-  text-stroke: 1px #1ab8b0;
-  z-index: 10;
+  -webkit-text-stroke: 1px #168e7f;
+  text-stroke: 1px #168e7f;
+  z-index: 8;
 }
 
 .c-modal {
@@ -178,9 +179,10 @@ body, html {
   height: 400px;
   top: 25%;
   left: 25%;
-  border: 1px solid black;
-  background-color: #60c7cb;
-  overflow-y: scroll #60c7cb;
+  border: 1px solid #168e7f;
+  background-color: #373d45;
+  overflow-y: scroll #373d45;
+  color: #f4f4f4;
   z-index: 10;
   padding-right: 20px;
   padding-left: 20px;
@@ -191,8 +193,9 @@ body, html {
   width: 133px;
 }
 
-.c-mid {
-  text-align: center;
+#c-title,
+.c-left {
+  text-align: left;
 }
 
 .c-right {
@@ -220,5 +223,5 @@ body, html {
   top: 0;
   width: var(--width);
   overflow: hidden;
-  color: #60c7cb;
+  color: #168e7f;
 }
