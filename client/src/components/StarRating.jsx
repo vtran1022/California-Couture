@@ -21,8 +21,6 @@ const StarRating = ({ rating }) => {
     }
   }
 
-  console.log(stars);
-
   return (
     <div>
       {stars.map((item, i) => (
