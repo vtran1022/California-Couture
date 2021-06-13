@@ -6,8 +6,6 @@ import Ratings from './RatingsReview.jsx';
 import RICWidget from './RIC-Widget.jsx';
 import NavBar from './NavBar.jsx';
 
-import StarRating from './StarRating.jsx';
-
 const ThemeContext = createContext('light');
 
 class App extends React.Component {
@@ -30,12 +28,10 @@ class App extends React.Component {
         <NavBar
           highlight={this.handleProductHighlight}/>
 
-        <StarRating />
-
         {/* <Overview /> */}
         {/* <Ratings id={this.state.product} /> */}
-        {/* <RICWidget
-          productId={this.state.product} /> */}
+        <RICWidget
+          productId={this.state.product} />
       </div>
     );
   }

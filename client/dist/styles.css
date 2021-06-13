@@ -621,21 +621,24 @@ body, html {
 }
 
 /* Star Rating Component --------------*/
-.star {
-  height: 18px;
-  width: 15px;
-}
-
-.star-fill {
-  position: relative;
-  display: inline-block;
-  height: 18px;
-  width: 15px;
-  background-color: black;
-}
-
 .star-container {
   height: 18px;
   width: 15px;
   display: inline-block;
+}
+
+.fa-star {
+  position: relative;
+  font-size: 12px;
+  color: #ddd;
+}
+
+.fa-star:after {
+  content: "\f005";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--width);
+  overflow: hidden;
+  color: #60c7cb;
 }
