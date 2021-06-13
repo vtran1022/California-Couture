@@ -29,7 +29,11 @@ class App extends React.Component {
       </nav>
       <div className='announcement-container'>
         <span className='announcement'>
-          SITE-WIDE ANNOUNCEMENT MESSAGE! ─	SALE / DISCOUNT <b>OFFER</b> ─ <u id='product-highlight' onClick={this.handleProductHighlight}>NEW PRODUCT HIGHLIGHT</u>
+          SITE-WIDE ANNOUNCEMENT MESSAGE! &nbsp;
+          ─	&nbsp;
+          SALE / DISCOUNT <b>OFFER</b> &nbsp;
+          ─ &nbsp;
+          <u id='product-highlight' onClick={this.handleProductHighlight}>NEW PRODUCT HIGHLIGHT</u>
         </span>
       </div>
       <div>
