@@ -19,8 +19,8 @@ const ActionButton = ({ id, index, listState, triggerDelete, triggerModal }) => 
   return (
     <div className='ActionButton'>
       {isStar
-        ? <input key={id} type="button" value='★' onClick={() => {triggerModal(id)}}/>
-        : <input key={index} type="button" value='✖' onClick={() => {triggerDelete(index)}} />
+        ? <i className="fas fa-star" id='ActButton' key={id} onClick={() => {triggerModal(id)}}></i>
+        : <i class="fas fa-times" id='ActButton' key={index} type="button" value='✖' onClick={() => {triggerDelete(index)}}></i>
       }
     </div>
   )
