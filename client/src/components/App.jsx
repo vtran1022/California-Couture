@@ -6,13 +6,14 @@ import Ratings from './RatingsReview.jsx';
 import RICWidget from './RIC-Widget.jsx';
 import NavBar from './NavBar.jsx';
 
-const ThemeContext = createContext('light');
+// import darkTheme from '../../dist/darkTheme.css';
+// import lightTheme from '../../dist/lightTheme.css';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: '13029',
+      product: '13029'
     }
 
     this.handleProductHighlight = this.handleProductHighlight.bind(this);
@@ -25,13 +26,12 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <NavBar
-          highlight={this.handleProductHighlight}/>
-
+        {/* <NavBar
+          highlight={this.handleProductHighlight}/> */}
         {/* <Overview /> */}
         {/* <Ratings id={this.state.product} /> */}
-        <RICWidget
-          productId={this.state.product} />
+        {/* <RICWidget
+          productId={this.state.product} /> */}
       </div>
     );
   }
