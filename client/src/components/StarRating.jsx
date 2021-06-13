@@ -27,7 +27,7 @@ const StarRating = ({ rating }) => {
     <div>
       {stars.map((item, i) => (
         <div className='star-container' key={i}>
-          <i className="fas fa-star" style={{'--width': item }}></i>
+          <i id='starRating' className="fas fa-star" style={{'--width': item }}></i>
         </div>
       ))}
     </div>

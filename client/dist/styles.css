@@ -628,13 +628,13 @@ body, html {
   display: inline-block;
 }
 
-.fa-star {
+#starRating {
   position: relative;
   font-size: 12px;
-  color: #ddd;
+  color: #f4f4f4;
 }
 
-.fa-star:after {
+#starRating:after {
   content: "\f005";
   position: absolute;
   left: 0;
