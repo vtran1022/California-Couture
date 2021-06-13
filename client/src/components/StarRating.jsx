@@ -23,10 +23,11 @@ const StarRating = ({ rating }) => {
 
   return (
     <div>
+      <i class="fas fa-star"></i>
       {stars.map((item, i) => (
         <div className='star-container' key={i}>
             <div className='star-fill' style={{'width': `${parseInt(item*15)}px`}}>
-                <img className='star' src={star} alt='stars alt'></img>
+              <i class="fas fa-star"></i>
             </div>
         </div>
       ))}
