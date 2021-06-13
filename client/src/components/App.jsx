@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import axios from 'axios';
 import Atelier from '../Atelier.js';
 import Overview from './overview/Overview.jsx';
 import Ratings from './RatingsReview.jsx';
 import RICWidget from './RIC-Widget.jsx';
-import AvgRating from './AvgRating.jsx';
-import lightLogo from '../imgs/lightLogo.png';
+import NavBar from './NavBar.jsx';
+
+const ThemeContext = createContext('light');
 
 class App extends React.Component {
   constructor(props) {
@@ -24,25 +25,13 @@ class App extends React.Component {
   render() {
     return (
       <div>
-      <nav className='navbar'>
-        <img id='logo' src={lightLogo} alt='Company Logo'></img>
-      </nav>
-      <div className='announcement-container'>
-        <span className='announcement'>
-          SITE-WIDE ANNOUNCEMENT MESSAGE! &nbsp;
-          ─	&nbsp;
-          SALE / DISCOUNT <b>OFFER</b> &nbsp;
-          ─ &nbsp;
-          <u id='product-highlight' onClick={this.handleProductHighlight}>NEW PRODUCT HIGHLIGHT</u>
-        </span>
-      </div>
-      <div>
+        <NavBar
+          highlight={this.handleProductHighlight}/>
 
         {/* <Overview /> */}
         {/* <Ratings id={this.state.product} /> */}
-        {/* <RICWidget
-          productId={this.state.product} /> */}
-      </div>
+        <RICWidget
+          productId={this.state.product} />
       </div>
     );
   }
