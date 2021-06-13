@@ -523,6 +523,7 @@ body, html {
   margin-right: 10px;
   float: left;
   background-color: white;
+  text-align: left;
 
   transform: translateX(calc(105% * var(--offset)));
   transition: transform 0.5s ease-in-out;

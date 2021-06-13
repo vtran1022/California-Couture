@@ -57,14 +57,16 @@ body, html {
 .RIC-Title {
   width: auto;
   height: 20px;
-  margin-left: 350px;
+  margin-left: 342px;
   text-align: left;
+  color: #f4f4f4;
 }
 
 .button1 {
   appearance: none;
-  background: #2e343c
+  background: #2e343c;
   border: none;
+  color: #1ab8b0;
   position: relative;
   font-size: 27px;
   font-weight: 700;
@@ -73,16 +75,6 @@ body, html {
   transition: opacity 0.3s;
   z-index: 5;
   vertical-align: top;
-}
-
-.button1left,
-.button1Right {
-  color: #1ab8b0;
-}
-
-.button1Left,
-.button2Left {
-  background: #3a4148;
 }
 
 .button2 {
@@ -101,12 +93,13 @@ body, html {
 
 .AddCard,
 .ProductCard {
-  border: 1px solid #3c4149;
+  border: 1px solid #1ab8b0;
   width: 200px;
   height: 280px;
   margin-right: 10px;
   float: left;
-  background-color: white;
+  background-color: #c9cbcd;
+  text-align: left;
 
   transform: translateX(calc(105% * var(--offset)));
   transition: transform 0.5s ease-in-out;
@@ -116,6 +109,7 @@ body, html {
   width: 200px;
   height: 200px;
   object-fit: fill;
+  filter: brightness(70%)
 }
 
 .ProductInfo {
@@ -171,9 +165,10 @@ body, html {
   overflow: hidden;
   outline:none;
   font-size: 20px;
-  color: #e4f3f4;
-  -webkit-text-stroke: 1px black;
-  text-stroke: 1px black;
+  color: #c9cbcd;
+  -webkit-text-stroke: 1px #1ab8b0;
+  text-stroke: 1px #1ab8b0;
+  z-index: 10;
 }
 
 .c-modal {
