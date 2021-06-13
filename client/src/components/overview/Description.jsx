@@ -22,16 +22,14 @@ const Description = ({ currentProduct }) => {
         <span className='feature'>Features:</span>
         {features.map((feature, index) => // clean this up later. Not DRY
           feature.value !== null
-          ? <React.Fragment key={index + 500}>
-          <span
+          ? <span
+          key={index + 500}
           className='feature'>
-          ✓{feature.feature} - {feature.value}</span><br></br>
-          </React.Fragment>
-          : <React.Fragment key={index + 500}>
-          <span
+          ✓{feature.feature} - {feature.value}</span>
+          : <span
+          key={index + 500}
           className='feature'>
-          ✓{feature.feature}</span><br></br>
-          </React.Fragment>)}
+          ✓{feature.feature}</span>)}
         </div>
       </div>
   );
