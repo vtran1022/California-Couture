@@ -27,12 +27,3 @@ const ActionButton = ({ id, index, listState, triggerDelete, triggerModal }) => 
 };
 
 export default ActionButton;
-
-/*
-action buttons:
-☆ or x
-
-'☆' - will open up comparison modal component
-x - will delete the product card
-
-*/
