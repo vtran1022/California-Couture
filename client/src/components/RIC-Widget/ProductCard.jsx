@@ -62,10 +62,8 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
 export default ProductCard;
 
 /*
-action buttons:
-☆ or x
 
-'☆' - will open up comparison modal component
-x - will delete the product card
+onClick product name - navigate to detail page. Need to pass the productId back up to App and re-render page
 
+Future Enhancements ???
 */
