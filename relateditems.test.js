@@ -23,86 +23,88 @@ describe('RICWidget', () => {
   });
 });
 
-describe('Action Button', () => {
-  test('star action button exists on initial render', () => {
-    render(<ActionButton />);
+// describe('Action Button', () => {
+//   test('star action button exists on initial render', () => {
+//     render(<ActionButton />);
 
-    expect(screen.getByDisplayValue('☆')).toBeInTheDocument();
-  });
-});
+//     expect(screen.getByDisplayValue('☆')).toBeInTheDocument();
+//   });
+// });
 
-describe('Action Button', () => {
-  test('delete action button does not exist on initial render', () => {
-    render(<ActionButton />);
+// describe('Action Button', () => {
+//   test('delete action button does not exist on initial render', () => {
+//     render(<ActionButton />);
 
-    expect(screen.queryByDisplayValue('x')).toBeNull();
-  });
-});
+//     expect(screen.queryByDisplayValue('x')).toBeNull();
+//   });
+// });
 
-describe('Action Button', () => {
-  test('calls the onClick callback handler for star button', async () => {
-    const onClick = jest.fn();
+// describe('Action Button', () => {
+//   test('calls the onClick callback handler for star button', async () => {
+//     const onClick = jest.fn();
 
-    render( <input type="button" value='☆' onClick={onClick} /> );
+//     render( <input type="button" value='☆' onClick={onClick} /> );
 
-    await userEvent.click(screen.getByDisplayValue('☆'));
+//     await userEvent.click(screen.getByDisplayValue('☆'));
 
-    expect(onClick).toHaveBeenCalledTimes(1);
-  });
-});
+//     expect(onClick).toHaveBeenCalledTimes(1);
+//   });
+// });
 
-describe('Action Button', () => {
-  test('calls the onClick callback handler for delete button', async () => {
-    const onClick = jest.fn();
+// describe('Action Button', () => {
+//   test('calls the onClick callback handler for delete button', async () => {
+//     const onClick = jest.fn();
 
-    render( <input type="button" value='x' onClick={onClick} /> );
+//     render( <input type="button" value='x' onClick={onClick} /> );
 
-    await userEvent.click(screen.getByDisplayValue('x'));
+//     await userEvent.click(screen.getByDisplayValue('x'));
 
-    expect(onClick).toHaveBeenCalledTimes(1);
-  });
-});
+//     expect(onClick).toHaveBeenCalledTimes(1);
+//   });
+// });
 
-describe('Add to Outfit card showing up', () => {
-  test('check for outfit text', () => {
-    render(<OutfitList />);
+// describe('Add to Outfit card showing up', () => {
+//   test('check for outfit text', () => {
+//     render(<OutfitList />);
 
-    expect(screen.getByText(/Add to Outfit/)).toBeInTheDocument();
-  });
-});
+//     expect(screen.getByText(/Add to Outfit/)).toBeInTheDocument();
+//   });
+// });
 
-describe('Outfit List', () => {
-  test('calls the onClick callback handler', async () => {
-    const onClick = jest.fn();
+// describe('Outfit List', () => {
+//   test('calls the onClick callback handler', async () => {
+//     const onClick = jest.fn();
 
-    render( <div className='AddCard' onClick={onClick}>
-      <div data-testid='outfit'>Add to Outfit</div>
-    </div> );
+//     render( <div className='AddCard' onClick={onClick}>
+//       <div data-testid='outfit'>Add to Outfit</div>
+//     </div> );
 
-    await userEvent.click(screen.getByTestId('outfit'));
+//     await userEvent.click(screen.getByTestId('outfit'));
 
-    expect(onClick).toHaveBeenCalledTimes(1);
-  });
-});
+//     expect(onClick).toHaveBeenCalledTimes(1);
+//   });
+// });
 
-// checking rendering for now, need to work on better test for this
-describe('Product Card', () => {
-  test('check existance', () => {
-    render(<ProductCard />);
-  });
-});
+// // checking rendering for now, need to work on better test for this
+// describe('Product Card', () => {
+//   test('check existance', () => {
+//     render(<ProductCard />);
+//   });
+// });
 
-// checking rendering for now, need to work on better test for this
-describe('Related List', () => {
-  test('check existance', () => {
-    render(<RelatedList />);
-  });
-});
+// // checking rendering for now, need to work on better test for this
+// describe('Related List', () => {
+//   test('check existance', () => {
+//     render(<RelatedList />);
+//   });
+// });
 
-describe('Comparison Modal', () => {
-  test('comparison modal to not exist on initial render', () => {
-    render(<RelatedList />);
+// describe('Comparison Modal', () => {
+//   test('comparison modal to not exist on initial render', () => {
+//     render(<RelatedList />);
 
-    expect(screen.queryByText('Comparing')).toBeNull();
-  });
-});
+//     expect(screen.queryByText('Comparing')).toBeNull();
+//   });
+// });
+
+// need to re-write tests
