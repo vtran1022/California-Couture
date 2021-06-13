@@ -27,6 +27,11 @@ body, html {
   color: #ecf4f4;
 }
 
+#product-highlight:hover {
+  color: #ecf4f4;
+  font-weight: 500;
+}
+
 /* ---------------------------- Ratings & Reviews ---------------------------- */
 .review-table {
   border: 1px solid black;
