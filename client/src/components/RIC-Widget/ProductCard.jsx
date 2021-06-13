@@ -46,7 +46,7 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
       <div className='ProductInfo'>
         <span id='prod-category'>{category}</span>
         <br />
-        <b id='prod-name'>{name}</b>
+        <b id='prod-name' /*onClick holder here*/>{name}</b>
         <br />
         {price.salePrice
           ? <span id="sale-price">${price.salePrice}<strike>${price.default}</strike> </span>
