@@ -73,13 +73,13 @@ const OutfitList = ({ productId }) => {
         }
       <div className='RICList'>
           {outfitItems.length !== 0
-            ? <div>
-                <div className='AddCard' onClick={() => addItem(productId)}>
+            ? <React.Fragment>
+                <span className='AddCard' onClick={() => addItem(productId)}>
                   {ifAdded
                     ? <span id='plus-outfit'>＋ <br /> Add to Outfit</span>
                     : <span id='item-added'>Item Added</span>
                   }
-                </div>
+                </span>
               {outfitItems.map((id, i) => (
                 <ProductCard
                 key={id}
@@ -88,13 +88,13 @@ const OutfitList = ({ productId }) => {
                 listState={listState}
                 triggerDelete={triggerDelete}
                 offset={initialIndex}/>))}
-              </div>
-            : <div className='AddCard' onClick={() => addItem(productId)}>
+              </React.Fragment>
+            : <span className='AddCard' onClick={() => addItem(productId)}>
                 {ifAdded
                   ? <span id='plus-outfit'>＋ <br /> Add to Outfit</span>
                   : <span id='item-added'>Item Added</span>
                 }
-              </div>
+              </span>
           }
       </div>
       {isRight

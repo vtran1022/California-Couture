@@ -79,19 +79,19 @@ const RelatedList = ({ productId }) => {
       <div className='RICList' style={{ '--offset': initialIndex }}>
         {relatedItems.map((id, i) => (
           <ProductCard
-          key={id}
-          productId={id}
-          listState={listState}
-          triggerModal={triggerModal}
-          offset={initialIndex}/>
-          ))}
+            key={id}
+            productId={id}
+            listState={listState}
+            triggerModal={triggerModal}
+            offset={initialIndex}/>
+        ))}
       </div>
 
       {isModal
         ? <ComparisonModal
-        productId={productId}
-        relatedId={relatedId}
-        trigger={triggerModal}/>
+            productId={productId}
+            relatedId={relatedId}
+            trigger={triggerModal}/>
         : null}
 
         {isRight

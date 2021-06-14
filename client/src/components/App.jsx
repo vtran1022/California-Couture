@@ -52,7 +52,8 @@ class App extends React.Component {
   render() {
     const {
       product,
-      stylePath
+      stylePath,
+      productArr
     } = this.state;
 
     return (
@@ -62,8 +63,8 @@ class App extends React.Component {
           highlight={this.handleProductHighlight}
           theme={stylePath}
           toggleTheme={this.toggleTheme}/>
-        <Overview />
-        <Ratings id={this.state.product} />
+        {/* <Overview />
+        <Ratings id={this.state.product} /> */}
         <RICWidget
           productId={product} />
       </div>
