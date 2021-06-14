@@ -27,6 +27,9 @@ body, html {
 }
 
 /* ---------------------------- Ratings & Reviews ---------------------------- */
+
+.review-container {
+}
 .review-table {
   border: 1px solid black;
   border-collapse: collapse;
@@ -40,24 +43,24 @@ body, html {
 .breakdown {
   border: 1px solid black;
   margin: 10px;
-  height: 500px;
+  height: auto;
 }
 
-td {
+.review-table td {
   margin: 5px;
 }
 
-.modal {
+.review-modal {
   position: fixed;
-  width: 400px;
-  height: 600px;
+  width: fit-content(60vw);
+  height: fit-content(60vh);
   top: 10%;
   left: 20%;
   border: 1px solid black;
   text-align: center;
   background-color: darkcyan;
   display: block;
-
+  margin: 5px;
 }
 
 .modal-form {
@@ -66,14 +69,15 @@ td {
 
 .review-elem {
   height: fit-content(200px);
-  width: 1000px;
+  width: auto;
   border-bottom: 1px solid black;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-bottom: 5px;
   display: grid;
   grid-template-columns: 300px 300px auto auto;
   grid-template-rows: 20px 20px 10px auto auto 50px 50px;
+}
+
+.review-stars {
+  display: block;
 }
 
 .tile-summary {
@@ -101,8 +105,14 @@ td {
   grid-column-end: 4;
   grid-row: 5;
 }
-img {
+.tile-images img {
   margin: 3px;
+}
+
+.review-modal img {
+  width: auto;
+  height: auto;
+  background-color: #f4f4f4;
 }
 
 .tile-body {
@@ -124,6 +134,36 @@ img {
   grid-column: 1;
 }
 
+.review-bar {
+  height: 20px;
+  position: relative;
+  background: gray;
+  width: 400px;
+}
+
+.review-bar > .review-fill {
+  display: block;
+  height: 100%;
+  background-color: green;
+  position: relative;
+}
+
+.review-char-bar {
+  display: inline-block;
+  border: 1px solid black;
+  position: relative;
+  background: gray;
+  height: 20px;
+  width: 100px;
+}
+
+.review-bar > .review-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: black;
+  display: inline-block;
+}
 /* ---------------------------- Overview ---------------------------- */
 .overview {
   top: 20px;
