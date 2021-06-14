@@ -3,7 +3,7 @@ import AvgRating from '../AvgRating.jsx';
 import ActionButton from './ActionButton.jsx';
 import Atelier from '../../Atelier.js';
 
-const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal, offset }) => {
+const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal, offset, productClick }) => {
   const [image, setImage] = useState('');
   const [category, setCategory] = useState('');
   const [name, setName] = useState('');
@@ -34,7 +34,7 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
   }, [productId]);
 
   return (
-    <div className='ProductCard' style={{ '--offset': offset }}>
+    <div className='ProductCard' style={{ '--offset': offset }} onClick={() => productClick(productId)}>
       <ActionButton
         index={index}
         id={productId}
@@ -46,7 +46,7 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
       <div className='ProductInfo'>
         <span id='prod-category'>{category}</span>
         <br />
-        <b id='prod-name' /*onClick holder here*/>{name}</b>
+        <b id='prod-name'>{name}</b>
         <br />
         {price.salePrice
           ? <span id="sale-price">${price.salePrice}<strike>${price.default}</strike> </span>

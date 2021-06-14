@@ -3,7 +3,7 @@ import ProductCard from './ProductCard.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
 import Atelier from '../../Atelier.js';
 
-const RelatedList = ({ productId }) => {
+const RelatedList = ({ productId, productClick }) => {
   const listState = 'related';
   const [initialIndex, setIndex] = useState(0);
   const [relatedItems, setRelated] = useState([]);
@@ -83,7 +83,8 @@ const RelatedList = ({ productId }) => {
             productId={id}
             listState={listState}
             triggerModal={triggerModal}
-            offset={initialIndex}/>
+            offset={initialIndex}
+            productClick={productClick}/>
         ))}
       </div>
 

@@ -24,14 +24,19 @@ class App extends React.Component {
 
     this.handleProductHighlight = this.handleProductHighlight.bind(this);
     this.toggleTheme = this.toggleTheme.bind(this);
+    this.handleProductClick = this.handleProductClick.bind(this);
 
     // only using to test - Vy
     this.handleClick = this.handleClick.bind(this);
   }
 
   // only using to test - Vy
-  handleClick(e) {
+  handleClick(event) {
     this.setState({ product: event.target.innerHTML });
+  }
+
+  handleProductClick(id) {
+    this.setState({ product: id });
   }
 
   handleProductHighlight() {
@@ -83,7 +88,8 @@ class App extends React.Component {
           <div onClick={this.handleClick}>{item}</div>
         ))}
         <RICWidget
-          productId={product} />
+          productId={product}
+          productClick={this.handleProductClick}/>
       </div>
     );
   }
