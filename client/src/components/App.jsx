@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import Atelier from '../Atelier.js';
 import Overview from './Overview.jsx';
 import Ratings from './RatingsReview.jsx';
