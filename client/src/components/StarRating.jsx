@@ -1,5 +1,4 @@
 import React from 'react';
-import star from '../imgs/star.png';
 
 const StarRating = ({ rating }) => {
   var stars = [];
