@@ -32,9 +32,17 @@ const Breakdown = (props) => {
 
   const makeBreakdown = (data) => {
     var res = [];
+    var ratings = 0;
+    for (var number in data) {
+      ratings += Number(data[number]);
+    }
     for (var stars = 5; stars >= 1; stars--) {
       let i = stars;
-      res.push(<div key={stars} onClick={() => props.handleFilter(i)} ><StarRating rating={stars} />: {data[stars]} {stars}</div>)
+      let width = data[stars] ? Number(data[stars]) * 100 / ratings : 0;
+      res.push(<div key={stars} onClick={() => props.handleFilter(i)} ><StarRating rating={stars} />:
+      <div className='review-bar'>
+          <span className='review-fill' style={{ width: `${width}%` }} />
+        </div> {data[stars] || 0}</div>)
     }
     return res;
   };
@@ -42,11 +50,24 @@ const Breakdown = (props) => {
   const makeCharacteristicBreakdown = (data) => {
     var res = [];
     for (var char in data) {
-      var value = data[char].value;
-      res.push(<div key={char}>{char}: {characteristicBreakdown[char][0]} <StarRating rating={value} /> {characteristicBreakdown[char][4]}</div>)
+      let value = data[char].value;
+      let pos = Number(value) * 100;
+      res.push(
+        <div key={char}>
+          {char}: <br /> {[...Array(5).keys()].map(i => {
+            return <div key={i} className='review-char-bar' />
+          })}
+        </div>
+      )
     }
     return res;
   };
+
+  /*
+      <div className='review-bar'>
+            <div className='review-dot' style={{ marginLeft: `${pos}px` }} />
+          </div>
+  */
 
   //calculate breakdown statistics
   var avg = calcAverage(props.data.ratings);
@@ -55,7 +76,7 @@ const Breakdown = (props) => {
   var cbd = makeCharacteristicBreakdown(props.data.characteristics);
 
   //render
-  return (<div>
+  return (<div className='review-breakdown'>
     {avg} <StarRating rating={avg} key={props.data.id} /> <br />
     {rec}% of reviewers recommend this product. <br />
     {bd} <br />

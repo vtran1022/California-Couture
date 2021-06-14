@@ -63,7 +63,7 @@ const FormModal = (props) => {
   };
 
   return (
-    <div className='modal'>
+    <div className='review-modal'>
 
       <form className='modal-form' onSubmit={handleSubmit}>
         <h2>Write Your Review</h2>
