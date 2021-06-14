@@ -44,12 +44,9 @@ class App extends React.Component {
   componentDidMount() {
     const local = window.localStorage;
 
-    if (local.getItem('theme')) {
-      const value = local.getItem('theme');
-      this.setState({stylePath: value});
-    } else {
-      local.setItem('theme', this.state.stylePath);
-    }
+    local.getItem('theme')
+    ? this.setState({stylePath: local.getItem('theme')})
+    : local.setItem('theme', this.state.stylePath)
   }
 
   render() {
