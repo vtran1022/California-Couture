@@ -13,7 +13,7 @@ class App extends React.Component {
     this.state = {
       product: '13029',
       stylePath: 'lightTheme.css',
-      productArr: [
+      productArr: [     // only using to test - Vy
         13059,
         13047,
         13045,
@@ -24,9 +24,12 @@ class App extends React.Component {
 
     this.handleProductHighlight = this.handleProductHighlight.bind(this);
     this.toggleTheme = this.toggleTheme.bind(this);
+
+    // only using to test - Vy
     this.handleClick = this.handleClick.bind(this);
   }
 
+  // only using to test - Vy
   handleClick(e) {
     this.setState({ product: event.target.innerHTML });
   }
