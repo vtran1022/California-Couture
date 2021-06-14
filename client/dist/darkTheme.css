@@ -620,10 +620,6 @@
   font-size: 13px;
 }
 
-#prod-name:hover {
-  color: #2c59a5;
-}
-
 #sale-price {
   color: red
 }
