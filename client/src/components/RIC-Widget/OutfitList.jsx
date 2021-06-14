@@ -19,12 +19,9 @@ const OutfitList = ({ productId }) => {
   };
 
   useEffect(() => {
-    if (local.getItem('outfit')) {
-      const value = JSON.parse(local.getItem('outfit'));
-      setOutfit(value);
-    } else {
-      local.setItem('outfit', outfitItems);
-    }
+    local.getItem('outfit')
+    ? setOutfit(JSON.parse(local.getItem('outfit')))
+    : local.setItem('outfit', outfitItems);
   }, []);
 
   useEffect(() => {
