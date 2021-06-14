@@ -15,7 +15,7 @@
   height: 500px;
 }
 
-td {
+.review-table td {
   margin: 5px;
 }
 
@@ -38,7 +38,7 @@ td {
 
 .review-elem {
   height: fit-content(200px);
-  width: 1000px;
+  width: auto;
   border-bottom: 1px solid black;
   margin-left: 0px;
   margin-right: 0px;
@@ -73,7 +73,7 @@ td {
   grid-column-end: 4;
   grid-row: 5;
 }
-img {
+.review-container img {
   margin: 3px;
 }
 
