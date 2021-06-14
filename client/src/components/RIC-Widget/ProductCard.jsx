@@ -62,8 +62,5 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
 export default ProductCard;
 
 /*
-
-onClick product name - navigate to detail page. Need to pass the productId back up to App and re-render page
-
 Future Enhancements ???
 */
