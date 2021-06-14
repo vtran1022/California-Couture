@@ -59,8 +59,8 @@
 
 /* ---------------------------- Ratings & Reviews ---------------------------- */
 
-.review-container {
-}
+/* .review-container {
+} */
 .review-table {
   border: 1px solid black;
   border-collapse: collapse;
@@ -209,7 +209,6 @@
 }
 
 .image-gallery {
-  background-color: #60c7cb;
   border: 1px black solid;
   grid-column-start: 2;
   grid-row-start: 1;
@@ -227,8 +226,8 @@
 }
 
 .image-gallery-enlarged {
-  background-color: #60c7cb;
   border: 1px black solid;
+  background-color: #f4f4f4;
   grid-column-start: 2;
   grid-row-start: 1;
   z-index: 20;
@@ -243,7 +242,6 @@
 }
 
 .cart {
-  background-color: #60c7cb;
   border: 1px black solid;
   grid-column-start: 4;
   grid-row-start: 1;
@@ -258,7 +256,6 @@
 .description-features {
   border: 1px black solid;
   position:absolute;
-  background-color: #60c7cb;
   display: flex;
   justify-content: center;
   width: 1245px;
@@ -305,7 +302,7 @@
 }
 
 .preview {
-  cursor:crosshair;
+  cursor: zoom-in;
   display: block;
   max-height: 100%;
   height: 100%;
@@ -314,6 +311,7 @@
 }
 
 .zoomed-preview {
+  cursor: crosshair;
   border: 1px solid #d4d4d4;
   width: 300px;
   height: 300px;
@@ -325,6 +323,29 @@
   transition: all ease .2s;
 }
 
+/* .img-zoom-lens {
+  position: absolute;
+  border: 3px solid #A9A9A9;
+  width: 100px;
+  height: 100px;
+} */
+.img-zoom-result {
+  border: 1px solid #d4d4d4;
+  width: 300px;
+  height: 300px;
+  position: cursor;
+  left: 50%;
+  top: 50%;
+  transform: scale(0) translateY(-50%);
+  transform-origin: 0% 0%;
+  transition: all ease .2s;
+}
+.img-zoom-container:hover .img-zoom-result{
+  left: 100%;
+  transform: scale(1) translateY(-50%);
+}
+
+
 .default-thumbs-overlay {
   z-index: 10;
   position: absolute;
@@ -334,7 +355,7 @@
   left: 10px;
   overflow: scroll;
   height: 435px;
-  width: 100px;
+  width: 110px;
 }
 
 .enlarged-thumbs-overlay {
@@ -346,25 +367,31 @@
   left: 10px;
   overflow: scroll;
   height: 550px;
-  width: 100px;
+  width: 110px;
 }
 
-.thumb {
-  max-width:100px;
-  max-height:100px;
-  width: auto;
-  height: auto;
+.thumb-not-selected {
+  object-fit: cover;
+  width: 100px;
+  height: 60px;
   margin:5px;
 }
 
-.left-button, .right-button{
+.thumb-selected {
+  object-fit: cover;
+  width: 100px;
+  height: 60px;
+  border: 5px solid turquoise;
+}
+
+.left-button, .right-button, .enlarge-button{
   cursor: pointer;
-  color:white;
+  color:black;
   z-index: 20;
   position: absolute;
 }
 .left-button {
-  left: 120px;
+  left: 130px;
 }
 
 .right-button {
@@ -372,7 +399,6 @@
 }
 
 .enlarge-button {
-  position: absolute;
   right: 10px;
   top: 10px;
 }
@@ -469,17 +495,15 @@
 .style {
   display: flex;
   align-items: center;
+  flex-direction: column;
   padding-right: 15px;
   height: 120px;
   width: 110px
 }
-.style label {
-  position: relative;
-  display: inline-block;
-}
 
-.style span {
+.style-caption {
   font-size: 12px;
+  padding-bottom: 10px;
   position: relative;
   text-align: center;
   display: inline-block;
@@ -487,7 +511,8 @@
   width: 110px
 }
 
-.style img{
+.style-not-selected {
+  object-fit: cover;
   position: relative;
   padding-left: 17.5px;
   padding-right: 17.5px;
@@ -496,28 +521,17 @@
   border-radius: 50%;
 }
 
-.check {
-  display: none;
-}
-
-.style input:checked + .style-caption {
-  background: rgba(0,0,0,0.5);
-}
-
-.style img input:checked {
-  content: '✔';
-  position: absolute;
-  top: 50%; left: 50%;
-  width: 70px; height: 70px;
-  transform: translate(-50%,-50%);
-  color: red;
-  font-size: 60px;
-  line-height: 80px;
-  text-align: center;
-  border: 2px solid red;
+.style-selected {
+  object-fit: cover;
+  position: relative;
+  border: turquoise solid 3px;
+  margin-left: 17.5px;
+  margin-right: 17.5px;
+  height:75px;
+  width:75px;
   border-radius: 50%;
-  z-index: 50;
 }
+
 
 /*Relating Items & Comparisions ---------------*/
 

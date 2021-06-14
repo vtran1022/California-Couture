@@ -98,9 +98,12 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
       </select>
       </div>
 
-      <div className="cart-submit">
+      {!selectedQuantity
+      ? null
+      : <div className="cart-submit">
         <input type="submit" value="Add to Cart" ></input>
       </div>
+      }
     </form>
 
   )
