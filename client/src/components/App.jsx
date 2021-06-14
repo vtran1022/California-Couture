@@ -86,9 +86,9 @@ class App extends React.Component {
         {productArr.map((item) => (
           <div onClick={this.handleClick}>{item}</div>
         ))}
-        <RICWidget
+        {/* <RICWidget
           productId={product}
-          productClick={this.handleProductClick}/>
+          productClick={this.handleProductClick}/> */}
       </div>
     );
   }
