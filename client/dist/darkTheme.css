@@ -81,7 +81,7 @@
   appearance: none;
   background: #1a1a1a;
   border: none;
-  color: #168e7f;
+  color: #2c59a5;
   position: relative;
   font-size: 27px;
   font-weight: 700;
@@ -108,7 +108,7 @@
 
 .AddCard,
 .ProductCard {
-  border: 1px solid #168e7f;
+  border: 1px solid #2c59a5;
   width: 200px;
   height: 280px;
   margin-right: 10px;
@@ -158,7 +158,7 @@
 }
 
 #prod-name:hover {
-  color: #168e7f;
+  color: #2c59a5;
 }
 
 #sale-price {
@@ -181,8 +181,8 @@
   outline:none;
   font-size: 20px;
   color: #c9cbcd;
-  -webkit-text-stroke: 1px #168e7f;
-  text-stroke: 1px #168e7f;
+  -webkit-text-stroke: 1px #2c59a5;
+  text-stroke: 1px #2c59a5;
   z-index: 8;
 }
 
@@ -192,9 +192,9 @@
   height: 400px;
   top: 25%;
   left: 25%;
-  border: 1px solid #168e7f;
-  background-color: #373d45;
-  overflow-y: scroll #373d45;
+  border: 1px solid #2c59a5;
+  background-color: #232323;
+  overflow-y: scroll #232323;
   z-index: 10;
   padding-right: 20px;
   padding-left: 20px;
@@ -235,5 +235,5 @@
   top: 0;
   width: var(--width);
   overflow: hidden;
-  color: #168e7f;
+  color: #2c59a5;
 }

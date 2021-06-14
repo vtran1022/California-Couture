@@ -49,8 +49,8 @@ class App extends React.Component {
           toggleTheme={this.toggleTheme}/>
         {/* <Overview /> */}
         {/* <Ratings id={this.state.product} /> */}
-        <RICWidget
-          productId={product} />
+        {/* <RICWidget
+          productId={product} /> */}
       </div>
     );
   }
