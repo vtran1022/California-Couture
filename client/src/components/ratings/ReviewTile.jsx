@@ -28,7 +28,7 @@ const ReviewTile = (props) => {
   return <tr >
     <td>
       <div className='review-elem'>
-        <span><StarRating rating={props.review.rating} key={props.review.review_id} /></span>
+        <div className='review-stars'><StarRating rating={props.review.rating} key={props.review.review_id} /></div>
         <span className='tile-reviewer'>{props.review.reviewer_name}</span>
         <span className='tile-date'>{new Date(props.review.date).toLocaleDateString({},
           { timeZone: "UTC", month: "long", day: "2-digit", year: "numeric" })}</span>
@@ -46,7 +46,7 @@ const ReviewTile = (props) => {
 
 
 const ImageModal = (props) => {
-  return <img id={props.img.id} src={props.img.url} className='modal' onClick={props.onClose} />
+  return <img id={props.img.id} src={props.img.url} className='review-modal' onClick={props.onClose} />
 };
 /*
 {out.map((f, idx) => {

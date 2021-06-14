@@ -14,7 +14,7 @@ const Ratings = (props) => {
   const [sort, setSort] = useState('relevant');
   const [showForm, setShowForm] = useState(false);
   const [search, setSearch] = useState('');
-  const [filter, setFilter] = useState([true, true, true, true, true]);
+  const [filter, setFilter] = useState([false, false, false, false, false]);
 
   //effects
   //runs when the sorting method is changed, fetch reviews with new sorting methods
@@ -82,7 +82,6 @@ const Ratings = (props) => {
     });
   };
 
-
   if (Object.keys(reviews).length > 0) {
     return (<div className='review-container'>
       {showForm ? <FormModal characteristics={meta.characteristics} submitData={addNewReview} productName={'PLACEHOLDER'} /> : null}
@@ -104,10 +103,10 @@ const Ratings = (props) => {
         <table className='review-table'>
           <tbody>
             {reviews.filter(review => {
-              if (!filter[review.rating - 1]) {
+              if (!filter[review.rating - 1] && !filter.every(i => !i)) {
                 return false;
               }
-              if (search.length > 3) {
+              if (search.length >= 3) {
                 var regex = '^.*' + search + '.*$';
                 var re = new RegExp(regex, 'i');
                 return re.test(review.body);
