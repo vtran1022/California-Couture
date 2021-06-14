@@ -19,19 +19,15 @@ const OutfitList = ({ productId }) => {
   };
 
   useEffect(() => {
-    if (outfitItems.indexOf(productId) !== -1) {
-      setAdded(false);
-    } else {
-      setAdded(true);
-    }
+    (outfitItems.indexOf(productId) !== -1)
+    ? setAdded(false)
+    : setAdded(true)
   }, [productId]);
 
   useEffect(() => {
-    if (outfitItems.length > 5) {
-      setRight(true);
-    } else {
-      setRight(false);
-    }
+    (outfitItems.length > 5)
+    ? setRight(true)
+    : setRight(false)
   }, [outfitItems]);
 
   const triggerDelete = useCallback((index) => {

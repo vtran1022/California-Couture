@@ -27,11 +27,9 @@ const RelatedList = ({ productId }) => {
   }, [productId]);
 
   useEffect(() => {
-    if (relatedItems.length > 5) {
-      setRight(true);
-    } else {
-      setRight(false);
-    }
+    relatedItems.length > 5
+    ? setRight(true)
+    : setRight(false)
   }, [relatedItems]);
 
   const triggerModal = useCallback((id) => {
