@@ -61,8 +61,7 @@
   width: auto;
   height: auto;
   display: grid;
-  grid-row: span 2;
-  text-align: center;
+  justify-items: center;
 }
 
 .RICList {
@@ -75,13 +74,12 @@
 .RIC-Title {
   width: auto;
   height: 20px;
-  margin-left: 342px;
-  text-align: left;
+  margin-left: 38px;
 }
 
 .button1 {
   appearance: none;
-  background: #2e343c;
+  background: #1a1a1a;
   border: none;
   color: #168e7f;
   position: relative;
@@ -96,9 +94,9 @@
 
 .button2 {
   appearance: none;
-  background: #2e343c;
+  background: #1a1a1a;
   border: none;
-  color: #2e343c;
+  color: #1a1a1a;
   position: relative;
   font-size: 27px;
   font-weight: 700;
@@ -116,8 +114,7 @@
   margin-right: 10px;
   padding-bottom: 1.5px;
   float: left;
-  background-color: #373d45;
-  text-align: left;
+  background-color: #232323;
 
   transform: translateX(calc(105% * var(--offset)));
   transition: transform 0.5s ease-in-out;
