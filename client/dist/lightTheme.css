@@ -7,7 +7,27 @@
   font-weight: 300;
 }
 
-/* NavBar --------------*/
+/* Header --------------*/
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+#toggleButton {
+  display: flex;
+  align-content: flex-end;
+  margin-top: auto;
+  margin-bottom: 5px;
+  border: 2px solid #60c7cb;
+  border-radius: 30px;
+  cursor: pointer;
+  padding-right: 4px;
+  width: 60px;
+  height: 30px;
+  font-size: 20px;
+}
 
 #logo {
   width: auto;

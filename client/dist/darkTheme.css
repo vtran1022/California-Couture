@@ -7,7 +7,17 @@
   background-color: #2e343c;
 }
 
-/* NavBar --------------*/
+/* Header --------------*/
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+#toggleButton {
+  /* float: right; */
+  /* text-align: right; */
+}
 
 #logo {
   width: auto;

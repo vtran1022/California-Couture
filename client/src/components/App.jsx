@@ -45,13 +45,12 @@ class App extends React.Component {
         <link rel="stylesheet" type="text/css" href={stylePath} />
         <Header
           highlight={this.handleProductHighlight}
-          theme={stylePath}/>
-
-        <button onClick={this.toggleTheme}>Change Theme</button>
+          theme={stylePath}
+          toggleTheme={this.toggleTheme}/>
         {/* <Overview /> */}
         {/* <Ratings id={this.state.product} /> */}
-        <RICWidget
-          productId={product} />
+        {/* <RICWidget
+          productId={product} /> */}
       </div>
     );
   }

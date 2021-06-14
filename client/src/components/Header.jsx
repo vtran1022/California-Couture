@@ -2,15 +2,19 @@ import React from 'react';
 import lightLogo from '../imgs/lightLogo.png';
 import darkLogo from '../imgs/darkLogo.png';
 
-const NavBar = ({ highlight, theme }) => {
+const Header = ({ highlight, theme, toggleTheme }) => {
   return (
     <div>
-      <nav className='navbar'>
         {theme === 'lightTheme.css'
-          ? <img id='logo' src={lightLogo} alt='Company Logo'></img>
-          : <img id='logo' src={darkLogo} alt='Company Logo'></img>
+          ? <nav className='navbar'>
+              <img id='logo' src={lightLogo} alt='Company Logo'></img>
+              <button id='toggleButton' onClick={toggleTheme}>🌞</button>
+              </nav>
+          : <nav className='navbar'>
+              <img id='logo' src={darkLogo} alt='Company Logo'></img>
+              <button id='toggleButton' onClick={toggleTheme}>MON</button>
+            </nav>
         }
-      </nav>
       <div className='announcement-container'>
         <span className='announcement'>
           SITE-WIDE ANNOUNCEMENT MESSAGE! &nbsp;
@@ -24,4 +28,4 @@ const NavBar = ({ highlight, theme }) => {
   );
 };
 
-export default NavBar;
+export default Header;
