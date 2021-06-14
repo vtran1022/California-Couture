@@ -3,34 +3,39 @@ import ProductCard from './ProductCard.jsx';
 
 const OutfitList = ({ productId }) => {
   const listState = 'outfit';
+  const local = window.localStorage;
   const [initialIndex, setIndex] = useState(0);
   const [outfitItems, setOutfit] = useState([]);
-  const [ifAdded, setAdded] = useState(true);
+  const [ifAdded, setAdded] = useState(false);
   const [isRight, setRight] = useState(false);
   const [isLeft, setLeft] = useState(false);
 
   const addItem = (id) => {
     if (outfitItems.indexOf(id) === -1) {
       setOutfit(prevArray => [...prevArray, id]);
+      setAdded(true);
     }
     setAdded(false);
   };
 
   useEffect(() => {
-    const local = window.localStorage;
-
-    local.getItem('outfit')
-    ? setOutfit({outfitItems: local.getItem('outfit')})
-    : local.setItem('outfit', this.state.outfitItems)
-  });
+    if (local.getItem('outfit')) {
+      const value = JSON.parse(local.getItem('outfit'));
+      setOutfit(value);
+    } else {
+      local.setItem('outfit', outfitItems);
+    }
+  }, []);
 
   useEffect(() => {
     (outfitItems.indexOf(productId) !== -1)
     ? setAdded(false)
-    : setAdded(true)
+    : setAdded(true);
   }, [productId]);
 
   useEffect(() => {
+    local.setItem('outfit', JSON.stringify(outfitItems));
+
     (outfitItems.length > 5)
     ? setRight(true)
     : setRight(false)
