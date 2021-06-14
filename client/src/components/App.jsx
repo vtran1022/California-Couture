@@ -11,27 +11,13 @@ class App extends React.Component {
     super(props);
     this.state = {
       product: '13045',
-      stylePath: 'lightTheme.css',
-      productArr: [     // only using to test - Vy
-        13059,
-        13047,
-        13045,
-        13056,
-        13053
-      ]
+      stylePath: 'lightTheme.css'
     }
 
     this.handleProductHighlight = this.handleProductHighlight.bind(this);
     this.toggleTheme = this.toggleTheme.bind(this);
     this.handleProductClick = this.handleProductClick.bind(this);
 
-    // only using to test - Vy
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  // only using to test - Vy
-  handleClick(event) {
-    this.setState({ product: event.target.innerHTML });
   }
 
   handleProductClick(id) {
@@ -75,22 +61,18 @@ class App extends React.Component {
     } = this.state;
 
     return (
-      <div>
+      <>
         <link rel="stylesheet" type="text/css" href={stylePath} />
         <Header
           highlight={this.handleProductHighlight}
           theme={stylePath}
           toggleTheme={this.toggleTheme}/>
-        {/* <Overview />
-        <Ratings id={this.state.product} /> */}
-        {productArr.map((item) => (
-          <div onClick={this.handleClick}>{item}</div>
-        ))}
-        {/* <RICWidget
+        <Overview />
+        <Ratings id={this.state.product} />
+        <RICWidget
           productId={product}
-          productClick={this.handleProductClick}/> */}
-
-      </div>
+          productClick={this.handleProductClick}/>
+      </>
     );
   }
 };
