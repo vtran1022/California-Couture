@@ -3,6 +3,7 @@ import axios from 'axios';
 import { auth } from '../../../../config.js';
 import AvgRating from '../AvgRating.jsx';
 import ActionButton from './ActionButton.jsx';
+import Atelier from '../../Atelier.js';
 
 const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal, offset }) => {
   const [image, setImage] = useState('');
@@ -10,27 +11,27 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
   const [name, setName] = useState('');
   const [price, setPrice] = useState({default: 0, salePrice: null});
 
-  const fetchProducts = async () => {
-    let productData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${productId}`,
-    { headers: { 'Authorization': auth.TOKEN } });
+  const fetchProducts = () => {
+    Atelier.getInfo(productId)
+    .then((product) => {
+      setCategory(product.category);
+      setName(product.name);
+    })
+    .catch((err) => console.log(`Error fetching product info: ${err}`));
 
-    let productStyles = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${productId}/styles`,
-    { headers: { 'Authorization': auth.TOKEN } });
-
-    const product = productData.data;
-    const firstStyle = productStyles.data.results[0];
-
-    setCategory(product.category);
-    setName(product.name);
-    setImage(firstStyle.photos[0].thumbnail_url);
-    setPrice({
-      default: firstStyle.original_price,
-      salePrice: firstStyle.sale_price
+    Atelier.getStyles(productId).then((data) => {
+      const firstStyle = data.results[0];
+      setImage(firstStyle.photos[0].thumbnail_url);
+      setPrice({
+        default: firstStyle.original_price,
+        salePrice: firstStyle.sale_price
       });
+    })
+    .catch((err) => console.log(`Error fetching style info: ${err}`));
   };
 
   useEffect(() => {
-    fetchProducts().catch((err) => console.log(`Error fetching product info: ${err}`))
+    fetchProducts();
   }, [productId]);
 
   return (
