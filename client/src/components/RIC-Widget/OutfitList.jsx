@@ -4,7 +4,6 @@ import ProductCard from './ProductCard.jsx';
 const OutfitList = ({ productId }) => {
   const listState = 'outfit';
   const [initialIndex, setIndex] = useState(0);
-  const [ifOutfit, setExists] = useState(false);
   const [outfitItems, setOutfit] = useState([]);
   const [ifAdded, setAdded] = useState(true);
   const [isRight, setRight] = useState(false);
@@ -13,7 +12,6 @@ const OutfitList = ({ productId }) => {
   const addItem = (id) => {
     if (outfitItems.indexOf(id) === -1) {
       setOutfit(prevArray => [...prevArray, id]);
-      setExists(true);
     }
     setAdded(false);
   };
@@ -36,10 +34,6 @@ const OutfitList = ({ productId }) => {
 
     setOutfit(currentOutfits);
     setAdded(true);
-
-    if (currentOutfits.length === 0) {
-      setExists(false);
-    };
   });
 
   const handleClick = (action) => {
@@ -78,7 +72,7 @@ const OutfitList = ({ productId }) => {
           : <button className='button2'>‹</button>
         }
       <div className='RICList'>
-          {ifOutfit
+          {outfitItems.length !== 0
             ? <div>
                 <div className='AddCard' onClick={() => addItem(productId)}>
                   {ifAdded
