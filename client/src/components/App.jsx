@@ -12,11 +12,23 @@ class App extends React.Component {
     super(props);
     this.state = {
       product: '13029',
-      stylePath: 'lightTheme.css'
+      stylePath: 'lightTheme.css',
+      productArr: [
+        13059,
+        13047,
+        13045,
+        13056,
+        13053
+      ]
     }
 
     this.handleProductHighlight = this.handleProductHighlight.bind(this);
     this.toggleTheme = this.toggleTheme.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    this.setState({ product: event.target.innerHTML });
   }
 
   handleProductHighlight() {
@@ -65,6 +77,9 @@ class App extends React.Component {
           toggleTheme={this.toggleTheme}/>
         {/* <Overview />
         <Ratings id={this.state.product} /> */}
+        {productArr.map((item) => (
+          <div onClick={this.handleClick}>{item}</div>
+        ))}
         <RICWidget
           productId={product} />
       </div>

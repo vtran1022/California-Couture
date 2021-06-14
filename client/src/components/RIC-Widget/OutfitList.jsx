@@ -17,6 +17,14 @@ const OutfitList = ({ productId }) => {
   };
 
   useEffect(() => {
+    const local = window.localStorage;
+
+    local.getItem('outfit')
+    ? setOutfit({outfitItems: local.getItem('outfit')})
+    : local.setItem('outfit', this.state.outfitItems)
+  });
+
+  useEffect(() => {
     (outfitItems.indexOf(productId) !== -1)
     ? setAdded(false)
     : setAdded(true)
