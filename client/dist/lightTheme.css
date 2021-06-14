@@ -180,9 +180,9 @@
   overflow: hidden;
   outline:none;
   font-size: 20px;
-  color: #e4f3f4;
-  -webkit-text-stroke: 1px black;
-  text-stroke: 1px black;
+  color: #60c7cb;
+  -webkit-text-stroke: 0.4px black;
+  text-stroke: 0.4px black;
   z-index: 8;
 }
 
