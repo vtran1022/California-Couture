@@ -578,6 +578,7 @@
   margin-right: 10px;
   padding-bottom: 1.5px;
   float: left;
+  background-color: #f4f4f4;
 
   transform: translateX(calc(105% * var(--offset)));
   transition: transform 0.5s ease-in-out;
@@ -587,7 +588,6 @@
   width: 200px;
   height: 200px;
   object-fit: fill;
-  background-color: #f4f4f4;
 }
 
 .ProductInfo {
