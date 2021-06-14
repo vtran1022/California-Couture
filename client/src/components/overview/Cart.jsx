@@ -3,7 +3,7 @@ import AvgRating from '../AvgRating.jsx';
 
 const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
   // const [cartItems, serCurrentCart] = await useState({}) need to pull a user's cart
-  // const [styleId, setStyleId] = useState('');
+
   const [skus, setSKUs] = useState(parseSKUs(style));
   const [currentSKU, setSKU] = useState({});
   const [selectedSize, setSize] = useState('');
@@ -57,19 +57,19 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
       <div className='styles-box'>
         <h1><strong>Style</strong> > <em>{style.name}</em></h1>
         <div className='styles'>
-        {stylesList.map(style => {
-          return <div className='style' key={style.style_id}>
-            <label>
-              <span className='style-caption'>
-                <span>{style.name}</span>
-                </span>
-              <input type="radio" name="check" className='check'/>
-              <img
-              key={style.style_id}
-              pic-id={style.style_id}
-              src={style.photos[0].thumbnail_url}
-              onClick={(e) => handleStyleSelect(e.currentTarget.getAttribute('pic-id'))}/>
-            </label>
+        {stylesList.map( (stylePic, index) => {
+          return <div className='style' key={stylePic.style_id}>
+            <span className='style-caption'>{stylePic.name}</span>
+            <img
+            className={
+              (stylePic === style)
+              ? 'style-selected'
+              : 'style-not-selected'}
+            key={stylePic.style_id}
+            id={index+100}
+            pic-id={stylePic.style_id}
+            src={stylePic.photos[0].thumbnail_url}
+            onClick={(e) => handleStyleSelect(e.currentTarget.getAttribute('pic-id'))}/>
           </div>
         })}
         </div>

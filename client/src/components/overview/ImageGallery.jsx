@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Thumbnails from './Thumbnails.jsx';
-import Enlarge from '../../imgs/expand-32.png';
+import White_Enlarge from '../../imgs/white-expand-32.png';
+import Black_Enlarge from '../../imgs/black-enlarge_102020.png';
 
 
 function ImageGallery ({ photos, styleid }) {
@@ -79,7 +80,7 @@ function ImageGallery ({ photos, styleid }) {
 
       <a className='left-button' onClick={() => handleLeftClick()}>&#10094;</a>
       <a className='right-button' onClick={() => handleRightClick()}>&#10095;</a>
-      <img className='enlarge-button' src={Enlarge} onClick={()=>handleViewClick()}/>
+      <img className='enlarge-button' src={Black_Enlarge} onClick={()=>handleViewClick()}/>
     </div>
   )
 }
