@@ -49,8 +49,7 @@ class App extends React.Component {
 
     this.state.stylePath === 'darkTheme.css'
     ? local.setItem('theme', 'lightTheme.css')
-    : local.setItem('theme', 'darkTheme.css')
-
+    : local.setItem('theme', 'darkTheme.css');
   }
 
   componentDidMount() {
@@ -58,7 +57,7 @@ class App extends React.Component {
 
     local.getItem('theme')
     ? this.setState({stylePath: local.getItem('theme')})
-    : local.setItem('theme', this.state.stylePath)
+    : local.setItem('theme', this.state.stylePath);
   }
 
   render() {
