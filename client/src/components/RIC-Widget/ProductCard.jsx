@@ -11,21 +11,22 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
 
   const fetchProducts = () => {
     Atelier.getInfo(productId)
-    .then((product) => {
-      setCategory(product.category);
-      setName(product.name);
-    })
-    .catch((err) => console.log(`Error fetching product info: ${err}`));
+     .then((product) => {
+       setCategory(product.category);
+       setName(product.name);
+     })
+     .catch((err) => console.log(`Error fetching product info: ${err}`));
 
-    Atelier.getStyles(productId).then((data) => {
-      const firstStyle = data.results[0];
-      setImage(firstStyle.photos[0].thumbnail_url);
-      setPrice({
-        default: firstStyle.original_price,
-        salePrice: firstStyle.sale_price
-      });
-    })
-    .catch((err) => console.log(`Error fetching style info: ${err}`));
+    Atelier.getStyles(productId)
+      .then((data) => {
+        const firstStyle = data.results[0];
+        setImage(firstStyle.photos[0].thumbnail_url);
+        setPrice({
+          default: firstStyle.original_price,
+          salePrice: firstStyle.sale_price
+        });
+      })
+      .catch((err) => console.log(`Error fetching style info: ${err}`));
   };
 
   useEffect(() => {
