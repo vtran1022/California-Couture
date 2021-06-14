@@ -89,6 +89,7 @@ class App extends React.Component {
         {/* <RICWidget
           productId={product}
           productClick={this.handleProductClick}/> */}
+
       </div>
     );
   }

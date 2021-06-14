@@ -12,7 +12,7 @@ const AvgRating = ({ productId }) => {
   };
 
   const fetchRatings = () => {
-    Atelier.getRatings(productId)
+    Atelier.getMeta(productId)
       .then((data) => {
         let ratings = Object.values(data.ratings);
         setRatings(ratings);

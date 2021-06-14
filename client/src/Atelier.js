@@ -48,10 +48,6 @@ class Atelier {
     return await this.fetchAPI(`products/${productId}/related`);
   }
 
-  async getRatings(productId) {
-    return await this.fetchAPI(`reviews/meta/?product_id=${productId}`);
-  }
-
   async fetchAPI(endpoint) {
     var res = await fetch(this.baseURL + endpoint, {
       method: 'GET',
