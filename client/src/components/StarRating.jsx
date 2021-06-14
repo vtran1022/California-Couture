@@ -8,13 +8,13 @@ const StarRating = ({ rating }) => {
       stars.push('100%');
       rating -= 1;
     } else if (rating >= 0.75) {
-      stars.push('75%')
+      stars.push('67%')
       rating -= 0.75
     } else if (rating >= 0.5) {
-      stars.push('50%');
+      stars.push('55%');
       rating -= 0.5;
     } else if (rating >= 0.25) {
-      stars.push('25%');
+      stars.push('40%');
       rating -= 0.25;
     } else {
       stars.push('0%');
