@@ -42,7 +42,7 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
         triggerDelete={triggerDelete}
         triggerModal={triggerModal}/>
 
-      <img src={image} alt={name} className='ProductImage'></img>
+      <img className='ProductImage' src={image} alt={name}></img>
       <div className='ProductInfo'>
         <span id='prod-category'>{category}</span>
         <br />
