@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Thumbnails from './Thumbnails.jsx';
+import ImagePreview from './ImagePreview.jsx';
 
 function ImageGallery ({ photos, styleid, theme }) {
   const [showView, setView] = useState(false);
@@ -12,23 +13,6 @@ function ImageGallery ({ photos, styleid, theme }) {
     setPhotoList(photos);
     setPhotoIndex(0);
   }, [photos]);
-
-  function handleZoomLens (imgId, resultId) {
-    var img, lens, result, cx, cy;
-    img = document.getElementById(imgID);
-    result = document.getElementById(resultID);
-    lens = document.createElement("DIV");
-    lens.setAttribute("class", "img-zoom-lens");
-    img.parentElement.insertBefore(lens, img);
-    cx = result.offsetWidth / lens.offsetWidth;
-    cy = result.offsetHeight / lens.offsetHeight;
-    result.style.backgroundImage = "url('" + img.src + "')";
-    result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
-    lens.addEventListener("mousemove", moveLens);
-    img.addEventListener("mousemove", moveLens);
-    lens.addEventListener("touchmove", moveLens);
-    img.addEventListener("touchmove", moveLens);
-  }
 
   function handleViewClick () {
     setView(!showView);
@@ -62,15 +46,22 @@ function ImageGallery ({ photos, styleid, theme }) {
       ? 'image-gallery-enlarged'
       : 'image-gallery'}
     >
-      <div className='preview-container'>
-      <img
-      className='preview'
-      id='preview'
-      src={currentPhoto.url}
-      onClick={handleViewClick}
+      {/* <div className='preview-container'>
+        <img
+        className='preview'
+        id='preview'
+        src={currentPhoto.url}
+        onClick={handleViewClick}
+        />
+        <div
+        className='zoomed-preview'
+        id='zoomed-preview'
+        ></div>
+      </div> */}
+      <ImagePreview
+      preview={ currentPhoto.url }
       />
-      <div className='zoomed-preview'></div>
-      </div>
+
       <div className=
       {showView
         ? 'enlarged-thumbs-overlay'

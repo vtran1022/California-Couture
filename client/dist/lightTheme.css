@@ -208,37 +208,32 @@
   position: relative;
 }
 
-.image-gallery {
+.image-gallery, .image-gallery-enlarged {
   border: 1px black solid;
+  background-color: #f4f4f4;
   grid-column-start: 2;
   grid-row-start: 1;
   display: flex;
-  padding: 30px;
-  min-width: 600px;
-  min-height: 475px;
-  width: 600px;
-  height: 475px;
-  overflow: hidden;
   position: absolute;
   align-items: center;
   justify-content: center;
   object-fit: cover;
 }
 
+.image-gallery {
+  overflow: hidden;
+  padding: 30px;
+  min-width: 600px;
+  min-height: 475px;
+  width: 600px;
+  height: 475px;
+}
+
 .image-gallery-enlarged {
-  border: 1px black solid;
-  background-color: #f4f4f4;
-  grid-column-start: 2;
-  grid-row-start: 1;
   z-index: 20;
-  display: flex;
   padding: 30px;
   width: 1150px;
   height: 600px;
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-  object-fit: cover;
 }
 
 .cart {
@@ -271,14 +266,6 @@
   flex-direction: column;
 }
 
-/* .description h1 {
-
-}
-
-.description span {
-
-} */
-
 .features {
   width: 400px;
   display: flex;
@@ -287,10 +274,6 @@
   justify-content: space-evenly;
   border-left: black 1px solid;
 }
-
-/* .features span {
-
-} */
 
 .preview-container {
   padding: 30px;
@@ -309,42 +292,6 @@
   max-width: auto;
   width: auto;
 }
-
-.zoomed-preview {
-  cursor: crosshair;
-  border: 1px solid #d4d4d4;
-  width: 300px;
-  height: 300px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: scale(0) translateY(-50%);
-  transform-origin: 0% 0%;
-  transition: all ease .2s;
-}
-
-/* .img-zoom-lens {
-  position: absolute;
-  border: 3px solid #A9A9A9;
-  width: 100px;
-  height: 100px;
-} */
-.img-zoom-result {
-  border: 1px solid #d4d4d4;
-  width: 300px;
-  height: 300px;
-  position: cursor;
-  left: 50%;
-  top: 50%;
-  transform: scale(0) translateY(-50%);
-  transform-origin: 0% 0%;
-  transition: all ease .2s;
-}
-.img-zoom-container:hover .img-zoom-result{
-  left: 100%;
-  transform: scale(1) translateY(-50%);
-}
-
 
 .default-thumbs-overlay {
   z-index: 10;
@@ -373,14 +320,14 @@
 .thumb-not-selected {
   object-fit: cover;
   width: 100px;
-  height: 60px;
+  height: 54px;
   margin:5px;
 }
 
 .thumb-selected {
   object-fit: cover;
   width: 100px;
-  height: 60px;
+  height: 54px;
   border: 5px solid turquoise;
 }
 

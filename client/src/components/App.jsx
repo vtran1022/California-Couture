@@ -12,7 +12,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       product: '13023',
-      stylePath: 'lightTheme.css'
+      stylePath: 'lightTheme.css',
+      cart: []
     }
 
     this.handleProductHighlight = this.handleProductHighlight.bind(this);
@@ -21,6 +22,11 @@ class App extends React.Component {
 
   handleProductHighlight() {
     this.setState({ product: '13050'});
+  }
+
+  loadUserCart () {
+    const local = window.localStorage;
+    // load user cart if one exists already
   }
 
   toggleTheme() {
