@@ -25,8 +25,8 @@ function Overview (props) {
   useEffect(() => {
     async function fetchData () {
       try {
-        var product = await Atelier.getInfo(13025).catch((err) => console.log(err));
-        var styleList = await Atelier.getStyles(13025).catch((err) => console.log(err));
+        var product = await Atelier.getInfo(13023).catch((err) => console.log(err));
+        var styleList = await Atelier.getStyles(13023).catch((err) => console.log(err));
         setStyleList(styleList.results);
         setStyle(styleList.results[0]);
         setCurrentProduct(product);
@@ -54,12 +54,10 @@ function Overview (props) {
         ? null
         : <ImageGallery
           key='999999'
-          className='image-gallery'
           photos={ style.photos }
           styleid={ styleId }
         />
       }
-
       {isLoading
         ? null
         : <Cart

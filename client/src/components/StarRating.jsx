@@ -1,35 +1,37 @@
 import React from 'react';
+import star from '../imgs/star.png';
 
-const StarRating = (props) => {
-  //TODO: pull out star rendering to a function passed from props i.e. props.renderQuarterStar()
-  const renderStar = () => '★';
-  const renderThreeQuarter = () => '¾';
-  const renderHalf = () => '½';
-  const renderQuarter = () => '¼';
-  const renderEmpty = () => '☆';
-
-  var score = props.rating;
+const StarRating = ({ rating }) => {
   var stars = [];
   for(var i = 0; i < 5; i++) {
-    if(score >= 1) {
-      stars.push(renderStar());
-      score -= 1;
-    } else if (score >= 0.75) {
-      stars.push(renderThreeQuarter())
-      score -= 0.75
-    } else if (score >= 0.5) {
-      stars.push(renderHalf());
-      score -= 0.5;
-    } else if (score >= 0.25) {
-      stars.push(renderQuarter());
-      score -= 0.25;
+    if(rating >= 1) {
+      stars.push(1.0);
+      rating -= 1;
+    } else if (rating >= 0.75) {
+      stars.push(0.75)
+      rating -= 0.75
+    } else if (rating >= 0.5) {
+      stars.push(0.5);
+      rating -= 0.5;
+    } else if (rating >= 0.25) {
+      stars.push(0.25);
+      rating -= 0.25;
     } else {
-      stars.push(renderEmpty());
+      stars.push(0);
     }
   }
-  
-  return stars
 
+  return (
+    <div>
+      {stars.map((item, i) => (
+        <div className='star-container' key={i}>
+            <div className='star-fill' style={{'width': `${parseInt(item*15)}px`}}>
+                <img className='star' src={star} alt='stars alt'></img>
+            </div>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default StarRating;
