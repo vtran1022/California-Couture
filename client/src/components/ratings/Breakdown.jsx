@@ -21,7 +21,6 @@ const Breakdown = (props) => {
       sum += Number(number) * Number(data[number]);
       ratings += Number(data[number]);
     }
-    console.log(ratings)
     return (sum / ratings).toFixed(2);
   };
 
@@ -50,7 +49,6 @@ const Breakdown = (props) => {
 
   const makeCharacteristicBreakdown = (data) => {
     var res = [];
-    console.log(data)
     for (var char in data) {
       let value = data[char].value;
       let pos = Number(value) * 100;
@@ -71,7 +69,6 @@ const Breakdown = (props) => {
           </div>
   */
 
-  console.log(props.data.ratings);
   //calculate breakdown statistics
   var avg = calcAverage(props.data.ratings);
   var rec = calcRecommend(props.data.recommended);
