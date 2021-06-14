@@ -15,6 +15,10 @@ function ImageGallery ({ photos, styleid }) {
     setPhotoIndex(0);
   }, [photos]);
 
+  function zoomLens (imgId, resultId) {
+
+  }
+
   function handleViewClick () {
     setView(!showView);
   }
@@ -50,10 +54,14 @@ function ImageGallery ({ photos, styleid }) {
       ? 'image-gallery-enlarged'
       : 'image-gallery'}
     >
+      <div className='preview-container'>
       <img
       className='preview'
+      id='preview'
       src={currentPhoto.url}
       />
+      <div className='zoomed-preview'></div>
+      </div>
       <div className=
       {showView
         ? 'enlarged-thumbs-overlay'

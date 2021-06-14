@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import AvgRating from '../AvgRating.jsx';
 
 const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
   // const [cartItems, serCurrentCart] = await useState({}) need to pull a user's cart
   // const [styleId, setStyleId] = useState('');
-  // const [isLoading, setLoading] = useState(false);
   const [skus, setSKUs] = useState(parseSKUs(style));
   const [currentSKU, setSKU] = useState({});
   const [selectedSize, setSize] = useState('');
@@ -41,7 +41,10 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
   return (
     <form className='cart' data-testid="cart-1">
 
-      {/* Star Rating goes here */} <span className='cart-ratings'>Star Rating PlaceHolder</span>
+
+      <div className='cart-ratings'>
+      <AvgRating productId={ currentProduct.id } />
+      </div>
 
       <span id='name'>{currentProduct.name}</span><br></br>
 
@@ -49,7 +52,7 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
 
       {!price.sale
         ?<span className='price'>Price: {price.default}</span>
-        :<span className='price-sale'>Price: <strike>{price.default}</strike>{price.sale}</span>}
+        :<span className='price-sale'>Price: {price.sale} <strike>{price.default}</strike></span>}
 
       <div className='styles-box'>
         <h1><strong>Style</strong> > <em>{style.name}</em></h1>
