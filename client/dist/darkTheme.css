@@ -602,6 +602,7 @@
 
 #plus-outfit,
 #item-added {
+  width: 200px;
   margin-bottom: 10px;
   font-size: 15px;
 }
