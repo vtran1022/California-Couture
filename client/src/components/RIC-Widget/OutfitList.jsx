@@ -92,12 +92,12 @@ const OutfitList = ({ productId }) => {
                 </span>
               {outfitItems.map((id, i) => (
                 <ProductCard
-                key={id}
-                productId={id}
-                index={i}
-                listState={listState}
-                triggerDelete={triggerDelete}
-                offset={initialIndex}/>))}
+                  key={id}
+                  productId={id}
+                  index={i}
+                  listState={listState}
+                  triggerDelete={triggerDelete}
+                  offset={initialIndex}/>))}
               </React.Fragment>
             : <span className='AddCard' onClick={() => addItem(productId)}>
                 {ifAdded
