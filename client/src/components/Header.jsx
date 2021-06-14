@@ -6,7 +6,7 @@ const NavBar = ({ highlight, theme }) => {
   return (
     <div>
       <nav className='navbar'>
-        {theme === 'light'
+        {theme === 'lightTheme.css'
           ? <img id='logo' src={lightLogo} alt='Company Logo'></img>
           : <img id='logo' src={darkLogo} alt='Company Logo'></img>
         }

@@ -1,10 +1,10 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import axios from 'axios';
 import Atelier from '../Atelier.js';
 import Overview from './overview/Overview.jsx';
 import Ratings from './RatingsReview.jsx';
 import RICWidget from './RIC-Widget.jsx';
-import NavBar from './NavBar.jsx';
+import Header from './Header.jsx';
 
 
 class App extends React.Component {
@@ -12,7 +12,6 @@ class App extends React.Component {
     super(props);
     this.state = {
       product: '13029',
-      theme: 'light',
       stylePath: 'lightTheme.css'
     }
 
@@ -27,10 +26,6 @@ class App extends React.Component {
   toggleTheme() {
     this.setState(state => {
       return {
-        theme:
-          state.theme === 'dark'
-          ? 'light'
-          : 'dark',
         stylePath:
           state.stylePath === 'darkTheme.css'
           ? 'lightTheme.css'
@@ -40,18 +35,23 @@ class App extends React.Component {
   }
 
   render() {
+    const {
+      product,
+      stylePath
+    } = this.state;
+
     return (
       <div>
-        <link rel="stylesheet" type="text/css" href={this.state.stylePath} />
-        <NavBar
+        <link rel="stylesheet" type="text/css" href={stylePath} />
+        <Header
           highlight={this.handleProductHighlight}
-          theme={this.state.theme}/>
+          theme={stylePath}/>
 
         <button onClick={this.toggleTheme}>Change Theme</button>
         {/* <Overview /> */}
         {/* <Ratings id={this.state.product} /> */}
         <RICWidget
-          productId={this.state.product} />
+          productId={product} />
       </div>
     );
   }
