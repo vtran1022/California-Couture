@@ -12,7 +12,7 @@ const Header = ({ highlight, theme, toggleTheme }) => {
               </nav>
           : <nav className='navbar'>
               <img id='logo' src={darkLogo} alt='Company Logo'></img>
-              <button id='toggleButton' onClick={toggleTheme}>MON</button>
+              <button id='toggleButton' onClick={toggleTheme}>🌛</button>
             </nav>
         }
       <div className='announcement-container'>
