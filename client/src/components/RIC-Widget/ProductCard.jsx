@@ -49,7 +49,7 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
         <b id='prod-name'>{name}</b>
         <br />
         {price.salePrice
-          ? <span id="sale-price">${price.salePrice}<strike>${price.default}</strike> </span>
+          ? <> <b id="sale-price">${price.salePrice} &nbsp; </b> <strike id='prod-price'>${price.default}</strike> </>
           : <span id='prod-price'>${price.default}</span>
         }
         <AvgRating

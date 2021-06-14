@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: '13029',
+      product: '13045',
       stylePath: 'lightTheme.css',
       productArr: [     // only using to test - Vy
         13059,
