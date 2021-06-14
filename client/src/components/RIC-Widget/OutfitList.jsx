@@ -4,7 +4,6 @@ import ProductCard from './ProductCard.jsx';
 const OutfitList = ({ productId }) => {
   const listState = 'outfit';
   const [initialIndex, setIndex] = useState(0);
-  const [ifOutfit, setExists] = useState(false);
   const [outfitItems, setOutfit] = useState([]);
   const [ifAdded, setAdded] = useState(true);
   const [isRight, setRight] = useState(false);
@@ -13,25 +12,20 @@ const OutfitList = ({ productId }) => {
   const addItem = (id) => {
     if (outfitItems.indexOf(id) === -1) {
       setOutfit(prevArray => [...prevArray, id]);
-      setExists(true);
     }
     setAdded(false);
   };
 
   useEffect(() => {
-    if (outfitItems.indexOf(productId) !== -1) {
-      setAdded(false);
-    } else {
-      setAdded(true);
-    }
+    (outfitItems.indexOf(productId) !== -1)
+    ? setAdded(false)
+    : setAdded(true)
   }, [productId]);
 
   useEffect(() => {
-    if (outfitItems.length > 5) {
-      setRight(true);
-    } else {
-      setRight(false);
-    }
+    (outfitItems.length > 5)
+    ? setRight(true)
+    : setRight(false)
   }, [outfitItems]);
 
   const triggerDelete = useCallback((index) => {
@@ -40,21 +34,17 @@ const OutfitList = ({ productId }) => {
 
     setOutfit(currentOutfits);
     setAdded(true);
-
-    if (currentOutfits.length === 0) {
-      setExists(false);
-    };
   });
 
   const handleClick = (action) => {
     let len = outfitItems.length - 1;
-    let stopper = -(len - 4);
+    let stopper = -(len - 3);
 
     switch (action.type) {
       case 'next':
         setLeft(true);
 
-        if (len < 4) {
+        if (len < 3) {
           return setIndex(prevState => prevState = 0);
         } else if (initialIndex > stopper) {
             return setIndex(prevState => prevState - 1);
@@ -76,17 +66,17 @@ const OutfitList = ({ productId }) => {
 
   return (
     <div>
-      <h3>Your Outfit</h3>
+      <h4 className='RIC-Title'>Your Outfit</h4>
       {isLeft
           ? <button className='button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>
           : <button className='button2'>‹</button>
         }
       <div className='RICList'>
-          {ifOutfit
+          {outfitItems.length !== 0
             ? <div>
                 <div className='AddCard' onClick={() => addItem(productId)}>
                   {ifAdded
-                    ? <span id='plus-outfit'>⊕ <br /> Add to Outfit</span>
+                    ? <span id='plus-outfit'>＋ <br /> Add to Outfit</span>
                     : <span id='item-added'>Item Added</span>
                   }
                 </div>
@@ -101,7 +91,7 @@ const OutfitList = ({ productId }) => {
               </div>
             : <div className='AddCard' onClick={() => addItem(productId)}>
                 {ifAdded
-                  ? <span id='plus-outfit'>⊕ <br /> Add to Outfit</span>
+                  ? <span id='plus-outfit'>＋ <br /> Add to Outfit</span>
                   : <span id='item-added'>Item Added</span>
                 }
               </div>
@@ -119,22 +109,9 @@ const OutfitList = ({ productId }) => {
 export default OutfitList;
 
 /*
-When clicking 'Add to Outfit', pull the productId of Overview and add productcard
-- on click, add the productid to an outfit array
-- render the product card of that product id
-
-
-
-
-- custom product list created by user w/ products that they've grouped together for 'outfit'
-- similar format to related product cards
 - will not be determined internally but unique to user
  - items only added when explicitly added by user
-- default, no items
-- first card should not contain a product, should have '+' icon and read 'add to outfit'
- - this remains visible even as items are added
 - only unique to specific user, same across the board, regardless where they click to
-- product can only be added once
 - no max # of items to this list
 - PERSIST
  - across page navigation

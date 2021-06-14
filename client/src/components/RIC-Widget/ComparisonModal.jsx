@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { auth } from '../../../../config.js';
 
-//should receive productId from overview and productId from relatedList
 const ComparisonModal = ({ productId, relatedId, trigger }) => {
   const [allChars, setAllChars] = useState([]);
   const [prodChars, setProd] = useState([]);
@@ -37,7 +36,7 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
       if (item.value === null) {
         var itemStr = `${item.feature}`;
       } else {
-        var itemStr = `${item.feature}: ${item.value}`;
+        var itemStr = `${item.feature} ─ ${item.value}`;
       }
       transformed.push(itemStr);
     });
@@ -72,7 +71,7 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
 
   return (
     <div className='c-modal' onClick={trigger}>
-      <p>Comparing</p>
+      <p id='c-title'>Comparing</p>
       <table>
         <th className="c-left">{itemName.product}</th>
         <th className="c-mid"></th>
@@ -92,23 +91,3 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
 };
 
 export default ComparisonModal;
-
-/*
-☑
-- popUp on the page
-- title: "Comparing"
-- comparing the current selected related product to the overview product
-- table format - three columns
- 1) Current product name
- 2) characteristics
-  - each on own line
-  - facts on product or values which product has specific quantity
-  - if has specific value, should display
-  - if is a fact such that is 'true' for given prod, value should be displayed as checkmark
-  - any char not apply, left blank
-  - all should appear
-  - if no overlapping w/ products, display still but no value for both prods
-  - if length too long, make scrollable
-   - product names fixed to top of list
- 3) compared product name
-*/

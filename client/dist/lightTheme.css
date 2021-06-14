@@ -1,13 +1,36 @@
-body, html {
+  body, html {
   height: 100%;
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
+  color: #222222;
 }
 
-/* NavBar --------------*/
+/* Header --------------*/
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+#toggleButton {
+  display: flex;
+  align-content: flex-end;
+  margin-top: auto;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  border: 2px solid #60c7cb;
+  border-radius: 30px;
+  cursor: pointer;
+  padding-right: 4px;
+  width: 60px;
+  height: 30px;
+  font-size: 20px;
+  background-color: transparent;
+}
 
 #logo {
   width: auto;
@@ -186,7 +209,7 @@ body, html {
 }
 
 .image-gallery {
-  /* background-color: #60c7cb; */
+  background-color: #60c7cb;
   border: 1px black solid;
   grid-column-start: 2;
   grid-row-start: 1;
@@ -204,7 +227,7 @@ body, html {
 }
 
 .image-gallery-enlarged {
-  background-color: grey;
+  background-color: #60c7cb;
   border: 1px black solid;
   grid-column-start: 2;
   grid-row-start: 1;
@@ -220,7 +243,7 @@ body, html {
 }
 
 .cart {
-  /* background-color: #60c7cb; */
+  background-color: #60c7cb;
   border: 1px black solid;
   grid-column-start: 4;
   grid-row-start: 1;
@@ -233,9 +256,9 @@ body, html {
 }
 
 .description-features {
-  /* background-color: #60c7cb; */
   border: 1px black solid;
   position:absolute;
+  background-color: #60c7cb;
   display: flex;
   justify-content: center;
   width: 1245px;
@@ -336,7 +359,7 @@ body, html {
 
 .left-button, .right-button{
   cursor: pointer;
-  color:black;
+  color:white;
   z-index: 20;
   position: absolute;
 }
@@ -445,16 +468,18 @@ body, html {
 
 .style {
   display: flex;
-  flex-direction: column;
   align-items: center;
   padding-right: 15px;
   height: 120px;
   width: 110px
 }
+.style label {
+  position: relative;
+  display: inline-block;
+}
 
-.style-caption {
+.style span {
   font-size: 12px;
-  padding-bottom: 10px;
   position: relative;
   text-align: center;
   display: inline-block;
@@ -462,7 +487,7 @@ body, html {
   width: 110px
 }
 
-.style-not-selected {
+.style img{
   position: relative;
   padding-left: 17.5px;
   padding-right: 17.5px;
@@ -471,23 +496,36 @@ body, html {
   border-radius: 50%;
 }
 
-.style-selected {
-  position: relative;
-  border: turquoise solid 3px;
-  margin-left: 17.5px;
-  margin-right: 17.5px;
-  height:75px;
-  width:75px;
-  border-radius: 50%;
+.check {
+  display: none;
 }
+
+.style input:checked + .style-caption {
+  background: rgba(0,0,0,0.5);
+}
+
+.style img input:checked {
+  content: '✔';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 70px; height: 70px;
+  transform: translate(-50%,-50%);
+  color: red;
+  font-size: 60px;
+  line-height: 80px;
+  text-align: center;
+  border: 2px solid red;
+  border-radius: 50%;
+  z-index: 50;
+}
+
 /*Relating Items & Comparisions ---------------*/
 
 #RICWid {
   width: auto;
   height: auto;
   display: grid;
-  grid-row: span 2;
-  text-align: center;
+  justify-items: center;
 }
 
 .RICList {
@@ -500,8 +538,7 @@ body, html {
 .RIC-Title {
   width: auto;
   height: 20px;
-  margin-left: 350px;
-  text-align: left;
+  margin-left: 38px;
 }
 
 .button1 {
@@ -541,8 +578,6 @@ body, html {
   margin-right: 10px;
   padding-bottom: 1.5px;
   float: left;
-  background-color: white;
-  text-align: left;
 
   transform: translateX(calc(105% * var(--offset)));
   transition: transform 0.5s ease-in-out;
@@ -607,9 +642,9 @@ body, html {
   overflow: hidden;
   outline:none;
   font-size: 20px;
-  color: #e4f3f4;
-  -webkit-text-stroke: 1px black;
-  text-stroke: 1px black;
+  color: #60c7cb;
+  -webkit-text-stroke: 0.4px black;
+  text-stroke: 0.4px black;
   z-index: 8;
 }
 
@@ -667,3 +702,5 @@ body, html {
   overflow: hidden;
   color: #60c7cb;
 }
+
+
