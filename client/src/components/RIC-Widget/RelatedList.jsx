@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useCallback, useReducer } from 'react';
-import axios from 'axios';
-import { auth } from '../../../../config.js';
 import ProductCard from './ProductCard.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
+import Atelier from '../../Atelier.js';
 
 const RelatedList = ({ productId }) => {
   const listState = 'related';
@@ -13,15 +12,16 @@ const RelatedList = ({ productId }) => {
   const [isRight, setRight] = useState(false);
   const [isLeft, setLeft] = useState(false);
 
-  const fetchRelated = async () => {
-    let relatedData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${productId}/related`,
-    { headers: { 'Authorization': auth.TOKEN } });
-
-    setRelated(relatedData.data);
+  const fetchRelated = () => {
+    Atelier.getRelated(productId)
+    .then((data) => {
+      setRelated(data);
+    })
+    .catch((err) => console.log(`Error fetching related info: ${err}`));
   };
 
   useEffect(() => {
-    fetchRelated().catch((err) => console.log(`Error fetching product info: ${err}`));
+    fetchRelated();
     setIndex(0);
     setLeft(false);
   }, [productId]);
