@@ -32,6 +32,24 @@ class App extends React.Component {
           : 'darkTheme.css'
       }
     });
+
+    const local = window.localStorage;
+
+    this.state.stylePath === 'darkTheme.css'
+    ? local.setItem('theme', 'lightTheme.css')
+    : local.setItem('theme', 'darkTheme.css')
+
+  }
+
+  componentDidMount() {
+    const local = window.localStorage;
+
+    if (local.getItem('theme')) {
+      const value = local.getItem('theme');
+      this.setState({stylePath: value});
+    } else {
+      local.setItem('theme', this.state.stylePath);
+    }
   }
 
   render() {
@@ -49,8 +67,8 @@ class App extends React.Component {
           toggleTheme={this.toggleTheme}/>
         {/* <Overview /> */}
         {/* <Ratings id={this.state.product} /> */}
-        {/* <RICWidget
-          productId={product} /> */}
+        <RICWidget
+          productId={product} />
       </div>
     );
   }
