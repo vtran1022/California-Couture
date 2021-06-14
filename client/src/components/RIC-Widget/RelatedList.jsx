@@ -27,11 +27,9 @@ const RelatedList = ({ productId }) => {
   }, [productId]);
 
   useEffect(() => {
-    if (relatedItems.length > 5) {
-      setRight(true);
-    } else {
-      setRight(false);
-    }
+    relatedItems.length > 5
+    ? setRight(true)
+    : setRight(false)
   }, [relatedItems]);
 
   const triggerModal = useCallback((id) => {
@@ -73,7 +71,7 @@ const RelatedList = ({ productId }) => {
 
   return (
     <div>
-      <h3>Related Products</h3>
+      <h4 className='RIC-Title'>Related Products</h4>
       {isLeft
           ? <button className='button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>
           : <button className='button2'>‹</button>
@@ -105,23 +103,3 @@ const RelatedList = ({ productId }) => {
 };
 
 export default RelatedList;
-
-
-/*
-- get product Id from overview design product to then map over that list
-
-
-List Behavior
-
-- list is determined internally & related to current product view
-- # of related products finite
-- displayed in a carousel fashion
- - scrolling horizontally
- - first item on left hand side
- - arrows appear on left/right
-  - click to scroll thru list
-  - only one item per scroll click
-  - left arrow is hidden if at first item at far lest
-  - right arrow hidden if last item at far right
- - any prod not on screen should appear offscreen in carousel
-*/

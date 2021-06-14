@@ -1,0 +1,244 @@
+  body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  color: #222222;
+}
+
+/* Header --------------*/
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+#toggleButton {
+  display: flex;
+  align-content: flex-end;
+  margin-top: auto;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  border: 2px solid #60c7cb;
+  border-radius: 30px;
+  cursor: pointer;
+  padding-right: 4px;
+  width: 60px;
+  height: 30px;
+  font-size: 20px;
+  background-color: transparent;
+}
+
+#logo {
+  width: auto;
+  height: 80px;
+}
+
+.announcement-container {
+  height: 30px;
+  background-color: #60c7cb;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
+  font-size: 13px;
+}
+
+.announcement {
+  color: #ecf4f4;
+}
+
+#product-highlight:hover {
+  color: #ecf4f4;
+  font-weight: 500;
+}
+
+/*Relating Items & Comparisions ---------------*/
+
+#RICWid {
+  width: auto;
+  height: auto;
+  display: grid;
+  justify-items: center;
+}
+
+.RICList {
+  display: inline-flex;
+  width: 1058px;
+  height: 285px;
+  overflow: hidden;
+}
+
+.RIC-Title {
+  width: auto;
+  height: 20px;
+  margin-left: 38px;
+}
+
+.button1 {
+  appearance: none;
+  background: #f4f4f4;
+  border: none;
+  color: #44c4c4;
+  position: relative;
+  font-size: 27px;
+  font-weight: 700;
+  width: 40px;
+  height: 180px;
+  transition: opacity 0.3s;
+  z-index: 5;
+  vertical-align: top;
+}
+
+.button2 {
+  appearance: none;
+  background: #f4f4f4;
+  border: none;
+  color: #f4f4f4;
+  position: relative;
+  font-size: 27px;
+  font-weight: 700;
+  width: 40px;
+  height: 180px;
+  transition: opacity 0.3s;
+  z-index: 5;
+}
+
+.AddCard,
+.ProductCard {
+  border: 1px solid #3c4149;
+  width: 200px;
+  height: 280px;
+  margin-right: 10px;
+  padding-bottom: 1.5px;
+  float: left;
+
+  transform: translateX(calc(105% * var(--offset)));
+  transition: transform 0.5s ease-in-out;
+}
+
+.ProductImage {
+  width: 200px;
+  height: 200px;
+  object-fit: fill;
+}
+
+.ProductInfo {
+  padding-left: 5px;
+}
+
+.AddCard {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+#plus-outfit,
+#item-added {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+#prod-price,
+#sale-price,
+#prod-category {
+  font-size: 10px;
+}
+
+#prod-name,
+#c-title,
+.c-mid {
+  font-size: 13px;
+}
+
+#prod-name:hover {
+  color: #60c7cb;
+}
+
+#sale-price {
+  color: red
+}
+
+.ActionButton {
+  position: relative;
+}
+
+#ActButton {
+  appearance: none;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: transparent;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  font-size: 20px;
+  color: #60c7cb;
+  -webkit-text-stroke: 0.4px black;
+  text-stroke: 0.4px black;
+  z-index: 8;
+}
+
+.c-modal {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  top: 25%;
+  left: 25%;
+  border: 1px solid black;
+  background-color: #60c7cb;
+  overflow-y: scroll #60c7cb;
+  z-index: 10;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.c-modal th {
+  padding-bottom: 25px;
+  width: 133px;
+}
+
+#c-title,
+.c-left {
+  text-align: left;
+}
+
+.c-mid {
+  text-align: center;
+}
+
+.c-right {
+  text-align: right;
+}
+
+/* Star Rating Component --------------*/
+.star-container {
+  height: 18px;
+  width: 15px;
+  display: inline-block;
+}
+
+#starRating {
+  position: relative;
+  font-size: 12px;
+  color: black;
+}
+
+#starRating:after {
+  content: "\f005";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--width);
+  overflow: hidden;
+  color: #60c7cb;
+}
+
+

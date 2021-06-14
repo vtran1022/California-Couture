@@ -19,20 +19,11 @@ const ActionButton = ({ id, index, listState, triggerDelete, triggerModal }) => 
   return (
     <div className='ActionButton'>
       {isStar
-        ? <input key={id} type="button" value='☆' onClick={() => {triggerModal(id)}}/>
-        : <input key={index} type="button" value='ⓧ' onClick={() => {triggerDelete(index)}} />
+        ? <i className="fas fa-star" id='ActButton' key={id} onClick={() => {triggerModal(id)}}></i>
+        : <i className="fas fa-times" id='ActButton' key={index} type="button" value='✖' onClick={() => {triggerDelete(index)}}></i>
       }
     </div>
   )
 };
 
 export default ActionButton;
-
-/*
-action buttons:
-☆ or x
-
-'☆' - will open up comparison modal component
-x - will delete the product card
-
-*/
