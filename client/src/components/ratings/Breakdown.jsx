@@ -39,10 +39,14 @@ const Breakdown = (props) => {
     for (var stars = 5; stars >= 1; stars--) {
       let i = stars;
       let width = data[stars] ? Number(data[stars]) * 100 / ratings : 0;
-      res.push(<div key={stars} onClick={() => props.handleFilter(i)} ><StarRating rating={stars} />:
-      <div className='review-bar'>
-          <span className='review-fill' style={{ width: `${width}%` }} />
-        </div> {data[stars] || 0}</div>)
+      res.push(
+      <span className='bd-line' key={stars} onClick={() => props.handleFilter(i)} ><StarRating rating={stars} />:
+        <div className='review-bar'>
+            <span className='review-fill' style={{ width: `${width}%` }} />
+          </div>
+          <label>{data[stars] || 0}</label>
+          <br />
+      </span>);
     }
     return res;
   };
@@ -51,12 +55,19 @@ const Breakdown = (props) => {
     var res = [];
     for (var char in data) {
       let value = data[char].value;
-      let pos = Number(value) * 100;
+      let pos = Number(value) * 50;
       res.push(
         <div key={char}>
-          {char}: <br /> {[...Array(5).keys()].map(i => {
-            return <div key={i} className='review-char-bar' />
-          })}
+          {char}: <br />
+          <div className='review-indicator' style={{ marginLeft: `${pos + 5}px` }} />
+          <div className='review-char-breakdown'>
+            <label className='start'>{characteristicBreakdown[char][0]}</label>
+            {[...Array(5).keys()].map(i => {
+              return <div key={i} style={{ gridColumn: i + 1 }} className='review-char-bar' />
+            })}
+            <label className='end'>{characteristicBreakdown[char][4]}</label>
+          </div>
+
         </div>
       )
     }
@@ -69,6 +80,9 @@ const Breakdown = (props) => {
           </div>
   */
 
+
+
+
   //calculate breakdown statistics
   var avg = calcAverage(props.data.ratings);
   var rec = calcRecommend(props.data.recommended);
@@ -77,7 +91,8 @@ const Breakdown = (props) => {
 
   //render
   return (<div className='review-breakdown'>
-    {avg} <StarRating rating={avg} key={props.data.id} /> <br />
+    <h3>Ratings Breakdown</h3>
+    <span>{avg} <StarRating rating={avg} key={props.data.id} /></span> <br />
     {rec}% of reviewers recommend this product. <br />
     {bd} <br />
     {cbd}

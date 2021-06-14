@@ -7,6 +7,7 @@ import FormModal from './ratings/FormModal.jsx';
 
 
 const Ratings = (props) => {
+  const [productName, setName] = useState('');
   const [reviews, setReviews] = useState([]);
   const [meta, setMeta] = useState({});
   const [count, setCount] = useState(2);
@@ -50,7 +51,31 @@ const Ratings = (props) => {
       setMeta(res);
     }
     fetchAPI();
-  }, [props.id]);
+  }, []);
+
+  useEffect(() => {
+    async function fetchAPI() {
+      var res = await Atelier.getInfo(props.id);
+      console.log(res);
+      setName(res.name);
+    }
+    fetchAPI();
+  }, []);
+
+
+  const handleForm = (e) => {
+    if(!e.path.some(e => e.className === 'review-modal')) {
+      setShowForm(false);
+    }
+  }
+  useEffect(() => {
+    if(showForm) {
+      window.addEventListener('click', handleForm);
+      return () => {
+        window.removeEventListener('click', handleForm);
+      }
+    }
+  }, [showForm]);
 
   //handle the load more button, loads the next page
   const handleLoad = () => {
@@ -84,20 +109,22 @@ const Ratings = (props) => {
 
   if (Object.keys(reviews).length > 0) {
     return (<div className='review-container'>
-      {showForm ? <FormModal characteristics={meta.characteristics} submitData={addNewReview} productName={'PLACEHOLDER'} /> : null}
-      <form>
-        {/* sort drop down */}
-        <label>Sort by:</label>
-        <select value={sort} onChange={handleChange}>
-          <option value='helpful'>Helpful</option>
-          <option value='newest'>Newest</option>
-          <option value='relevant'>Relevance</option>
-        </select>
-      </form>
-      <form>
-        <label>Search Reviews:</label>
-        <input type='text' value={search} onChange={handleSearch}></input>
-      </form>
+      {showForm ? <FormModal characteristics={meta.characteristics} submitData={addNewReview} productName={productName} /> : null}
+      <div className='ratings-forms'>
+        <form>
+          {/* sort drop down */}
+          <label>Sort by:</label>
+          <select value={sort} onChange={handleChange}>
+            <option value='helpful'>Helpful</option>
+            <option value='newest'>Newest</option>
+            <option value='relevant'>Relevance</option>
+          </select>
+        </form>
+        <form>
+          <label>Search Reviews:</label>
+          <input type='text' value={search} onChange={handleSearch}></input>
+        </form>
+      </div>
       <div className='list-container'>
         {/* main review table */}
         <table className='review-table'>
@@ -118,10 +145,12 @@ const Ratings = (props) => {
           </tbody>
         </table>
       </div>
-      <button onClick={handleLoad}>Load More</button> <button onClick={() => setShowForm(!showForm)}>Add a Review</button>
+      <div className='review-buttons'>
+        <button onClick={handleLoad}>Load More</button> <button onClick={() => setShowForm(true)}>Add a Review</button>
+      </div>
       {/* product breakdown */}
       <div className='breakdown'>
-        {Object.keys(meta).length > 0 ? <Breakdown data={meta} key={props.id} handleFilter={handleFilter}/> : <div></div>}
+        {Object.keys(meta).length > 0 ? <Breakdown data={meta} key={props.id} handleFilter={handleFilter} /> : <div></div>}
       </div>
     </div>)
   } else {

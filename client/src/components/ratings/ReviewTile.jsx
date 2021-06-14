@@ -46,21 +46,7 @@ const ReviewTile = (props) => {
 
 
 const ImageModal = (props) => {
-  return <img id={props.img.id} src={props.img.url} className='review-modal' onClick={props.onClose} />
+  return <img id={props.img.id} src={props.img.url} className='img-modal' onClick={props.onClose} />
 };
-/*
-{out.map((f, idx) => {
-          if (fields[idx] === 'body' && props.search && props.search.length >= 3) {
-            var re = RegExp(props.search);
-            var arr = f.split(re);
-            var out = [arr[0]];
-            for (var i = 1; i < arr.length; i++) {
-              out.push(<mark key={i}>{props.search}</mark>)
-              out.push(arr[i]);
-            }
-            return <td key={f} className='review-elem'>{out}</td>
-          }
-          return <td key={f} className='review-elem'>{f}</td>
-        })}
-*/
+
 export default ReviewTile;
