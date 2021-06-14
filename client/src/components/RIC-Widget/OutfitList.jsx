@@ -38,13 +38,13 @@ const OutfitList = ({ productId }) => {
 
   const handleClick = (action) => {
     let len = outfitItems.length - 1;
-    let stopper = -(len - 4);
+    let stopper = -(len - 3);
 
     switch (action.type) {
       case 'next':
         setLeft(true);
 
-        if (len < 4) {
+        if (len < 3) {
           return setIndex(prevState => prevState = 0);
         } else if (initialIndex > stopper) {
             return setIndex(prevState => prevState - 1);
