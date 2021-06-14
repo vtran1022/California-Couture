@@ -83,7 +83,7 @@ const OutfitList = ({ productId }) => {
         }
       <div className='RICList'>
           {outfitItems.length !== 0
-            ? <React.Fragment>
+            ? <>
                 <span className='AddCard' onClick={() => addItem(productId)}>
                   {ifAdded
                     ? <span id='plus-outfit'>＋ <br /> Add to Outfit</span>
@@ -98,7 +98,7 @@ const OutfitList = ({ productId }) => {
                   listState={listState}
                   triggerDelete={triggerDelete}
                   offset={initialIndex}/>))}
-              </React.Fragment>
+              </>
             : <span className='AddCard' onClick={() => addItem(productId)}>
                 {ifAdded
                   ? <span id='plus-outfit'>＋ <br /> Add to Outfit</span>

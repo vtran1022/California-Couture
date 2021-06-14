@@ -30,10 +30,10 @@ const AvgRating = ({ productId }) => {
   }, [productId]);
 
     return (
-      <div>
+      <>
         <StarRating
           rating={avgScore}/>
-      </div>
+      </>
     );
 };
 
