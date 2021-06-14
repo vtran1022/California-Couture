@@ -587,6 +587,7 @@
   width: 200px;
   height: 200px;
   object-fit: fill;
+  background-color: #f4f4f4;
 }
 
 .ProductInfo {

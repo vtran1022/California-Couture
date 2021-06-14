@@ -585,7 +585,8 @@
   width: 200px;
   height: 200px;
   object-fit: fill;
-  filter: brightness(70%)
+  filter: brightness(70%);
+  background-color: #232323;
 }
 
 .ProductInfo {
