@@ -30,7 +30,10 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
 
   return (
     <>
-    <div className='ProductCard' style={{ '--offset': offset }} onClick={() => productClick(productId)}>
+    <div className='ProductCard'
+         style={{ '--offset': offset }}
+         onClick={() => productClick(productId)}
+         data-testid='productcard'>
       <img className='ProductImage' src={image} alt={name}></img>
         <span id='prod-category'>{category}</span>
         <br />

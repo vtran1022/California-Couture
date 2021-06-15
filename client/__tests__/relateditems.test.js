@@ -14,100 +14,113 @@ import ComparisonModal from '../src/components/RIC-Widget/ComparisonModal.jsx';
 afterEach(cleanup);
 
 // basic render testing, screen.debug() will log the HTML output in test terminal
-// describe('RICWidget', () => {
-//   test('checking both lists render', () => {
-//     const { getByText } = render(<RICWidget />);
+describe('RICWidget', () => {
+  test('checking both lists render', () => {
+    const { getByText } = render(<RICWidget />);
 
-//     expect(getByText(/Your Outfit/)).toBeInTheDocument();
-//     expect(getByText(/Related Products/)).toBeInTheDocument();
-//   });
-// });
-
-// describe('RelatedList', () => {
-//   test('arrow button should not exist initial render', () => {
-//     const { getByTestId } = render(<RelatedList />);
-
-//     expect(getByTestId('buttonL')).toBeDisabled();
-//     expect(getByTestId('buttonR')).toBeDisabled();
-//   });
-// });
-
-// describe('OutfistList', () => {
-//   test('arrow button should not exist initial render', () => {
-//     const { getByTestId } = render(<OutfitList />);
-
-//     expect(getByTestId('buttonL')).toBeDisabled();
-//     expect(getByTestId('buttonR')).toBeDisabled();
-//   });
-// });
-
-// describe('OutfitList', () => {
-//   test('Check that Add Outfit card exists', () => {
-//     const { getByText } = render(<OutfitList />);
-
-//     expect(getByText(/Add to Outfit/)).toBeInTheDocument();
-//   });
-// });
-
-// describe('Action Button', () => {
-//   test('calls the onClick callback handler for x button', async () => {
-//     const onClick = jest.fn();
-
-//     const { getByTestId } = render( <ActionButton triggerDelete={onClick}/> );
-
-//     await userEvent.click(getByTestId('x-button'));
-
-//     expect(onClick).toHaveBeenCalledTimes(1);
-//   });
-// });
-
-
-
-describe('ProductCard', () => {
-  test('Check that Add Outfit card exists', () => {
-    const { getByText } = render(<ProductCard />);
-
-    expect(getByText(/ALu/)).toBeInTheDocument();
+    expect(getByText(/Your Outfit/)).toBeInTheDocument();
+    expect(getByText(/Related Products/)).toBeInTheDocument();
   });
 });
 
+describe('RelatedList', () => {
+  test('arrow button should not exist initial render', () => {
+    const { getByTestId } = render(<RelatedList />);
 
+    expect(getByTestId('buttonL')).toBeDisabled();
+    expect(getByTestId('buttonR')).toBeDisabled();
+  });
+});
 
+describe('Related List', () => {
+  test('style - offset should be 0 initially', () => {
+    const { getByTestId } = render( <RelatedList /> );
 
-// describe('Outfit List', () => {
-//   test('calls the onClick callback handler', async () => {
-//     const onClick = jest.fn();
+    const list = (getByTestId('RICList'));
 
-//     render( <div className='AddCard' onClick={onClick}>
-//       <div data-testid='outfit'>Add to Outfit</div>
-//     </div> );
+    expect(list).toHaveStyle({'--offset': '0'});
+  });
+});
 
-//     await userEvent.click(screen.getByTestId('outfit'));
+describe('OutfistList', () => {
+  test('arrow button should not exist initial render', () => {
+    const { getByTestId } = render(<OutfitList />);
 
-//     expect(onClick).toHaveBeenCalledTimes(1);
-//   });
-// });
+    expect(getByTestId('buttonL')).toBeDisabled();
+    expect(getByTestId('buttonR')).toBeDisabled();
+  });
+});
 
-// // checking rendering for now, need to work on better test for this
-// describe('Product Card', () => {
-//   test('check existance', () => {
-//     render(<ProductCard />);
-//   });
-// });
+describe('OutfitList', () => {
+  test('Check that Add Outfit card exists', () => {
+    const { getByText } = render(<OutfitList />);
 
-// // checking rendering for now, need to work on better test for this
-// describe('Related List', () => {
-//   test('check existance', () => {
-//     render(<RelatedList />);
-//   });
-// });
+    expect(getByText(/Add to Outfit/)).toBeInTheDocument();
+  });
+});
 
-// describe('Comparison Modal', () => {
-//   test('comparison modal to not exist on initial render', () => {
-//     render(<RelatedList />);
+describe('OutfitList', () => {
+  test('calls the onClick callback handler', async () => {
+    const onClick = jest.fn();
 
-//     expect(screen.queryByText('Comparing')).toBeNull();
-//   });
-// });
+    render( <div className='AddCard' onClick={onClick}>
+      <div data-testid='outfit'>Add to Outfit</div>
+    </div> );
 
-// need to re-write tests
+    await userEvent.click(screen.getByTestId('outfit'));
+
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('Action Button', () => {
+  test('calls the onClick callback handler for x button', async () => {
+    const onClick = jest.fn();
+
+    const { getByTestId } = render( <ActionButton triggerDelete={onClick}/> );
+
+    await userEvent.click(getByTestId('x-button'));
+
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('Product Card', () => {
+  test('calls the onClick callback handler for product card', async () => {
+    const onClick = jest.fn();
+
+    const { getByTestId } = render( <ProductCard productClick={onClick}/> );
+
+    await userEvent.click(getByTestId('productcard'));
+
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('Product Card', () => {
+  test('product card to be visible', () => {
+    const { getByTestId } = render( <ProductCard /> );
+
+    const product = (getByTestId('productcard'));
+
+    expect(product).toBeVisible();
+  });
+});
+
+describe('ComparisonModal', () => {
+  test('check modal rendering', () => {
+    const { getByText } = render(<ComparisonModal />);
+
+    expect(getByText(/Comparing/)).toBeInTheDocument();
+  });
+});
+
+describe('Comparison Modal', () => {
+  test('modal to be visible', () => {
+    const { getByTestId } = render( <ComparisonModal /> );
+
+    const modal = (getByTestId('c-modal'));
+
+    expect(modal).toBeVisible();
+  });
+});

@@ -73,7 +73,7 @@ const RelatedList = ({ productId, productClick }) => {
           ? <button className='button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>
           : <button disabled data-testid='buttonL' className='button2'>‹</button>
         }
-      <div className='RICList' style={{ '--offset': initialIndex }}>
+      <div data-testid='RICList' className='RICList' style={{ '--offset': initialIndex }}>
         {relatedItems.map((id, i) => (
           <ProductCard
             key={id}

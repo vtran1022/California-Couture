@@ -62,7 +62,7 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
 
   return (
     <>
-    <span className='c-modal' onClick={trigger}>
+    <span data-testid='c-modal' className='c-modal' onClick={trigger}>
       <p id='c-title'>Comparing</p>
       <table>
         <th className="c-left">{itemName.product}</th>
