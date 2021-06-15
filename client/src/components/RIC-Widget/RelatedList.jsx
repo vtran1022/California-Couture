@@ -5,6 +5,9 @@ import Atelier from '../../Atelier.js';
 
 const RelatedList = ({ productId, productClick, toggleOverlay }) => {
   const listState = 'related';
+  const len = relatedItems.length - 1;
+  const stopper = -(len - 4);
+
   const [initialIndex, setIndex] = useState(0);
   const [relatedItems, setRelated] = useState([]);
   const [isModal, setModal] = useState(false);
@@ -28,9 +31,6 @@ const RelatedList = ({ productId, productClick, toggleOverlay }) => {
   });
 
   const handleClick = (action) => {
-    let len = relatedItems.length - 1;
-    let stopper = -(len - 4);
-
     switch (action.type) {
       case 'next':
         setLeft(true);
@@ -39,19 +39,11 @@ const RelatedList = ({ productId, productClick, toggleOverlay }) => {
           return setIndex(prevState => prevState = 0);
         } else if (initialIndex > stopper) {
             return setIndex(prevState => prevState - 1);
-        } else if (initialIndex === stopper) {
-          return setRight(false);
         }
 
       case 'previous':
         setRight(true);
-
-        if (initialIndex === 0) {
-          setLeft(false);
-          setIndex(prevState => prevState = 0);
-        } else {
-          setIndex(prevState => prevState + 1);
-        }
+        setIndex(prevState => prevState + 1);
     }
   }
 
@@ -66,6 +58,16 @@ const RelatedList = ({ productId, productClick, toggleOverlay }) => {
     ? setRight(true)
     : setRight(false)
   }, [relatedItems]);
+
+  useEffect(() => {
+    initialIndex === stopper
+    ? setRight(false)
+    : null;
+
+    initialIndex === 0
+    ? setLeft(false)
+    : setLeft(true);
+  }, [initialIndex]);
 
   useEffect(() => {
     toggleOverlay();
