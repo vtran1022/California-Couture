@@ -48,10 +48,6 @@
   font-size: 13px;
 }
 
-.announcement {
-  color: #ecf4f4;
-}
-
 #product-highlight:hover {
   color: #ecf4f4;
   font-weight: 500;
@@ -223,7 +219,7 @@
   display: inline-block;
   height: 10px;
   position: relative;
-  background: #60c7cb;
+  background: #DEE2E2;
   width: 250px;
   margin-left: 5px;
   margin-right: 5px;
@@ -232,7 +228,7 @@
 .review-bar > .review-fill {
   display: block;
   height: 100%;
-  background-color: black;
+  background-color: #36C60E;
   position: relative;
 }
 
@@ -616,14 +612,12 @@
   appearance: none;
   background: #f4f4f4;
   border: none;
-  color: #44c4c4;
   position: relative;
   font-size: 27px;
   font-weight: 700;
   width: 40px;
   height: 180px;
   transition: opacity 0.3s;
-  z-index: 5;
   vertical-align: top;
 }
 
@@ -638,7 +632,6 @@
   width: 40px;
   height: 180px;
   transition: opacity 0.3s;
-  z-index: 5;
 }
 
 .AddCard,
@@ -699,14 +692,13 @@
 }
 
 .ActionButton {
-  position: relative;
+  position: flex;
 }
 
 #ActButton {
-  appearance: none;
   position: absolute;
   top: 10px;
-  right: 20px;
+  right: 10px;
   background: transparent;
   border: none;
   cursor:pointer;
@@ -716,7 +708,7 @@
   color: #60c7cb;
   -webkit-text-stroke: 0.4px black;
   text-stroke: 0.4px black;
-  z-index: 8;
+  z-index: 2;
 }
 
 .c-modal {
@@ -724,18 +716,17 @@
   width: 400px;
   height: 400px;
   top: 25%;
-  left: 25%;
+  left: 35%;
   border: 1px solid black;
   background-color: #60c7cb;
   overflow-y: scroll #60c7cb;
-  z-index: 10;
   padding-right: 20px;
   padding-left: 20px;
+  z-index: 4;
 }
 
 .c-modal th {
   padding-bottom: 25px;
-  width: 133px;
 }
 
 #c-title,
@@ -743,12 +734,18 @@
   text-align: left;
 }
 
+.c-leftcol {
+  width: 30%;
+}
+
 .c-mid {
   text-align: center;
+  white-space: nowrap;
 }
 
 .c-right {
   text-align: right;
+  direction: rtl;
 }
 
 /* Star Rating Component --------------*/
@@ -761,7 +758,9 @@
 #starRating {
   position: relative;
   font-size: 12px;
-  color: rgb(194, 194, 194);
+  color: #f4f4f4;
+  -webkit-text-stroke: 0.8px black;
+  text-stroke: 0.8px black;
 }
 
 #starRating:after {
@@ -772,6 +771,36 @@
   width: var(--width);
   overflow: hidden;
   color: #60c7cb;
+  -webkit-text-stroke: 0.5px #60c7cb;
+  text-stroke: 0.5px #60c7cb;
+}
+
+/* Footer ----------------*/
+footer {
+  height: 30px;
+  background-color: #60c7cb;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  text-align: right;
+  font-size: 13px;
+  margin-top: 40px;
+  padding-right: 20px;
 }
 
 
+/* Overlay------------*/
+
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 3;
+}
