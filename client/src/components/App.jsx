@@ -11,7 +11,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: '13025',
+      product: '13029',
       stylePath: 'lightTheme.css',
       cart: [],
       isOverlay: false
@@ -88,11 +88,11 @@ class App extends React.Component {
           highlight={this.handleProductHighlight}
           theme={stylePath}
           toggleTheme={this.toggleTheme}/>
-        <Overview
+        {/* <Overview
         theme={ stylePath }
         productId={ product }
         />
-        <Ratings id={product} />
+        <Ratings id={product} /> */}
         <RICWidget
           productId={product}
           productClick={this.handleProductClick}
