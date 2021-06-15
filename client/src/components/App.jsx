@@ -10,8 +10,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: '13045',
-      stylePath: 'lightTheme.css'
+      product: '13023',
+      stylePath: 'lightTheme.css',
+      cart: []
     }
 
     this.handleProductHighlight = this.handleProductHighlight.bind(this);
@@ -26,6 +27,11 @@ class App extends React.Component {
 
   handleProductHighlight() {
     this.setState({ product: '13357'});
+  }
+
+  loadUserCart () {
+    const local = window.localStorage;
+    // load user cart if one exists already
   }
 
   toggleTheme() {
@@ -62,12 +68,15 @@ class App extends React.Component {
     return (
       <>
         <link rel="stylesheet" type="text/css" href={stylePath} />
-        {/* <Header
+        <Header
           highlight={this.handleProductHighlight}
           theme={stylePath}
           toggleTheme={this.toggleTheme}/>
-        <Overview />
-        <Ratings id={product} /> */}
+        <Overview
+        theme={ stylePath }
+        productId={ this.state.product }
+        />
+        <Ratings id={this.state.product} />
         <RICWidget
           productId={product}
           productClick={this.handleProductClick}/>
