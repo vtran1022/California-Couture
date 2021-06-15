@@ -56,8 +56,7 @@ class App extends React.Component {
   render() {
     const {
       product,
-      stylePath,
-      productArr
+      stylePath
     } = this.state;
 
     return (
