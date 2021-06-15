@@ -48,7 +48,7 @@ function ZoomedPreview ( { view, preview }) {
         backgroundSize: `${imgWidth * zoomLevel}px ${
           imgHeight * zoomLevel
         }px`,
-        backgroundPositionX: `${-x * zoomLevel + magnifieWidth / 2}px`,
+        backgroundPositionX: `${-x * zoomLevel + magnifierWidth / 2}px`,
         backgroundPositionY: `${-y * zoomLevel + magnifierHeight / 2}px`
         }}>
       </div>
