@@ -48,10 +48,6 @@
   font-size: 13px;
 }
 
-.announcement {
-  color: #ecf4f4;
-}
-
 #product-highlight:hover {
   color: #ecf4f4;
   font-weight: 500;
@@ -758,7 +754,9 @@
 #starRating {
   position: relative;
   font-size: 12px;
-  color: rgb(194, 194, 194);
+  color: #f4f4f4;
+  -webkit-text-stroke: 0.8px black;
+  text-stroke: 0.8px black;
 }
 
 #starRating:after {
@@ -769,6 +767,20 @@
   width: var(--width);
   overflow: hidden;
   color: #60c7cb;
+  -webkit-text-stroke: 0.5px #60c7cb;
+  text-stroke: 0.5px #60c7cb;
 }
 
-
+/* Footer ----------------*/
+footer {
+  height: 30px;
+  background-color: #60c7cb;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  text-align: right;
+  font-size: 13px;
+  margin-top: 40px;
+  padding-right: 20px;
+}

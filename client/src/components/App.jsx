@@ -4,6 +4,7 @@ import Overview from './Overview.jsx';
 import Ratings from './RatingsReview.jsx';
 import RICWidget from './RIC-Widget.jsx';
 import Header from './Header.jsx';
+import Footer from './Footer.jsx';
 
 
 class App extends React.Component {
@@ -72,14 +73,15 @@ class App extends React.Component {
           highlight={this.handleProductHighlight}
           theme={stylePath}
           toggleTheme={this.toggleTheme}/>
-        <Overview
+        {/* <Overview
         theme={ stylePath }
         productId={ this.state.product }
         />
-        <Ratings id={this.state.product} />
+        <Ratings id={this.state.product} /> */}
         <RICWidget
           productId={product}
           productClick={this.handleProductClick}/>
+        <Footer />
       </>
     );
   }
