@@ -91,8 +91,8 @@ class App extends React.Component {
         {/* <Overview
         theme={ stylePath }
         productId={ product }
-        />
-        <Ratings id={product} /> */}
+        /> */}
+        {/* <Ratings id={product} /> */}
         <RICWidget
           productId={product}
           productClick={this.handleProductClick}

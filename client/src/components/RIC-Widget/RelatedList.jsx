@@ -4,16 +4,16 @@ import ComparisonModal from './ComparisonModal.jsx';
 import Atelier from '../../Atelier.js';
 
 const RelatedList = ({ productId, productClick, toggleOverlay }) => {
-  const listState = 'related';
-  const len = relatedItems.length - 1;
-  const stopper = -(len - 4);
-
   const [initialIndex, setIndex] = useState(0);
   const [relatedItems, setRelated] = useState([]);
   const [isModal, setModal] = useState(false);
   const [relatedId, setId] = useState(0);
   const [isRight, setRight] = useState(false);
   const [isLeft, setLeft] = useState(false);
+
+  const listState = 'related';
+  const len = relatedItems.length - 1
+  const stopper = -(len - 4);
 
   const fetchRelated = async () => {
     let product = await Atelier.getRelated(productId);
