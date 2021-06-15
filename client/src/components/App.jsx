@@ -11,7 +11,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: '13029',
+      product: '13025',
       stylePath: 'lightTheme.css',
       cart: [],
       isOverlay: false
