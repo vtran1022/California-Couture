@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Thumbnails from './Thumbnails.jsx';
-import ImagePreview from './ImagePreview.jsx';
+import ZoomedPreview from './ImagePreview.jsx';
 
 function ImageGallery ({ photos, styleid, theme }) {
   const [showView, setView] = useState(false);
@@ -46,21 +46,19 @@ function ImageGallery ({ photos, styleid, theme }) {
       ? 'image-gallery-enlarged'
       : 'image-gallery'}
     >
-      {/* <div className='preview-container'>
-        <img
-        className='preview'
-        id='preview'
-        src={currentPhoto.url}
-        onClick={handleViewClick}
+      {showView
+        ? <ZoomedPreview
+        view={showView}
+        preview={ currentPhoto.url }
         />
-        <div
-        className='zoomed-preview'
-        id='zoomed-preview'
-        ></div>
-      </div> */}
-      <ImagePreview
-      preview={ currentPhoto.url }
-      />
+        : <div className='preview-container'>
+          <img
+            className='preview'
+            onClick={handleViewClick}
+            src={ currentPhoto.url}
+            alt='One of the preview pictures of the selected style'/>
+        </div>
+      }
 
       <div className=
       {showView
