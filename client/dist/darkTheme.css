@@ -524,8 +524,8 @@
 .button1 {
   appearance: none;
   background: #1a1a1a;
+  color: #f4f4f4;
   border: none;
-  color: #2c59a5;
   position: relative;
   font-size: 27px;
   font-weight: 700;
@@ -644,16 +644,28 @@
 
 .c-modal th {
   padding-bottom: 25px;
-  width: 133px;
 }
 
 #c-title,
 .c-left {
   text-align: left;
+  white-space: nowrap;
+}
+
+.c-leftcol {
+  width: 300px;
+}
+
+.c-mid {
+  text-align: center;
+  white-space: nowrap;
+  width: 50%;
 }
 
 .c-right {
   text-align: right;
+  white-space: nowrap;
+  direction: rtl;
 }
 
 /* Star Rating Component --------------*/

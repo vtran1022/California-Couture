@@ -65,13 +65,12 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
     <span data-testid='c-modal' className='c-modal' onClick={trigger}>
       <p id='c-title'>Comparing</p>
       <table>
-        <th className="c-left">{itemName.product}</th>
-        <th className="c-mid"></th>
+        <th className="c-left" colSpan='2'>{itemName.product}</th>
         <th className="c-right">{itemName.related}</th>
         <tbody>
           {allChars.map((item, i) => (
             <tr key={i}>
-              <td className="c-left">{itemCheck.product[i]}</td>
+              <td className="c-leftcol">{itemCheck.product[i]}</td>
               <td className="c-mid">{item}</td>
               <td className="c-right">{itemCheck.related[i]}</td>
             </tr>
