@@ -14,7 +14,8 @@ const RelatedList = ({ productId, productClick, toggleOverlay }) => {
 
   const fetchRelated = async () => {
     let product = await Atelier.getRelated(productId);
-    setRelated(product);
+    let uniqueProducts = [...new Set(product)];
+    setRelated(uniqueProducts);
   };
 
   const triggerModal = useCallback((id) => {
