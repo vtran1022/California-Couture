@@ -8,10 +8,10 @@ const OutfitList = ({ productId, productClick }) => {
   const [isRight, setRight] = useState(false);
   const [isLeft, setLeft] = useState(false);
 
+  const local = window.localStorage;
   const listState = 'outfit';
   const len = outfitItems.length - 1;
   const stopper = -(len - 3);
-  const local = window.localStorage;
 
   const addItem = (id) => {
     if (outfitItems.indexOf(id) === -1) {
