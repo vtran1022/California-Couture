@@ -79,7 +79,6 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
         </tbody>
       </table>
     </span>
-    <span id='overlay'></span>
     </>
   )
 };
