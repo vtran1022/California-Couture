@@ -1,14 +1,17 @@
-import React, { useState, useCallback, useEffect, useReducer } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import ProductCard from './ProductCard.jsx';
 
-const OutfitList = ({ productId }) => {
-  const listState = 'outfit';
-  const local = window.localStorage;
+const OutfitList = ({ productId, productClick }) => {
   const [initialIndex, setIndex] = useState(0);
   const [outfitItems, setOutfit] = useState([]);
   const [ifAdded, setAdded] = useState(false);
   const [isRight, setRight] = useState(false);
   const [isLeft, setLeft] = useState(false);
+
+  const local = window.localStorage;
+  const listState = 'outfit';
+  const len = outfitItems.length - 1;
+  const stopper = -(len - 3);
 
   const addItem = (id) => {
     if (outfitItems.indexOf(id) === -1) {
@@ -17,6 +20,31 @@ const OutfitList = ({ productId }) => {
     }
     setAdded(false);
   };
+
+  const triggerDelete = useCallback((index) => {
+    let currentOutfits = outfitItems.map((item) => item);
+    currentOutfits.splice(index, 1);
+
+    setOutfit(currentOutfits);
+    setAdded(true);
+  });
+
+  const handleClick = (action) => {
+    switch (action.type) {
+      case 'next':
+        setLeft(true);
+
+        if (len < 3) {
+          return setIndex(prevState => prevState = 0);
+        } else if (initialIndex > stopper) {
+            return setIndex(prevState => prevState - 1);
+        }
+
+      case 'previous':
+        setRight(true);
+        setIndex(prevState => prevState + 1);
+    }
+  }
 
   useEffect(() => {
     local.getItem('outfit')
@@ -33,46 +61,21 @@ const OutfitList = ({ productId }) => {
   useEffect(() => {
     local.setItem('outfit', JSON.stringify(outfitItems));
 
-    (outfitItems.length > 5)
+    (outfitItems.length > 4)
     ? setRight(true)
     : setRight(false)
   }, [outfitItems]);
 
-  const triggerDelete = useCallback((index) => {
-    let currentOutfits = outfitItems.map((item) => item);
-    currentOutfits.splice(index, 1);
+  useEffect(() => {
+    initialIndex === stopper
+    ? setRight(false)
+    : null;
 
-    setOutfit(currentOutfits);
-    setAdded(true);
-  });
+    initialIndex === 0
+    ? setLeft(false)
+    : setLeft(true);
+  }, [initialIndex]);
 
-  const handleClick = (action) => {
-    let len = outfitItems.length - 1;
-    let stopper = -(len - 3);
-
-    switch (action.type) {
-      case 'next':
-        setLeft(true);
-
-        if (len < 3) {
-          return setIndex(prevState => prevState = 0);
-        } else if (initialIndex > stopper) {
-            return setIndex(prevState => prevState - 1);
-        } else if (initialIndex === stopper) {
-          return setRight(false);
-        }
-
-      case 'previous':
-        setRight(true);
-
-        if (initialIndex === 0) {
-          setLeft(false);
-          setIndex(prevState => prevState = 0);
-        } else {
-          setIndex(prevState => prevState + 1);
-        }
-    }
-  }
 
   return (
     <div>
@@ -97,7 +100,8 @@ const OutfitList = ({ productId }) => {
                   index={i}
                   listState={listState}
                   triggerDelete={triggerDelete}
-                  offset={initialIndex}/>))}
+                  offset={initialIndex}
+                  productClick={productClick}/>))}
               </>
             : <span className='AddCard' onClick={() => addItem(productId)}>
                 {ifAdded
