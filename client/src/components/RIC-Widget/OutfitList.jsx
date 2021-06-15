@@ -33,7 +33,7 @@ const OutfitList = ({ productId, productClick }) => {
   useEffect(() => {
     local.setItem('outfit', JSON.stringify(outfitItems));
 
-    (outfitItems.length > 5)
+    (outfitItems.length > 4)
     ? setRight(true)
     : setRight(false)
   }, [outfitItems]);
