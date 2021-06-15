@@ -56,54 +56,108 @@
 
 /* ---------------------------- Ratings & Reviews ---------------------------- */
 
-/* .review-container {
-} */
+
+.review-container {
+  padding-top: 20px;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 40px 1fr 20px;
+  height: 600px;
+}
+
 .review-table {
-  border: 1px solid black;
   border-collapse: collapse;
   width: auto;
+  grid-column: 2;
+  grid-row: 2;
 }
+
+.review-buttons {
+  grid-column: 2;
+  grid-row: 3;
+
+}
+
+.review-buttons button {
+  background-color: #2c59a5;
+  color: black;
+}
+.review-buttons button:hover{
+  color: #ecf4f4;
+  font-weight: 500;
+}
+
+.ratings-forms {
+  grid-column: 2;
+  grid-row: 1
+}
+
 .list-container {
-  height: 400px;
+  height: auto;
+  width: fit-content;
   overflow-y: scroll;
+  grid-column: 2;
+  grid-row: 2;
 }
 
 .breakdown {
-  border: 1px solid black;
-  margin: 10px;
+  border: 1px solid #2c59a5;
+  margin: 5px;
   height: auto;
+  width: fit-content;
+  grid-column: 1;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  font-size: 12px;
 }
 
 .review-table td {
-  margin: 5px;
+  margin-top: 1px;
 }
 
 .review-modal {
+  z-index: 100;
   position: fixed;
-  width: 600px;
-  height: 800px;
-  max-width: 60vw;
-  max-height: 60vh;
-  top: 10%;
-  left: 20%;
+  width: fit-content;
+  height: fit-content;
+  top: 5%;
+  left: 35%;
   border: 1px solid black;
   text-align: center;
-  background-color: darkcyan;
-  display: block;
-  margin: 5px;
+  background-color: #1a1a1a;
+}
+
+.form-label label {
+  float: left;
+}
+
+.form-label input {
+  float: right;
+
 }
 
 .modal-form {
   width: 400px;
+  margin: 10px;
+}
+.modal-form div {
+  margin: 5px;
+}
+.rating-selector + label {
+  display: block;
+}
+
+.text-input {
+  width: 75%;
 }
 
 .review-elem {
-  height: fit-content(200px);
+  height: fit-content;
   width: auto;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #2c59a5;
   display: grid;
   grid-template-columns: 300px 300px auto auto;
-  grid-template-rows: 20px 20px 10px auto auto 50px 50px;
+  grid-template-rows: auto auto 10px auto auto 50px fit-content(100px) 20px 50px;
 }
 
 .review-stars {
@@ -113,6 +167,7 @@
 .tile-summary {
   grid-column: 1;
   grid-row: 2;
+  font-weight: bold;
 }
 .tile-date {
   grid-column: 4;
@@ -139,11 +194,15 @@
   margin: 3px;
 }
 
-.review-modal img {
-  width: auto;
-  height: auto;
+.img-modal {
+  z-index: 100;
+  position: fixed;
+  max-width: 60vw;
+  max-height: 60vh;
+  top: 25%;
+  left: 25%;
   background-color: #f4f4f4;
-  object-fit: scale-down;
+  object-fit: contain;
 }
 
 .tile-body {
@@ -160,41 +219,108 @@
   vertical-align: center;
 }
 
-.tile-helpful {
+.tile-response {
   grid-row: 7;
+  grid-column-start: 1;
+  grid-column-end: -1;
+  width: auto;
+  background-color: #60c7cb;
+}
+
+.tile-helpful {
+  grid-row: 9;
   grid-column: 1;
+  width: auto;
+  height: auto;
 }
 
 .review-bar {
-  height: 20px;
+  display: inline-block;
+  height: 10px;
   position: relative;
-  background: gray;
-  width: 400px;
+  background: #60c7cb;
+  width: 250px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .review-bar > .review-fill {
   display: block;
   height: 100%;
-  background-color: green;
+  background-color: #36C60E;
   position: relative;
 }
 
 .review-char-bar {
   display: inline-block;
-  border: 1px solid black;
+  border: 1px solid #2c59a5;
   position: relative;
-  background: gray;
-  height: 20px;
-  width: 100px;
+  background: #60c7cb;
+  height: 10px;
+  width: auto;
 }
 
-.review-bar > .review-dot {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: black;
-  display: inline-block;
+.review-char-breakdown {
+  display: grid;
+  grid-template-columns: 50px 50px 50px 50px 50px;
+  grid-template-rows: 50% 50%;
+  margin: 10px;
+  margin-top: 0px;
 }
+.review-char-breakdown div {
+  grid-row: 1;
+}
+
+.review-char-breakdown .start {
+  grid-column: 1;
+  grid-row: 2;
+  white-space: nowrap;
+  margin-top: 3px;
+}
+
+.review-char-breakdown .end {
+  grid-column: -2;
+  grid-row: 2;
+  white-space: nowrap;
+  margin-top: 3px;
+}
+
+.review-indicator {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 10px solid #2c59a5;
+  position: relative;
+}
+.review-container mark {
+  color: red;
+}
+
+.review-breakdown .bd-line {
+  display: inline;
+}
+.review-breakdown {
+  margin: 10px;
+}
+
+.helpful-button {
+  background: #2c59a5;
+}
+
+.helpful-button:disabled {
+  background: lightgrey;
+}
+
+.filtered {
+  background: #36C60E;
+}
+
+.review-img {
+  display: inline-block;
+  margin: 2px;
+}
+
 /* ---------------------------- Overview ---------------------------- */
 .overview {
   top: 20px;

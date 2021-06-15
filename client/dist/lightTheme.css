@@ -116,20 +116,37 @@
 .review-modal {
   z-index: 100;
   position: fixed;
-  width: fit-content(60vw);
-  height: fit-content(60vh);
-  top: 10%;
+  width: fit-content;
+  height: fit-content;
+  top: 5%;
   left: 35%;
   border: 1px solid black;
   text-align: center;
   background-color: #60c7cb;
-  display: block;
-  margin: 5px;
+}
+
+.form-label label {
+  float: left;
+}
+
+.form-label input {
+  float: right;
+
 }
 
 .modal-form {
   width: 400px;
   margin: 10px;
+}
+.modal-form div {
+  margin: 5px;
+}
+.rating-selector + label {
+  display: block;
+}
+
+.text-input {
+  width: 75%;
 }
 
 .review-elem {
@@ -228,7 +245,7 @@
 .review-bar > .review-fill {
   display: block;
   height: 100%;
-  background-color: black;
+  background-color: #36C60E;
   position: relative;
 }
 
@@ -291,6 +308,15 @@
 
 .helpful-button:disabled {
   background: lightgrey;
+}
+
+.filtered {
+  background: #36C60E;
+}
+
+.review-img {
+  display: inline-block;
+  margin: 2px;
 }
 
 
