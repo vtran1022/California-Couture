@@ -3,8 +3,7 @@ import ProductCard from './ProductCard.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
 import Atelier from '../../Atelier.js';
 
-const RelatedList = ({ productId, productClick }) => {
-  const listState = 'related';
+const RelatedList = ({ productId, productClick, toggleOverlay }) => {
   const [initialIndex, setIndex] = useState(0);
   const [relatedItems, setRelated] = useState([]);
   const [isModal, setModal] = useState(false);
@@ -12,10 +11,41 @@ const RelatedList = ({ productId, productClick }) => {
   const [isRight, setRight] = useState(false);
   const [isLeft, setLeft] = useState(false);
 
+  const listState = 'related';
+  const len = relatedItems.length - 1
+  const stopper = -(len - 4);
+
   const fetchRelated = async () => {
     let product = await Atelier.getRelated(productId);
-    setRelated(product);
+    let uniqueProducts = [...new Set(product)];
+    setRelated(uniqueProducts);
   };
+
+  const triggerModal = useCallback((id) => {
+    if (!isModal) {
+      setId(id);
+      setModal(true);
+    } else if (isModal) {
+      setModal(false);
+    }
+  });
+
+  const handleClick = (action) => {
+    switch (action.type) {
+      case 'next':
+        setLeft(true);
+
+        if (len < 4) {
+          return setIndex(prevState => prevState = 0);
+        } else if (initialIndex > stopper) {
+            return setIndex(prevState => prevState - 1);
+        }
+
+      case 'previous':
+        setRight(true);
+        setIndex(prevState => prevState + 1);
+    }
+  }
 
   useEffect(() => {
     fetchRelated().catch((err) => console.log(`Error fetching related info: ${err}`));
@@ -29,51 +59,28 @@ const RelatedList = ({ productId, productClick }) => {
     : setRight(false)
   }, [relatedItems]);
 
-  const triggerModal = useCallback((id) => {
-    if (!isModal) {
-      setId(id);
-      setModal(true);
-    } else if (isModal) {
-      setModal(false);
-    }
-  });
+  useEffect(() => {
+    initialIndex === stopper
+    ? setRight(false)
+    : null;
 
-  const handleClick = (action) => {
-    let len = relatedItems.length - 1;
-    let stopper = -(len - 4);
+    initialIndex === 0
+    ? setLeft(false)
+    : setLeft(true);
+  }, [initialIndex]);
 
-    switch (action.type) {
-      case 'next':
-        setLeft(true);
-
-        if (len < 4) {
-          return setIndex(prevState => prevState = 0);
-        } else if (initialIndex > stopper) {
-            return setIndex(prevState => prevState - 1);
-        } else if (initialIndex === stopper) {
-          return setRight(false);
-        }
-
-      case 'previous':
-        setRight(true);
-
-        if (initialIndex === 0) {
-          setLeft(false);
-          setIndex(prevState => prevState = 0);
-        } else {
-          setIndex(prevState => prevState + 1);
-        }
-    }
-  }
+  useEffect(() => {
+    toggleOverlay();
+  }, [isModal]);
 
   return (
     <div>
       <h4 className='RIC-Title'>Related Products</h4>
       {isLeft
           ? <button className='button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>
-          : <button className='button2'>‹</button>
+          : <button disabled data-testid='buttonL' className='button2'>‹</button>
         }
-      <div className='RICList' style={{ '--offset': initialIndex }}>
+      <div data-testid='RICList' className='RICList' style={{ '--offset': initialIndex }}>
         {relatedItems.map((id, i) => (
           <ProductCard
             key={id}
@@ -81,7 +88,8 @@ const RelatedList = ({ productId, productClick }) => {
             listState={listState}
             triggerModal={triggerModal}
             offset={initialIndex}
-            productClick={productClick}/>
+            productClick={productClick}
+            toggleOverlay={toggleOverlay}/>
         ))}
       </div>
 
@@ -94,7 +102,7 @@ const RelatedList = ({ productId, productClick }) => {
 
         {isRight
           ? <button className='button1' onClick={() => handleClick({ type: 'next' })}>›</button>
-          : <button className='button2'>›</button>
+          : <button disabled data-testid='buttonR' className='button2'>›</button>
         }
     </div>
   );
