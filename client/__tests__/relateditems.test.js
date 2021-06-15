@@ -85,6 +85,19 @@ describe('Action Button', () => {
   });
 });
 
+describe('Action Button', () => {
+  test('calls the onClick callback handler for star button', async () => {
+    const onClick = jest.fn();
+    const list = 'related';
+
+    const { getByTestId } = render( <ActionButton listState={list} triggerModal={onClick}/> );
+
+    await userEvent.click(getByTestId('star'));
+
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+});
+
 describe('Product Card', () => {
   test('calls the onClick callback handler for product card', async () => {
     const onClick = jest.fn();
