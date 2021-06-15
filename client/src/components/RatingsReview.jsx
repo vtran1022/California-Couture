@@ -16,7 +16,6 @@ const Ratings = (props) => {
   const [showForm, setShowForm] = useState(false);
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState([false, false, false, false, false]);
-
   //effects
   //runs when the sorting method is changed, fetch reviews with new sorting methods
   useEffect(() => {
@@ -80,10 +79,11 @@ const Ratings = (props) => {
   };
 
   const addNewReview = (fd) => {
-    Atelier.postAPI('reviews', {
-      product_id: props.id,
+    var obj = {
+      product_id: Number(props.id),
       ...fd
-    }).then(d => console.log(d)).catch(err => console.log(err));
+    };
+    Atelier.postAPI('reviews', obj).then(d => console.log(d)).catch(err => console.log(err));
 
   };
 
@@ -98,8 +98,6 @@ const Ratings = (props) => {
       return [...filter];
     });
   };
-  //console.log(Object.entries(localStorage));
-
   if (Object.keys(reviews).length > 0) {
     return (<div className='review-container'>
       {showForm ? <FormModal characteristics={meta.characteristics} submitData={addNewReview} productName={productName} /> : null}
@@ -143,7 +141,7 @@ const Ratings = (props) => {
       </div>
       {/* product breakdown */}
       <div className='breakdown'>
-        {Object.keys(meta).length > 0 ? <Breakdown data={meta} key={props.id} handleFilter={handleFilter} /> : <div></div>}
+        {Object.keys(meta).length > 0 ? <Breakdown data={meta} key={props.id} handleFilter={handleFilter} filter={filter}/> : <div></div>}
       </div>
     </div>)
   } else {
