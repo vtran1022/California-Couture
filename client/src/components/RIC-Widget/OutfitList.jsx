@@ -84,7 +84,7 @@ const OutfitList = ({ productId }) => {
       <div className='RICList'>
           {outfitItems.length !== 0
             ? <>
-                <span className='AddCard' onClick={() => addItem(productId)}>
+                <span data-testid='addcard' className='AddCard' onClick={() => addItem(productId)}>
                   {ifAdded
                     ? <span id='plus-outfit'>＋ <br /> Add to Outfit</span>
                     : <span id='item-added'>Item Added</span>
