@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useReducer } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import ProductCard from './ProductCard.jsx';
 
 const OutfitList = ({ productId, productClick }) => {
