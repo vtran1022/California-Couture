@@ -25,7 +25,7 @@ class App extends React.Component {
   }
 
   handleProductHighlight() {
-    this.setState({ product: '13050'});
+    this.setState({ product: '13357'});
   }
 
   toggleTheme() {
