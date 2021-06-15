@@ -11,22 +11,19 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
   const [itemName, setName] = useState({ product: 'Product 1', related: 'Product 2' });
 
   const fetchItems = async () => {
-    let productData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${productId}`,
-    { headers: { 'Authorization': auth.TOKEN } });
+    let productData = await Atelier.getInfo(productId);
+    let relatedData = await Atelier.getInfo(relatedId);
 
-    let relatedData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${relatedId}`,
-    { headers: { 'Authorization': auth.TOKEN } });
-
-    const pd = productData.data.features;
-    const rd = relatedData.data.features;
+    const pd = productData.features;
+    const rd = relatedData.features;
     const all = pd.concat(rd);
 
     setProd(transformFeatures(pd));
     setRelated(transformFeatures(rd));
     setAllChars(transformFeatures(all));
     setName({
-      product: productData.data.name,
-      related: relatedData.data.name
+      product: productData.name,
+      related: relatedData.name
     });
   };
 
