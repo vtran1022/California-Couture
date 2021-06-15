@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { auth } from '../../../../config.js';
 import Atelier from '../../Atelier.js';
 
 const ComparisonModal = ({ productId, relatedId, trigger }) => {
@@ -31,12 +29,9 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
     let transformed = [];
 
     array.forEach((item) => {
-      if (item.value === null) {
-        var itemStr = `${item.feature}`;
-      } else {
-        var itemStr = `${item.feature} ─ ${item.value}`;
-      }
-      transformed.push(itemStr);
+      item.value === null
+        ? transformed.push(`${item.feature}`)
+        : transformed.push(`${item.feature} ─ ${item.value}`);
     });
 
     return transformed;
@@ -46,11 +41,9 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
     let result = [];
 
     array1.forEach((item) => {
-      if (array2.includes(item)) {
-        result.push('✓');
-      } else {
-        result.push(' ');
-      }
+      array2.includes(item)
+        ? result.push('✓')
+        : result.push(' ');
     });
 
     return result;

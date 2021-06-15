@@ -62,12 +62,12 @@ class App extends React.Component {
     return (
       <>
         <link rel="stylesheet" type="text/css" href={stylePath} />
-        <Header
+        {/* <Header
           highlight={this.handleProductHighlight}
           theme={stylePath}
           toggleTheme={this.toggleTheme}/>
         <Overview />
-        <Ratings id={product} />
+        <Ratings id={product} /> */}
         <RICWidget
           productId={product}
           productClick={this.handleProductClick}/>
