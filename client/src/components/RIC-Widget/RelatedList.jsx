@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useCallback, useReducer } from 'react';
-import axios from 'axios';
-import { auth } from '../../../../config.js';
 import ProductCard from './ProductCard.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
+import Atelier from '../../Atelier.js';
 
-const RelatedList = ({ productId }) => {
+const RelatedList = ({ productId, productClick }) => {
   const listState = 'related';
   const [initialIndex, setIndex] = useState(0);
   const [relatedItems, setRelated] = useState([]);
@@ -14,14 +13,12 @@ const RelatedList = ({ productId }) => {
   const [isLeft, setLeft] = useState(false);
 
   const fetchRelated = async () => {
-    let relatedData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${productId}/related`,
-    { headers: { 'Authorization': auth.TOKEN } });
-
-    setRelated(relatedData.data);
+    let product = await Atelier.getRelated(productId);
+    setRelated(product);
   };
 
   useEffect(() => {
-    fetchRelated().catch((err) => console.log(`Error fetching product info: ${err}`));
+    fetchRelated().catch((err) => console.log(`Error fetching related info: ${err}`));
     setIndex(0);
     setLeft(false);
   }, [productId]);
@@ -79,19 +76,20 @@ const RelatedList = ({ productId }) => {
       <div className='RICList' style={{ '--offset': initialIndex }}>
         {relatedItems.map((id, i) => (
           <ProductCard
-          key={id}
-          productId={id}
-          listState={listState}
-          triggerModal={triggerModal}
-          offset={initialIndex}/>
-          ))}
+            key={id}
+            productId={id}
+            listState={listState}
+            triggerModal={triggerModal}
+            offset={initialIndex}
+            productClick={productClick}/>
+        ))}
       </div>
 
       {isModal
         ? <ComparisonModal
-        productId={productId}
-        relatedId={relatedId}
-        trigger={triggerModal}/>
+            productId={productId}
+            relatedId={relatedId}
+            trigger={triggerModal}/>
         : null}
 
         {isRight

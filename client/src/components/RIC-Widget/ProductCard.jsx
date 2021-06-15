@@ -1,27 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { auth } from '../../../../config.js';
 import AvgRating from '../AvgRating.jsx';
 import ActionButton from './ActionButton.jsx';
+import Atelier from '../../Atelier.js';
 
-const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal, offset }) => {
+const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal, offset, productClick }) => {
   const [image, setImage] = useState('');
   const [category, setCategory] = useState('');
   const [name, setName] = useState('');
   const [price, setPrice] = useState({default: 0, salePrice: null});
 
   const fetchProducts = async () => {
-    let productData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${productId}`,
-    { headers: { 'Authorization': auth.TOKEN } });
+    let productData = await Atelier.getInfo(productId);
+    let productStyles = await Atelier.getStyles(productId);
 
-    let productStyles = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${productId}/styles`,
-    { headers: { 'Authorization': auth.TOKEN } });
+    const firstStyle = productStyles.results[0];
 
-    const product = productData.data;
-    const firstStyle = productStyles.data.results[0];
-
-    setCategory(product.category);
-    setName(product.name);
+    setCategory(productData.category);
+    setName(productData.name);
     setImage(firstStyle.photos[0].thumbnail_url);
     setPrice({
       default: firstStyle.original_price,
@@ -30,40 +25,41 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
   };
 
   useEffect(() => {
-    fetchProducts().catch((err) => console.log(`Error fetching product info: ${err}`))
+    fetchProducts().catch((err) => console.log(`Error fetching product/style info: ${err}`));
   }, [productId]);
 
   return (
-    <div className='ProductCard' style={{ '--offset': offset }}>
-      <ActionButton
-        index={index}
-        id={productId}
-        listState={listState}
-        triggerDelete={triggerDelete}
-        triggerModal={triggerModal}/>
-
-      <img src={image} alt={name} className='ProductImage'></img>
-      <div className='ProductInfo'>
+    <>
+    <div className='ProductCard' style={{ '--offset': offset }} onClick={() => productClick(productId)}>
+      <img className='ProductImage' src={image} alt={name}></img>
         <span id='prod-category'>{category}</span>
         <br />
-        <b id='prod-name' /*onClick holder here*/>{name}</b>
+        <b id='prod-name'>{name}</b>
         <br />
         {price.salePrice
-          ? <span id="sale-price">${price.salePrice}<strike>${price.default}</strike> </span>
+          ? <> <b id="sale-price">${price.salePrice} &nbsp; </b> <strike id='prod-price'>${price.default}</strike> </>
           : <span id='prod-price'>${price.default}</span>
         }
-        <AvgRating
+        <br />
+        <span id='prod-star'>
+          <AvgRating
           productId={productId}/>
-      </div>
+        </span>
     </div>
+
+    <ActionButton
+    index={index}
+    id={productId}
+    listState={listState}
+    triggerDelete={triggerDelete}
+    triggerModal={triggerModal}/>
+
+    </>
   );
 };
 
 export default ProductCard;
 
 /*
-
-onClick product name - navigate to detail page. Need to pass the productId back up to App and re-render page
-
 Future Enhancements ???
 */
