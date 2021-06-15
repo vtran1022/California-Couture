@@ -66,7 +66,6 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
               ? 'style-selected'
               : 'style-not-selected'}
             key={stylePic.style_id}
-            id={index+100}
             pic-id={stylePic.style_id}
             src={stylePic.photos[0].thumbnail_url}
             onClick={(e) => handleStyleSelect(e.currentTarget.getAttribute('pic-id'))}/>
@@ -78,20 +77,20 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
       <div className='size-select'>
       <select name='size' id='size-select' onChange={(e) => setSize(e.target.value)}>
         <option>Select Size</option>
-        {skus.map(sku =>
-        <option key={sku.quantity + 50}>{sku.size}</option>)}
+        {skus.map((sku, index) =>
+        <option key={index}>{sku.size}</option>)}
       </select>
       </div>
 
       <div className='quantity-select'>
       <select name='quantity' id='quantity-select' onChange={(e) => setQuantity(e.target.value)}>
-        <option>------</option>
+        <option>Quantity</option>
         {
           !quantities
           ? null
           : quantities.map ((quantity, index) =>{
             if (index < 15) {
-              return <option key={quantity + 20}>{quantity}</option>
+              return <option key={index}>{quantity}</option>
             }}
             )
           }

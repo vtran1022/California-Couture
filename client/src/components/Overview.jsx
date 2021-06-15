@@ -28,7 +28,9 @@ function Overview ({ theme, productId }) {
         console.log(err)
       }}
     fetchData();
-    }, []);
+    }, [productId]);
+
+
 
   function handleStyleSelect (value) {
     let list = styles;

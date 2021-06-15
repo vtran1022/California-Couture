@@ -5,7 +5,6 @@ import Ratings from './RatingsReview.jsx';
 import RICWidget from './RIC-Widget.jsx';
 import Header from './Header.jsx';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);

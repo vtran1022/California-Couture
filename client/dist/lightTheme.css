@@ -548,6 +548,7 @@
 .styles {
   display: flex;
   flex-wrap: wrap;
+  overflow: scroll;
   width: 500px;
   height: 250px;
 }
