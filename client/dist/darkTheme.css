@@ -588,10 +588,6 @@
   filter: brightness(70%);
 }
 
-.ProductInfo {
-  padding-left: 5px;
-}
-
 .AddCard {
   display: flex;
   justify-content: center;
@@ -611,6 +607,12 @@
 #sale-price,
 #prod-category {
   font-size: 10px;
+  padding-left: 5px;
+}
+
+#prod-name,
+#prod-star {
+  padding-left: 5px;
 }
 
 #prod-name,
@@ -630,8 +632,8 @@
 #ActButton{
   appearance: none;
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 10px;
+  right: 20px;
   background: transparent;
   border: none;
   cursor:pointer;

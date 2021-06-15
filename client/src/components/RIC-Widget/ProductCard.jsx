@@ -30,16 +30,8 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
 
   return (
     <>
-    <ActionButton
-    index={index}
-    id={productId}
-    listState={listState}
-    triggerDelete={triggerDelete}
-    triggerModal={triggerModal}/>
-
     <div className='ProductCard' style={{ '--offset': offset }} onClick={() => productClick(productId)}>
       <img className='ProductImage' src={image} alt={name}></img>
-      <div className='ProductInfo'>
         <span id='prod-category'>{category}</span>
         <br />
         <b id='prod-name'>{name}</b>
@@ -49,10 +41,19 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
           : <span id='prod-price'>${price.default}</span>
         }
         <br />
-        <AvgRating
+        <span id='prod-star'>
+          <AvgRating
           productId={productId}/>
-      </div>
+        </span>
     </div>
+
+    <ActionButton
+    index={index}
+    id={productId}
+    listState={listState}
+    triggerDelete={triggerDelete}
+    triggerModal={triggerModal}/>
+
     </>
   );
 };
