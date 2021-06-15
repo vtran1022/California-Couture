@@ -71,7 +71,7 @@ const RelatedList = ({ productId, productClick }) => {
       <h4 className='RIC-Title'>Related Products</h4>
       {isLeft
           ? <button className='button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>
-          : <button className='button2'>‹</button>
+          : <button disabled data-testid='buttonL' className='button2'>‹</button>
         }
       <div className='RICList' style={{ '--offset': initialIndex }}>
         {relatedItems.map((id, i) => (
@@ -94,7 +94,7 @@ const RelatedList = ({ productId, productClick }) => {
 
         {isRight
           ? <button className='button1' onClick={() => handleClick({ type: 'next' })}>›</button>
-          : <button className='button2'>›</button>
+          : <button disabled data-testid='buttonR' className='button2'>›</button>
         }
     </div>
   );

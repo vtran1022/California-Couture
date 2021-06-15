@@ -79,7 +79,7 @@ const OutfitList = ({ productId }) => {
       <h4 className='RIC-Title'>Your Outfit</h4>
       {isLeft
           ? <button className='button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>
-          : <button className='button2'>‹</button>
+          : <button disabled data-testid='buttonL' className='button2'>‹</button>
         }
       <div className='RICList'>
           {outfitItems.length !== 0
@@ -109,7 +109,7 @@ const OutfitList = ({ productId }) => {
       </div>
       {isRight
         ? <button className='button1' onClick={() => handleClick({ type: 'next' })}>›</button>
-        : <button className='button2'>›</button>
+        : <button disabled data-testid='buttonR' className='button2'>›</button>
       }
     </div>
   );

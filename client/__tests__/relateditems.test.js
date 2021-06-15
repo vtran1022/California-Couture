@@ -16,20 +16,30 @@ afterEach(cleanup);
 // basic render testing, screen.debug() will log the HTML output in test terminal
 describe('RICWidget', () => {
   test('checking both lists render', () => {
-    render(<RICWidget />);
+    const { getByText } = render(<RICWidget />);
 
-    expect(screen.getByText(/Your Outfit/)).toBeInTheDocument();
-    expect(screen.getByText(/Related Products/)).toBeInTheDocument();
+    expect(getByText(/Your Outfit/)).toBeInTheDocument();
+    expect(getByText(/Related Products/)).toBeInTheDocument();
   });
 });
 
-// describe('Action Button', () => {
-//   test('star action button exists on initial render', () => {
-//     render(<ActionButton />);
+describe('Arrow Buttons', () => {
+  test('arrow button should not exist initial render', () => {
+    const { getByTestId } = render(<RelatedList />);
 
-//     expect(screen.getByDisplayValue('☆')).toBeInTheDocument();
-//   });
-// });
+    expect(getByTestId('buttonL')).toBeDisabled();
+    expect(getByTestId('buttonR')).toBeDisabled();
+  });
+});
+
+describe('Arrow Buttons', () => {
+  test('arrow button should not exist initial render', () => {
+    const { getByTestId } = render(<OutfitList />);
+
+    expect(getByTestId('buttonL')).toBeDisabled();
+    expect(getByTestId('buttonR')).toBeDisabled();
+  });
+});
 
 // describe('Action Button', () => {
 //   test('delete action button does not exist on initial render', () => {
