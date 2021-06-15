@@ -61,7 +61,8 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
   }, [allChars]);
 
   return (
-    <div className='c-modal' onClick={trigger}>
+    <>
+    <span className='c-modal' onClick={trigger}>
       <p id='c-title'>Comparing</p>
       <table>
         <th className="c-left">{itemName.product}</th>
@@ -77,7 +78,9 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
           ))}
         </tbody>
       </table>
-    </div>
+    </span>
+    <span id='overlay'></span>
+    </>
   )
 };
 

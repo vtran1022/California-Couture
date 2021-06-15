@@ -668,7 +668,7 @@
 #starRating {
   position: relative;
   font-size: 12px;
-  color: rgb(194, 194, 194);;
+  color: white;
 }
 
 #starRating:after {
