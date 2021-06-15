@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { auth } from '../../../../config.js';
+import Atelier from '../../Atelier.js';
 
 const ComparisonModal = ({ productId, relatedId, trigger }) => {
   const [allChars, setAllChars] = useState([]);
@@ -77,11 +78,11 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
         <th className="c-mid"></th>
         <th className="c-right">{itemName.related}</th>
         <tbody>
-          {allChars.map((item, index) => (
-            <tr key={index}>
-              <td className="c-left">{itemCheck.product[index]}</td>
+          {allChars.map((item, i) => (
+            <tr key={i}>
+              <td className="c-left">{itemCheck.product[i]}</td>
               <td className="c-mid">{item}</td>
-              <td className="c-right">{itemCheck.related[index]}</td>
+              <td className="c-right">{itemCheck.related[i]}</td>
             </tr>
           ))}
         </tbody>

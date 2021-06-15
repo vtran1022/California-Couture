@@ -588,7 +588,7 @@
   width: 200px;
   height: 200px;
   object-fit: fill;
-  filter: brightness(70%)
+  filter: brightness(70%);
 }
 
 .ProductInfo {
@@ -605,6 +605,7 @@
 
 #plus-outfit,
 #item-added {
+  width: 200px;
   margin-bottom: 10px;
   font-size: 15px;
 }
@@ -619,10 +620,6 @@
 #c-title,
 .c-mid {
   font-size: 13px;
-}
-
-#prod-name:hover {
-  color: #2c59a5;
 }
 
 #sale-price {
@@ -689,7 +686,7 @@
 #starRating {
   position: relative;
   font-size: 12px;
-  color: #f4f4f4;
+  color: rgb(194, 194, 194);;
 }
 
 #starRating:after {

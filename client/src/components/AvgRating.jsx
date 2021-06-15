@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { auth } from '../../../config.js';
 import StarRating from './StarRating.jsx';
+import Atelier from '../Atelier.js';
 
 const AvgRating = ({ productId }) => {
   const [ratings, setRatings] = useState([]);
@@ -12,28 +11,30 @@ const AvgRating = ({ productId }) => {
     return average;
   };
 
-  const fetchRatings = async () => {
-    let reviewData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/reviews/meta/?product_id=${productId}`,
-    { headers: { 'Authorization': auth.TOKEN } });
+  const fetchRatings = () => {
+    Atelier.getMeta(productId)
+      .then((data) => {
+        let ratings = Object.values(data.ratings);
+        setRatings(ratings);
 
-    let ratings = Object.values(reviewData.data.ratings);
-
-    setRatings(ratings);
-
-    if (ratings.length !== 0) {
-      setAverage(averageScore(ratings));
-    }
+        ratings.length !== 0
+        ? setAverage(averageScore(ratings))
+        : null
+      })
+      .catch((err) => console.log(`Error fetching ratings: ${err}`));
   };
 
   useEffect(() => {
-    fetchRatings().catch((err) => console.log(`Error fetching ratings: ${err}`));
+    fetchRatings();
   }, [productId]);
 
     return (
-      <div>
-        <StarRating
-          rating={avgScore}/>
-      </div>
+      <>
+      {avgScore
+        ? <StarRating rating={avgScore}/>
+        : null
+      }
+      </>
     );
 };
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import Atelier from '../Atelier.js';
 import Overview from './Overview.jsx';
 import Ratings from './RatingsReview.jsx';
@@ -11,12 +10,18 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: '13029',
+      product: '13045',
       stylePath: 'lightTheme.css'
     }
 
     this.handleProductHighlight = this.handleProductHighlight.bind(this);
     this.toggleTheme = this.toggleTheme.bind(this);
+    this.handleProductClick = this.handleProductClick.bind(this);
+
+  }
+
+  handleProductClick(id) {
+    this.setState({ product: id });
   }
 
   handleProductHighlight() {
@@ -37,8 +42,7 @@ class App extends React.Component {
 
     this.state.stylePath === 'darkTheme.css'
     ? local.setItem('theme', 'lightTheme.css')
-    : local.setItem('theme', 'darkTheme.css')
-
+    : local.setItem('theme', 'darkTheme.css');
   }
 
   componentDidMount() {
@@ -46,27 +50,29 @@ class App extends React.Component {
 
     local.getItem('theme')
     ? this.setState({stylePath: local.getItem('theme')})
-    : local.setItem('theme', this.state.stylePath)
+    : local.setItem('theme', this.state.stylePath);
   }
 
   render() {
     const {
       product,
-      stylePath
+      stylePath,
+      productArr
     } = this.state;
 
     return (
-      <div>
+      <>
         <link rel="stylesheet" type="text/css" href={stylePath} />
         <Header
           highlight={this.handleProductHighlight}
           theme={stylePath}
           toggleTheme={this.toggleTheme}/>
         <Overview />
-        <Ratings id={this.state.product} />
+        <Ratings id={product} />
         <RICWidget
-          productId={product} />
-      </div>
+          productId={product}
+          productClick={this.handleProductClick}/>
+      </>
     );
   }
 };
