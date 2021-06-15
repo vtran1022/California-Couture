@@ -3,7 +3,7 @@ import ProductCard from './ProductCard.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
 import Atelier from '../../Atelier.js';
 
-const RelatedList = ({ productId, productClick }) => {
+const RelatedList = ({ productId, productClick, toggleOverlay }) => {
   const listState = 'related';
   const [initialIndex, setIndex] = useState(0);
   const [relatedItems, setRelated] = useState([]);
@@ -16,18 +16,6 @@ const RelatedList = ({ productId, productClick }) => {
     let product = await Atelier.getRelated(productId);
     setRelated(product);
   };
-
-  useEffect(() => {
-    fetchRelated().catch((err) => console.log(`Error fetching related info: ${err}`));
-    setIndex(0);
-    setLeft(false);
-  }, [productId]);
-
-  useEffect(() => {
-    relatedItems.length > 5
-    ? setRight(true)
-    : setRight(false)
-  }, [relatedItems]);
 
   const triggerModal = useCallback((id) => {
     if (!isModal) {
@@ -66,6 +54,22 @@ const RelatedList = ({ productId, productClick }) => {
     }
   }
 
+  useEffect(() => {
+    fetchRelated().catch((err) => console.log(`Error fetching related info: ${err}`));
+    setIndex(0);
+    setLeft(false);
+  }, [productId]);
+
+  useEffect(() => {
+    relatedItems.length > 5
+    ? setRight(true)
+    : setRight(false)
+  }, [relatedItems]);
+
+  useEffect(() => {
+    toggleOverlay();
+  }, [isModal]);
+
   return (
     <div>
       <h4 className='RIC-Title'>Related Products</h4>
@@ -81,7 +85,8 @@ const RelatedList = ({ productId, productClick }) => {
             listState={listState}
             triggerModal={triggerModal}
             offset={initialIndex}
-            productClick={productClick}/>
+            productClick={productClick}
+            toggleOverlay={toggleOverlay}/>
         ))}
       </div>
 
