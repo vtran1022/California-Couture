@@ -117,13 +117,3 @@ const OutfitList = ({ productId }) => {
 };
 
 export default OutfitList;
-
-/*
-- will not be determined internally but unique to user
- - items only added when explicitly added by user
-- only unique to specific user, same across the board, regardless where they click to
-- no max # of items to this list
-- PERSIST
- - across page navigation
- - even after user has exited site and return later
-*/

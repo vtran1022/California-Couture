@@ -20,7 +20,7 @@ const Description = ({ currentProduct }) => {
 
       <div className='features'>
         <span className='feature'>Features:</span>
-        {features.map((feature, index) => // clean this up later. Not DRY
+        {features.map((feature, index) =>
           feature.value !== null
           ? <span
           key={index + 500}

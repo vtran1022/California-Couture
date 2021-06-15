@@ -11,21 +11,19 @@ const AvgRating = ({ productId }) => {
     return average;
   };
 
-  const fetchRatings = () => {
-    Atelier.getMeta(productId)
-      .then((data) => {
-        let ratings = Object.values(data.ratings);
-        setRatings(ratings);
+  const fetchRatings = async () => {
+    let reviewData = await Atelier.getMeta(productId);
 
-        ratings.length !== 0
-        ? setAverage(averageScore(ratings))
-        : null
-      })
-      .catch((err) => console.log(`Error fetching ratings: ${err}`));
+    let ratings = Object.values(reviewData.ratings);
+    setRatings(ratings);
+
+    ratings.length !== 0
+      ? setAverage(averageScore(ratings))
+      : null
   };
 
   useEffect(() => {
-    fetchRatings();
+    fetchRatings().catch((err) => console.log(`Error fetching ratings: ${err}`));
   }, [productId]);
 
     return (

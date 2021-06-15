@@ -9,41 +9,29 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
   const [name, setName] = useState('');
   const [price, setPrice] = useState({default: 0, salePrice: null});
 
-  const fetchProducts = () => {
-    Atelier.getInfo(productId)
-     .then((product) => {
-       setCategory(product.category);
-       setName(product.name);
-     })
-     .catch((err) => console.log(`Error fetching product info: ${err}`));
+  const fetchProducts = async () => {
+    let productData = await Atelier.getInfo(productId);
+    let productStyles = await Atelier.getStyles(productId);
 
-    Atelier.getStyles(productId)
-      .then((data) => {
-        const firstStyle = data.results[0];
-        setImage(firstStyle.photos[0].thumbnail_url);
-        setPrice({
-          default: firstStyle.original_price,
-          salePrice: firstStyle.sale_price
-        });
-      })
-      .catch((err) => console.log(`Error fetching style info: ${err}`));
+    const firstStyle = productStyles.results[0];
+
+    setCategory(productData.category);
+    setName(productData.name);
+    setImage(firstStyle.photos[0].thumbnail_url);
+    setPrice({
+      default: firstStyle.original_price,
+      salePrice: firstStyle.sale_price
+      });
   };
 
   useEffect(() => {
-    fetchProducts();
+    fetchProducts().catch((err) => console.log(`Error fetching product/style info: ${err}`));
   }, [productId]);
 
   return (
+    <>
     <div className='ProductCard' style={{ '--offset': offset }} onClick={() => productClick(productId)}>
-      <ActionButton
-        index={index}
-        id={productId}
-        listState={listState}
-        triggerDelete={triggerDelete}
-        triggerModal={triggerModal}/>
-
       <img className='ProductImage' src={image} alt={name}></img>
-      <div className='ProductInfo'>
         <span id='prod-category'>{category}</span>
         <br />
         <b id='prod-name'>{name}</b>
@@ -53,10 +41,20 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
           : <span id='prod-price'>${price.default}</span>
         }
         <br />
-        <AvgRating
+        <span id='prod-star'>
+          <AvgRating
           productId={productId}/>
-      </div>
+        </span>
     </div>
+
+    <ActionButton
+    index={index}
+    id={productId}
+    listState={listState}
+    triggerDelete={triggerDelete}
+    triggerModal={triggerModal}/>
+
+    </>
   );
 };
 

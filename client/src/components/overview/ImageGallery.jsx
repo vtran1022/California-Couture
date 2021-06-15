@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Thumbnails from './Thumbnails.jsx';
-import Enlarge from '../../imgs/expand-32.png';
+import ZoomedPreview from './ZoomedPreview.jsx';
 
-
-function ImageGallery ({ photos, styleid }) {
+function ImageGallery ({ photos, styleid, theme }) {
   const [showView, setView] = useState(false);
   const [currentPhoto, setPhoto] = useState(photos[0]);
   const [photoList, setPhotoList] = useState(photos);
@@ -15,19 +14,12 @@ function ImageGallery ({ photos, styleid }) {
     setPhotoIndex(0);
   }, [photos]);
 
-  function zoomLens (imgId, resultId) {
-
-  }
-
   function handleViewClick () {
     setView(!showView);
   }
 
-  function handleThumbnailClick (url, thumbnail_url, index) {
-    setPhoto({
-      url: url,
-      thumbnail_url: thumbnail_url
-      });
+  function handleThumbnailClick (index) {
+    setPhoto(photoList[index]);
     setPhotoIndex(index);
   }
 
@@ -54,14 +46,20 @@ function ImageGallery ({ photos, styleid }) {
       ? 'image-gallery-enlarged'
       : 'image-gallery'}
     >
-      <div className='preview-container'>
-      <img
-      className='preview'
-      id='preview'
-      src={currentPhoto.url}
-      />
-      <div className='zoomed-preview'></div>
-      </div>
+      {showView
+        ? <ZoomedPreview
+        view={showView}
+        preview={ currentPhoto.url }
+        />
+        : <div className='preview-container'>
+          <img
+            className='preview'
+            onClick={handleViewClick}
+            src={ currentPhoto.url}
+            alt='One of the preview pictures of the selected style'/>
+        </div>
+      }
+
       <div className=
       {showView
         ? 'enlarged-thumbs-overlay'
@@ -70,16 +68,20 @@ function ImageGallery ({ photos, styleid }) {
         {photoList.map((photo, index) =>
           <Thumbnails
           key={index}
-          thumbnailUrl={photo.thumbnail_url}
-          photoUrl={photo.url}
-          photoList={photoList}
+          cname={
+            (photo === currentPhoto)
+            ? 'thumb-selected'
+            : 'thumb-not-selected'
+          }
+          photo={ photo }
+          photoList={ photoList }
           handleThumbnailClick={handleThumbnailClick}/>
           )}
         </div>
 
-      <a className='left-button' onClick={() => handleLeftClick()}>&#10094;</a>
-      <a className='right-button' onClick={() => handleRightClick()}>&#10095;</a>
-      <img className='enlarge-button' src={Enlarge} onClick={()=>handleViewClick()}/>
+      <a className='left-button' onClick={handleLeftClick}>&#10094;</a>
+      <a className='right-button' onClick={handleRightClick}>&#10095;</a>
+      <i className="fas fa-expand enlarge-button" onClick={handleViewClick}></i>
     </div>
   )
 }

@@ -12,16 +12,13 @@ const RelatedList = ({ productId, productClick }) => {
   const [isRight, setRight] = useState(false);
   const [isLeft, setLeft] = useState(false);
 
-  const fetchRelated = () => {
-    Atelier.getRelated(productId)
-    .then((data) => {
-      setRelated(data);
-    })
-    .catch((err) => console.log(`Error fetching related info: ${err}`));
+  const fetchRelated = async () => {
+    let product = await Atelier.getRelated(productId);
+    setRelated(product);
   };
 
   useEffect(() => {
-    fetchRelated();
+    fetchRelated().catch((err) => console.log(`Error fetching related info: ${err}`));
     setIndex(0);
     setLeft(false);
   }, [productId]);
