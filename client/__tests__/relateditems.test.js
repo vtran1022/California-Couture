@@ -63,13 +63,13 @@ afterEach(cleanup);
 
 
 
-// describe('OutfitList', () => {
-//   test('Check that Add Outfit card exists', () => {
-//     const { getByText } = render(<ProductCard />);
+describe('ProductCard', () => {
+  test('Check that Add Outfit card exists', () => {
+    const { getByText } = render(<ProductCard />);
 
-//     expect(getByText(/ALu/)).toBeInTheDocument();
-//   });
-// });
+    expect(getByText(/ALu/)).toBeInTheDocument();
+  });
+});
 
 
 
