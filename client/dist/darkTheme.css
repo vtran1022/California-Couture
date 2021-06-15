@@ -80,8 +80,10 @@
 
 .review-modal {
   position: fixed;
-  width: fit-content(60vw);
-  height: fit-content(60vh);
+  width: 600px;
+  height: 800px;
+  max-width: 60vw;
+  max-height: 60vh;
   top: 10%;
   left: 20%;
   border: 1px solid black;
@@ -141,6 +143,7 @@
   width: auto;
   height: auto;
   background-color: #f4f4f4;
+  object-fit: scale-down;
 }
 
 .tile-body {
