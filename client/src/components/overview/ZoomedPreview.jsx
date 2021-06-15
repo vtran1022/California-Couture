@@ -5,7 +5,7 @@ function ZoomedPreview ( { view, preview }) {
   const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
   const [showMagnifier, setShowMagnifier] = useState(false);
   const magnifierHeight = 150;
-  const magnifieWidth = 150;
+  const magnifierWidth = 150;
   const zoomLevel = 2;
 
   function handleMouseMove (e) {
