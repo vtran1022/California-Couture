@@ -614,7 +614,7 @@
 
 /*Relating Items & Comparisions ---------------*/
 
-#RICWid {
+.RICWid {
   width: auto;
   height: auto;
   display: grid;
