@@ -73,11 +73,11 @@ class App extends React.Component {
           highlight={this.handleProductHighlight}
           theme={stylePath}
           toggleTheme={this.toggleTheme}/>
-        {/* <Overview
+        { <Overview
         theme={ stylePath }
         productId={ this.state.product }
-        /> */}
-        {/* <Ratings id={this.state.product} /> */}
+        /> }
+        { <Ratings id={this.state.product} /> }
         <RICWidget
           productId={product}
           productClick={this.handleProductClick}/>

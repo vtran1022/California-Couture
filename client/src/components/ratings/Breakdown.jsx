@@ -40,13 +40,13 @@ const Breakdown = (props) => {
       let i = stars;
       let width = data[stars] ? Number(data[stars]) * 100 / ratings : 0;
       res.push(
-      <span className='bd-line' key={stars} onClick={() => props.handleFilter(i)} ><StarRating rating={stars} />:
+        <span className='bd-line' key={stars} onClick={() => props.handleFilter(i)} ><div className={props.filter[i - 1] ? 'bd-line filtered' : 'bd-line'}><StarRating rating={stars} /></div>:
         <div className='review-bar'>
             <span className='review-fill' style={{ width: `${width}%` }} />
           </div>
           <label>{data[stars] || 0}</label>
           <br />
-      </span>);
+        </span>);
     }
     return res;
   };
