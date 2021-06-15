@@ -4,7 +4,7 @@ import OutfitList from './RIC-Widget/OutfitList.jsx';
 
 const RICWidget = ({ productId, productClick }) => {
   return (
-    <div id='RICWid'>
+    <div className='RICWid' id='RICWid'>
       <RelatedList
         productId={productId}
         productClick={productClick}/>

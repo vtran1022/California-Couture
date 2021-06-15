@@ -4,7 +4,6 @@ function ZoomedPreview ( { view, preview }) {
   const [[x, y], setXY] = useState([0, 0]);
   const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
   const [showMagnifier, setShowMagnifier] = useState(false);
-  const [imageRef, setImageRef] = useState(React.createRef())
   const magnifierHeight = 150;
   const magnifierWidth = 250;
   const zoomLevel = 2;
@@ -28,15 +27,8 @@ function ZoomedPreview ( { view, preview }) {
     setShowMagnifier(false);
   }
 
-  function checkFunctionality (src) {
-    console.log(imageRef)
-    console.log('width: ', imageRef.current.width)
-    console.log('height: ', imageRef.current.height)
-  }
-
   return (
     <div className='preview-container'>
-      {/* <button onClick={() => checkFunctionality(preview)}>Test me Here!!!</button> */}
       <img
       className='preview'
       id='zoomed-preview'
