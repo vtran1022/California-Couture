@@ -11,14 +11,16 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: '13060',
+      product: '13029',
       stylePath: 'lightTheme.css',
-      cart: []
+      cart: [],
+      isOverlay: false
     }
 
     this.handleProductHighlight = this.handleProductHighlight.bind(this);
     this.toggleTheme = this.toggleTheme.bind(this);
     this.handleProductClick = this.handleProductClick.bind(this);
+    this.toggleOverlay = this.toggleOverlay.bind(this);
 
   }
 
@@ -60,10 +62,23 @@ class App extends React.Component {
     : local.setItem('theme', this.state.stylePath);
   }
 
+  toggleOverlay() {
+    this.setState(state => {
+      return {
+        isOverlay: state.isOverlay ? false : true
+      }
+    });
+
+    this.state.isOverlay
+    ? document.getElementById("overlay").style.display = "block"
+    : document.getElementById("overlay").style.display = "none";
+  }
+
   render() {
     const {
       product,
-      stylePath
+      stylePath,
+      isOverlay
     } = this.state;
 
     return (
@@ -73,15 +88,18 @@ class App extends React.Component {
           highlight={this.handleProductHighlight}
           theme={stylePath}
           toggleTheme={this.toggleTheme}/>
-        { <Overview
+        <Overview
         theme={ stylePath }
-        productId={ this.state.product }
-        /> }
-        { <Ratings id={this.state.product} /> }
+        productId={ this.state.product }/> 
+          
+        <Ratings id={this.state.product} />
+          
         <RICWidget
           productId={product}
-          productClick={this.handleProductClick}/>
+          productClick={this.handleProductClick}
+          toggleOverlay={this.toggleOverlay}/>
         <Footer />
+        <div id="overlay"></div>
       </>
     );
   }
