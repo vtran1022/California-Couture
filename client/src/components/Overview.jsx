@@ -30,8 +30,6 @@ function Overview ({ theme, productId }) {
     fetchData();
     }, [productId]);
 
-
-
   function handleStyleSelect (value) {
     let list = styles;
     for (var i = 0; i < list.length; i++) {

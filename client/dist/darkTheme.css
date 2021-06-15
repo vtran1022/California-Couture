@@ -387,6 +387,7 @@
   grid-column-start: 2;
   grid-row-start: 3;
   left: 20px;
+  width: 300px
 }
 
 #name {
@@ -394,6 +395,7 @@
   grid-column-start: 2;
   grid-column-end: span col4-start;
   left: 20px;
+  font-weight:900;
 }
 
 .price {
@@ -463,7 +465,7 @@
   flex-wrap: wrap;
   overflow: scroll;
   width: 500px;
-  height: 250px;
+  height: 240px;
 }
 
 .style {

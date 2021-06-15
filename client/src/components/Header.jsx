@@ -4,7 +4,7 @@ import darkLogo from '../imgs/darkLogo.png';
 
 const Header = ({ highlight, theme, toggleTheme }) => {
   return (
-    <>
+    <React.Fragment className='header'>
         {theme === 'lightTheme.css'
           ? <nav className='navbar'>
               <img id='logo' src={lightLogo} alt='Company Logo'></img>
@@ -24,7 +24,7 @@ const Header = ({ highlight, theme, toggleTheme }) => {
           <u id='product-highlight' onClick={highlight}>NEW PRODUCT HIGHLIGHT</u>
         </span>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import Atelier from '../Atelier.js';
+import moment from 'moment'
 import Overview from './Overview.jsx';
 import Ratings from './RatingsReview.jsx';
 import RICWidget from './RIC-Widget.jsx';
@@ -18,6 +19,13 @@ class App extends React.Component {
     this.toggleTheme = this.toggleTheme.bind(this);
     this.handleProductClick = this.handleProductClick.bind(this);
 
+  }
+
+  handleGetClickInfo (e) {
+
+    console.log(moment().format())
+    var element = e.target.id
+    console.log(element)
   }
 
   handleProductClick(id) {
@@ -65,7 +73,7 @@ class App extends React.Component {
     } = this.state;
 
     return (
-      <>
+      <div onClick={this.handleGetClickInfo}>
         <link rel="stylesheet" type="text/css" href={stylePath} />
         <Header
           highlight={this.handleProductHighlight}
@@ -79,7 +87,7 @@ class App extends React.Component {
         <RICWidget
           productId={product}
           productClick={this.handleProductClick}/>
-      </>
+      </div>
     );
   }
 };
