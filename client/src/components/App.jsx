@@ -87,14 +87,13 @@ class App extends React.Component {
         <Header
           highlight={this.handleProductHighlight}
           theme={stylePath}
-          toggleTheme={this.toggleTheme} />
+          toggleTheme={this.toggleTheme}/>
         <Overview
-          theme={stylePath}
-          productId={this.state.product}
-        />
+        theme={ stylePath }
+        productId={ this.state.product }/>
+
         <Ratings id={this.state.product} />
-        productId={ product}
-        />
+
         <RICWidget
           productId={product}
           productClick={this.handleProductClick}
