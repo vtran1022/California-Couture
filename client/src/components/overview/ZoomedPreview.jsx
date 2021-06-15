@@ -37,7 +37,6 @@ function ZoomedPreview ( { view, preview }) {
       onMouseLeave={handleMouseLeave}
       onMouseMove={handleMouseMove}
       alt='One of the preview pictures of the selected style'
-      ref={imageRef}
       />
       <div
       className='zoomed-preview'
