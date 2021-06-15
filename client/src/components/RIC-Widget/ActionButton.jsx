@@ -1,6 +1,6 @@
 import React, { useState, useEffect }  from 'react';
 
-const ActionButton = ({ id, index, listState, triggerDelete, triggerModal }) => {
+const ActionButton = ({ id, index, listState, triggerDelete, triggerModal, offset }) => {
   const [isStar, setStar] = useState(true);
 
   const setAction = () => {
