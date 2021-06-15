@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Thumbnails from './Thumbnails.jsx';
-import ZoomedPreview from './ImagePreview.jsx';
+import ZoomedPreview from './ZoomedPreview.jsx';
 
 function ImageGallery ({ photos, styleid, theme }) {
   const [showView, setView] = useState(false);
