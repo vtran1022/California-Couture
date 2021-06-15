@@ -14,9 +14,11 @@ import ComparisonModal from '../src/components/RIC-Widget/ComparisonModal.jsx';
 afterEach(cleanup);
 
 // basic render testing, screen.debug() will log the HTML output in test terminal
+
 describe('RICWidget', () => {
   test('checking both lists render', () => {
-    const { getByText } = render(<RICWidget />);
+    const onClick = jest.fn();
+    const { getByText } = render(<RICWidget toggleOverlay={onClick}/>);
 
     expect(getByText(/Your Outfit/)).toBeInTheDocument();
     expect(getByText(/Related Products/)).toBeInTheDocument();
@@ -25,7 +27,8 @@ describe('RICWidget', () => {
 
 describe('RelatedList', () => {
   test('arrow button should not exist initial render', () => {
-    const { getByTestId } = render(<RelatedList />);
+    const onClick = jest.fn();
+    const { getByTestId } = render(<RelatedList toggleOverlay={onClick}/>);
 
     expect(getByTestId('buttonL')).toBeDisabled();
     expect(getByTestId('buttonR')).toBeDisabled();
@@ -34,7 +37,8 @@ describe('RelatedList', () => {
 
 describe('Related List', () => {
   test('style - offset should be 0 initially', () => {
-    const { getByTestId } = render( <RelatedList /> );
+    const onClick = jest.fn();
+    const { getByTestId } = render( <RelatedList toggleOverlay={onClick}/> );
 
     const list = (getByTestId('RICList'));
 
@@ -76,7 +80,6 @@ describe('OutfitList', () => {
 describe('Action Button', () => {
   test('calls the onClick callback handler for x button', async () => {
     const onClick = jest.fn();
-
     const { getByTestId } = render( <ActionButton triggerDelete={onClick}/> );
 
     await userEvent.click(getByTestId('x-button'));
@@ -101,7 +104,6 @@ describe('Action Button', () => {
 describe('Product Card', () => {
   test('calls the onClick callback handler for product card', async () => {
     const onClick = jest.fn();
-
     const { getByTestId } = render( <ProductCard productClick={onClick}/> );
 
     await userEvent.click(getByTestId('productcard'));
