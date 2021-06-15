@@ -12,7 +12,8 @@ const RICWidget = ({ productId, productClick, toggleOverlay }) => {
         <br />
         <br />
       <OutfitList
-        productId={productId}/>
+        productId={productId}
+        productClick={productClick}/>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect, useReducer } from 'react';
 import ProductCard from './ProductCard.jsx';
 
-const OutfitList = ({ productId }) => {
+const OutfitList = ({ productId, productClick }) => {
   const listState = 'outfit';
   const local = window.localStorage;
   const [initialIndex, setIndex] = useState(0);
@@ -97,7 +97,8 @@ const OutfitList = ({ productId }) => {
                   index={i}
                   listState={listState}
                   triggerDelete={triggerDelete}
-                  offset={initialIndex}/>))}
+                  offset={initialIndex}
+                  productClick={productClick}/>))}
               </>
             : <span className='AddCard' onClick={() => addItem(productId)}>
                 {ifAdded
