@@ -23,11 +23,11 @@ const Description = ({ currentProduct }) => {
         {features.map((feature, index) =>
           feature.value !== null
           ? <span
-          key={index + 500}
+          key={index}
           className='feature'>
           ✓{feature.feature} - {feature.value}</span>
           : <span
-          key={index + 500}
+          key={index}
           className='feature'>
           ✓{feature.feature}</span>)}
         </div>
