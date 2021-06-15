@@ -3,26 +3,36 @@ import ProductCard from './ProductCard.jsx';
 
 const OutfitList = ({ productId }) => {
   const listState = 'outfit';
+  const local = window.localStorage;
   const [initialIndex, setIndex] = useState(0);
   const [outfitItems, setOutfit] = useState([]);
-  const [ifAdded, setAdded] = useState(true);
+  const [ifAdded, setAdded] = useState(false);
   const [isRight, setRight] = useState(false);
   const [isLeft, setLeft] = useState(false);
 
   const addItem = (id) => {
     if (outfitItems.indexOf(id) === -1) {
       setOutfit(prevArray => [...prevArray, id]);
+      setAdded(true);
     }
     setAdded(false);
   };
 
   useEffect(() => {
+    local.getItem('outfit')
+    ? setOutfit(JSON.parse(local.getItem('outfit')))
+    : local.setItem('outfit', outfitItems);
+  }, []);
+
+  useEffect(() => {
     (outfitItems.indexOf(productId) !== -1)
     ? setAdded(false)
-    : setAdded(true)
+    : setAdded(true);
   }, [productId]);
 
   useEffect(() => {
+    local.setItem('outfit', JSON.stringify(outfitItems));
+
     (outfitItems.length > 5)
     ? setRight(true)
     : setRight(false)
@@ -73,28 +83,28 @@ const OutfitList = ({ productId }) => {
         }
       <div className='RICList'>
           {outfitItems.length !== 0
-            ? <div>
-                <div className='AddCard' onClick={() => addItem(productId)}>
+            ? <>
+                <span className='AddCard' onClick={() => addItem(productId)}>
                   {ifAdded
                     ? <span id='plus-outfit'>＋ <br /> Add to Outfit</span>
                     : <span id='item-added'>Item Added</span>
                   }
-                </div>
+                </span>
               {outfitItems.map((id, i) => (
                 <ProductCard
-                key={id}
-                productId={id}
-                index={i}
-                listState={listState}
-                triggerDelete={triggerDelete}
-                offset={initialIndex}/>))}
-              </div>
-            : <div className='AddCard' onClick={() => addItem(productId)}>
+                  key={id}
+                  productId={id}
+                  index={i}
+                  listState={listState}
+                  triggerDelete={triggerDelete}
+                  offset={initialIndex}/>))}
+              </>
+            : <span className='AddCard' onClick={() => addItem(productId)}>
                 {ifAdded
                   ? <span id='plus-outfit'>＋ <br /> Add to Outfit</span>
                   : <span id='item-added'>Item Added</span>
                 }
-              </div>
+              </span>
           }
       </div>
       {isRight
@@ -107,13 +117,3 @@ const OutfitList = ({ productId }) => {
 };
 
 export default OutfitList;
-
-/*
-- will not be determined internally but unique to user
- - items only added when explicitly added by user
-- only unique to specific user, same across the board, regardless where they click to
-- no max # of items to this list
-- PERSIST
- - across page navigation
- - even after user has exited site and return later
-*/

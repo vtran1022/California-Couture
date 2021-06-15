@@ -1,5 +1,4 @@
 import React from 'react';
-import star from '../imgs/star.png';
 
 const StarRating = ({ rating }) => {
   var stars = [];
@@ -20,7 +19,6 @@ const StarRating = ({ rating }) => {
       stars.push('0%');
     }
   }
-
   return (
     <React.Fragment>
       {stars.map((item, i) => (

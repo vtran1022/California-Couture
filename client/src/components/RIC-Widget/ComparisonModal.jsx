@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { auth } from '../../../../config.js';
+import Atelier from '../../Atelier.js';
 
 const ComparisonModal = ({ productId, relatedId, trigger }) => {
   const [allChars, setAllChars] = useState([]);
@@ -10,22 +9,19 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
   const [itemName, setName] = useState({ product: 'Product 1', related: 'Product 2' });
 
   const fetchItems = async () => {
-    let productData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${productId}`,
-    { headers: { 'Authorization': auth.TOKEN } });
+    let productData = await Atelier.getInfo(productId);
+    let relatedData = await Atelier.getInfo(relatedId);
 
-    let relatedData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/products/${relatedId}`,
-    { headers: { 'Authorization': auth.TOKEN } });
-
-    const pd = productData.data.features;
-    const rd = relatedData.data.features;
+    const pd = productData.features;
+    const rd = relatedData.features;
     const all = pd.concat(rd);
 
     setProd(transformFeatures(pd));
     setRelated(transformFeatures(rd));
     setAllChars(transformFeatures(all));
     setName({
-      product: productData.data.name,
-      related: relatedData.data.name
+      product: productData.name,
+      related: relatedData.name
     });
   };
 
@@ -33,12 +29,9 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
     let transformed = [];
 
     array.forEach((item) => {
-      if (item.value === null) {
-        var itemStr = `${item.feature}`;
-      } else {
-        var itemStr = `${item.feature} ─ ${item.value}`;
-      }
-      transformed.push(itemStr);
+      item.value === null
+        ? transformed.push(`${item.feature}`)
+        : transformed.push(`${item.feature} ─ ${item.value}`);
     });
 
     return transformed;
@@ -48,11 +41,9 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
     let result = [];
 
     array1.forEach((item) => {
-      if (array2.includes(item)) {
-        result.push('✓');
-      } else {
-        result.push(' ');
-      }
+      array2.includes(item)
+        ? result.push('✓')
+        : result.push(' ');
     });
 
     return result;
@@ -77,11 +68,11 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
         <th className="c-mid"></th>
         <th className="c-right">{itemName.related}</th>
         <tbody>
-          {allChars.map((item, index) => (
-            <tr key={index}>
-              <td className="c-left">{itemCheck.product[index]}</td>
+          {allChars.map((item, i) => (
+            <tr key={i}>
+              <td className="c-left">{itemCheck.product[i]}</td>
               <td className="c-mid">{item}</td>
-              <td className="c-right">{itemCheck.related[index]}</td>
+              <td className="c-right">{itemCheck.related[i]}</td>
             </tr>
           ))}
         </tbody>
