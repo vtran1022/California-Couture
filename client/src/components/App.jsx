@@ -27,8 +27,10 @@ class App extends React.Component {
   handleGetClickInfo (e) {
     var arrayOfWidgets = ['review-container', 'overview', 'RICWid', 'header'];
     var time = moment().format().toString();
-    var element = e.target;
     var widgetName;
+
+    checkClasses(e.target);
+
     function checkClasses (element) {
       var currentClassNames = element.className;
       if (currentClassNames === 'overview') {
@@ -54,7 +56,6 @@ class App extends React.Component {
         checkClasses(element.parentNode);
       }
     }
-    checkClasses(element);
   }
 
   handleProductClick(id) {
@@ -123,17 +124,15 @@ class App extends React.Component {
           toggleTheme={this.toggleTheme}/>
         <Overview
         theme={ stylePath }
-        productId={ this.state.product }/> 
-          
+        productId={ this.state.product }/>
         <Ratings id={this.state.product} />
-          
         <RICWidget
           productId={product}
           productClick={this.handleProductClick}
           toggleOverlay={this.toggleOverlay}/>
         <Footer />
         <div id="overlay"></div>
-      </>
+      </div>
     );
   }
 };

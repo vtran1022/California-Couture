@@ -39,7 +39,7 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
   }, [selectedSize]);
 
   return (
-    <form className='cart' data-testid="cart-1">
+    <form className='cart' data-testid="cart-1" onSubmit={handleSubmit}>
 
 
       <div className='cart-ratings'>
