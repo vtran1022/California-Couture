@@ -41,6 +41,14 @@ describe('Arrow Buttons', () => {
   });
 });
 
+describe('Text Existence', () => {
+  test('Check that Add Outfit card exists', () => {
+    const { getByText } = render(<OutfitList />);
+
+    expect(getByText(/Add to Outfit/)).toBeInTheDocument();
+  });
+});
+
 // describe('Action Button', () => {
 //   test('delete action button does not exist on initial render', () => {
 //     render(<ActionButton />);
