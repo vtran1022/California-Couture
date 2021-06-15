@@ -29,10 +29,7 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
   }, [productId]);
 
   return (
-    <div className='ProductCard'
-         style={{ '--offset': offset }}
-         data-testid='productcard'>
-
+    <div className='ProductCard' style={{ '--offset': offset }}>
       <ActionButton
         index={index}
         id={productId}
@@ -40,7 +37,7 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
         triggerDelete={triggerDelete}
         triggerModal={triggerModal}/>
 
-      <span onClick={() => productClick(productId)}>
+      <span data-testid='productcard' onClick={() => productClick(productId)}>
         <img className='ProductImage' src={image} alt={name}></img>
         <span id='prod-category'>{category}</span>
         <br />
