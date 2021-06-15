@@ -44,6 +44,10 @@ class Atelier {
     return await this.putAPI(`reviews/${productId}/helpful`);
   }
 
+  async getRelated(productId) {
+    return await this.fetchAPI(`products/${productId}/related`);
+  }
+
   async fetchAPI(endpoint) {
     var res = await fetch(this.baseURL + endpoint, {
       method: 'GET',

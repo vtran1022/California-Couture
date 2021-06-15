@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { auth } from '../../../config.js';
 import StarRating from './StarRating.jsx';
+import Atelier from '../Atelier.js';
 
 const AvgRating = ({ productId }) => {
   const [ratings, setRatings] = useState([]);
@@ -13,16 +12,14 @@ const AvgRating = ({ productId }) => {
   };
 
   const fetchRatings = async () => {
-    let reviewData = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/reviews/meta/?product_id=${productId}`,
-    { headers: { 'Authorization': auth.TOKEN } });
+    let reviewData = await Atelier.getMeta(productId);
 
-    let ratings = Object.values(reviewData.data.ratings);
-
+    let ratings = Object.values(reviewData.ratings);
     setRatings(ratings);
 
-    if (ratings.length !== 0) {
-      setAverage(averageScore(ratings));
-    }
+    ratings.length !== 0
+      ? setAverage(averageScore(ratings))
+      : null
   };
 
   useEffect(() => {
@@ -30,10 +27,12 @@ const AvgRating = ({ productId }) => {
   }, [productId]);
 
     return (
-      <div>
-        <StarRating
-          rating={avgScore}/>
-      </div>
+      <>
+      {avgScore
+        ? <StarRating rating={avgScore}/>
+        : null
+      }
+      </>
     );
 };
 

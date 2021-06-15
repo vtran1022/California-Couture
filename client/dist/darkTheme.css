@@ -565,11 +565,7 @@
   width: 200px;
   height: 200px;
   object-fit: fill;
-  filter: brightness(70%)
-}
-
-.ProductInfo {
-  padding-left: 5px;
+  filter: brightness(70%);
 }
 
 .AddCard {
@@ -582,6 +578,7 @@
 
 #plus-outfit,
 #item-added {
+  width: 200px;
   margin-bottom: 10px;
   font-size: 15px;
 }
@@ -590,16 +587,18 @@
 #sale-price,
 #prod-category {
   font-size: 10px;
+  padding-left: 5px;
+}
+
+#prod-name,
+#prod-star {
+  padding-left: 5px;
 }
 
 #prod-name,
 #c-title,
 .c-mid {
   font-size: 13px;
-}
-
-#prod-name:hover {
-  color: #2c59a5;
 }
 
 #sale-price {
@@ -613,8 +612,8 @@
 #ActButton{
   appearance: none;
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 10px;
+  right: 20px;
   background: transparent;
   border: none;
   cursor:pointer;
@@ -666,7 +665,7 @@
 #starRating {
   position: relative;
   font-size: 12px;
-  color: #f4f4f4;
+  color: rgb(194, 194, 194);;
 }
 
 #starRating:after {

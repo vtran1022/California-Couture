@@ -208,6 +208,7 @@
   position: relative;
 }
 
+
 .image-gallery, .image-gallery-enlarged {
   border: 1px black solid;
   background-color: #f4f4f4;
@@ -542,6 +543,7 @@
   margin-right: 10px;
   padding-bottom: 1.5px;
   float: left;
+  background-color: #f4f4f4;
 
   transform: translateX(calc(105% * var(--offset)));
   transition: transform 0.5s ease-in-out;
@@ -551,10 +553,6 @@
   width: 200px;
   height: 200px;
   object-fit: fill;
-}
-
-.ProductInfo {
-  padding-left: 5px;
 }
 
 .AddCard {
@@ -567,6 +565,7 @@
 
 #plus-outfit,
 #item-added {
+  width: 200px;
   margin-bottom: 10px;
   font-size: 15px;
 }
@@ -575,16 +574,18 @@
 #sale-price,
 #prod-category {
   font-size: 10px;
+  padding-left: 5px;
+}
+
+#prod-name,
+#prod-star {
+  padding-left: 5px;
 }
 
 #prod-name,
 #c-title,
 .c-mid {
   font-size: 13px;
-}
-
-#prod-name:hover {
-  color: #60c7cb;
 }
 
 #sale-price {
@@ -598,8 +599,8 @@
 #ActButton {
   appearance: none;
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 10px;
+  right: 20px;
   background: transparent;
   border: none;
   cursor:pointer;
@@ -654,7 +655,7 @@
 #starRating {
   position: relative;
   font-size: 12px;
-  color: black;
+  color: rgb(194, 194, 194);
 }
 
 #starRating:after {
