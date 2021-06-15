@@ -29,7 +29,7 @@ const Ratings = (props) => {
     fetchAPI().then(res => {
       setReviews(res);
     });
-  }, [sort]);
+  }, [sort, props.id]);
 
   //runs when load more is clicked, fetch the next page of reviews
   useEffect(() => {
@@ -47,21 +47,13 @@ const Ratings = (props) => {
   //runs when the component loads, fetch the review metadata
   useEffect(() => {
     async function fetchAPI() {
-      var res = await Atelier.getMeta(props.id);
-      setMeta(res);
+      var meta = await Atelier.getMeta(props.id);
+      setMeta(meta);
+      var info = await Atelier.getInfo(props.id);
+      setName(info.name);
     }
     fetchAPI();
-  }, []);
-
-  useEffect(() => {
-    async function fetchAPI() {
-      var res = await Atelier.getInfo(props.id);
-      console.log(res);
-      setName(res.name);
-    }
-    fetchAPI();
-  }, []);
-
+  }, [props.id]);
 
   const handleForm = (e) => {
     if(!e.path.some(e => e.className === 'review-modal')) {
@@ -106,6 +98,7 @@ const Ratings = (props) => {
       return [...filter];
     });
   };
+  //console.log(Object.entries(localStorage));
 
   if (Object.keys(reviews).length > 0) {
     return (<div className='review-container'>

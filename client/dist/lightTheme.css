@@ -136,12 +136,12 @@
 }
 
 .review-elem {
-  height: fit-content(200px);
+  height: fit-content;
   width: auto;
   border-bottom: 1px solid black;
   display: grid;
   grid-template-columns: 300px 300px auto auto;
-  grid-template-rows: 20px 20px 10px auto auto 50px 50px;
+  grid-template-rows: auto auto 10px auto auto 50px fit-content(100px) 20px 50px;
 }
 
 .review-stars {
@@ -203,9 +203,19 @@
   vertical-align: center;
 }
 
-.tile-helpful {
+.tile-response {
   grid-row: 7;
+  grid-column-start: 1;
+  grid-column-end: -1;
+  width: auto;
+  background-color: #60c7cb;
+}
+
+.tile-helpful {
+  grid-row: 9;
   grid-column: 1;
+  width: auto;
+  height: auto;
 }
 
 .review-bar {
@@ -276,6 +286,14 @@
 }
 .review-breakdown {
   margin: 10px;
+}
+
+.helpful-button {
+  background: none;
+}
+
+.helpful-button:disabled {
+  background: lightgrey;
 }
 
 

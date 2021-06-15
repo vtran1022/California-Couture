@@ -19,7 +19,6 @@ const StarRating = ({ rating }) => {
       stars.push('0%');
     }
   }
-
   return (
     <React.Fragment>
       {stars.map((item, i) => (
