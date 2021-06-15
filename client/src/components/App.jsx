@@ -1,11 +1,11 @@
 import React from 'react';
 import Atelier from '../Atelier.js';
+import moment from 'moment'
 import Overview from './Overview.jsx';
 import Ratings from './RatingsReview.jsx';
 import RICWidget from './RIC-Widget.jsx';
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
-
 
 class App extends React.Component {
   constructor(props) {
@@ -22,6 +22,39 @@ class App extends React.Component {
     this.handleProductClick = this.handleProductClick.bind(this);
     this.toggleOverlay = this.toggleOverlay.bind(this);
 
+  }
+
+  handleGetClickInfo (e) {
+    var arrayOfWidgets = ['review-container', 'overview', 'RICWid', 'header'];
+    var time = moment().format().toString();
+    var element = e.target;
+    var widgetName;
+    function checkClasses (element) {
+      var currentClassNames = element.className;
+      if (currentClassNames === 'overview') {
+        console.log("Im the overview!");
+        widgetName = 'OVERVIEW';
+        return;
+      } else if ( currentClassNames === 'header') {
+        console.log("I'm the header!");
+        widgetName = 'HEADER';
+        return;
+      } else if ( currentClassNames === 'review-container') {
+        console.log("I'm the Ratings and Reviews!");
+        widgetName = 'RATINGS&REVIEW';
+        return;
+      } else if ( currentClassNames === 'RICWid') {
+        console.log("I'm the RIC!");
+        widgetName = 'RELATED_ITEMS&COMPARISONS';
+        return;
+      } else if ( currentClassNames === 'App') {
+        console.log("I'm the Main App Widget!");
+        return;
+      } else {
+        checkClasses(element.parentNode);
+      }
+    }
+    checkClasses(element);
   }
 
   handleProductClick(id) {
@@ -82,7 +115,7 @@ class App extends React.Component {
     } = this.state;
 
     return (
-      <>
+      <div className='App' onClick={this.handleGetClickInfo}>
         <link rel="stylesheet" type="text/css" href={stylePath} />
         <Header
           highlight={this.handleProductHighlight}

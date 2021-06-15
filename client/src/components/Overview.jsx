@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import ImageGallery from './overview/ImageGallery.jsx';
 import Cart from './overview/Cart.jsx';
