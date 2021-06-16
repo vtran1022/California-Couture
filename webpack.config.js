@@ -50,7 +50,9 @@ module.exports = {
       },
     ],
   },
+  mode: 'development',
   optimization: {
+    usedExports: true,
     minimizer: [
       new CssMinimizerPlugin(),
     ],

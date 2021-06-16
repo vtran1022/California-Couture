@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Thumbnails from './Thumbnails.jsx';
 import ZoomedPreview from './ZoomedPreview.jsx';
 
-function ImageGallery ({ style, styleid, theme }) {
+const ImageGallery = ({ style, styleid, theme }) => {
   const [showView, setView] = useState(false);
   const [photoList, setPhotoList] = useState(style.photos);
   const [currentPhoto, setPhoto] = useState(style.photos[0]);
@@ -14,14 +14,18 @@ function ImageGallery ({ style, styleid, theme }) {
     setPhoto(style.photos[0]);
   }, [style]);
 
-  function handleViewClick () {
+  const handleViewClick = () => {
     setView(!showView);
   }
 
-  function handleThumbnailClick (index) {
+  const handleThumbnailClick = (index) => {
     setPhoto(photoList[index]);
     setPhotoIndex(index);
   }
+
+  // function handleArrowClick (e) {
+  //   switch
+  // }
 
    function handleLeftClick () {
     if (photoIndex > 0) {
