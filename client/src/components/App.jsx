@@ -124,7 +124,8 @@ class App extends React.Component {
     const {
       product,
       stylePath,
-      isOverlay
+      isOverlay,
+      related
     } = this.state;
 
     return (
@@ -144,7 +145,8 @@ class App extends React.Component {
         <RICWidget
           productId={product}
           productClick={this.handleProductClick}
-          toggleOverlay={this.toggleOverlay} />
+          toggleOverlay={this.toggleOverlay}
+          related={related}/>
         <Footer />
         <div id="overlay"></div>
       </div>
