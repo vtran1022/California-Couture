@@ -84,7 +84,7 @@ const Ratings = (props) => {
       ...fd
     };
     Atelier.postAPI('reviews', obj).then(d => console.log(d)).catch(err => console.log(err));
-
+    setShowForm(false);
   };
 
   const handleSearch = (e) => {
