@@ -10,13 +10,13 @@
 
 /* Header --------------*/
 
-.navbar {
+.logo-container {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
 }
 
-#toggleButton {
+.toggleButton {
   display: flex;
   align-content: flex-end;
   margin-top: auto;
@@ -31,7 +31,7 @@
   background-color: transparent;
 }
 
-#logo {
+.logo {
   width: auto;
   height: 80px;
 }
@@ -694,7 +694,7 @@
   font-size: 15px;
 }
 
-#prod-price,
+.prod-price,
 #sale-price,
 #prod-category {
   font-size: 10px;
@@ -720,7 +720,7 @@
   position: flex;
 }
 
-#ActButton {
+.ActButton {
   position: absolute;
   top: 10px;
   right: 10px;

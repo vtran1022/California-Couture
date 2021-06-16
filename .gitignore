@@ -4,3 +4,4 @@ client/dist/bundle.js
 package-lock.json
 vy-test-notes
 coverage
+client/dist/bundle.js.br

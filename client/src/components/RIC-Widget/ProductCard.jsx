@@ -39,14 +39,14 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
         triggerModal={triggerModal}/>
 
       <div data-testid='productcard' onClick={() => productClick(productId)}>
-        <img className='ProductImage' src={image ? image : errimage} ></img>
+        <img className='ProductImage' src={image ? image : errimage} alt={name}></img>
         <span id='prod-category'>{category}</span>
         <br />
         <b id='prod-name'>{name}</b>
         <br />
         {price.salePrice
-          ? <> <b id="sale-price">${price.salePrice} &nbsp; </b> <strike id='prod-price'>${price.default}</strike> </>
-          : <span id='prod-price'>${price.default}</span>
+          ? <> <b id="sale-price">${price.salePrice} &nbsp; </b> <strike className='prod-price'>${price.default}</strike> </>
+          : <span className='prod-price'>${price.default}</span>
         }
         <br />
         <span id='prod-star'>
