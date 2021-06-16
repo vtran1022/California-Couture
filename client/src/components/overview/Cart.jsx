@@ -39,7 +39,6 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
   return (
     <form className='cart' data-testid="cart-1" onSubmit={handleSubmit}>
 
-
       <div className='cart-ratings'>
       <AvgRating productId={ currentProduct.id } />
       </div>
