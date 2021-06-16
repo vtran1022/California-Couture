@@ -39,7 +39,9 @@ class App extends React.Component {
         case 'review-container' :
           return widgetName = 'RATINGS&REVIEW'
         case 'RICWid' :
-          return 'RELATED_ITEMS&COMPARISONS'
+          return widgetName = 'RELATED_ITEMS&COMPARISONS'
+        case 'footer' :
+          return widgetName = 'FOOTER'
         case 'App' :
           break
         default :
