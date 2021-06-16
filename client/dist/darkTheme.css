@@ -51,6 +51,7 @@
 }
 
 #product-highlight:hover {
+  cursor: pointer;
   font-weight: 500;
 }
 
@@ -469,17 +470,18 @@
   width: 110px;
 }
 
-.thumb-not-selected {
+.thumb-not-selected, .thumb-selected {
+  cursor: pointer;
   object-fit: cover;
   width: 100px;
   height: 54px;
+}
+
+.thumb-not-selected {
   margin:5px;
 }
 
 .thumb-selected {
-  object-fit: cover;
-  width: 100px;
-  height: 54px;
   border: 5px solid #2c59a5;
 }
 
@@ -619,6 +621,7 @@
   height: 75px;
   width: 75px;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .style-not-selected{
