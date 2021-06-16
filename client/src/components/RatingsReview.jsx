@@ -84,6 +84,7 @@ const Ratings = (props) => {
       ...fd
     };
     Atelier.postAPI('reviews', obj).then(d => console.log(d)).catch(err => console.log(err));
+    Atelier.clearResult('meta' + props.id);
     setShowForm(false);
   };
 
