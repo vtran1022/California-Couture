@@ -27,7 +27,7 @@
   cursor: pointer;
   padding-right: 4px;
   width: 60px;
-  height: 30px;
+  height: 35px;
   font-size: 20px;
   background-color: transparent;
 }
@@ -238,7 +238,7 @@
   display: inline-block;
   height: 10px;
   position: relative;
-  background: #60c7cb;
+  background: #959797;
   width: 250px;
   margin-left: 5px;
   margin-right: 5px;
@@ -253,9 +253,9 @@
 
 .review-char-bar {
   display: inline-block;
-  border: 1px solid #2c59a5;
+  border: 1px solid #f4f4f4;
   position: relative;
-  background: #60c7cb;
+  background: #2c59a5;
   height: 10px;
   width: auto;
 }
@@ -630,7 +630,7 @@
 }
 /*Relating Items & Comparisions ---------------*/
 
-#RICWid {
+.RICWid {
   width: auto;
   height: auto;
   display: grid;
@@ -809,8 +809,8 @@
 #starRating:after {
   content: "\f005";
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 0vh;
+  top: 0vh;
   width: var(--width);
   overflow: hidden;
   color: #2c59a5;
