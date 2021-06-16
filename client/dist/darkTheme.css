@@ -253,9 +253,9 @@
 
 .review-char-bar {
   display: inline-block;
-  border: 1px solid #2c59a5;
+  border: 1px solid #f4f4f4;
   position: relative;
-  background: #60c7cb;
+  background: #2c59a5;
   height: 10px;
   width: auto;
 }
