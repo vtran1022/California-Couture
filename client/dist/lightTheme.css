@@ -54,6 +54,10 @@
 
 /* ---------------------------- Ratings & Reviews ---------------------------- */
 
+.rating-title {
+  font-size: 15px;
+}
+
 .review-container {
   padding-top: 20px;
   display: grid;

@@ -91,7 +91,7 @@ const Breakdown = (props) => {
 
   //render
   return (<div className='review-breakdown'>
-    <h3>Ratings Breakdown</h3>
+    <b className='rating-title'>Ratings Breakdown</b> <br/>
     <span>{avg} <StarRating rating={avg} key={props.data.id} /></span> <br />
     {rec}% of reviewers recommend this product. <br />
     {bd} <br />
