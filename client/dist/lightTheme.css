@@ -10,13 +10,13 @@
 
 /* Header --------------*/
 
-.navbar {
+.logo-container {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
 }
 
-#toggleButton {
+.toggleButton {
   display: flex;
   align-content: flex-end;
   margin-top: auto;
@@ -31,7 +31,7 @@
   background-color: transparent;
 }
 
-#logo {
+.logo {
   width: auto;
   height: 80px;
 }
