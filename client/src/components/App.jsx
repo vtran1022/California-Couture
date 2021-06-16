@@ -1,6 +1,6 @@
 import React from 'react';
 import Atelier from '../Atelier.js';
-import moment from 'moment'
+// import moment from 'moment';
 import Overview from './Overview.jsx';
 import Ratings from './RatingsReview.jsx';
 import RICWidget from './RIC-Widget.jsx';
@@ -16,7 +16,8 @@ class App extends React.Component {
       product: '13029',
       stylePath: 'lightTheme.css',
       cart: [],
-      isOverlay: false
+      isOverlay: false,
+      isFetched: false
     }
 
     this.handleProductHighlight = this.handleProductHighlight.bind(this);
@@ -36,14 +37,15 @@ class App extends React.Component {
         productInfo: product,
         styles: styles.results,
         reviews: reviewData,
-        related: related
+        related: related,
+        isFetched: true
       });
     }
     fetchAPI(productId);
   }
 
   handleGetClickInfo (e) {
-    var time = moment().format().toString();
+    var time = Date.now().toString();
     var widgetName;
     var elementType = e.target.nodeName;
 
@@ -73,6 +75,7 @@ class App extends React.Component {
 
   handleProductClick(id) {
     this.setState({ product: id });
+    this.fetchData(id)
   }
 
   handleProductHighlight() {
@@ -125,7 +128,8 @@ class App extends React.Component {
     } = this.state;
 
     return (
-      <div className='App' onClick={this.handleGetClickInfo}>
+      this.state.isFetched
+      ? <div className='App' onClick={this.handleGetClickInfo}>
         <link rel="stylesheet" type="text/css" href={stylePath} />
         <Header
           highlight={this.handleProductHighlight}
@@ -133,7 +137,9 @@ class App extends React.Component {
           toggleTheme={this.toggleTheme}/>
         <Overview
         theme={ stylePath }
-        productId={ product }/>
+        productId={ this.state.product }
+        styles={ this.state.styles }
+        product={ this.state.productInfo }/>
         <Ratings id={product} />
         <RICWidget
           productId={product}
@@ -142,6 +148,7 @@ class App extends React.Component {
         <Footer />
         <div id="overlay"></div>
       </div>
+      : null
     );
   }
 };
