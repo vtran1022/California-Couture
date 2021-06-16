@@ -125,7 +125,8 @@ class App extends React.Component {
       product,
       stylePath,
       isOverlay,
-      related
+      related,
+      productInfo
     } = this.state;
 
     return (
@@ -146,7 +147,8 @@ class App extends React.Component {
           productId={product}
           productClick={this.handleProductClick}
           toggleOverlay={this.toggleOverlay}
-          related={related}/>
+          related={related}
+          product={productInfo}/>
         <Footer />
         <div id="overlay"></div>
       </div>

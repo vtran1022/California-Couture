@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Atelier from '../../Atelier.js';
 
-const ComparisonModal = ({ productId, relatedId, trigger }) => {
+const ComparisonModal = ({ relatedId, trigger, product }) => {
   const [allChars, setAllChars] = useState([]);
   const [prodChars, setProd] = useState([]);
   const [relatedChars, setRelated] = useState([]);
@@ -9,10 +9,9 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
   const [itemName, setName] = useState({ product: 'Product 1', related: 'Product 2' });
 
   const fetchItems = async () => {
-    let productData = await Atelier.getInfo(productId);
     let relatedData = await Atelier.getInfo(relatedId);
 
-    const pd = productData.features;
+    const pd = product.features;
     const rd = relatedData.features;
     const all = pd.concat(rd);
 
@@ -20,7 +19,7 @@ const ComparisonModal = ({ productId, relatedId, trigger }) => {
     setRelated(transformFeatures(rd));
     setAllChars(transformFeatures(all));
     setName({
-      product: productData.name,
+      product: product.name,
       related: relatedData.name
     });
   };
