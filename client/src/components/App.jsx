@@ -29,6 +29,7 @@ class App extends React.Component {
     var widgetName;
     var elementType = e.target.nodeName;
     checkClasses(e.target);
+    Atelier.logClick(elementType, widgetName, time);
 
     function checkClasses (element) {
       var currentClassNames = element.className;
@@ -59,11 +60,6 @@ class App extends React.Component {
 
   handleProductHighlight() {
     this.setState({ product: '13357' });
-  }
-
-  loadUserCart() {
-    const local = window.localStorage;
-    // load user cart if one exists already
   }
 
   toggleTheme() {
