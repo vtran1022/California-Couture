@@ -63,10 +63,10 @@ class App extends React.Component {
   }
 
   handleProductHighlight() {
-    this.setState({ product: '13357'});
+    this.setState({ product: '13357' });
   }
 
-  loadUserCart () {
+  loadUserCart() {
     const local = window.localStorage;
     // load user cart if one exists already
   }
@@ -76,24 +76,24 @@ class App extends React.Component {
       return {
         stylePath:
           state.stylePath === 'darkTheme.css'
-          ? 'lightTheme.css'
-          : 'darkTheme.css'
+            ? 'lightTheme.css'
+            : 'darkTheme.css'
       }
     });
 
     const local = window.localStorage;
 
     this.state.stylePath === 'darkTheme.css'
-    ? local.setItem('theme', 'lightTheme.css')
-    : local.setItem('theme', 'darkTheme.css');
+      ? local.setItem('theme', 'lightTheme.css')
+      : local.setItem('theme', 'darkTheme.css');
   }
 
   componentDidMount() {
     const local = window.localStorage;
 
     local.getItem('theme')
-    ? this.setState({stylePath: local.getItem('theme')})
-    : local.setItem('theme', this.state.stylePath);
+      ? this.setState({ stylePath: local.getItem('theme') })
+      : local.setItem('theme', this.state.stylePath);
   }
 
   toggleOverlay() {
@@ -104,8 +104,8 @@ class App extends React.Component {
     });
 
     this.state.isOverlay
-    ? document.getElementById("overlay").style.display = "block"
-    : document.getElementById("overlay").style.display = "none";
+      ? document.getElementById("overlay").style.display = "block"
+      : document.getElementById("overlay").style.display = "none";
   }
 
   render() {
@@ -129,7 +129,7 @@ class App extends React.Component {
         <RICWidget
           productId={product}
           productClick={this.handleProductClick}
-          toggleOverlay={this.toggleOverlay}/>
+          toggleOverlay={this.toggleOverlay} />
         <Footer />
         <div id="overlay"></div>
       </div>

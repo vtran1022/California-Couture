@@ -48,6 +48,10 @@ class Atelier {
     return await this.fetchAPI(`products/${productId}/related`);
   }
 
+  async logClick(element, widget, time) {
+    return await this.postAPI('interactions', {element: element, widget: widget, time: time});
+  }
+
   async fetchAPI(endpoint) {
     var res = await fetch(this.baseURL + endpoint, {
       method: 'GET',
