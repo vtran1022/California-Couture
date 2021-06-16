@@ -45,7 +45,7 @@ function Overview ({ theme, productId }) {
       {isLoading
         ? null
         : <ImageGallery
-          key='999999'
+          key='1'
           photos={ style.photos }
           styleid={ styleId }
           theme= { theme }
@@ -54,7 +54,7 @@ function Overview ({ theme, productId }) {
       {isLoading
         ? null
         : <Cart
-        key='899999'
+        key='2'
         stylesList={ styles }
         style={ style }
         handleStyleSelect={ handleStyleSelect }
@@ -65,22 +65,10 @@ function Overview ({ theme, productId }) {
       {isLoading
         ? null
         : <Description
-        key='799999'
+        key='3'
         currentProduct={ currentProduct }
         />
       }
-
-      {/* <button>
-        Facebook
-      </button>
-      <button>
-        Twitter
-      </button>
-      <button>
-        Pinterest
-      </button> */}
-
-
     </div>)
 
 }

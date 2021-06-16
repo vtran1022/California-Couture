@@ -6,8 +6,8 @@ import Ratings from './RatingsReview.jsx';
 import RICWidget from './RIC-Widget.jsx';
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
-
 import StarRating from './StarRating.jsx';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -23,7 +23,23 @@ class App extends React.Component {
     this.toggleTheme = this.toggleTheme.bind(this);
     this.handleProductClick = this.handleProductClick.bind(this);
     this.toggleOverlay = this.toggleOverlay.bind(this);
+    this.fetchData = this.fetchData.bind(this);
+  }
 
+  fetchData (productId) {
+    const fetchAPI = async (id) => {
+      let product = await Atelier.getInfo(id);
+      let styles = await Atelier.getStyles(id);
+      let reviewData = await Atelier.getMeta(id);
+      let related = await Atelier.getRelated(id);
+      this.setState({
+        productInfo: product,
+        styles: styles.results,
+        reviews: reviewData,
+        related: related
+      });
+    }
+    fetchAPI(productId);
   }
 
   handleGetClickInfo (e) {
@@ -41,7 +57,9 @@ class App extends React.Component {
         case 'review-container' :
           return widgetName = 'RATINGS&REVIEW'
         case 'RICWid' :
-          return 'RELATED_ITEMS&COMPARISONS'
+          return widgetName = 'RELATED_ITEMS&COMPARISONS'
+        case 'footer' :
+          return widgetName = 'FOOTER'
         case 'App' :
           break
         default :
@@ -79,6 +97,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    this.fetchData(this.state.product);
     const local = window.localStorage;
 
     local.getItem('theme')
