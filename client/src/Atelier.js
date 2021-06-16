@@ -20,20 +20,34 @@ class Atelier {
     this.baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/';
   }
 
+  saveResult(tag, data) {
+    sessionStorage.setItem('API' + tag, JSON.stringify(data));
+  }
+
+  getResult(tag) {
+    return JSON.parse(sessionStorage.getItem('API' + tag));
+  }
+
+  clearResult(tag) {
+    sessionStorage.removeItem('API' + tag);
+  }
+
+
   async getProducts() {
-    return await this.fetchAPI('products');
+    return await this.fetchAPI('products', 'products');
   }
 
   async getInfo(productId) {
-    return await this.fetchAPI('products/' + productId);
+    return await this.fetchAPI('products/' + productId, 'info' + productId);
+
   }
 
   async getStyles(productId) {
-    return await this.fetchAPI('products/' + productId + '/styles');
+    return await this.fetchAPI('products/' + productId + '/styles', 'styles' + productId);
   }
 
   async getMeta(productId) {
-    return await this.fetchAPI(`reviews/meta/?product_id=${productId}`);
+    return await this.fetchAPI(`reviews/meta/?product_id=${productId}`, 'meta' + productId);
   }
 
   async getReviews(productId, count, page, sort) {
@@ -45,23 +59,32 @@ class Atelier {
   }
 
   async getRelated(productId) {
-    return await this.fetchAPI(`products/${productId}/related`);
+    return await this.fetchAPI(`products/${productId}/related`, 'related' + productId);
   }
 
   async logClick(element, widget, time) {
     return await this.postAPI('interactions', {element: element, widget: widget, time: time});
   }
 
-  async fetchAPI(endpoint) {
-    var res = await fetch(this.baseURL + endpoint, {
-      method: 'GET',
-      headers: new Headers({
-        'Authorization': auth.TOKEN,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      })
-    });
-    return await res.json();
+  async fetchAPI(endpoint, tag) {
+    var res = this.getResult(tag);
+    if(res) {
+      return res;
+    } else {
+      res = await fetch(this.baseURL + endpoint, {
+        method: 'GET',
+        headers: new Headers({
+          'Authorization': auth.TOKEN,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        })
+      });
+      var json = await res.json();
+      if(tag) {
+        this.saveResult(tag, json);
+      }
+      return json;
+    }
   }
 
   async postAPI(endpoint, data) {
