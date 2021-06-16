@@ -5,36 +5,24 @@ import Description from './overview/Description.jsx';
 import Atelier from '../Atelier.js';
 import { auth } from '../../../config.js';
 
-function Overview ({ theme, productId }) {
+function Overview ({ theme, productId, styles, product }) {
   // const [cartItems, serCurrentCart] = await useState({}) need to pull a user's cart
-  const [currentProduct, setCurrentProduct] = useState({});
-  const [styleId, setStyleId] = useState('');
-  const [isLoading, setLoading] = useState(true);
-  const [styles, setStyleList] = useState([]);
-  const [style, setStyle] = useState({});
-  const [currentPhoto, setPhoto] = useState('');
+  const [currentProduct, setCurrentProduct] = useState(product);
+  const [styleId, setStyleId] = useState(productId);
+  const [styleList, setStyleList] = useState(styles);
+  const [style, setStyle] = useState(styles[0]);
 
   useEffect(() => {
-    async function fetchData () {
-      try {
-        var product = await Atelier.getInfo(productId).catch((err) => console.log(err));
-        var styleList = await Atelier.getStyles(productId).catch((err) => console.log(err));
-        setStyleList(styleList.results);
-        setStyle(styleList.results[0]);
-        setCurrentProduct(product);
-        setStyleId(styleList.results[0].style_id)
-        setLoading(false);
-      } catch (err) {
-        console.log(err)
-      }}
-    fetchData();
-    }, [productId]);
+    setStyleList(styles);
+    setStyle(styles[0]);
+    setStyleId(styles[0].style_id)
+    setCurrentProduct(product);
+    }, [styles]);
 
   function handleStyleSelect (value) {
-    let list = styles;
-    for (var i = 0; i < list.length; i++) {
-      if (list[i].style_id === Number(value)){
-        setStyle(list[i]);
+    for (var i = 0; i < styleList.length; i++) {
+      if (styleList[i].style_id === Number(value)){
+        setStyle(styleList[i]);
         return;
       }
     }
@@ -42,33 +30,26 @@ function Overview ({ theme, productId }) {
 
   return (
     <div data-testid="overview-1" className='overview'>
-      {isLoading
-        ? null
-        : <ImageGallery
+        <ImageGallery
           key='1'
-          photos={ style.photos }
+          style={ style }
           styleid={ styleId }
           theme= { theme }
         />
-      }
-      {isLoading
-        ? null
-        : <Cart
+
+        <Cart
         key='2'
         stylesList={ styles }
         style={ style }
         handleStyleSelect={ handleStyleSelect }
         currentProduct={ currentProduct }
         />
-      }
 
-      {isLoading
-        ? null
-        : <Description
+        <Description
         key='3'
         currentProduct={ currentProduct }
         />
-      }
+
     </div>)
 
 }

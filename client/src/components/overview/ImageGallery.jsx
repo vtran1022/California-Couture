@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import Thumbnails from './Thumbnails.jsx';
 import ZoomedPreview from './ZoomedPreview.jsx';
 
-function ImageGallery ({ photos, styleid, theme }) {
+function ImageGallery ({ style, styleid, theme }) {
   const [showView, setView] = useState(false);
-  const [currentPhoto, setPhoto] = useState(photos[0]);
-  const [photoList, setPhotoList] = useState(photos);
+  const [photoList, setPhotoList] = useState(style.photos);
+  const [currentPhoto, setPhoto] = useState(style.photos[0]);
   const [photoIndex, setPhotoIndex] = useState(0);
 
   useEffect(() => {
-    setPhoto(photos[0]);
-    setPhotoList(photos);
+    setPhotoList(style.photos);
     setPhotoIndex(0);
-  }, [photos]);
+    setPhoto(style.photos[0]);
+  }, [style]);
 
   function handleViewClick () {
     setView(!showView);
@@ -41,27 +41,24 @@ function ImageGallery ({ photos, styleid, theme }) {
 
   return (
     <div
-    className={
-      showView
+    className={ showView
       ? 'image-gallery-enlarged'
       : 'image-gallery'}
     >
       {showView
         ? <ZoomedPreview
-        view={showView}
         preview={ currentPhoto.url }
         />
         : <div className='preview-container'>
           <img
             className='preview'
             onClick={handleViewClick}
-            src={ currentPhoto.url}
+            src={ currentPhoto.url }
             alt='One of the preview pictures of the selected style'/>
         </div>
       }
 
-      <div className=
-      {showView
+      <div className={showView
         ? 'enlarged-thumbs-overlay'
         : 'default-thumbs-overlay'}
       >
