@@ -14,7 +14,7 @@ Before you begin coding for the day, pull from the upstream main branch with `gi
 Navigate to the root directory of FEC, then install the required packages by running `npm install` in your terminal. To begin, first compile the client-side files by running `npm run react-dev`, then start the server by running `npm run server`. Lastly, navigate to `http://localhost:3000` in your browser.
 
 ## Opening a PR
-When you're ready to merge your fork with FEC:Main, open a PR and merge.
+When you're ready to merge your fork with FEC:Main, open a PR, wait for a review, then merge when approved.
 
 ## To Resolve a Conflict
 
