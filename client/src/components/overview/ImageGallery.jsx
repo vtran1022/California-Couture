@@ -23,23 +23,20 @@ const ImageGallery = ({ style, styleid, theme }) => {
     setPhotoIndex(index);
   }
 
-  // function handleArrowClick (e) {
-  //   switch
-  // }
-
-   function handleLeftClick () {
-    if (photoIndex > 0) {
-      let next = photoIndex - 1;
-      setPhotoIndex(next);
-      setPhoto(photoList[next]);
-    }
-  }
-
-   function handleRightClick () {
-    if (photoIndex < photoList.length - 1) {
-      let next = photoIndex + 1;
-      setPhotoIndex(next);
-      setPhoto(photoList[next]);
+  const handleArrowClick = (e) => {
+    switch (e.target.className) {
+      case 'left-button' :
+        if (photoIndex > 0) {
+          let next = photoIndex - 1;
+          setPhotoIndex(next);
+          setPhoto(photoList[next]);
+        }
+      case 'right-button' :
+        if (photoIndex < photoList.length - 1) {
+          let next = photoIndex + 1;
+          setPhotoIndex(next);
+          setPhoto(photoList[next]);
+        }
     }
   }
 
@@ -80,8 +77,8 @@ const ImageGallery = ({ style, styleid, theme }) => {
           )}
         </div>
 
-      <a className='left-button' onClick={handleLeftClick}>&#10094;</a>
-      <a className='right-button' onClick={handleRightClick}>&#10095;</a>
+      <a className='left-button' onClick={handleArrowClick}>&#10094;</a>
+      <a className='right-button' onClick={handleArrowClick}>&#10095;</a>
       <i className="fas fa-expand enlarge-button" onClick={handleViewClick}></i>
     </div>
   )
