@@ -82,7 +82,7 @@ const OutfitList = ({ productId, productClick }) => {
 
 
   return (
-    <div>
+    <div className='OutfitList'>
       <h4 className='RIC-Title'>Your Outfit</h4>
       {isLeft
           ? <button className='button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>

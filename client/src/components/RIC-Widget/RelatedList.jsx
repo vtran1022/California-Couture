@@ -69,7 +69,7 @@ const RelatedList = ({ productId, productClick, toggleOverlay }) => {
   }, [isModal]);
 
   return (
-    <div>
+    <div className='RelatedList'>
       <h4 className='RIC-Title'>Related Products</h4>
       {isLeft
           ? <button className='button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>
