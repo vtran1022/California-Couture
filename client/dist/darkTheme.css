@@ -713,7 +713,7 @@
   font-size: 15px;
 }
 
-#prod-price,
+.prod-price,
 #sale-price,
 #prod-category {
   font-size: 10px;
