@@ -65,6 +65,7 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
             key={stylePic.style_id}
             pic-id={stylePic.style_id}
             src={stylePic.photos[0].thumbnail_url}
+            alt={stylePic.name}
             onClick={(e) => handleStyleSelect(e.currentTarget.getAttribute('pic-id'))}/>
           </div>
         })}

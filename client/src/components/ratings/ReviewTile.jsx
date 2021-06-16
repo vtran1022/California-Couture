@@ -68,7 +68,7 @@ const ReviewTile = (props) => {
 
 
 const ImageModal = (props) => {
-  return <img id={props.img.id} src={props.img.url} className='img-modal' onClick={props.onClose} />
+  return <img id={props.img.id} src={props.img.url} className='img-modal' alt='review image' onClick={props.onClose} />
 };
 
 export default ReviewTile;
