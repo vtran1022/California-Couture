@@ -10,8 +10,7 @@ const OutfitList = ({ productId, productClick }) => {
 
   const local = window.localStorage;
   const listState = 'outfit';
-  const len = outfitItems.length - 1;
-  const stopper = -(len - 3);
+  const stopper = -(outfitItems.length  - 4);
 
   const addItem = (id) => {
     if (outfitItems.indexOf(id) === -1) {
@@ -32,19 +31,15 @@ const OutfitList = ({ productId, productClick }) => {
   });
 
   const handleClick = (action) => {
-    switch (action.type) {
-      case 'next':
-        setLeft(true);
+    if (action.type === 'previous') {
+      setRight(true);
+      setIndex(prevState => prevState + 1);
+    } else if (action.type === 'next') {
+      setLeft(true);
 
-        if (len < 3) {
-          return setIndex(prevState => prevState = 0);
-        } else if (initialIndex > stopper) {
-            return setIndex(prevState => prevState - 1);
-        }
-
-      case 'previous':
-        setRight(true);
-        setIndex(prevState => prevState + 1);
+      (outfitItems.length > 3 && initialIndex > stopper)
+      ? setIndex(prevState => prevState - 1)
+      : null;
     }
   }
 
