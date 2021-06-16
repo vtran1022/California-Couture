@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import AvgRating from '../AvgRating.jsx';
 
 const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
-  // const [cartItems, serCurrentCart] = await useState({}) need to pull a user's cart
-
   const [skus, setSKUs] = useState(parseSKUs(style));
   const [currentSKU, setSKU] = useState({});
   const [selectedSize, setSize] = useState('');

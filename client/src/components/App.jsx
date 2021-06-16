@@ -25,37 +25,30 @@ class App extends React.Component {
   }
 
   handleGetClickInfo (e) {
-    var arrayOfWidgets = ['review-container', 'overview', 'RICWid', 'header'];
     var time = moment().format().toString();
     var widgetName;
+    var elementType = e.target.nodeName;
 
-    checkClasses(e.target);
-
-    function checkClasses (element) {
-      var currentClassNames = element.className;
-      if (currentClassNames === 'overview') {
-        console.log("Im the overview!");
-        widgetName = 'OVERVIEW';
-        return;
-      } else if ( currentClassNames === 'header') {
-        console.log("I'm the header!");
-        widgetName = 'HEADER';
-        return;
-      } else if ( currentClassNames === 'review-container') {
-        console.log("I'm the Ratings and Reviews!");
-        widgetName = 'RATINGS&REVIEW';
-        return;
-      } else if ( currentClassNames === 'RICWid') {
-        console.log("I'm the RIC!");
-        widgetName = 'RELATED_ITEMS&COMPARISONS';
-        return;
-      } else if ( currentClassNames === 'App') {
-        console.log("I'm the Main App Widget!");
-        return;
-      } else {
-        checkClasses(element.parentNode);
+    const checkClasses = (element) => {
+      let currentClassNames = element.className;
+      switch (currentClassNames) {
+        case 'overview' :
+          return widgetName = 'OVERVIEW';
+        case 'header' :
+          return widgetName = 'HEADER';
+        case 'review-container' :
+          return widgetName = 'RATINGS&REVIEW'
+        case 'RICWid' :
+          return 'RELATED_ITEMS&COMPARISONS'
+        case 'App' :
+          break
+        default :
+          checkClasses(element.parentNode);
+          break;
       }
     }
+    checkClasses(e.target);
+    Atelier.logClick(elementType, widgetName, time);
   }
 
   handleProductClick(id) {
@@ -64,11 +57,6 @@ class App extends React.Component {
 
   handleProductHighlight() {
     this.setState({ product: '13357' });
-  }
-
-  loadUserCart() {
-    const local = window.localStorage;
-    // load user cart if one exists already
   }
 
   toggleTheme() {
