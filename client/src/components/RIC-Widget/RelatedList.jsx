@@ -12,8 +12,7 @@ const RelatedList = ({ productId, productClick, toggleOverlay }) => {
   const [isLeft, setLeft] = useState(false);
 
   const listState = 'related';
-  const len = relatedItems.length - 1
-  const stopper = -(len - 4);
+  const stopper = -(relatedItems.length - 5);
 
   const fetchRelated = async () => {
     let product = await Atelier.getRelated(productId);
@@ -31,19 +30,15 @@ const RelatedList = ({ productId, productClick, toggleOverlay }) => {
   });
 
   const handleClick = (action) => {
-    switch (action.type) {
-      case 'next':
-        setLeft(true);
+    if (action.type === 'previous') {
+      setRight(true);
+      setIndex(prevState => prevState + 1);
+    } else if (action.type === 'next') {
+      setLeft(true);
 
-        if (len < 4) {
-          return setIndex(prevState => prevState = 0);
-        } else if (initialIndex > stopper) {
-            return setIndex(prevState => prevState - 1);
-        }
-
-      case 'previous':
-        setRight(true);
-        setIndex(prevState => prevState + 1);
+      (relatedItems.length > 4 && initialIndex > stopper)
+      ? setIndex(prevState => prevState - 1)
+      : null;
     }
   }
 

@@ -4,59 +4,63 @@ import ProductCard from './ProductCard.jsx';
 const OutfitList = ({ productId, productClick }) => {
   const [initialIndex, setIndex] = useState(0);
   const [outfitItems, setOutfit] = useState([]);
-  const [ifAdded, setAdded] = useState(false);
+  const [ifExists, setExists] = useState(false);
   const [isRight, setRight] = useState(false);
   const [isLeft, setLeft] = useState(false);
 
   const local = window.localStorage;
   const listState = 'outfit';
-  const len = outfitItems.length - 1;
-  const stopper = -(len - 3);
+  const stopper = -(outfitItems.length  - 4);
 
   const addItem = (id) => {
     if (outfitItems.indexOf(id) === -1) {
       setOutfit(prevArray => [...prevArray, id]);
-      setAdded(true);
+      setExists(true);
     }
-    setAdded(false);
   };
 
   const triggerDelete = useCallback((index) => {
-    let currentOutfits = outfitItems.map((item) => item);
-    currentOutfits.splice(index, 1);
+    const currentOutfits = outfitItems.map((item) => item);
+    const deleted = currentOutfits.splice(index, 1);
 
     setOutfit(currentOutfits);
-    setAdded(true);
+
+    productId === deleted
+    ? setExists(false)
+    : null;
   });
 
   const handleClick = (action) => {
-    switch (action.type) {
-      case 'next':
-        setLeft(true);
+    if (action.type === 'previous') {
+      setRight(true);
+      setIndex(prevState => prevState + 1);
+    } else if (action.type === 'next') {
+      setLeft(true);
 
-        if (len < 3) {
-          return setIndex(prevState => prevState = 0);
-        } else if (initialIndex > stopper) {
-            return setIndex(prevState => prevState - 1);
-        }
-
-      case 'previous':
-        setRight(true);
-        setIndex(prevState => prevState + 1);
+      (outfitItems.length > 3 && initialIndex > stopper)
+      ? setIndex(prevState => prevState - 1)
+      : null;
     }
   }
 
   useEffect(() => {
-    local.getItem('outfit')
-    ? setOutfit(JSON.parse(local.getItem('outfit')))
-    : local.setItem('outfit', outfitItems);
-  }, []);
+    (outfitItems.indexOf(productId) !== -1)
+    ? setExists(true)
+    : setExists(false);
+  }, [productId]);
 
   useEffect(() => {
-    (outfitItems.indexOf(productId) !== -1)
-    ? setAdded(false)
-    : setAdded(true);
-  }, [productId]);
+    if (local.getItem('outfit')) {
+      const value = JSON.parse(local.getItem('outfit'));
+      setOutfit(value);
+
+      (value.length !== 0 && value.indexOf(productId) !== -1)
+      ? setExists(true)
+      : null;
+    } else {
+      local.setItem('outfit', outfitItems);
+    }
+  }, []);
 
   useEffect(() => {
     local.setItem('outfit', JSON.stringify(outfitItems));
@@ -88,9 +92,9 @@ const OutfitList = ({ productId, productClick }) => {
           {outfitItems.length !== 0
             ? <>
                 <span className='AddCard' onClick={() => addItem(productId)}>
-                  {ifAdded
-                    ? <span id='plus-outfit'>＋ <br /> Add to Outfit</span>
-                    : <span id='item-added'>Item Added</span>
+                  {ifExists
+                    ? <span id='item-added'>Item Added</span>
+                    : <span id='plus-outfit'>＋ <br /> Add to Outfit</span>
                   }
                 </span>
               {outfitItems.map((id, i) => (
@@ -104,9 +108,9 @@ const OutfitList = ({ productId, productClick }) => {
                   productClick={productClick}/>))}
               </>
             : <span className='AddCard' onClick={() => addItem(productId)}>
-                {ifAdded
-                  ? <span id='plus-outfit'>＋ <br /> Add to Outfit</span>
-                  : <span id='item-added'>Item Added</span>
+                {ifExists
+                  ? <span id='item-added'>Item Added</span>
+                  : <span id='plus-outfit'>＋ <br /> Add to Outfit</span>
                 }
               </span>
           }

@@ -6,13 +6,7 @@ import Ratings from './RatingsReview.jsx';
 import RICWidget from './RIC-Widget.jsx';
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
-
-/*
-getInfo
-getStyles
-getMeta
-getRelated
-*/
+import StarRating from './StarRating.jsx';
 
 
 class App extends React.Component {
@@ -139,8 +133,8 @@ class App extends React.Component {
           toggleTheme={this.toggleTheme}/>
         <Overview
         theme={ stylePath }
-        productId={ this.state.product }/>
-        <Ratings id={this.state.product} />
+        productId={ product }/>
+        <Ratings id={product} />
         <RICWidget
           productId={product}
           productClick={this.handleProductClick}

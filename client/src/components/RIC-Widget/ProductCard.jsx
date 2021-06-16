@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AvgRating from '../AvgRating.jsx';
 import ActionButton from './ActionButton.jsx';
 import Atelier from '../../Atelier.js';
+import errimage from '../../imgs/imagenot.png';
 
 const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal, offset, productClick }) => {
   const [image, setImage] = useState('');
@@ -38,7 +39,7 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
         triggerModal={triggerModal}/>
 
       <div data-testid='productcard' onClick={() => productClick(productId)}>
-        <img className='ProductImage' src={image} alt={name}></img>
+        <img className='ProductImage' src={image ? image : errimage} ></img>
         <span id='prod-category'>{category}</span>
         <br />
         <b id='prod-name'>{name}</b>

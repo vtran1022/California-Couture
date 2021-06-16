@@ -25,9 +25,8 @@
   border: 2px solid #60c7cb;
   border-radius: 30px;
   cursor: pointer;
-  padding-right: 4px;
   width: 60px;
-  height: 30px;
+  height: 35px;
   font-size: 20px;
   background-color: transparent;
 }
@@ -614,7 +613,7 @@
 
 /*Relating Items & Comparisions ---------------*/
 
-#RICWid {
+.RICWid {
   width: auto;
   height: auto;
   display: grid;
@@ -792,13 +791,13 @@
 #starRating:after {
   content: "\f005";
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 0vh;
+  top: 0vh;
   width: var(--width);
   overflow: hidden;
   color: #60c7cb;
-  -webkit-text-stroke: 0.5px #60c7cb;
-  text-stroke: 0.5px #60c7cb;
+  -webkit-text-stroke: 0.8px #60c7cb;
+  text-stroke: 0.8px #60c7cb;
 }
 
 /* Footer ----------------*/
