@@ -70,7 +70,7 @@ const FormModal = (props) => {
     if(formData.email.length === 0) {
       message += 'Please enter your email.\n';
     }
-    if(!/^[A-Za-z]+@[A-Za-z]+\.[A-Za-z]+$/.test(formData.email)) {
+    if(!/^[A-Za-z0-9]+@[A-Za-z]+\.[A-Za-z]+$/.test(formData.email)) {
       message += 'Make sure you have entered a correct email address.\n';
     }
     for (var char in props.characteristics) {
