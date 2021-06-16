@@ -17,7 +17,7 @@ const ActionButton = ({ id, index, listState, triggerDelete, triggerModal }) => 
     <span className='ActionButton'>
       {isStar
         ? <i data-testid='star' className="fas fa-star" id='ActButton' key={id} onClick={() => {triggerModal(id)}}></i>
-        : <i data-testid='x-button' className="fas fa-times" id='ActButton' key={index} type="button" value='✖' onClick={() => {triggerDelete(index)}}></i>
+        : <input data-testid='x-button' id='ActButton' key={index} type="button" onClick={() => {triggerDelete(index)}} type="button" value='✖'/>
       }
     </span>
   )

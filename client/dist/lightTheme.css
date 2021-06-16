@@ -26,6 +26,7 @@
   border-radius: 30px;
   cursor: pointer;
   padding-right: 4px;
+  padding-bottom: 5px;
   width: 60px;
   height: 30px;
   font-size: 20px;
@@ -792,8 +793,8 @@
 #starRating:after {
   content: "\f005";
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 0vh;
+  top: 0vh;
   width: var(--width);
   overflow: hidden;
   color: #60c7cb;
