@@ -7,9 +7,7 @@ import FormModal from './ratings/FormModal.jsx';
 
 
 const Ratings = (props) => {
-  const [productName, setName] = useState('');
   const [reviews, setReviews] = useState([]);
-  const [meta, setMeta] = useState({});
   const [count, setCount] = useState(2);
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState('relevant');
@@ -42,17 +40,6 @@ const Ratings = (props) => {
       });
     }
   }, [page]);
-
-  //runs when the component loads, fetch the review metadata
-  useEffect(() => {
-    async function fetchAPI() {
-      var meta = await Atelier.getMeta(props.id);
-      setMeta(meta);
-      var info = await Atelier.getInfo(props.id);
-      setName(info.name);
-    }
-    fetchAPI();
-  }, [props.id]);
 
   const handleForm = (e) => {
     if(!e.path.some(e => e.className === 'review-modal')) {
@@ -101,7 +88,7 @@ const Ratings = (props) => {
   };
   if (Object.keys(reviews).length > 0) {
     return (<div className='review-container'>
-      {showForm ? <FormModal characteristics={meta.characteristics} submitData={addNewReview} productName={productName} /> : null}
+      {showForm ? <FormModal characteristics={props.meta.characteristics} submitData={addNewReview} productName={props.info.productName} /> : null}
       <div className='ratings-forms'>
         <form>
           {/* sort drop down */}
@@ -142,7 +129,7 @@ const Ratings = (props) => {
       </div>
       {/* product breakdown */}
       <div className='breakdown'>
-        {Object.keys(meta).length > 0 ? <Breakdown data={meta} key={props.id} handleFilter={handleFilter} filter={filter}/> : <div></div>}
+        {Object.keys(props.meta).length > 0 ? <Breakdown data={props.meta} key={props.id} handleFilter={handleFilter} filter={filter}/> : <div></div>}
       </div>
     </div>)
   } else {
