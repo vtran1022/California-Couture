@@ -28,30 +28,27 @@ class App extends React.Component {
     var time = moment().format().toString();
     var widgetName;
     var elementType = e.target.nodeName;
-    checkClasses(e.target);
-    Atelier.logClick(elementType, widgetName, time);
 
-    function checkClasses (element) {
-      var currentClassNames = element.className;
-      if (currentClassNames === 'overview') {
-        widgetName = 'OVERVIEW';
-        return;
-      } else if ( currentClassNames === 'header') {
-        widgetName = 'HEADER';
-        return;
-      } else if ( currentClassNames === 'review-container') {
-        widgetName = 'RATINGS&REVIEW';
-        return;
-      } else if ( currentClassNames === 'RICWid') {
-        widgetName = 'RELATED_ITEMS&COMPARISONS';
-        return;
-      } else if ( currentClassNames === 'App') {
-        return;
-      } else {
-        checkClasses(element.parentNode);
+    const checkClasses = (element) => {
+      let currentClassNames = element.className;
+      switch (currentClassNames) {
+        case 'overview' :
+          return widgetName = 'OVERVIEW';
+        case 'header' :
+          return widgetName = 'HEADER';
+        case 'review-container' :
+          return widgetName = 'RATINGS&REVIEW'
+        case 'RICWid' :
+          return 'RELATED_ITEMS&COMPARISONS'
+        case 'App' :
+          break
+        default :
+          checkClasses(element.parentNode);
+          break;
       }
     }
-
+    checkClasses(e.target);
+    Atelier.logClick(elementType, widgetName, time);
   }
 
   handleProductClick(id) {
