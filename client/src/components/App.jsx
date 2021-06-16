@@ -25,37 +25,32 @@ class App extends React.Component {
   }
 
   handleGetClickInfo (e) {
-    var arrayOfWidgets = ['review-container', 'overview', 'RICWid', 'header'];
     var time = moment().format().toString();
     var widgetName;
-
+    var elementType = e.target.nodeName;
     checkClasses(e.target);
 
     function checkClasses (element) {
       var currentClassNames = element.className;
       if (currentClassNames === 'overview') {
-        console.log("Im the overview!");
         widgetName = 'OVERVIEW';
         return;
       } else if ( currentClassNames === 'header') {
-        console.log("I'm the header!");
         widgetName = 'HEADER';
         return;
       } else if ( currentClassNames === 'review-container') {
-        console.log("I'm the Ratings and Reviews!");
         widgetName = 'RATINGS&REVIEW';
         return;
       } else if ( currentClassNames === 'RICWid') {
-        console.log("I'm the RIC!");
         widgetName = 'RELATED_ITEMS&COMPARISONS';
         return;
       } else if ( currentClassNames === 'App') {
-        console.log("I'm the Main App Widget!");
         return;
       } else {
         checkClasses(element.parentNode);
       }
     }
+
   }
 
   handleProductClick(id) {
