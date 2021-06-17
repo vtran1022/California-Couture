@@ -13,9 +13,9 @@ const RICWidget = ({ productId, productClick, toggleOverlay, related, product })
         product={product}/>
         <br />
         <br />
-      <OutfitList
+      {/* <OutfitList
         productId={productId}
-        productClick={productClick}/>
+        productClick={productClick}/> */}
     </div>
   );
 };

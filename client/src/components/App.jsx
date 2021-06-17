@@ -136,11 +136,11 @@ class App extends React.Component {
           highlight={this.handleProductHighlight}
           theme={stylePath}
           toggleTheme={this.toggleTheme}/>
-        <Overview
+        {/* <Overview
         theme={ stylePath }
         productId={ this.state.product }
         styles={ this.state.styles }
-        product={ this.state.productInfo }/>
+        product={ this.state.productInfo }/> */}
 
         <RICWidget
           productId={product}
@@ -149,7 +149,7 @@ class App extends React.Component {
           related={related}
           product={productInfo}/>
 
-        <Ratings id={product} />
+        {/* <Ratings id={product} /> */}
         <Footer />
         <div id="overlay"></div>
       </div>

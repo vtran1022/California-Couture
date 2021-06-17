@@ -77,37 +77,39 @@ const RelatedList = ({ productId, productClick, toggleOverlay, related, product 
   }, [isModal]);
 
   return (
-    <div className='RelatedList'>
-      <p className='RIC-Title'><b>Related Products</b></p>
-      {isLeft
-          ? <button className='button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>
-          : <button disabled data-testid='buttonL' className='button2'>‹</button>
+    <div className='RelatedList-container'>
+      <span className='RIC-Title'><b>Related Products</b></span>
+      <div className='RelatedList'>
+        {isLeft
+            ? <button className='button1 l' onClick={() => handleClick({ type: 'previous' })}>‹</button>
+            : <button disabled data-testid='buttonL' className='button2'>‹</button>
+          }
+        <div data-testid='RICList' className='RICList' style={{ '--offset': initialIndex }}>
+          {relatedItems.map((id, i) => (
+            <ProductCard
+              key={id}
+              productId={id}
+              listState={listState}
+              triggerModal={triggerModal}
+              offset={initialIndex}
+              productClick={productClick}
+              toggleOverlay={toggleOverlay}/>
+          ))}
+        </div>
+
+        {isModal
+          ? <ComparisonModal
+              relatedId={relatedId}
+              trigger={triggerModal}
+              product={product}/>
+          : null
         }
-      <div data-testid='RICList' className='RICList' style={{ '--offset': initialIndex }}>
-        {relatedItems.map((id, i) => (
-          <ProductCard
-            key={id}
-            productId={id}
-            listState={listState}
-            triggerModal={triggerModal}
-            offset={initialIndex}
-            productClick={productClick}
-            toggleOverlay={toggleOverlay}/>
-        ))}
+
+          {isRight
+            ? <button className='button1' onClick={() => handleClick({ type: 'next' })}>›</button>
+            : <button disabled data-testid='buttonR' className='button2'>›</button>
+          }
       </div>
-
-      {isModal
-        ? <ComparisonModal
-            relatedId={relatedId}
-            trigger={triggerModal}
-            product={product}/>
-        : null
-      }
-
-        {isRight
-          ? <button className='button1' onClick={() => handleClick({ type: 'next' })}>›</button>
-          : <button disabled data-testid='buttonR' className='button2'>›</button>
-        }
     </div>
   );
 };

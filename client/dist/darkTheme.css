@@ -5,7 +5,9 @@
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
   background-color: #1a1a1a;
-  color: #f4f4f4
+  color: #f4f4f4;
+  display: flex;
+  justify-content: center;
 }
 
 /* Header --------------*/
@@ -636,48 +638,62 @@
 .RICWid {
   width: auto;
   height: auto;
-  display: grid;
-  justify-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.RelatedList-container {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.RelatedList {
+  width: auto;
+  height: auto;
+  display: flex;
 }
 
 .RICList {
   display: inline-flex;
-  width: 1058px;
-  height: 285px;
+  width: 1050px;
+  height: auto;
   overflow: hidden;
 }
 
 .RIC-Title {
   width: auto;
   height: 20px;
-  margin-left: 38px;
+  margin: 1vw;
+  margin-left: 2.5vw;
 }
 
 .button1 {
   appearance: none;
-  background: #1a1a1a;
+  background: none;
   color: #f4f4f4;
   border: none;
   position: relative;
   font-size: 27px;
   font-weight: 700;
-  width: 40px;
-  height: 180px;
+  width: auto;
+  height: auto;
   transition: opacity 0.3s;
-  vertical-align: top;
+  margin: 0.5vw;
 }
 
 .button2 {
   appearance: none;
-  background: #1a1a1a;
+  background: none;
   border: none;
-  color: #1a1a1a;
+  color: transparent;
   position: relative;
   font-size: 27px;
   font-weight: 700;
-  width: 40px;
-  height: 180px;
-  transition: opacity 0.3s;
+  width: auto;
+  height: auto;
+  margin: 0.5vw;
 }
 
 .AddCard,
