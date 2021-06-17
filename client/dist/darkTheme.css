@@ -838,6 +838,7 @@
   position: absolute;
   background: rgb(245, 245, 245, 0.5);
   bottom: 30%;
+  cursor: pointer;
   z-index: 2;
 }
 
@@ -878,6 +879,7 @@
   width: auto;
   height: auto;
   transition: opacity 0.3s;
+  cursor: pointer;
 }
 
 .g-button2 {
