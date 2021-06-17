@@ -23,7 +23,7 @@ const ZoomedPreview = ({ view, preview }) => {
     setShowMagnifier(true);
   }
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave= () => {
     setShowMagnifier(false);
   }
 
@@ -42,7 +42,7 @@ const ZoomedPreview = ({ view, preview }) => {
       className='zoomed-preview'
       style={{
         display: showMagnifier ? "" : "none",
-        left: `${(x - magnifierWidth + 1150 ) / 2}px`,
+        left: `${(x - magnifierWidth / 2) + (1150/2)}px`,
         top: `${y - magnifierHeight / 2  }px`,
         backgroundImage: `url('${preview}')`,
         backgroundSize: `${imgWidth * zoomLevel}px ${
