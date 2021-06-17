@@ -81,7 +81,7 @@ const RelatedList = ({ productId, productClick, toggleOverlay, related, product 
       <span className='RIC-Title'><b>Related Products</b></span>
       <div className='RelatedList'>
         {isLeft
-            ? <button className='button1 l' onClick={() => handleClick({ type: 'previous' })}>‹</button>
+            ? <button className='button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>
             : <button disabled data-testid='buttonL' className='button2'>‹</button>
           }
         <div data-testid='RICList' className='RICList' style={{ '--offset': initialIndex }}>

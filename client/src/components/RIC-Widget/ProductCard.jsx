@@ -31,11 +31,11 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
   };
 
   const mouseOver = () => {
-    setShow(prevState => !prevState);
+    setShow(true);
   }
 
   const mouseOut = () => {
-    setShow(prevState => !prevState);
+    setShow(false);
   }
 
   useEffect(() => {
@@ -54,11 +54,12 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
       <div data-testid='productcard' onClick={() => productClick(productId)}>
 
         <div className='product-gallery'>
-          <img className='ProductImage' src={image ? image : errimage} alt={name}
-            onMouseOver={mouseOver} onMouseOut={mouseOut}>
+          <img className='ProductImage' src={image ? image : errimage} alt={name} onMouseOver={mouseOver}>
             </img>
           {showGallery
-            ? <Gallery gallery={gallery}/>
+            ? <Gallery
+                gallery={gallery}
+                mouseOut={mouseOut}/>
             : null
           }
         </div>

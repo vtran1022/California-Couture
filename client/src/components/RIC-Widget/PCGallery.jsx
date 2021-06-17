@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import errimage from '../../imgs/imagenot.png';
 
-const Gallery = ({ gallery }) => {
+const Gallery = ({ gallery, mouseOut }) => {
   const [images, setImages] = useState([]);
 
   const pullPhotos = (gallery) => {
@@ -18,11 +18,21 @@ const Gallery = ({ gallery }) => {
 
   return (
     <div className='gallery-container'>
-      {images.map((image, i) => (
-      <span key={i} className='g-image-container'>
-        <img className='gallery-image' src={image ? image : errimage} alt='thumbnail-image'></img>
-      </span>
-      ))}
+      {isLeft
+        ? <button className='g-button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>
+        : <button className='g-button2'>‹</button>
+      }
+      <div className='g-container' style={{ '--offset': initialIndex }}/* onMouseOut={mouseOut} */>
+        {images.map((image, i) => (
+        <span key={i} className='g-image-container'>
+          <img className='gallery-image' src={image ? image : errimage} alt='thumbnail-image'></img>
+        </span>
+        ))}
+      </div>
+      {isRight
+        ? <button className='g-button1' onClick={() => handleClick({ type: 'next' })}>›</button>
+        : <button className='g-button2'>›</button>
+      }
     </div>
   );
 
