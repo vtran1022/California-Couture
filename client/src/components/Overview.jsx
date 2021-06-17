@@ -49,7 +49,6 @@ const Overview = ({ theme, productId, styles, product }) => {
         key='3'
         currentProduct={ currentProduct }
         />
-
     </div>)
 
 }

@@ -46,6 +46,25 @@ const ImageGallery = ({ style, styleid, theme }) => {
       ? 'image-gallery-enlarged'
       : 'image-gallery'}
     >
+
+      <div className={showView
+        ? 'enlarged-thumbs-overlay'
+        : 'default-thumbs-overlay'}>
+          {photoList.map((photo, index) =>
+            <Thumbnails
+            key={index}
+            cname={
+              (photo === currentPhoto)
+              ? 'thumb-selected'
+              : 'thumb-not-selected'}
+            photo={ photo }
+            photoList={ photoList }
+            handleThumbnailClick={handleThumbnailClick}/>
+          )}
+      </div>
+
+
+          <>
       {showView
         ? <ZoomedPreview
         preview={ currentPhoto.url }
@@ -58,24 +77,9 @@ const ImageGallery = ({ style, styleid, theme }) => {
             alt='One of the preview pictures of the selected style'/>
         </div>
       }
+      </>
 
-      <div className={showView
-        ? 'enlarged-thumbs-overlay'
-        : 'default-thumbs-overlay'}
-      >
-        {photoList.map((photo, index) =>
-          <Thumbnails
-          key={index}
-          cname={
-            (photo === currentPhoto)
-            ? 'thumb-selected'
-            : 'thumb-not-selected'
-          }
-          photo={ photo }
-          photoList={ photoList }
-          handleThumbnailClick={handleThumbnailClick}/>
-          )}
-        </div>
+
 
       <a className='left-button' onClick={handleArrowClick}>&#10094;</a>
       <a className='right-button' onClick={handleArrowClick}>&#10095;</a>

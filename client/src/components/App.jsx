@@ -131,27 +131,33 @@ class App extends React.Component {
 
     return (
       this.state.isFetched
-      ? <div className='App' onClick={this.handleGetClickInfo}>
+      ? <>
         <link rel="stylesheet" type="text/css" href={stylePath} />
         <Header
-          highlight={this.handleProductHighlight}
-          theme={stylePath}
-          toggleTheme={this.toggleTheme}/>
-        <Overview
-        theme={ stylePath }
-        productId={ this.state.product }
-        styles={ this.state.styles }
-        product={ this.state.productInfo }/>
-        <Ratings id={product} />
-        <RICWidget
-          productId={product}
-          productClick={this.handleProductClick}
-          toggleOverlay={this.toggleOverlay}
-          related={related}
-          product={productInfo}/>
-        <Footer />
-        <div id="overlay"></div>
-      </div>
+         highlight={this.handleProductHighlight}
+         theme={stylePath}
+         toggleTheme={this.toggleTheme}/>
+
+        <div className='App' onClick={this.handleGetClickInfo}>
+          <Overview
+          theme={ stylePath }
+          productId={ this.state.product }
+          styles={ this.state.styles }
+          product={ this.state.productInfo }/>
+
+          <RICWidget
+            productId={product}
+            productClick={this.handleProductClick}
+            toggleOverlay={this.toggleOverlay}
+            related={related}
+            product={productInfo}/>
+
+          <Ratings id={product} />
+
+          <div id="overlay"></div>
+        </div>
+      <Footer />
+      </>
       : null
     );
   }
