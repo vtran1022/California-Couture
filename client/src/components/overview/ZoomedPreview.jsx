@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function ZoomedPreview ( { view, preview }) {
+const ZoomedPreview = ({ view, preview }) => {
   const [[x, y], setXY] = useState([0, 0]);
   const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
   const [showMagnifier, setShowMagnifier] = useState(false);
@@ -8,7 +8,7 @@ function ZoomedPreview ( { view, preview }) {
   const magnifierWidth = 250;
   const zoomLevel = 2;
 
-  function handleMouseMove (e) {
+  const handleMouseMove = (e) => {
     const elem = e.target
     const { top, left } = elem.getBoundingClientRect();
     const x = e.pageX - left - window.scrollX;
@@ -16,14 +16,14 @@ function ZoomedPreview ( { view, preview }) {
     setXY([x, y]);
   }
 
-  function handleMouseEnter (e) {
+  const handleMouseEnter = (e) => {
     const elem = e.currentTarget;
     const { width, height } = elem.getBoundingClientRect();
     setSize([width, height]);
     setShowMagnifier(true);
   }
 
-  function handleMouseLeave () {
+  const handleMouseLeave= () => {
     setShowMagnifier(false);
   }
 
@@ -42,7 +42,7 @@ function ZoomedPreview ( { view, preview }) {
       className='zoomed-preview'
       style={{
         display: showMagnifier ? "" : "none",
-        left: `${(x - magnifierWidth + 1150 ) / 2}px`,
+        left: `${(x - magnifierWidth / 2) + (1150/2)}px`,
         top: `${y - magnifierHeight / 2  }px`,
         backgroundImage: `url('${preview}')`,
         backgroundSize: `${imgWidth * zoomLevel}px ${

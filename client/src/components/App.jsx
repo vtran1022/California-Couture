@@ -13,7 +13,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: '13029',
+      product: '13023',
       stylePath: 'lightTheme.css',
       cart: [],
       isOverlay: false,
@@ -80,6 +80,7 @@ class App extends React.Component {
 
   handleProductHighlight() {
     this.setState({ product: '13357' });
+    this.fetchData('13357')
   }
 
   toggleTheme() {

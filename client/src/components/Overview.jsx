@@ -5,12 +5,12 @@ import Description from './overview/Description.jsx';
 import Atelier from '../Atelier.js';
 import { auth } from '../../../config.js';
 
-function Overview ({ theme, productId, styles, product }) {
-  // const [cartItems, serCurrentCart] = await useState({}) need to pull a user's cart
+const Overview = ({ theme, productId, styles, product }) => {
   const [currentProduct, setCurrentProduct] = useState(product);
   const [styleId, setStyleId] = useState(productId);
   const [styleList, setStyleList] = useState(styles);
   const [style, setStyle] = useState(styles[0]);
+  // const [cartItems, serCurrentCart] = await useState({})
 
   useEffect(() => {
     setStyleList(styles);
@@ -19,7 +19,7 @@ function Overview ({ theme, productId, styles, product }) {
     setCurrentProduct(product);
     }, [styles]);
 
-  function handleStyleSelect (value) {
+  const handleStyleSelect = (value) => {
     for (var i = 0; i < styleList.length; i++) {
       if (styleList[i].style_id === Number(value)){
         setStyle(styleList[i]);
