@@ -69,7 +69,7 @@ const RelatedList = ({ productId, productClick, toggleOverlay, related, product 
 
   return (
     <div className='RelatedList'>
-      <h4 className='RIC-Title'>Related Products</h4>
+      <p className='RIC-Title'><b>Related Products</b></p>
       {isLeft
           ? <button className='button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>
           : <button disabled data-testid='buttonL' className='button2'>‹</button>
