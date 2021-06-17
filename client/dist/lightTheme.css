@@ -820,7 +820,6 @@
   position: absolute;
   background: rgb(0, 0, 0, 0.6);
   bottom: 30%;
-  z-index: 2;
   cursor: pointer;
 }
 

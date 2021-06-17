@@ -73,11 +73,12 @@ class App extends React.Component {
 
   handleProductClick(id) {
     this.setState({ product: id });
-    this.fetchData(id)
+    this.fetchData(id);
   }
 
   handleProductHighlight() {
     this.setState({ product: '13357' });
+    this.fetchData(13357);
   }
 
   toggleTheme() {
@@ -137,11 +138,11 @@ class App extends React.Component {
          toggleTheme={this.toggleTheme}/>
 
         <div className='App' onClick={this.handleGetClickInfo}>
-          {/* <Overview
+          <Overview
           theme={ stylePath }
           productId={ this.state.product }
           styles={ this.state.styles }
-          product={ this.state.productInfo }/> */}
+          product={ this.state.productInfo }/>
 
           <RICWidget
             productId={product}
@@ -150,7 +151,7 @@ class App extends React.Component {
             related={related}
             product={productInfo}/>
 
-          {/* <Ratings id={product} /> */}
+          <Ratings id={product} />
 
           <div id="overlay"></div>
         </div>

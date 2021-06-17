@@ -42,16 +42,17 @@ const RelatedList = ({ productId, productClick, toggleOverlay, related, product 
   }
 
   useEffect(() => {
-    fetchRelated();
     setIndex(0);
     setLeft(false);
   }, [productId]);
 
   useEffect(() => {
+    fetchRelated();
+
     relatedItems.length > 5
     ? setRight(true)
     : setRight(false)
-  }, [relatedItems]);
+  }, [related]);
 
   useEffect(() => {
     initialIndex === stopper
