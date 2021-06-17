@@ -5,7 +5,13 @@
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
   background-color: #1a1a1a;
-  color: #f4f4f4
+  color: #f4f4f4;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Header --------------*/
@@ -639,48 +645,62 @@
 .RICWid {
   width: auto;
   height: auto;
-  display: grid;
-  justify-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.RelatedList-container {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.RelatedList {
+  width: auto;
+  height: auto;
+  display: flex;
 }
 
 .RICList {
   display: inline-flex;
-  width: 1058px;
-  height: 285px;
+  width: 1050px;
+  height: auto;
   overflow: hidden;
 }
 
 .RIC-Title {
   width: auto;
   height: 20px;
-  margin-left: 38px;
+  margin: 1vw;
+  margin-left: 2.5vw;
 }
 
 .button1 {
   appearance: none;
-  background: #1a1a1a;
+  background: none;
   color: #f4f4f4;
   border: none;
   position: relative;
   font-size: 27px;
   font-weight: 700;
-  width: 40px;
-  height: 180px;
+  width: auto;
+  height: auto;
   transition: opacity 0.3s;
-  vertical-align: top;
+  margin: 0.5vw;
 }
 
 .button2 {
   appearance: none;
-  background: #1a1a1a;
+  background: none;
   border: none;
-  color: #1a1a1a;
+  color: transparent;
   position: relative;
   font-size: 27px;
   font-weight: 700;
-  width: 40px;
-  height: 180px;
-  transition: opacity 0.3s;
+  width: auto;
+  height: auto;
+  margin: 0.5vw;
 }
 
 .AddCard,
@@ -766,7 +786,7 @@
   width: 400px;
   height: 400px;
   top: 25%;
-  left: 35%;
+  left: 40%;
   border: 1px solid #2c59a5;
   background-color: #232323;
   overflow-y: scroll #232323;
@@ -796,6 +816,20 @@
 .c-right {
   text-align: right;
   direction: rtl;
+}
+
+.ActButton2 {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  font-size: 20px;
+  color: #f4f4f4;
+  z-index: 2;
 }
 
 /* Star Rating Component --------------*/
@@ -849,4 +883,5 @@ footer {
   bottom: 0;
   background-color: rgba(255, 255, 255, 0.5);
   z-index: 3;
+  cursor: pointer;
 }

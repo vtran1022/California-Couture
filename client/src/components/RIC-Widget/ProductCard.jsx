@@ -61,5 +61,10 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
 export default ProductCard;
 
 /*
-Future Enhancements ???
+	Upon hovering over the initial preview image that appears on the card, a carousel of thumbnail images should appear allowing the user to view additional preview images.
+  The carousel will be a row of thumbnails which overlays the bottom portion of the preview image, covering part of the image when hovered.
+  The list should disappear when the user is no longer hovering on the card.
+	Four thumbnail images should appear in the carousel at any given time.
+  The carousel should extend the ability to scroll left/right through the list via left and right arrows such that all images for that product can be selected and viewed
+
 */
