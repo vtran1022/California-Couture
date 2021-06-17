@@ -724,6 +724,7 @@
   position: flex;
 }
 
+
 .ActButton {
   position: absolute;
   top: 10px;
@@ -775,6 +776,20 @@
 .c-right {
   text-align: right;
   direction: rtl;
+}
+
+.ActButton2 {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  font-size: 20px;
+  color: black;
+  z-index: 2;
 }
 
 /* Star Rating Component --------------*/

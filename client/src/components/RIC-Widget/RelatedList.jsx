@@ -67,6 +67,15 @@ const RelatedList = ({ productId, productClick, toggleOverlay, related, product 
     toggleOverlay();
   }, [isModal]);
 
+  useEffect(() => {
+    if (isModal) {
+      window.addEventListener('click', triggerModal);
+      return () => {
+        window.removeEventListener('click', triggerModal);
+      }
+    }
+  }, [isModal]);
+
   return (
     <div className='RelatedList'>
       <p className='RIC-Title'><b>Related Products</b></p>

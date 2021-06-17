@@ -80,6 +80,7 @@ const ComparisonModal = ({ relatedId, trigger, product }) => {
           ))}
         </tbody>
       </table>
+      <input className='ActButton2' type="button" onClick={() => {trigger}} type="button" value='✖'/>
     </span>
     </>
   )

@@ -795,6 +795,20 @@
   direction: rtl;
 }
 
+.ActButton2 {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  font-size: 20px;
+  color: #f4f4f4;
+  z-index: 2;
+}
+
 /* Star Rating Component --------------*/
 
 .star-container {
@@ -846,4 +860,5 @@ footer {
   bottom: 0;
   background-color: rgba(255, 255, 255, 0.5);
   z-index: 3;
+  cursor: pointer;
 }
