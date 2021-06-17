@@ -64,7 +64,7 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
           </img>
           {showGallery
             ? <>
-                <div className='image-holder' onMouseOut={mouseOut}></div>
+                <div className='image-holder' onMouseOut={mouseOut} onClick={() => productClick(productId)}></div>
                 <Gallery
                   gallery={gallery}
                   mouseOut={mouseOut}
