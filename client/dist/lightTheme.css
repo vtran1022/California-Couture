@@ -464,14 +464,7 @@
   object-fit: cover;
   width: 100px;
   height: 54px;
-}
-
-.thumb-not-selected {
   margin: 5px;
-}
-
-.thumb-selected {
-  border: 5px solid turquoise;
 }
 
 .left-button, .right-button, .enlarge-button{

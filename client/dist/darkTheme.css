@@ -478,14 +478,7 @@
   object-fit: cover;
   width: 100px;
   height: 54px;
-}
-
-.thumb-not-selected {
   margin:5px;
-}
-
-.thumb-selected {
-  border: 5px solid #2c59a5;
 }
 
 .left-button, .right-button, .enlarge-button{
