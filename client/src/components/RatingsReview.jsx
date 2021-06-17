@@ -113,8 +113,8 @@ const Ratings = (props) => {
           </select>
         </form>
         <form>
-          <label>Search Reviews:</label>
-          <input type='text' value={search} onChange={handleSearch}></input>
+          <label for='search'>Search Reviews:</label>
+          <input id='search' type='text' value={search} onChange={handleSearch}></input>
         </form>
       </div>
       <div className='list-container'>
