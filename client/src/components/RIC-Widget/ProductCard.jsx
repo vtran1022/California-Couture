@@ -38,6 +38,10 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
     setShow(false);
   }
 
+  const changeImage = (index) => {
+    setImage(gallery[index]);
+  }
+
   useEffect(() => {
     fetchProducts().catch((err) => console.log(`Error fetching product/style info: ${err}`));
   }, [productId]);
@@ -52,13 +56,19 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
         triggerModal={triggerModal}/>
 
         <div className='product-gallery'>
-          <img className='ProductImage' src={image ? image : errimage} alt={name} onMouseOver={mouseOver} onClick={() => productClick(productId)}></img>
+          <img className='ProductImage'
+               src={image ? image : errimage}
+               alt={name}
+               onMouseOver={mouseOver}
+               onClick={() => productClick(productId)}>
+          </img>
           {showGallery
             ? <>
                 <div className='image-holder' onMouseOut={mouseOut}></div>
                 <Gallery
                   gallery={gallery}
-                  mouseOut={mouseOut}/>
+                  mouseOut={mouseOut}
+                  changeImage={changeImage}/>
               </>
             : null
           }

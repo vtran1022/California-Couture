@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import errimage from '../../imgs/imagenot.png';
 
-const Gallery = ({ gallery, mouseOut }) => {
+const Gallery = ({ gallery, mouseOut, changeImage }) => {
   const [images, setImages] = useState([]);
   const [initialIndex, setIndex] = useState(0);
   const [isRight, setRight] = useState(false);
@@ -57,7 +57,10 @@ const Gallery = ({ gallery, mouseOut }) => {
       <div className='g-container' style={{ '--offset': initialIndex }}>
         {images.map((image, i) => (
         <span key={i} className='g-image-container' style={{ '--offset': initialIndex }}>
-          <img className='gallery-image' src={image ? image : errimage} alt='thumbnail-image'></img>
+          <img className='gallery-image'
+               src={image ? image : errimage}
+               alt='thumbnail-image'
+               onClick={()=> changeImage(i)}></img>
         </span>
         ))}
       </div>
