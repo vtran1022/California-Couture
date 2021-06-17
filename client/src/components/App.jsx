@@ -15,7 +15,6 @@ class App extends React.Component {
     this.state = {
       product: '13029',
       stylePath: 'lightTheme.css',
-      cart: [],
       isOverlay: false,
       isFetched: false
     }
