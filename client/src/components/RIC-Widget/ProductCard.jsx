@@ -11,7 +11,7 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
   const [name, setName] = useState('');
   const [price, setPrice] = useState({ default: 0, salePrice: null });
   const [gallery, setGalley] = useState([]);
-  const [isFetched, setFetch] = useState(false);
+  const [showGallery, setShow] = useState(false);
 
   const fetchProducts = async () => {
     let productData = await Atelier.getInfo(productId);
@@ -30,6 +30,14 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
     setGalley(firstStyle.photos);
   };
 
+  const mouseOver = () => {
+    setShow(prevState => !prevState);
+  }
+
+  const mouseOut = () => {
+    setShow(prevState => !prevState);
+  }
+
   useEffect(() => {
     fetchProducts().catch((err) => console.log(`Error fetching product/style info: ${err}`));
   }, [productId]);
@@ -44,14 +52,16 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
         triggerModal={triggerModal}/>
 
       <div data-testid='productcard' onClick={() => productClick(productId)}>
-        <img className='ProductImage' src={image ? image : errimage} alt={name}></img>
 
-        {/* {!isFetched
-          ? <Gallery gallery={gallery} />
-          : null
-        } */}
-
-<Gallery gallery={gallery} />
+        <div className='product-gallery'>
+          <img className='ProductImage' src={image ? image : errimage} alt={name}
+            onMouseOver={mouseOver} onMouseOut={mouseOut}>
+            </img>
+          {showGallery
+            ? <Gallery gallery={gallery}/>
+            : null
+          }
+        </div>
 
         <span id='prod-category'>{category}</span>
         <br />

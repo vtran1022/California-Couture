@@ -812,17 +812,28 @@
   z-index: 2;
 }
 
+.product-gallery {
+  display: flex;
+}
+
 .gallery-container {
+  position: absolute;
   display: inline-flex;
   overflow: hidden;
   width: 200px;
-  height: 10px;
+  height: auto;
+  bottom: 28%;
+}
+
+.g-image-container {
+  width: 40px;
+  height: 40px;
 }
 
 .gallery-image {
-  float: left;
-  width: 10px;
-  height: 10px;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
 }
 
 /* Star Rating Component --------------*/
