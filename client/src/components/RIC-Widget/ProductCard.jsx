@@ -39,7 +39,7 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
   }
 
   const changeImage = (index) => {
-    setImage(gallery[index]);
+    setImage(gallery[index].thumbnail_url);
   }
 
   useEffect(() => {
