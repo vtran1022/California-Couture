@@ -617,10 +617,7 @@
   box-shadow: 2px 2px #60c7cb;
 }
 
-.style-not-selected{
-}
 .style-selected {
-
   box-shadow: 4px 4px #60c7cb;
 }
 
@@ -856,7 +853,6 @@ footer {
   margin-top: 40px;
   padding-right: 20px;
 }
-
 
 /* Overlay------------*/
 

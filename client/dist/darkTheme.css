@@ -619,6 +619,7 @@
   border-radius: 50%;
   cursor: pointer;
   margin: 3px 17.5px 3px 17.5px;
+  box-shadow: 2px 2px #2c59a5;
 }
 
 .style-selected {

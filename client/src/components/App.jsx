@@ -136,7 +136,8 @@ class App extends React.Component {
         <Header
          highlight={this.handleProductHighlight}
          theme={stylePath}
-         toggleTheme={this.toggleTheme}/>
+         toggleTheme={this.toggleTheme}
+         onClick={this.handleGetClickInfo}/>
 
         <div className='App' onClick={this.handleGetClickInfo}>
           <Overview
@@ -152,11 +153,11 @@ class App extends React.Component {
             related={related}
             product={productInfo}/>
 
-          <Ratings id={product} />
+          {/* <Ratings id={product} /> */}
 
           <div id="overlay"></div>
         </div>
-      <Footer />
+      <Footer onClick={this.handleGetClickInfo}/>
       </>
       : null
     );
