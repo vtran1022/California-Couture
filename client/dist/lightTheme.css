@@ -331,9 +331,13 @@
   min-height: 100vh;
   width: 90vw;
   height: 100vh ;
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  overflow: hidden;
+  /* display: grid;
   grid-template-columns: 5% 20% 40% 15% 20%;
-  grid-template-rows: 20% 20% 20% 10% 30%;
+  grid-template-rows: 20% 20% 20% 10% 30%; */
   position: relative;
 }
 
@@ -341,10 +345,10 @@
 .image-gallery, .image-gallery-enlarged {
   border: 1px black solid;
   background-color: #f4f4f4;
-  grid-column-start: 2;
-  grid-row-start: 1;
+  /* grid-column-start: 2;
+  grid-row-start: 1; */
   display: flex;
-  position: absolute;
+  /* position: absolute; */
   align-items: center;
   justify-content: center;
   object-fit: cover;
@@ -353,24 +357,24 @@
 .image-gallery {
   overflow: hidden;
   padding: 30px;
-  min-width: 600px;
+  min-width: 50vw;
   min-height: 475px;
-  width: 600px;
+  width: 50vw;
   height: 475px;
 }
 
 .image-gallery-enlarged {
   z-index: 20;
   padding: 30px;
-  width: 1150px;
+  width: 100vw;
   height: 600px;
 }
 
 .cart {
   border: 1px black solid;
-  grid-column-start: 4;
-  grid-row-start: 1;
-  position:absolute;
+  /* grid-column-start: 4;
+  grid-row-start: 1; */
+
   display: grid;
   grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
   grid-template-rows: 5% 5% 5% 5% 2.5% 7.5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%;
@@ -380,17 +384,17 @@
 
 .description-features {
   border: 1px black solid;
-  position:absolute;
+
   display: flex;
   justify-content: center;
   width: 1245px;
   height: 200px;
-  grid-column-start: 2;
-  grid-row-start: 5;
+  /* grid-column-start: 2;
+  grid-row-start: 5; */
 }
 
 .description {
-  width: 700px;
+  width: 100vw;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
