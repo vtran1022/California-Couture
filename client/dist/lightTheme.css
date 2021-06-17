@@ -744,7 +744,6 @@
   position: flex;
 }
 
-
 .ActButton {
   position: absolute;
   top: 10px;
@@ -756,8 +755,6 @@
   outline:none;
   font-size: 20px;
   color: #60c7cb;
-  -webkit-text-stroke: 0.4px black;
-  text-stroke: 0.4px black;
   z-index: 2;
 }
 
@@ -816,27 +813,63 @@
   display: flex;
 }
 
-.g-container {
+.gallery-container {
+  width: auto;
+  height: auto;
+  display: flex;
   position: absolute;
+  background: rgb(0, 0, 0, 0.6);
+  bottom: 30%;
+  z-index: 2;
+}
+
+.g-container {
   display: inline-flex;
   overflow: hidden;
-  width: 200px;
+  width: 170px;
   height: auto;
-  bottom: 28%;
 }
 
 .g-image-container {
-  width: 40px;
-  height: 40px;
-}
-
-.gallery-image {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
+  width: 41px;
+  height: 41px;
+  margin-right: 1.5px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 
   transform: translateX(calc(100% * var(--offset)));
   transition: transform 0.5s ease-in-out;
+}
+
+.gallery-image {
+  border-radius: 5px;
+  width: 41px;
+  height: 41px;
+  object-fit: cover;
+}
+
+.g-button1 {
+  appearance: none;
+  background: none;
+  border: none;
+  color: #f4f4f4;
+  position: relative;
+  font-size: 10px;
+  font-weight: 700;
+  width: auto;
+  height: auto;
+  transition: opacity 0.3s;
+}
+
+.g-button2 {
+  appearance: none;
+  background: none;
+  border: none;
+  color: transparent;
+  position: relative;
+  font-weight: 700;
+  width: auto;
+  height: auto;
 }
 
 /* Star Rating Component --------------*/

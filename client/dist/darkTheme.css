@@ -773,8 +773,6 @@
   outline:none;
   font-size: 20px;
   color: #2c59a5;
-  -webkit-text-stroke: 0.4px #f4f4f4;
-  text-stroke: 0.4px #f4f4f4;
   z-index: 2;
 }
 
@@ -827,6 +825,70 @@
   font-size: 20px;
   color: #f4f4f4;
   z-index: 2;
+}
+
+.product-gallery {
+  display: flex;
+}
+
+.gallery-container {
+  width: auto;
+  height: auto;
+  display: flex;
+  position: absolute;
+  background: rgb(245, 245, 245, 0.5);
+  bottom: 30%;
+  z-index: 2;
+}
+
+.g-container {
+  display: inline-flex;
+  overflow: hidden;
+  width: 170px;
+  height: auto;
+}
+
+.g-image-container {
+  width: 41px;
+  height: 41px;
+  margin-right: 1.5px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+
+  transform: translateX(calc(100% * var(--offset)));
+  transition: transform 0.5s ease-in-out;
+}
+
+.gallery-image {
+  border-radius: 5px;
+  width: 41px;
+  height: 41px;
+  object-fit: cover;
+  filter: brightness(70%);
+}
+
+.g-button1 {
+  appearance: none;
+  background: none;
+  border: none;
+  color: black;
+  position: relative;
+  font-size: 10px;
+  font-weight: 700;
+  width: auto;
+  height: auto;
+  transition: opacity 0.3s;
+}
+
+.g-button2 {
+  appearance: none;
+  background: none;
+  border: none;
+  color: transparent;
+  position: relative;
+  font-weight: 700;
+  width: auto;
+  height: auto;
 }
 
 /* Star Rating Component --------------*/

@@ -1,6 +1,5 @@
 import React from 'react';
 import Atelier from '../Atelier.js';
-// import moment from 'moment';
 import Overview from './Overview.jsx';
 import Ratings from './RatingsReview.jsx';
 import RICWidget from './RIC-Widget.jsx';
