@@ -838,19 +838,20 @@
   position: absolute;
   background: rgb(245, 245, 245, 0.5);
   bottom: 30%;
+  margin-left: 1px;
 }
 
 .g-container {
   display: inline-flex;
   overflow: hidden;
-  width: 170px;
+  width: 168px;
   height: auto;
 }
 
 .g-image-container {
   width: 41px;
   height: 41px;
-  margin-right: 1.5px;
+  margin-right: 1px;
   margin-top: 2px;
   margin-bottom: 2px;
 
@@ -889,6 +890,14 @@
   font-weight: 700;
   width: auto;
   height: auto;
+}
+
+.image-holder {
+  width: 205px;
+  height: 220px;
+  position: absolute;
+  background: transparent;
+  bottom: 25%;
 }
 
 /* Star Rating Component --------------*/
