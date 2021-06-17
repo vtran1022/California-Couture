@@ -3,12 +3,15 @@ import AvgRating from '../AvgRating.jsx';
 import ActionButton from './ActionButton.jsx';
 import Atelier from '../../Atelier.js';
 import errimage from '../../imgs/imagenot.png';
+import Gallery from './PCGallery.jsx';
 
 const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal, offset, productClick }) => {
   const [image, setImage] = useState('');
   const [category, setCategory] = useState('');
   const [name, setName] = useState('');
-  const [price, setPrice] = useState({default: 0, salePrice: null});
+  const [price, setPrice] = useState({ default: 0, salePrice: null });
+  const [gallery, setGalley] = useState([]);
+  const [isFetched, setFetch] = useState(false);
 
   const fetchProducts = async () => {
     let productData = await Atelier.getInfo(productId);
@@ -23,6 +26,8 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
       default: firstStyle.original_price,
       salePrice: firstStyle.sale_price
       });
+
+    setGalley(firstStyle.photos);
   };
 
   useEffect(() => {
@@ -40,6 +45,14 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
 
       <div data-testid='productcard' onClick={() => productClick(productId)}>
         <img className='ProductImage' src={image ? image : errimage} alt={name}></img>
+
+        {/* {!isFetched
+          ? <Gallery gallery={gallery} />
+          : null
+        } */}
+
+<Gallery gallery={gallery} />
+
         <span id='prod-category'>{category}</span>
         <br />
         <b id='prod-name'>{name}</b>
