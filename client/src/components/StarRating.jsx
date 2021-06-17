@@ -23,7 +23,7 @@ const StarRating = ({ rating }) => {
     <React.Fragment>
       {stars.map((item, i) => (
         <div className='star-container' key={i}>
-          <i id='starRating' className="fas fa-star" style={{'--width': item }}></i>
+          <span id='starRating' style={{'--width': item }}>☆</span>
         </div>
       ))}
     </React.Fragment>

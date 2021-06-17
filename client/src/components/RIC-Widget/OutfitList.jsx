@@ -82,8 +82,8 @@ const OutfitList = ({ productId, productClick }) => {
 
 
   return (
-    <div>
-      <h4 className='RIC-Title'>Your Outfit</h4>
+    <div className='OutfitList'>
+      <p className='RIC-Title'><b>Your Outfit</b></p>
       {isLeft
           ? <button className='button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>
           : <button disabled data-testid='buttonL' className='button2'>‹</button>

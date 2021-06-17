@@ -57,6 +57,9 @@
 
 /* ---------------------------- Ratings & Reviews ---------------------------- */
 
+.rating-title {
+  font-size: 15px;
+}
 
 .review-container {
   padding-top: 20px;
@@ -810,10 +813,10 @@
 }
 
 #starRating:after {
-  content: "\f005";
+  content: "★";
   position: absolute;
   left: 0vh;
-  top: 0vh;
+  top: -0.1vh;
   width: var(--width);
   overflow: hidden;
   color: #2c59a5;

@@ -147,7 +147,7 @@ const FormModal = (props) => {
           <input type='text' placeholder='Add Image URL Here' value={imgUrl} onChange={e => setUrl(e.target.value)} />
           <input type='button' value='Add Image' onClick={addImage}/>
           <br />
-          {formData.photos.map((img, idx) => <img key={idx} src={img} width={32} height={32} className='review-img' />)}
+          {formData.photos.map((img, idx) => <img key={idx} src={img} width={32} height={32} className='review-img' alt={'review image' + idx}/>)}
         </div>
         <input type='submit'></input>
       </form>

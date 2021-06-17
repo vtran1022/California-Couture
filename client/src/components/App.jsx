@@ -15,7 +15,6 @@ class App extends React.Component {
     this.state = {
       product: '13023',
       stylePath: 'lightTheme.css',
-      cart: [],
       isOverlay: false,
       isFetched: false
     }
@@ -125,7 +124,9 @@ class App extends React.Component {
     const {
       product,
       stylePath,
-      isOverlay
+      isOverlay,
+      related,
+      productInfo
     } = this.state;
 
     return (
@@ -145,7 +146,9 @@ class App extends React.Component {
         <RICWidget
           productId={product}
           productClick={this.handleProductClick}
-          toggleOverlay={this.toggleOverlay} />
+          toggleOverlay={this.toggleOverlay}
+          related={related}
+          product={productInfo}/>
         <Footer />
         <div id="overlay"></div>
       </div>

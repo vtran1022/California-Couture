@@ -3,7 +3,7 @@ import ProductCard from './ProductCard.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
 import Atelier from '../../Atelier.js';
 
-const RelatedList = ({ productId, productClick, toggleOverlay }) => {
+const RelatedList = ({ productId, productClick, toggleOverlay, related, product }) => {
   const [initialIndex, setIndex] = useState(0);
   const [relatedItems, setRelated] = useState([]);
   const [isModal, setModal] = useState(false);
@@ -14,9 +14,8 @@ const RelatedList = ({ productId, productClick, toggleOverlay }) => {
   const listState = 'related';
   const stopper = -(relatedItems.length - 5);
 
-  const fetchRelated = async () => {
-    let product = await Atelier.getRelated(productId);
-    let uniqueProducts = [...new Set(product)];
+  const fetchRelated = () => {
+    let uniqueProducts = [...new Set(related)];
     setRelated(uniqueProducts);
   };
 
@@ -43,7 +42,7 @@ const RelatedList = ({ productId, productClick, toggleOverlay }) => {
   }
 
   useEffect(() => {
-    fetchRelated().catch((err) => console.log(`Error fetching related info: ${err}`));
+    fetchRelated();
     setIndex(0);
     setLeft(false);
   }, [productId]);
@@ -69,8 +68,8 @@ const RelatedList = ({ productId, productClick, toggleOverlay }) => {
   }, [isModal]);
 
   return (
-    <div>
-      <h4 className='RIC-Title'>Related Products</h4>
+    <div className='RelatedList'>
+      <p className='RIC-Title'><b>Related Products</b></p>
       {isLeft
           ? <button className='button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>
           : <button disabled data-testid='buttonL' className='button2'>‹</button>
@@ -90,10 +89,11 @@ const RelatedList = ({ productId, productClick, toggleOverlay }) => {
 
       {isModal
         ? <ComparisonModal
-            productId={productId}
             relatedId={relatedId}
-            trigger={triggerModal}/>
-        : null}
+            trigger={triggerModal}
+            product={product}/>
+        : null
+      }
 
         {isRight
           ? <button className='button1' onClick={() => handleClick({ type: 'next' })}>›</button>

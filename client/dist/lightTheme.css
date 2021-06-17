@@ -55,6 +55,10 @@
 
 /* ---------------------------- Ratings & Reviews ---------------------------- */
 
+.rating-title {
+  font-size: 15px;
+}
+
 .review-container {
   padding-top: 20px;
   display: grid;
@@ -716,7 +720,7 @@
 }
 
 #sale-price {
-  color: red
+  color: rgb(185, 34, 34);
 }
 
 .ActionButton {
@@ -787,15 +791,15 @@
   position: relative;
   font-size: 12px;
   color: #f4f4f4;
-  -webkit-text-stroke: 0.8px black;
-  text-stroke: 0.8px black;
+  -webkit-text-stroke: 0.5px black;
+  text-stroke: 0.5px black;
 }
 
 #starRating:after {
-  content: "\f005";
+  content: "★";
   position: absolute;
   left: 0vh;
-  top: 0vh;
+  top: -0.1vh;
   width: var(--width);
   overflow: hidden;
   color: #60c7cb;

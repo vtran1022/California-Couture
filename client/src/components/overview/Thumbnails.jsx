@@ -18,6 +18,7 @@ function Thumbnail ({ cname, photo, photoList, handleThumbnailClick }) {
     className={ cname }
     src={ photo.thumbnail_url }
     photo-url={ photo.url }
+    alt='photo-thumbnail'
     onClick={getPhotoInfo}></img>
   )
 }
