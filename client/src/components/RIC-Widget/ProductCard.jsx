@@ -51,10 +51,8 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
         triggerDelete={triggerDelete}
         triggerModal={triggerModal}/>
 
-      <div data-testid='productcard' onClick={() => productClick(productId)}>
-
         <div className='product-gallery'>
-          <img className='ProductImage' src={image ? image : errimage} alt={name} /*onMouseOver={mouseOver}*/></img>
+          <img className='ProductImage' src={image ? image : errimage} alt={name} onMouseOver={mouseOver} onClick={() => productClick(productId)}></img>
           {showGallery
             ? <Gallery
                 gallery={gallery}
@@ -62,10 +60,10 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
             : null
           }
         </div>
-
+        <div onClick={() => productClick(productId)}>
         <span id='prod-category'>{category}</span>
         <br />
-        <b id='prod-name'>{name}</b>
+        <b data-testid='productcard' id='prod-name'>{name}</b>
         <br />
         {price.salePrice
           ? <> <b id="sale-price">${price.salePrice} &nbsp; </b> <strike className='prod-price'>${price.default}</strike> </>

@@ -49,7 +49,7 @@ const Gallery = ({ gallery, mouseOut }) => {
   }, [initialIndex]);
 
   return (
-    <div className='gallery-container' onMouseOut={mouseOut}>
+    <div className='gallery-container'onMouseOut={() => mouseOut()}>
       {isLeft
         ? <button className='g-button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>
         : <button className='g-button2'>‹</button>

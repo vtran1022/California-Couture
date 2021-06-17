@@ -725,6 +725,11 @@
   padding-left: 5px;
 }
 
+#prod-name:hover{
+  color: #60c7cb;
+  font-weight: 700;
+}
+
 #prod-name,
 #prod-star {
   padding-left: 5px;
@@ -820,7 +825,6 @@
   position: absolute;
   background: rgb(0, 0, 0, 0.6);
   bottom: 30%;
-  cursor: pointer;
 }
 
 .g-container {
