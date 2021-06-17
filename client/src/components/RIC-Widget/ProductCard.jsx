@@ -73,10 +73,10 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
             : null
           }
         </div>
-        <div onClick={() => productClick(productId)}>
+        <div data-testid='productcard' onClick={() => productClick(productId)}>
         <span id='prod-category'>{category}</span>
         <br />
-        <b data-testid='productcard' id='prod-name'>{name}</b>
+        <b id='prod-name'>{name}</b>
         <br />
         {price.salePrice
           ? <> <b id="sale-price">${price.salePrice} &nbsp; </b> <strike className='prod-price'>${price.default}</strike> </>
