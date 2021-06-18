@@ -495,7 +495,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: scroll;
+  overflow-y: scroll #1a1a1a;
+  overflow-x: hidden;
 }
 
 .default-thumbs-overlay {
@@ -628,7 +629,8 @@
 .styles {
   display: flex;
   flex-wrap: wrap;
-  overflow: scroll;
+  overflow-y: scroll #1a1a1a;
+  overflow-x: hidden;
   width: 30vw;
   height: 240px;
 }
