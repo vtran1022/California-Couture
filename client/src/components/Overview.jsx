@@ -10,7 +10,6 @@ const Overview = ({ theme, productId, styles, product }) => {
   const [styleId, setStyleId] = useState(productId);
   const [styleList, setStyleList] = useState(styles);
   const [style, setStyle] = useState(styles[0]);
-  // const [cartItems, serCurrentCart] = await useState({})
 
   useEffect(() => {
     setStyleList(styles);
@@ -20,7 +19,8 @@ const Overview = ({ theme, productId, styles, product }) => {
     }, [styles]);
 
   const handleStyleSelect = (value) => {
-    for (var i = 0; i < styleList.length; i++) {
+    let len = styleList.length;
+    for (let i = 0; i < len; i++) {
       if (styleList[i].style_id === Number(value)){
         setStyle(styleList[i]);
         return;

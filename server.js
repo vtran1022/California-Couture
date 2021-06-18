@@ -3,9 +3,10 @@ const app = express();
 const PORT = 3000 || process.env.PORT;
 
 const expressStaticGzip = require('express-static-gzip');
-
+const compression = require('compression')
 app.use(express.json());
 
+app.use('/', compression());
 app.use('/', expressStaticGzip('client/dist', {
   enableBrotli: true,
   customCompressions: [{
@@ -14,6 +15,7 @@ app.use('/', expressStaticGzip('client/dist', {
   }],
   orderPreference: ['br']
 }));
+
 
 app.listen(PORT, function() {
   console.log(`Server listening at http://localhost:${PORT}`);

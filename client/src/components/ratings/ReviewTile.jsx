@@ -36,7 +36,8 @@ const ReviewTile = (props) => {
     var re = RegExp('(' + props.search + ')', 'i');
     var arr = props.review.body.split(re);
     out = [];
-    for (var i = 0; i < arr.length; i += 2) {
+    let len = arr.length;
+    for (let i = 0; i < len; i += 2) {
       out.push(arr[i]);
       out.push(<mark key={i}>{arr[i + 1]}</mark>)
     }

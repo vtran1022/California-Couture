@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
 import Overview from '../src/components/Overview.jsx';
+import overviewSample from '../__mocks__/overview_samples.js';
 
 import Cart from '../src/components/overview/Cart.jsx';
 import cartSample from '../__mocks__/cart_samples.js';
@@ -14,6 +15,22 @@ import gallerySample from '../__mocks__/gallery_samples.js';
 import Description from '../src/components/overview/Description.jsx';
 import descriptionSample from '../__mocks__/description_samples.js'
 
+describe('Overview', () => {
+  test('Overview component should render with sample data', () => {
+    render(<Overview
+      theme={ overviewSample.theme }
+      productId={ overviewSample.productId }
+      styles={ overviewSample.styles }
+      product={ overviewSample.product }
+    />)
+
+  })
+
+  test('handleStyleSelect should change which style is selected', () => {
+
+  })
+})
+
 describe('Cart', () => {
   test('Cart component should render with sample data', () => {
     render(<Cart
@@ -23,8 +40,8 @@ describe('Cart', () => {
       handleStyleSelect={ cartSample.handleStyleSelect }
       currentProduct={ cartSample.currentProduct }
       />);
-    });
   });
+});
 
 describe('ImageGallery', () => {
   test('ImageGallery component should render with sample data', () => {
@@ -33,8 +50,8 @@ describe('ImageGallery', () => {
       style={ gallerySample }
       styleid={ gallerySample.styleid }/>
       );
-    });
   });
+});
 
 describe('Descriptions Component', () => {
   test('Description component should render with sample data', () => {
@@ -42,5 +59,5 @@ describe('Descriptions Component', () => {
       key='799999'
       currentProduct={ descriptionSample }
       />);
-    });
   });
+});
