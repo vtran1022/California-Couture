@@ -10,7 +10,6 @@ const Overview = ({ theme, productId, styles, product }) => {
   const [styleId, setStyleId] = useState(productId);
   const [styleList, setStyleList] = useState(styles);
   const [style, setStyle] = useState(styles[0]);
-  // const [cartItems, serCurrentCart] = await useState({})
 
   useEffect(() => {
     setStyleList(styles);
