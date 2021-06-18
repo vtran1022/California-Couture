@@ -19,8 +19,8 @@ const Overview = ({ theme, productId, styles, product }) => {
     }, [styles]);
 
   const handleStyleSelect = (value) => {
-    let len = styleList.length
-    for (var i = 0; i < len; i++) {
+    let len = styleList.length;
+    for (let i = 0; i < len; i++) {
       if (styleList[i].style_id === Number(value)){
         setStyle(styleList[i]);
         return;

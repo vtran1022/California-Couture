@@ -25,11 +25,11 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
 
   useEffect( () => {
     let len = skus.length;
-    for (var i = 0; i < len; i++) {
+    for (let i = 0; i < len; i++) {
       if (Object.values(skus[i]).includes(selectedSize)) {
         setSKU(skus[i]);
         var arrayOfQuantities = [];
-        for (var j = 0; j < skus[i].quantity; j++) {
+        for (let j = 0; j < skus[i].quantity; j++) {
           arrayOfQuantities.push(j + 1);
         }
       }

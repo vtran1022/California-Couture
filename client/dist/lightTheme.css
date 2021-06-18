@@ -387,6 +387,10 @@
   justify-content: space-between;
   object-fit: cover;
   box-shadow: 3px 3px #60c7cb;
+/*
+  transition-property: all;
+  transition-duration: .5s;
+  transition-timing-function: ease; */
 }
 
 .image-gallery {
@@ -404,6 +408,7 @@
   padding: 30px;
   width: 90vw;
   height: 70vh;
+
 }
 
 .cart {
