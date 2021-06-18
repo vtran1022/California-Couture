@@ -83,18 +83,17 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
 
 
       <div className='quantity-select'>
-      <select name='quantity' id='quantity-select' onChange={(e) => setQuantity(e.target.value)}>
-
-        {
-          !quantities
-          ? <option>First Select a Size</option>
-          : quantities.map ((quantity, index) =>{
+      {!quantities
+       ? null
+       : <select name='quantity' id='quantity-select' onChange={(e) => setQuantity(e.target.value)}>
+          <option>Quantity</option>
+          {quantities.map ((quantity, index) =>{
             if (index < 15) {
-              return <option key={index}>{quantity}</option>
-            }}
-            )
+              return <option key={index}>{quantity}</option>;
+            }})
           }
       </select>
+    }
       </div>
 
       <div className="cart-submit">

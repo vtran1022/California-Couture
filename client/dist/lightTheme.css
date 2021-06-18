@@ -575,7 +575,7 @@
 }
 
 .size-select select {
-  width: 120px;
+  width: 150px;
   height: 40px;
 }
 
@@ -586,7 +586,7 @@
   order: 7;
 }
 .quantity-select select {
-  width: 120px;
+  width: 150px;
   height: 40px;
 }
 
