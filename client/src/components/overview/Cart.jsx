@@ -83,11 +83,10 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
 
       <div className='quantity-select'>
       <select name='quantity' id='quantity-select' onChange={(e) => setQuantity(e.target.value)}>
-        <option>Quantity</option>
-        <option>Please Select a Size First</option>
+
         {
           !quantities
-          ? null
+          ? <option>First Select a Size</option>
           : quantities.map ((quantity, index) =>{
             if (index < 15) {
               return <option key={index}>{quantity}</option>

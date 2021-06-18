@@ -376,7 +376,7 @@
   grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
   grid-template-rows: 5% 5% 5% 5% 2.5% 7.5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%;
   width: 35vw;
-  height: 535px;
+  height: 70vh;
 }
 
 .description-features {
@@ -580,6 +580,7 @@
 }
 
 .styles {
+  left: 20px;
   display: flex;
   flex-wrap: wrap;
   overflow: scroll;
@@ -589,7 +590,7 @@
 
 .style {
   display: flex;
-  align-items: center;
+  justify-content: center;
   flex-direction: column;
   padding-right: 15px;
   height: 120px;
@@ -598,7 +599,7 @@
 
 .style-caption {
   font-size: 12px;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   position: relative;
   text-align: center;
   display: inline-block;

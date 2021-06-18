@@ -376,7 +376,7 @@
   grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
   grid-template-rows: 5% 5% 5% 5% 2.5% 7.5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%;
   width: 35vw;
-  height: 535px;
+  height: 70vh;
 }
 
 .description-features {
