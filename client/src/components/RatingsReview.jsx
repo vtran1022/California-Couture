@@ -106,7 +106,6 @@ const Ratings = (props) => {
     return true;
   });
 
-  console.log('render')
   if (Object.keys(reviews).length > 0) {
     return (<div className='review-container'>
       {showForm ? <FormModal characteristics={props.meta.characteristics} submitData={addNewReview} productName={props.info.name} /> : null}
