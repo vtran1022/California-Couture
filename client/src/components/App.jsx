@@ -52,23 +52,26 @@ class App extends React.Component {
       let currentClassNames = element.className;
       switch (currentClassNames) {
         case 'overview' :
-          return widgetName = 'OVERVIEW';
+          return 'OVERVIEW';
         case 'header' :
-          return widgetName = 'HEADER';
+          return 'HEADER';
         case 'review-container' :
-          return widgetName = 'RATINGS&REVIEW'
+          return 'RATINGS&REVIEW'
         case 'RICWid' :
-          return widgetName = 'RELATED_ITEMS&COMPARISONS'
+          return 'RELATED_ITEMS&COMPARISONS'
         case 'footer' :
-          return widgetName = 'FOOTER'
+          return 'FOOTER'
         case 'App' :
           break
         default :
-          checkClasses(element.parentNode);
+          if(element.id === 'overlay') {
+            return 'overlay';
+          }
+          return checkClasses(element.parentNode);
           break;
       }
     }
-    checkClasses(e.target);
+    widgetName = checkClasses(e.target);
     Atelier.logClick(elementType, widgetName, time);
   }
 
@@ -109,15 +112,15 @@ class App extends React.Component {
   }
 
   toggleOverlay() {
+    this.state.isOverlay
+      ? document.getElementById("overlay").style.display = "block"
+      : document.getElementById("overlay").style.display = "none";
+
     this.setState(state => {
       return {
         isOverlay: state.isOverlay ? false : true
       }
     });
-
-    this.state.isOverlay
-      ? document.getElementById("overlay").style.display = "block"
-      : document.getElementById("overlay").style.display = "none";
   }
 
   render() {
@@ -154,7 +157,7 @@ class App extends React.Component {
             related={related}
             product={productInfo}/>
 
-          {/* <Ratings id={product} /> */}
+          <Ratings id={product} meta={this.state.reviews} info={this.state.productInfo} toggleOverlay={this.toggleOverlay} />
 
           <div id="overlay"></div>
         </div>
