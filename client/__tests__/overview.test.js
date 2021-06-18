@@ -22,8 +22,9 @@ describe('Overview', () => {
       productId={ overviewSample.productId }
       styles={ overviewSample.styles }
       product={ overviewSample.product }
-    />)
-
+      />)
+      expect(screen.getByTestId('overview-1')).toBeVisible()
+      expect(screen.getByTestId('cart-1')).toBeVisible();
   })
 
   test('handleStyleSelect should change which style is selected', () => {
@@ -39,7 +40,10 @@ describe('Cart', () => {
       style={ cartSample.style }
       handleStyleSelect={ cartSample.handleStyleSelect }
       currentProduct={ cartSample.currentProduct }
-      />);
+      />)
+
+
+      ;
   });
 });
 

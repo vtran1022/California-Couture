@@ -99,7 +99,7 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
 
       <div className="cart-submit">
         {!selectedQuantity
-        ? null
+        ?  <input type="submit" value="Add to Cart" hidden ></input>
         : <input type="submit" value="Add to Cart" ></input>
         }
       </div>
