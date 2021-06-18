@@ -818,6 +818,7 @@
   overflow-y: scroll #232323;
   padding-right: 20px;
   padding-left: 20px;
+  border-radius: 5%;
   z-index: 4;
 }
 
