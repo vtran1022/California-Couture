@@ -89,7 +89,11 @@ const Ratings = (props) => {
     });
   };
 
-  console.log(props.meta);
+  const clearFilters = () => {
+    setFilter([false, false, false, false, false]);
+    setSearch('');
+  };
+
   var filtered = reviews.filter(review => {
     if (!filter[review.rating - 1] && !filter.every(i => !i)) {
       return false;
@@ -101,9 +105,11 @@ const Ratings = (props) => {
     }
     return true;
   });
+
+  console.log('render')
   if (Object.keys(reviews).length > 0) {
     return (<div className='review-container'>
-      {showForm ? <FormModal characteristics={props.meta.characteristics} submitData={addNewReview} productName={props.info.productName} /> : null}
+      {showForm ? <FormModal characteristics={props.meta.characteristics} submitData={addNewReview} productName={props.info.name} /> : null}
       <div className='ratings-forms'>
         <form>
           {/* sort drop down */}
@@ -130,10 +136,12 @@ const Ratings = (props) => {
         </table>
       </div>
       <div className='review-buttons'>
-        <button onClick={handleLoad}>Load More</button> <button onClick={() => {
+        <button onClick={handleLoad}>Load More</button>
+        <button onClick={() => {
           props.toggleOverlay();
           setShowForm(true);
         }}>Add a Review</button>
+        <button onClick={clearFilters}>Clear all Filters</button>
         <label> Showing {filtered.length} of {Object.values(props.meta.ratings).reduce((total, n) => Number(total) + Number(n))} reviews</label>
       </div>
       {/* product breakdown */}

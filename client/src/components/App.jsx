@@ -124,7 +124,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.isOverlay);
     const {
       product,
       stylePath,

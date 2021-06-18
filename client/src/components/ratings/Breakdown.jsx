@@ -55,7 +55,7 @@ const Breakdown = (props) => {
     var res = [];
     for (var char in data) {
       let value = data[char].value;
-      let pos = Number(value) * 50;
+      let pos = Number(value) * 60;
       res.push(
         <div key={char}>
           {char}: <br />

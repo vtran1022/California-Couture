@@ -57,8 +57,6 @@ const ReviewTile = (props) => {
       putLS(props.review.review_id);
       setHelpful(true);
       setClicked(true);
-    } else {
-      console.log('already helpful');
     }
   };
   //create row for each review tile
