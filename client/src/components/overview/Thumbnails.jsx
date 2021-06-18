@@ -4,8 +4,8 @@ function Thumbnail ({ cname, photo, photoList, handleThumbnailClick }) {
 
   function getPhotoInfo (e) {
     var url = e.target.getAttribute('photo-url');
-    let len = photoList.length
-    for (var i = 0; i < len; i++) {
+    let len = photoList.length;
+    for (let i = 0; i < len; i++) {
       if (photoList[i].url === url) {
         var index = i;
         break;

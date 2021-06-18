@@ -24,6 +24,10 @@ describe('Overview', () => {
       product={ overviewSample.product }
     />)
   })
+
+  test('handleStyleSelect should change which style is selected', () => {
+
+  })
 })
 
 describe('Cart', () => {
