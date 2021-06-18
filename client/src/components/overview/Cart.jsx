@@ -80,9 +80,11 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
       </select>
       </div>
 
+
       <div className='quantity-select'>
       <select name='quantity' id='quantity-select' onChange={(e) => setQuantity(e.target.value)}>
         <option>Quantity</option>
+        <option>Please Select a Size First</option>
         {
           !quantities
           ? null

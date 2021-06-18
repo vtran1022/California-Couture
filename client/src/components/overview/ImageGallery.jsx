@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Thumbnails from './Thumbnails.jsx';
 import ZoomedPreview from './ZoomedPreview.jsx';
 
-function ImageGallery ({ style, styleid, theme }) {
+const ImageGallery = ({ style, styleid, theme }) => {
   const [showView, setView] = useState(false);
   const [photoList, setPhotoList] = useState(style.photos);
   const [currentPhoto, setPhoto] = useState(style.photos[0]);
@@ -14,28 +14,29 @@ function ImageGallery ({ style, styleid, theme }) {
     setPhoto(style.photos[0]);
   }, [style]);
 
-  function handleViewClick () {
+  const handleViewClick = () => {
     setView(!showView);
   }
 
-  function handleThumbnailClick (index) {
+  const handleThumbnailClick = (index) => {
     setPhoto(photoList[index]);
     setPhotoIndex(index);
   }
 
-   function handleLeftClick () {
-    if (photoIndex > 0) {
-      let next = photoIndex - 1;
-      setPhotoIndex(next);
-      setPhoto(photoList[next]);
-    }
-  }
-
-   function handleRightClick () {
-    if (photoIndex < photoList.length - 1) {
-      let next = photoIndex + 1;
-      setPhotoIndex(next);
-      setPhoto(photoList[next]);
+  const handleArrowClick = (e) => {
+    switch (e.target.className) {
+      case 'left-button' :
+        if (photoIndex > 0) {
+          let next = photoIndex - 1;
+          setPhotoIndex(next);
+          setPhoto(photoList[next]);
+        }
+      case 'right-button' :
+        if (photoIndex < photoList.length - 1) {
+          let next = photoIndex + 1;
+          setPhotoIndex(next);
+          setPhoto(photoList[next]);
+        }
     }
   }
 
@@ -45,6 +46,25 @@ function ImageGallery ({ style, styleid, theme }) {
       ? 'image-gallery-enlarged'
       : 'image-gallery'}
     >
+
+      <div className={showView
+        ? 'enlarged-thumbs-overlay'
+        : 'default-thumbs-overlay'}>
+          {photoList.map((photo, index) =>
+            <Thumbnails
+            key={index}
+            cname={
+              (photo === currentPhoto)
+              ? 'thumb-selected'
+              : 'thumb-not-selected'}
+            photo={ photo }
+            photoList={ photoList }
+            handleThumbnailClick={handleThumbnailClick}/>
+          )}
+      </div>
+
+
+          <>
       {showView
         ? <ZoomedPreview
         preview={ currentPhoto.url }
@@ -57,27 +77,12 @@ function ImageGallery ({ style, styleid, theme }) {
             alt='One of the preview pictures of the selected style'/>
         </div>
       }
+      </>
 
-      <div className={showView
-        ? 'enlarged-thumbs-overlay'
-        : 'default-thumbs-overlay'}
-      >
-        {photoList.map((photo, index) =>
-          <Thumbnails
-          key={index}
-          cname={
-            (photo === currentPhoto)
-            ? 'thumb-selected'
-            : 'thumb-not-selected'
-          }
-          photo={ photo }
-          photoList={ photoList }
-          handleThumbnailClick={handleThumbnailClick}/>
-          )}
-        </div>
 
-      <a className='left-button' onClick={handleLeftClick}>&#10094;</a>
-      <a className='right-button' onClick={handleRightClick}>&#10095;</a>
+
+      <a className='left-button' onClick={handleArrowClick}>&#10094;</a>
+      <a className='right-button' onClick={handleArrowClick}>&#10095;</a>
       <i className="fas fa-expand enlarge-button" onClick={handleViewClick}></i>
     </div>
   )

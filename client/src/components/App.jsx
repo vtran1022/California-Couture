@@ -12,7 +12,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: '13029',
+      product: '13023',
       stylePath: 'lightTheme.css',
       isOverlay: false,
       isFetched: false
@@ -78,7 +78,7 @@ class App extends React.Component {
 
   handleProductHighlight() {
     this.setState({ product: '13357' });
-    this.fetchData(13357);
+    this.fetchData('13357')
   }
 
   toggleTheme() {
@@ -156,7 +156,7 @@ class App extends React.Component {
 
           <div id="overlay"></div>
         </div>
-        <Footer onClick={this.handleGetClickInfo}/>
+      <Footer onClick={this.handleGetClickInfo}/>
       </>
       : null
     );
