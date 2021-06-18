@@ -1,5 +1,6 @@
   body, html {
-  height: 100%;
+  height: auto;
+  width: auto;
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
@@ -871,13 +872,12 @@
 }
 
 .gallery-container {
-  width: auto;
+  width: 100%;
   height: auto;
   display: flex;
   position: absolute;
   background: rgb(0, 0, 0, 0.6);
   bottom: 30%;
-  margin-left: 1px;
 }
 
 .g-container {
@@ -930,10 +930,9 @@
 
 .image-holder {
   width: 205px;
-  height: 220px;
+  height: 225px;
   position: absolute;
   background: transparent;
-  bottom: 25%;
 }
 
 /* Star Rating Component --------------*/
