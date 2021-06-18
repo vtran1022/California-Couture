@@ -92,7 +92,7 @@ const OutfitList = ({ productId, productClick }) => {
       <p className='RIC-Title'><b>Your Outfit</b></p>
       {isLeft
           ? <button className='button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>
-          : <button disabled data-testid='buttonL' className='button2'>‹</button>
+          : <button data-testid='buttonL' className='button2' disabled>‹</button>
         }
       <div className='RICList'>
           {outfitItems.length !== 0
@@ -113,7 +113,7 @@ const OutfitList = ({ productId, productClick }) => {
                   offset={initialIndex}
                   productClick={productClick}/>))}
               </>
-            : <span className='AddCard' onClick={() => addItem(productId)}>
+            : <span data-testid='outfit' className='AddCard' onClick={() => addItem(productId)}>
                 {ifExists
                   ? <span id='item-added'>Item Added</span>
                   : <span id='plus-outfit'>＋ <br /> Add to Outfit</span>
@@ -123,7 +123,7 @@ const OutfitList = ({ productId, productClick }) => {
       </div>
       {isRight
         ? <button className='button1' onClick={() => handleClick({ type: 'next' })}>›</button>
-        : <button disabled data-testid='buttonR' className='button2'>›</button>
+        : <button data-testid='buttonR' className='button2' disabled>›</button>
       }
     </div>
   );

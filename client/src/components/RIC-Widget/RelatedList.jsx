@@ -83,7 +83,7 @@ const RelatedList = ({ productId, productClick, toggleOverlay, related, product 
       <div className='RelatedList'>
         {isLeft
             ? <button className='button1' onClick={() => handleClicks({ type: 'previous' })}>‹</button>
-            : <button disabled data-testid='buttonL' className='button2'>‹</button>
+            : <button data-testid='buttonL' className='button2' disabled>‹</button>
           }
         <div data-testid='RICList' className='RICList' style={{ '--offset': initialIndex }}>
           {relatedItems.map((id, i) => (
@@ -107,8 +107,8 @@ const RelatedList = ({ productId, productClick, toggleOverlay, related, product 
         }
 
           {isRight
-            ? <button data-testid='buttonR' className='button1' onClick={() => handleClicks({ type: 'next' })}>›</button>
-            : <button disabled className='button2'>›</button>
+            ? <button data-testid='buttonR2' className='button1' onClick={() => handleClicks({ type: 'next' })}>›</button>
+            : <button data-testid='buttonR' className='button2' disabled>›</button>
           }
       </div>
     </div>
