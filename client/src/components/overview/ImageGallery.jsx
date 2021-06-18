@@ -31,12 +31,14 @@ const ImageGallery = ({ style, styleid, theme }) => {
           setPhotoIndex(next);
           setPhoto(photoList[next]);
         }
+        break;
       case 'right-button' :
         if (photoIndex < photoList.length - 1) {
           let next = photoIndex + 1;
           setPhotoIndex(next);
           setPhoto(photoList[next]);
         }
+        break;
     }
   }
 
@@ -64,7 +66,7 @@ const ImageGallery = ({ style, styleid, theme }) => {
       </div>
 
 
-          <>
+
       {showView
         ? <ZoomedPreview
         preview={ currentPhoto.url }
@@ -77,7 +79,7 @@ const ImageGallery = ({ style, styleid, theme }) => {
             alt='One of the preview pictures of the selected style'/>
         </div>
       }
-      </>
+
 
 
 
