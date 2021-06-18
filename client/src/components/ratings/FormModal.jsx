@@ -9,14 +9,6 @@ var characteristicBreakdown = {
   'Fit': ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long']
 };
 
-const FormModal = (props) => {
-
-  var charObj = {};
-  for (var k in props.characteristics) {
-    var id = props.characteristics[k].id;
-    charObj[id] = -1;
-  }
-  const [formData, setData] = useState({ rating: -1, recommend: true, summary: '', body: '', name: '', email: '', photos: [], characteristics: charObj});
 
   /*
   Cute animals (FOR TESTING PURPOSES ONLY)
@@ -27,9 +19,17 @@ const FormModal = (props) => {
   https://images.hindustantimes.com/rf/image_size_630x354/HT/p2/2018/05/16/Pictures/_1571873a-58de-11e8-b431-73159b4b09e2.jpg
   http://cdn.akc.org/content/article-body-image/cavkingcharlessmalldogs.jpg
   */
+
+const FormModal = (props) => {
+
+  var charObj = {};
+  for (var k in props.characteristics) {
+    var id = props.characteristics[k].id;
+    charObj[id] = -1;
+  }
+  const [formData, setData] = useState({ rating: -1, recommend: true, summary: '', body: '', name: '', email: '', photos: [], characteristics: charObj});
+
   const [imgUrl, setUrl] = useState('');
-
-
 
   const handleChange = (value, field) => {
     setData(state => {
@@ -55,7 +55,7 @@ const FormModal = (props) => {
       console.log('Form failed validation');
     }
   };
-
+  const [errData, setErr] = useState({rating: false, length: false, name: false, email: false, emalVal: false, })
   const validateForm = () => {
     var message = '';
     if (formData.rating === -1) {

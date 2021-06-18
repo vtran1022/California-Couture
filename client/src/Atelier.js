@@ -50,8 +50,8 @@ class Atelier {
     return await this.fetchAPI(`reviews/meta/?product_id=${productId}`, 'meta' + productId);
   }
 
-  async getReviews(productId, count, page, sort) {
-    return await this.fetchAPI(`reviews/?product_id=${productId}&count=${count}&page=${page}&sort=newest`)
+  async getReviews(productId, page, sort) {
+    return await this.fetchAPI(`reviews/?product_id=${productId}&page=${page}&sort=${sort}`)
   }
 
   async putHelpful(productId) {

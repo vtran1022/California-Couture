@@ -248,6 +248,12 @@
   margin: 5px;
 }
 
+.img-modal .selected {
+  border: 2px #f4f4f4 solid;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
 .tile-body {
   grid-column-start: 1;
   grid-column-end: 3;
