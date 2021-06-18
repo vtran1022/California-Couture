@@ -12,6 +12,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  filter: brightness(90%);
+}
+
+.App img{
+  filter: brightness(70%);
 }
 
 /* Header --------------*/
@@ -707,7 +712,7 @@
   width: 200px;
   height: 200px;
   object-fit: fill;
-  filter: brightness(70%);
+  /* filter: brightness(70%); */
 }
 
 .AddCard {
@@ -853,7 +858,7 @@
   width: 41px;
   height: 41px;
   object-fit: cover;
-  filter: brightness(70%);
+  /* filter: brightness(70%); */
 }
 
 .g-button1 {
