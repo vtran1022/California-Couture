@@ -108,8 +108,8 @@ const RelatedList = ({ productId, productClick, toggleOverlay, related, product 
         }
 
           {isRight
-            ? <button className='button1' onClick={() => handleClicks({ type: 'next' })}>›</button>
-            : <button disabled data-testid='buttonR' className='button2'>›</button>
+            ? <button data-testid='buttonR' className='button1' onClick={() => handleClicks({ type: 'next' })}>›</button>
+            : <button disabled className='button2'>›</button>
           }
       </div>
     </div>

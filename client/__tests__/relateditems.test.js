@@ -18,7 +18,8 @@ afterEach(cleanup);
 describe('RICWidget', () => {
   test('checking both lists render', () => {
     const onClick = jest.fn();
-    const { getByText } = render(<RICWidget toggleOverlay={onClick}/>);
+    const related = [13023, 13024, 13025, 13026, 13027, 13028];
+    const { getByText } = render(<RICWidget toggleOverlay={onClick} related={related}/>);
 
     expect(getByText(/Your Outfit/)).toBeInTheDocument();
     expect(getByText(/Related Products/)).toBeInTheDocument();
@@ -28,17 +29,19 @@ describe('RICWidget', () => {
 describe('RelatedList', () => {
   test('arrow button should not exist initial render', () => {
     const onClick = jest.fn();
-    const { getByTestId } = render(<RelatedList toggleOverlay={onClick}/>);
+    const related = [13023, 13024, 13025, 13026, 13027, 13028];
+    const { getByTestId } = render(<RelatedList toggleOverlay={onClick} related={related}/>);
 
     expect(getByTestId('buttonL')).toBeDisabled();
-    expect(getByTestId('buttonR')).toBeDisabled();
+    expect(getByTestId('buttonR')).toBeEnabled();
   });
 });
 
 describe('Related List', () => {
   test('style - offset should be 0 initially', () => {
     const onClick = jest.fn();
-    const { getByTestId } = render( <RelatedList toggleOverlay={onClick}/> );
+    const related = [13023, 13024, 13025, 13026, 13027, 13028];
+    const { getByTestId } = render( <RelatedList toggleOverlay={onClick} related={related}/> );
 
     const list = (getByTestId('RICList'));
 
