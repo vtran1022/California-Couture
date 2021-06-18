@@ -29,7 +29,6 @@ const RelatedList = ({ productId, productClick, toggleOverlay, related, product 
   });
 
   const handleClicks = (action) => {
-    console.log(action);
     if (action.type === 'previous') {
       setRight(true);
       setIndex(prevState => prevState + 1);
