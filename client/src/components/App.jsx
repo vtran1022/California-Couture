@@ -1,6 +1,5 @@
 import React from 'react';
 import Atelier from '../Atelier.js';
-// import moment from 'moment';
 import Overview from './Overview.jsx';
 import Ratings from './RatingsReview.jsx';
 import RICWidget from './RIC-Widget.jsx';
@@ -74,7 +73,7 @@ class App extends React.Component {
 
   handleProductClick(id) {
     this.setState({ product: id });
-    this.fetchData(id)
+    this.fetchData(id);
   }
 
   handleProductHighlight() {
@@ -153,7 +152,7 @@ class App extends React.Component {
             related={related}
             product={productInfo}/>
 
-          {/* <Ratings id={product} /> */}
+          <Ratings id={product} />
 
           <div id="overlay"></div>
         </div>
