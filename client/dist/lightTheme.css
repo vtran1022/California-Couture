@@ -876,9 +876,7 @@
 .g-image-container {
   width: 41px;
   height: 41px;
-  margin-right: 1px;
-  margin-top: 2px;
-  margin-bottom: 2px;
+  margin: 2px 1px 2px 0px;
 
   transform: translateX(calc(100% * var(--offset)));
   transition: transform 0.5s ease-in-out;
@@ -952,17 +950,21 @@
 }
 
 /* Footer ----------------*/
+
 footer {
-  height: 30px;
+  height: 3vh;
+  width: 100%;
   background-color: #60c7cb;
+  position: absolute;
+  bottom: 0;
   display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-direction: column;
-  text-align: right;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+footer span {
   font-size: 13px;
-  margin-top: 40px;
-  padding-right: 20px;
+  padding-right: 1vw;
 }
 
 /* Overlay------------*/
