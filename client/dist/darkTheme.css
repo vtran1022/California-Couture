@@ -74,7 +74,9 @@
 
 .review-container {
   padding-top: 20px;
+  width: 100%;
   display: grid;
+  margin-left: 15%;
   grid-template-columns: 30% 70%;
   grid-template-rows: 40px 1fr 20px;
   height: 600px;
@@ -96,6 +98,7 @@
 .review-buttons button {
   background-color: #2c59a5;
   color: black;
+  margin-right: 3px;
 }
 .review-buttons button:hover{
   color: #ecf4f4;
@@ -109,6 +112,7 @@
 
 .list-container {
   height: auto;
+  width: auto;
   width: fit-content;
   overflow-y: scroll;
   grid-column: 2;
@@ -140,6 +144,7 @@
   border: 1px solid black;
   text-align: center;
   background-color: #1a1a1a;
+  border-radius: 10px;
 }
 
 .form-label label {
@@ -214,10 +219,42 @@
   position: fixed;
   max-width: 60vw;
   max-height: 60vh;
-  top: 25%;
-  left: 25%;
-  background-color: #f4f4f4;
+  width: 100%;
+  height: 100%;
+  top: 20%;
+  left: 20%;
+  float: left;
+}
+
+.img-modal .main {
+  width: 100%;
+  height: 100%;
+  background-color: #1a1a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.img-modal .main img {
   object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  margin-top: auto;
+}
+
+.img-modal .tray {
+  background-color: #60c7cb;
+  height: 92px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.img-modal .thumb {
+  margin: 5px;
 }
 
 .tile-body {
@@ -277,7 +314,7 @@
 
 .review-char-breakdown {
   display: grid;
-  grid-template-columns: 50px 50px 50px 50px 50px;
+  grid-template-columns: 60px 60px 60px 60px 60px;
   grid-template-rows: 50% 50%;
   margin: 10px;
   margin-top: 0px;
@@ -323,7 +360,7 @@
   background: #2c59a5;
 }
 
-.helpful-button:disabled {
+.review-container button:disabled {
   background: lightgrey;
 }
 

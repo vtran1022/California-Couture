@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import StarRating from '../StarRating.jsx';
 
 const findLS = (id) => {
@@ -11,9 +11,26 @@ const putLS = (id) => {
 };
 
 const ReviewTile = (props) => {
-  const [imgModal, setModal] = useState({ id: -1, url: '' });
+  const [imgModal, setModal] = useState(-1);
   const [helpful, setHelpful] = useState(findLS(props.review.review_id));
   const [clicked, setClicked] = useState(false);
+
+  useEffect(() => {
+    if(imgModal !== -1) {
+      window.addEventListener('click', handleModal);
+      return () => {
+        window.removeEventListener('click', handleModal);
+      }
+    }
+  }, [imgModal]);
+
+  const handleModal = (e) => {
+    if(!e.path.some(e => e.className === 'img-modal')) {
+      props.toggleOverlay();
+      setModal(-1);
+    }
+  }
+
   var out;
   if (props.search.length >= 3) {
     var re = RegExp('(' + props.search + ')', 'i');
@@ -27,13 +44,11 @@ const ReviewTile = (props) => {
     out = props.review.body;
   }
 
-  const openModal = (id, url) => {
-    if (imgModal.id === -1) {
-      setModal({ id: id, url: url });
+  const openModal = (idx) => {
+    if (imgModal === -1) {
+      props.toggleOverlay();
+      setModal(idx);
     }
-  };
-  const onClose = () => {
-    setModal({ id: -1, url: '' });
   };
 
   const handleHelpful = () => {
@@ -42,8 +57,6 @@ const ReviewTile = (props) => {
       putLS(props.review.review_id);
       setHelpful(true);
       setClicked(true);
-    } else {
-      console.log('already helpful');
     }
   };
   //create row for each review tile
@@ -59,8 +72,8 @@ const ReviewTile = (props) => {
         <span className='tile-recommend'>{props.review.recommend ? '✓ I recommend this product' : null}</span>
         {props.review.response ? <span className='tile-response'>Response: {props.review.response}</span> : null}
         <span className='tile-helpful'>Helpful? <button disabled={helpful} onClick={handleHelpful} className='helpful-button' value='Yes'>Yes</button>({props.review.helpfulness + (clicked ? 1 : 0)})</span>
-        <span className='tile-images'>{props.review.photos.map((p, idx) => <img key={p.id} id={p.id} src={p.url} width={50} height={50} alt={'review image' + idx} onClick={e => openModal(p.id, p.url)}></img>)}</span>
-        {imgModal.id !== -1 ? <ImageModal img={imgModal} onClose={onClose} /> : null}
+        <span className='tile-images'>{props.review.photos.map((p, idx) => <img key={p.id} id={p.id} src={p.url} width={50} height={50} alt={'review image' + idx} onClick={e => openModal(idx)}></img>)}</span>
+        {imgModal !== -1 ? <ImageModal idx={imgModal} photos={props.review.photos} /> : null}
       </div>
     </td>
   </tr>;
@@ -68,7 +81,22 @@ const ReviewTile = (props) => {
 
 
 const ImageModal = (props) => {
-  return <img id={props.img.id} src={props.img.url} className='img-modal' alt='review image' onClick={props.onClose} />
+  const [mainIndex, setIndex] = useState(-1);
+
+  const changePhoto = (idx) => {
+    setIndex(idx);
+  };
+
+  if (props.idx != -1) {
+    return (<div className='img-modal'>
+      <div className='main'><img src={mainIndex === -1 ? props.photos[props.idx].url : props.photos[mainIndex].url} alt='review image'/></div>
+      <div className='tray'>{props.photos.map((p, idx) => {
+        return  <img src={p.url} className='thumb' alt='review thumbnail' width={64} height={64} onClick={() => changePhoto(idx)}/>
+      })}</div>
+    </div>)
+    return
+  }
+  return null;
 };
 
 export default ReviewTile;

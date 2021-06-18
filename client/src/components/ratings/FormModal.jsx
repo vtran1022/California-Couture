@@ -52,7 +52,7 @@ const FormModal = (props) => {
     if (validateForm()) {
       props.submitData(formData);
     } else {
-      console.log('form failed validation');
+      console.log('Form failed validation');
     }
   };
 
