@@ -15,7 +15,8 @@ class App extends React.Component {
       product: '13023',
       stylePath: 'lightTheme.css',
       isOverlay: false,
-      isFetched: false
+      isFetched: false,
+      styles: []
     }
 
     this.handleProductHighlight = this.handleProductHighlight.bind(this);
@@ -125,7 +126,8 @@ class App extends React.Component {
       stylePath,
       isOverlay,
       related,
-      productInfo
+      productInfo,
+      styles
     } = this.state;
 
     return (
@@ -141,18 +143,18 @@ class App extends React.Component {
         <div className='App' onClick={this.handleGetClickInfo}>
           <Overview
           theme={ stylePath }
-          productId={ this.state.product }
-          styles={ this.state.styles }
-          product={ this.state.productInfo }/>
+          productId={ product }
+          styles={ styles }
+          product={ productInfo }/>
 
-          {/* <RICWidget
+          <RICWidget
             productId={product}
             productClick={this.handleProductClick}
             toggleOverlay={this.toggleOverlay}
             related={related}
-            product={productInfo}/> */}
+            product={productInfo}/>
 
-          <Ratings id={product} />
+          {/* <Ratings id={product} /> */}
 
           <div id="overlay"></div>
         </div>
