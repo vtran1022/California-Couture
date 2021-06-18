@@ -629,6 +629,7 @@
   height: auto;
   display: flex;
   flex-direction: column;
+  margin-bottom: 10vh;
 }
 
 .RelatedList-container {
@@ -905,7 +906,7 @@
 #starRating:after {
   content: "★";
   position: absolute;
-  left: 0vh;
+  left: 0;
   top: -0.1vh;
   width: var(--width);
   overflow: hidden;

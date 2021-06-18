@@ -21,7 +21,7 @@ const OutfitList = ({ productId, productClick }) => {
 
   const triggerDelete = useCallback((index) => {
     const currentOutfits = outfitItems.map((item) => item);
-    const deleted = currentOutfits.splice(index, 1);
+    const deleted = currentOutfits.splice(index, 1)[0];
 
     setOutfit(currentOutfits);
 
@@ -44,9 +44,15 @@ const OutfitList = ({ productId, productClick }) => {
   }
 
   useEffect(() => {
+    setIndex(0);
+
     (outfitItems.indexOf(productId) !== -1)
     ? setExists(true)
     : setExists(false);
+
+    (outfitItems.length > 4)
+    ? setRight(true)
+    : setRight(false);
   }, [productId]);
 
   useEffect(() => {
@@ -67,7 +73,7 @@ const OutfitList = ({ productId, productClick }) => {
 
     (outfitItems.length > 4)
     ? setRight(true)
-    : setRight(false)
+    : setRight(false);
   }, [outfitItems]);
 
   useEffect(() => {
