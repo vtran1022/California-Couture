@@ -30,7 +30,7 @@ describe('ImageGallery', () => {
   test('ImageGallery component should render with sample data', () => {
     render(<ImageGallery
       key='999999'
-      photos={ gallerySample.photos }
+      style={ gallerySample }
       styleid={ gallerySample.styleid }/>
       );
     });
