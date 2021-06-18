@@ -967,11 +967,11 @@ footer {
   height: 3vh;
   width: 100%;
   background-color: #60c7cb;
-  position: absolute;
   bottom: 0;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-top: 4vh;
 }
 
 footer span {
