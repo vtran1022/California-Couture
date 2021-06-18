@@ -52,9 +52,9 @@ const Gallery = ({ gallery, changeImage }) => {
     <div data-testid='gallery-image' className='gallery-container'>
       {isLeft
         ? <button className='g-button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>
-        : <button className='g-button2' disabled>‹</button>
+        : <button data-testid='g-buttonL' className='g-button2' disabled>‹</button>
       }
-      <div className='g-container' style={{ '--offset': initialIndex }}>
+      <div data-testid='g-container' className='g-container' style={{ '--offset': initialIndex }}>
         {images.map((image, i) => (
         <span key={i} className='g-image-container' style={{ '--offset': initialIndex }}>
           <img className='gallery-image'
@@ -65,8 +65,8 @@ const Gallery = ({ gallery, changeImage }) => {
         ))}
       </div>
       {isRight
-        ? <button className='g-button1' onClick={() => handleClick({ type: 'next' })}>›</button>
-        : <button className='g-button2' disabled>›</button>
+        ? <button data-testid='g-buttonR' className='g-button1' onClick={() => handleClick({ type: 'next' })}>›</button>
+        : <button data-testid='g-buttonR2' className='g-button2' disabled>›</button>
       }
     </div>
   );
