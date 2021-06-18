@@ -150,14 +150,14 @@ class App extends React.Component {
           styles={ styles }
           product={ productInfo }/>
 
-          <RICWidget
+          {/* <RICWidget
             productId={product}
             productClick={this.handleProductClick}
             toggleOverlay={this.toggleOverlay}
             related={related}
             product={productInfo}/>
 
-          <Ratings id={product} meta={this.state.reviews} info={this.state.productInfo} toggleOverlay={this.toggleOverlay} />
+          <Ratings id={product} meta={this.state.reviews} info={this.state.productInfo} toggleOverlay={this.toggleOverlay} /> */}
 
           <div id="overlay"></div>
         </div>

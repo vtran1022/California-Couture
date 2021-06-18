@@ -49,8 +49,8 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
       <span id='category'>{currentProduct.category}</span><br></br>
 
       {!price.sale
-        ?<span className='price'>Price: {price.default}</span>
-        :<span className='price-sale'>Price: {price.sale} <strike>{price.default}</strike></span>}
+        ?<span className='price'>Price: ${price.default}</span>
+        :<span className='price-sale'>Price: ${price.sale} <strike>${price.default}</strike></span>}
 
       <div className='styles-box'>
         <h1><strong>Style</strong> > <em>{style.name}</em></h1>
@@ -97,12 +97,12 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
       </select>
       </div>
 
-      {!selectedQuantity
-      ? null
-      : <div className="cart-submit">
-        <input type="submit" value="Add to Cart" ></input>
+      <div className="cart-submit">
+        {!selectedQuantity
+        ? null
+        : <input type="submit" value="Add to Cart" ></input>
+        }
       </div>
-      }
     </form>
 
   )
