@@ -42,12 +42,13 @@ const Ratings = (props) => {
   }, [page]);
 
   const handleForm = (e) => {
-    if(!e.path.some(e => e.className === 'review-modal')) {
+    if (!e.path.some(e => e.className === 'review-modal')) {
+      props.toggleOverlay();
       setShowForm(false);
     }
   }
   useEffect(() => {
-    if(showForm) {
+    if (showForm) {
       window.addEventListener('click', handleForm);
       return () => {
         window.removeEventListener('click', handleForm);
@@ -72,6 +73,7 @@ const Ratings = (props) => {
     };
     Atelier.postAPI('reviews', obj).then(d => console.log(d)).catch(err => console.log(err));
     Atelier.clearResult('meta' + props.id);
+    props.toggleOverlay();
     setShowForm(false);
   };
 
@@ -86,6 +88,19 @@ const Ratings = (props) => {
       return [...filter];
     });
   };
+
+  console.log(props.meta);
+  var filtered = reviews.filter(review => {
+    if (!filter[review.rating - 1] && !filter.every(i => !i)) {
+      return false;
+    }
+    if (search.length >= 3) {
+      var regex = '^.*' + search + '.*$';
+      var re = new RegExp(regex, 'i');
+      return re.test(review.body);
+    }
+    return true;
+  });
   if (Object.keys(reviews).length > 0) {
     return (<div className='review-container'>
       {showForm ? <FormModal characteristics={props.meta.characteristics} submitData={addNewReview} productName={props.info.productName} /> : null}
@@ -108,28 +123,22 @@ const Ratings = (props) => {
         {/* main review table */}
         <table className='review-table'>
           <tbody>
-            {reviews.filter(review => {
-              if (!filter[review.rating - 1] && !filter.every(i => !i)) {
-                return false;
-              }
-              if (search.length >= 3) {
-                var regex = '^.*' + search + '.*$';
-                var re = new RegExp(regex, 'i');
-                return re.test(review.body);
-              }
-              return true;
-            }).map(r => {
-              return <ReviewTile review={r} search={search} key={r.review_id} putHelpful={(id) => Atelier.putHelpful(id)} />
+            {filtered.map(r => {
+              return <ReviewTile review={r} search={search} key={r.review_id} putHelpful={(id) => Atelier.putHelpful(id)} toggleOverlay={props.toggleOverlay} />
             })}
           </tbody>
         </table>
       </div>
       <div className='review-buttons'>
-        <button onClick={handleLoad}>Load More</button> <button onClick={() => setShowForm(true)}>Add a Review</button>
+        <button onClick={handleLoad}>Load More</button> <button onClick={() => {
+          props.toggleOverlay();
+          setShowForm(true);
+        }}>Add a Review</button>
+        <label> Showing {filtered.length} of {Object.values(props.meta.ratings).reduce((total, n) => Number(total) + Number(n))} reviews</label>
       </div>
       {/* product breakdown */}
       <div className='breakdown'>
-        {Object.keys(props.meta).length > 0 ? <Breakdown data={props.meta} key={props.id} handleFilter={handleFilter} filter={filter}/> : <div></div>}
+        {props.meta && Object.keys(props.meta).length > 0 ? <Breakdown data={props.meta} key={props.id} handleFilter={handleFilter} filter={filter} /> : <div></div>}
       </div>
     </div>)
   } else {

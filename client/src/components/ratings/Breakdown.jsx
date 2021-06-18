@@ -74,13 +74,6 @@ const Breakdown = (props) => {
     return res;
   };
 
-  /*
-      <div className='review-bar'>
-            <div className='review-dot' style={{ marginLeft: `${pos}px` }} />
-          </div>
-  */
-
-
 
 
   //calculate breakdown statistics
