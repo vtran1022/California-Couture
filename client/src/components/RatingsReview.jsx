@@ -115,8 +115,8 @@ const Ratings = (props) => {
       });
       if (node) {
         observer.observe(node);
+        setObserver(true);
       }
-      setObserver(true);
     }
   });
 
