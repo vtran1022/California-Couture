@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import errimage from '../../imgs/imagenot.png';
 
-const Gallery = ({ gallery, mouseOut, changeImage }) => {
+const Gallery = ({ gallery, changeImage }) => {
   const [images, setImages] = useState([]);
   const [initialIndex, setIndex] = useState(0);
   const [isRight, setRight] = useState(false);
@@ -49,24 +49,24 @@ const Gallery = ({ gallery, mouseOut, changeImage }) => {
   }, [initialIndex]);
 
   return (
-    <div className='gallery-container'>
+    <div data-testid='gallery-image' className='gallery-container'>
       {isLeft
         ? <button className='g-button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>
-        : <button className='g-button2'>‹</button>
+        : <button data-testid='g-buttonL' className='g-button2' disabled>‹</button>
       }
-      <div className='g-container' style={{ '--offset': initialIndex }}>
+      <div data-testid='g-container' className='g-container' style={{ '--offset': initialIndex }}>
         {images.map((image, i) => (
         <span key={i} className='g-image-container' style={{ '--offset': initialIndex }}>
           <img className='gallery-image'
                src={image ? image : errimage}
                alt='thumbnail-image'
-               onClick={()=> changeImage(i)}></img>
+               onClick={()=> changeImage(i)} ></img>
         </span>
         ))}
       </div>
       {isRight
-        ? <button className='g-button1' onClick={() => handleClick({ type: 'next' })}>›</button>
-        : <button className='g-button2'>›</button>
+        ? <button data-testid='g-buttonR' className='g-button1' onClick={() => handleClick({ type: 'next' })}>›</button>
+        : <button data-testid='g-buttonR2' className='g-button2' disabled>›</button>
       }
     </div>
   );
