@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Atelier from '../Atelier.js';
 import StarRating from './StarRating.jsx';
 import Breakdown from './ratings/Breakdown.jsx';
@@ -14,6 +14,10 @@ const Ratings = (props) => {
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState([false, false, false, false, false]);
   const [observer, setObserver] =  useState(false);
+  //oh god
+  const filterRef = useRef(filter);
+  const searchRef = useRef(search);
+
 
   //effects
   //runs when the sorting method is changed, fetch reviews with new sorting methods
@@ -81,6 +85,7 @@ const Ratings = (props) => {
   };
 
   const handleSearch = (e) => {
+    searchRef.current = e.target.value;
     setSearch(e.target.value);
   };
 
@@ -89,19 +94,22 @@ const Ratings = (props) => {
     setFilter(filter => {
       var idx = rating - 1;
       filter[idx] = !filter[idx];
+      filterRef.current = filter;
       return [...filter];
     });
   };
 
   const clearFilters = () => {
+    filterRef.current = [false, false, false, false, false];
+    searchRef.current = '';
     setFilter([false, false, false, false, false]);
     setSearch('');
   };
 
   //Infinite Scroll handling
-  var handleObserver = function (entries) {
+  var handleObserver = (entries) => {
     const target = entries[0];
-    if (target.isIntersecting) {
+    if (target.isIntersecting && filterRef.current.every(f => !f) && searchRef.current === '') {
       setPage(p => p + 1);
     }
   };
@@ -119,7 +127,6 @@ const Ratings = (props) => {
       }
     }
   });
-
 
 
   var filtered = reviews.filter(review => {
