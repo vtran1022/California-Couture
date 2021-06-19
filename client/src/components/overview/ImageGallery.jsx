@@ -84,11 +84,6 @@ const ImageGallery = ({ style, styleid, theme }) => {
             alt='One of the preview pictures of the selected style'/>
         </div>
       }
-
-
-
-
-
     </div>
   )
 }
