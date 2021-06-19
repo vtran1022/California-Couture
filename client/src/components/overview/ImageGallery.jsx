@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Thumbnails from './Thumbnails.jsx';
 import ZoomedPreview from './ZoomedPreview.jsx';
 
+import ThumbnailGallery from './ThumbnailGallery.jsx';
+
 const ImageGallery = ({ style, styleid, theme }) => {
   const [showView, setView] = useState(false);
   const [photoList, setPhotoList] = useState(style.photos);
@@ -31,12 +33,14 @@ const ImageGallery = ({ style, styleid, theme }) => {
           setPhotoIndex(next);
           setPhoto(photoList[next]);
         }
+        break;
       case 'right-button' :
         if (photoIndex < photoList.length - 1) {
           let next = photoIndex + 1;
           setPhotoIndex(next);
           setPhoto(photoList[next]);
         }
+        break;
     }
   }
 
@@ -50,7 +54,11 @@ const ImageGallery = ({ style, styleid, theme }) => {
       <div className={showView
         ? 'enlarged-thumbs-overlay'
         : 'default-thumbs-overlay'}>
-          {photoList.map((photo, index) =>
+          <ThumbnailGallery
+            photolist={photoList}
+            handleThumbnailClick={handleThumbnailClick}/>
+
+          {/* {photoList.map((photo, index) =>
             <Thumbnails
             key={index}
             cname={
@@ -60,11 +68,11 @@ const ImageGallery = ({ style, styleid, theme }) => {
             photo={ photo }
             photoList={ photoList }
             handleThumbnailClick={handleThumbnailClick}/>
-          )}
+          )} */}
       </div>
 
 
-          <>
+
       {showView
         ? <ZoomedPreview
         preview={ currentPhoto.url }
@@ -77,7 +85,7 @@ const ImageGallery = ({ style, styleid, theme }) => {
             alt='One of the preview pictures of the selected style'/>
         </div>
       }
-      </>
+
 
 
 

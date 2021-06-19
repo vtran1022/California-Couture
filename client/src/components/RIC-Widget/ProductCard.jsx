@@ -60,17 +60,20 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
                src={image ? image : errimage}
                alt={name}
                onMouseOver={mouseOver}
-               onClick={() => productClick(productId)}>
+               onClick={() => productClick(productId)}
+               data-testid='image-prod'>
           </img>
           {showGallery
             ? <>
-                <div className='image-holder' onMouseOut={mouseOut} onClick={() => productClick(productId)}></div>
+                <div className='image-holder'
+                     onMouseOut={mouseOut}
+                     onClick={() => productClick(productId)}
+                     data-testid='image-holder'></div>
                 <Gallery
                   gallery={gallery}
-                  mouseOut={mouseOut}
                   changeImage={changeImage}/>
               </>
-            : null
+            : <span data-testid='no-gallery' hidden></span>
           }
         </div>
         <div data-testid='productcard' onClick={() => productClick(productId)}>
@@ -83,22 +86,13 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
           : <span className='prod-price'>${price.default}</span>
         }
         <br />
-        <span id='prod-star'>
+        <div id='prod-star'>
           <AvgRating
             productId={productId}/>
-        </span>
+        </div>
       </div>
     </span>
   );
 };
 
 export default ProductCard;
-
-/*
-	Upon hovering over the initial preview image that appears on the card, a carousel of thumbnail images should appear allowing the user to view additional preview images.
-  The carousel will be a row of thumbnails which overlays the bottom portion of the preview image, covering part of the image when hovered.
-  The list should disappear when the user is no longer hovering on the card.
-	Four thumbnail images should appear in the carousel at any given time.
-  The carousel should extend the ability to scroll left/right through the list via left and right arrows such that all images for that product can be selected and viewed
-
-*/

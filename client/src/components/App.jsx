@@ -5,7 +5,6 @@ import Ratings from './RatingsReview.jsx';
 import RICWidget from './RIC-Widget.jsx';
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
-import StarRating from './StarRating.jsx';
 
 
 class App extends React.Component {
@@ -15,7 +14,8 @@ class App extends React.Component {
       product: '13023',
       stylePath: 'lightTheme.css',
       isOverlay: false,
-      isFetched: false
+      isFetched: false,
+      styles: []
     }
 
     this.handleProductHighlight = this.handleProductHighlight.bind(this);
@@ -128,7 +128,8 @@ class App extends React.Component {
       stylePath,
       isOverlay,
       related,
-      productInfo
+      productInfo,
+      styles
     } = this.state;
 
     return (
@@ -144,9 +145,9 @@ class App extends React.Component {
         <div className='App' onClick={this.handleGetClickInfo}>
           <Overview
           theme={ stylePath }
-          productId={ this.state.product }
-          styles={ this.state.styles }
-          product={ this.state.productInfo }/>
+          productId={ product }
+          styles={ styles }
+          product={ productInfo }/>
 
           <RICWidget
             productId={product}

@@ -29,7 +29,6 @@ const RelatedList = ({ productId, productClick, toggleOverlay, related, product 
   });
 
   const handleClicks = (action) => {
-    console.log(action);
     if (action.type === 'previous') {
       setRight(true);
       setIndex(prevState => prevState + 1);
@@ -80,11 +79,11 @@ const RelatedList = ({ productId, productClick, toggleOverlay, related, product 
 
   return (
     <div className='RelatedList-container'>
-      <span className='RIC-Title'><b>Related Products</b> {initialIndex}</span>
+      <span className='RIC-Title'><b>Related Products</b></span>
       <div className='RelatedList'>
         {isLeft
             ? <button className='button1' onClick={() => handleClicks({ type: 'previous' })}>‹</button>
-            : <button disabled data-testid='buttonL' className='button2'>‹</button>
+            : <button data-testid='buttonL' className='button2' disabled>‹</button>
           }
         <div data-testid='RICList' className='RICList' style={{ '--offset': initialIndex }}>
           {relatedItems.map((id, i) => (
@@ -108,8 +107,8 @@ const RelatedList = ({ productId, productClick, toggleOverlay, related, product 
         }
 
           {isRight
-            ? <button className='button1' onClick={() => handleClicks({ type: 'next' })}>›</button>
-            : <button disabled data-testid='buttonR' className='button2'>›</button>
+            ? <button data-testid='buttonR2' className='button1' onClick={() => handleClicks({ type: 'next' })}>›</button>
+            : <button data-testid='buttonR' className='button2' disabled>›</button>
           }
       </div>
     </div>

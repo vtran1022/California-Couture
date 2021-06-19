@@ -24,11 +24,12 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
   }, [style])
 
   useEffect( () => {
-    for (var i = 0; i < skus.length; i++) {
+    let len = skus.length;
+    for (let i = 0; i < len; i++) {
       if (Object.values(skus[i]).includes(selectedSize)) {
         setSKU(skus[i]);
         var arrayOfQuantities = [];
-        for (var j = 0; j < skus[i].quantity; j++) {
+        for (let j = 0; j < skus[i].quantity; j++) {
           arrayOfQuantities.push(j + 1);
         }
       }
@@ -48,8 +49,8 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
       <span id='category'>{currentProduct.category}</span><br></br>
 
       {!price.sale
-        ?<span className='price'>Price: {price.default}</span>
-        :<span className='price-sale'>Price: {price.sale} <strike>{price.default}</strike></span>}
+        ?<span className='price'>Price: ${price.default}</span>
+        :<span className='price-sale'>Price: ${price.sale} <strike>${price.default}</strike></span>}
 
       <div className='styles-box'>
         <h1><strong>Style</strong> > <em>{style.name}</em></h1>
@@ -82,27 +83,25 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
 
 
       <div className='quantity-select'>
-      <select name='quantity' id='quantity-select' onChange={(e) => setQuantity(e.target.value)}>
-        <option>Quantity</option>
-        <option>Please Select a Size First</option>
-        {
-          !quantities
-          ? null
-          : quantities.map ((quantity, index) =>{
+      {!quantities
+       ? null
+       : <select name='quantity' id='quantity-select' onChange={(e) => setQuantity(e.target.value)}>
+          <option>Quantity</option>
+          {quantities.map ((quantity, index) =>{
             if (index < 15) {
-              return <option key={index}>{quantity}</option>
-            }}
-            )
+              return <option key={index}>{quantity}</option>;
+            }})
           }
       </select>
+    }
       </div>
 
-      {!selectedQuantity
-      ? null
-      : <div className="cart-submit">
-        <input type="submit" value="Add to Cart" ></input>
+      <div className="cart-submit">
+        {!selectedQuantity
+        ?  <input type="submit" value="Add to Cart" hidden ></input>
+        : <input type="submit" value="Add to Cart" ></input>
+        }
       </div>
-      }
     </form>
 
   )
