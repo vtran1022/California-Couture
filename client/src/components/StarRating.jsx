@@ -7,13 +7,13 @@ const StarRating = ({ rating }) => {
       stars.push('100%');
       rating -= 1;
     } else if (rating >= 0.75) {
-      stars.push('67%')
+      stars.push('55%')
       rating -= 0.75
     } else if (rating >= 0.5) {
-      stars.push('55%');
+      stars.push('40%');
       rating -= 0.5;
     } else if (rating >= 0.25) {
-      stars.push('40%');
+      stars.push('15%');
       rating -= 0.25;
     } else {
       stars.push('0%');
@@ -23,7 +23,7 @@ const StarRating = ({ rating }) => {
     <React.Fragment>
       {stars.map((item, i) => (
         <div className='star-container' key={i}>
-          <span id='starRating' style={{'--width': item }}>☆</span>
+          <div id='starRating' style={{'--width': item }}>☆</div>
         </div>
       ))}
     </React.Fragment>
