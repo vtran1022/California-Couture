@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Thumbnails from './Thumbnails.jsx';
 import ZoomedPreview from './ZoomedPreview.jsx';
 
+import ThumbnailGallery from './ThumbnailGallery.jsx';
+
 const ImageGallery = ({ style, styleid, theme }) => {
   const [showView, setView] = useState(false);
   const [photoList, setPhotoList] = useState(style.photos);
@@ -52,7 +54,11 @@ const ImageGallery = ({ style, styleid, theme }) => {
       <div className={showView
         ? 'enlarged-thumbs-overlay'
         : 'default-thumbs-overlay'}>
-          {photoList.map((photo, index) =>
+          <ThumbnailGallery
+            photolist={photoList}
+            handleThumbnailClick={handleThumbnailClick}/>
+
+          {/* {photoList.map((photo, index) =>
             <Thumbnails
             key={index}
             cname={
@@ -62,7 +68,7 @@ const ImageGallery = ({ style, styleid, theme }) => {
             photo={ photo }
             photoList={ photoList }
             handleThumbnailClick={handleThumbnailClick}/>
-          )}
+          )} */}
       </div>
 
 
