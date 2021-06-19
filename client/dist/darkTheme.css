@@ -699,7 +699,7 @@
 
 .RICList {
   display: inline-flex;
-  width: 1050px;
+  width: 1150px;
   height: auto;
   overflow: hidden;
 }
@@ -743,12 +743,12 @@
   border: 1px solid #2c59a5;
   width: 200px;
   height: 280px;
-  margin-right: 10px;
+  margin-right: 30px;
   padding-bottom: 1.5px;
   float: left;
   background-color: #232323;
 
-  transform: translateX(calc(105% * var(--offset)));
+  transform: translateX(calc(113% * var(--offset)));
   transition: transform 0.5s ease-in-out;
 }
 
