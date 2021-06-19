@@ -71,8 +71,7 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
                      data-testid='image-holder'></div>
                 <Gallery
                   gallery={gallery}
-                  changeImage={changeImage}
-                  mouseOut={mouseOut}/>
+                  changeImage={changeImage}/>
               </>
             : <span data-testid='no-gallery' hidden></span>
           }

@@ -52,7 +52,7 @@ const Gallery = ({ gallery, changeImage, mouseOut }) => {
     <div data-testid='gallery-image' className='gallery-container'>
       {isLeft
         ? <button className='g-button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>
-        : <button className='g-button2' onMouseOut={mouseOut}>‹</button>
+        : <button data-testid='g-buttonL' className='g-button2' disabled >‹</button>
       }
       <div data-testid='g-container' className='g-container' style={{ '--offset': initialIndex }}>
         {images.map((image, i) => (
