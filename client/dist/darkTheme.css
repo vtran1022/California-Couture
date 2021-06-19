@@ -76,6 +76,7 @@
 .review-container {
   padding-top: 20px;
   width: auto;
+  min-width: 80%;
   display: grid;
   margin-left: 5%;
   grid-template-columns: 30% 70%;
@@ -124,7 +125,7 @@
   border: 1px solid #2c59a5;
   margin: 5px;
   height: auto;
-  width: fit-content;
+  width: auto;
   grid-column: 1;
   grid-row-start: 1;
   grid-row-end: 3;
