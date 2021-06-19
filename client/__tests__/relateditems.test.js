@@ -262,7 +262,7 @@ describe('Thumbnail Gallery', () => {
 });
 
 describe('Thumbnail Gallery', () => {
-  test('left arrow disabled on initial render, right arrow disabled when photos.length < 5', () => {
+  test('right arrow disabled when photos.length < 5', () => {
     const photos = [
       {
           "thumbnail_url": "https://images.unsplash.com/photo-1561861422-a549073e547a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
@@ -276,13 +276,12 @@ describe('Thumbnail Gallery', () => {
 
     const { getByTestId } = render( <Gallery gallery={photos}/> );
 
-    expect(getByTestId('g-buttonL')).toBeDisabled();
     expect(getByTestId('g-buttonR2')).toBeDisabled();
   });
 });
 
 describe('Thumbnail Gallery', () => {
-  test('left arrow disabled on initial render, right arrow enabled when photos.length > 4', () => {
+  test('right arrow enabled when photos.length > 4', () => {
     const photos = [
       {
           "thumbnail_url": "https://images.unsplash.com/photo-1561861422-a549073e547a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
@@ -312,7 +311,6 @@ describe('Thumbnail Gallery', () => {
 
     const { getByTestId } = render( <Gallery gallery={photos}/> );
 
-    expect(getByTestId('g-buttonL')).toBeDisabled();
     expect(getByTestId('g-buttonR')).toBeEnabled();
   });
 });
