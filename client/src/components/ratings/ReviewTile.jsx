@@ -87,12 +87,12 @@ const ImageModal = (props) => {
   const changePhoto = (idx) => {
     setIndex(idx);
   };
-
-  if (props.idx != -1) {
+  let index = mainIndex === -1 ? props.idx : mainIndex;
+  if (props.idx !== -1) {
     return (<div className='img-modal'>
       <div className='main'><img src={mainIndex === -1 ? props.photos[props.idx].url : props.photos[mainIndex].url} alt='review image'/></div>
       <div className='tray'>{props.photos.map((p, idx) => {
-        return  <img src={p.url} className='thumb' alt='review thumbnail' width={64} height={64} onClick={() => changePhoto(idx)}/>
+        return  <img src={p.url} className={idx === index ? 'thumb selected' : 'thumb' } alt='review thumbnail' width={64} height={64} onClick={() => changePhoto(idx)}/>
       })}</div>
     </div>)
     return
