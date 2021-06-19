@@ -13,7 +13,7 @@ const StarRating = ({ rating }) => {
       stars.push('40%');
       rating -= 0.5;
     } else if (rating >= 0.25) {
-      stars.push('15%');
+      stars.push('30%');
       rating -= 0.25;
     } else {
       stars.push('0%');

@@ -3,28 +3,40 @@ import StarRating from './StarRating.jsx';
 import Atelier from '../Atelier.js';
 
 const AvgRating = ({ productId }) => {
-  const [ratings, setRatings] = useState([]);
+  const [ratings, setRatings] = useState({});
   const [avgScore, setAverage] = useState(0);
 
-  const averageScore = (array) => {
-    const average = Math.round(array.reduce((a, b) => Number(a) + Number(b) / array.length)).toFixed(2);
-    return average;
+  const averageScore = (data) => {
+    let sum = 0;
+    let ratings = 0;
+    for (let number in data) {
+      sum += Number(number) * Number(data[number]);
+      ratings += Number(data[number]);
+    }
+    return (sum / ratings).toFixed(2);
   };
 
   const fetchRatings = async () => {
-    let reviewData = await Atelier.getMeta(productId);
-
-    let ratings = Object.values(reviewData.ratings);
-    setRatings(ratings);
-
-    ratings.length !== 0
-      ? setAverage(averageScore(ratings))
-      : null
+    const data = await Atelier.getMeta(productId);
+    setRatings(data.ratings);
   };
 
   useEffect(() => {
     fetchRatings().catch((err) => console.log(`Error fetching ratings: ${err}`));
   }, [productId]);
+
+  useEffect(() => {
+    const ratingsVal = Object.values(ratings);
+    let sum;
+
+    ratingsVal.length !== 0
+      ? sum = Math.round(ratingsVal.reduce((a, b) => Number(a) + Number(b) / ratingsVal.length)).toFixed(2)
+      : null;
+
+    sum !== 0
+      ? setAverage(averageScore(ratings))
+      : null;
+  }, [ratings]);
 
     return (
       <>
