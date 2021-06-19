@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import errimage from '../../imgs/imagenot.png';
 
-const Gallery = ({ gallery, changeImage, mouseOut }) => {
+const Gallery = ({ gallery, changeImage }) => {
   const [images, setImages] = useState([]);
   const [initialIndex, setIndex] = useState(0);
   const [isRight, setRight] = useState(false);
@@ -52,7 +52,7 @@ const Gallery = ({ gallery, changeImage, mouseOut }) => {
     <div data-testid='gallery-image' className='gallery-container'>
       {isLeft
         ? <button className='g-button1' onClick={() => handleClick({ type: 'previous' })}>‹</button>
-        : <button data-testid='g-buttonL' className='g-button2' disabled >‹</button>
+        : <button data-testid='g-buttonL' className='g-button2' disabled>‹</button>
       }
       <div data-testid='g-container' className='g-container' style={{ '--offset': initialIndex }}>
         {images.map((image, i) => (
