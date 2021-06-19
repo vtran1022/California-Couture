@@ -8,13 +8,6 @@ var characteristicBreakdown = {
   'Length': ['Runs Short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long'],
   'Fit': ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long']
 };
-var errResponses = {
-  rating: 'Please enter a rating.\n',
-  length: 'Please enter at least 50 characters in your review body.\n',
-  name: 'Please enter a name.\n',
-  email: 'Please enter an email.\n',
-  emailVal: 'Please make sure you have entered a valid email.\n',
-}
 
 
 /*
