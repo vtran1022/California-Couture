@@ -75,12 +75,14 @@
 
 .review-container {
   padding-top: 20px;
-  width: 100%;
+  width: auto;
+  min-width: 80%;
   display: grid;
-  margin-left: 15%;
+  margin-left: 5%;
   grid-template-columns: 30% 70%;
   grid-template-rows: 40px 1fr 20px;
   height: 600px;
+  column-gap: 10px;
 }
 
 .review-table {
@@ -114,7 +116,6 @@
 .list-container {
   height: auto;
   width: auto;
-  width: fit-content;
   overflow-y: scroll;
   grid-column: 2;
   grid-row: 2;
@@ -124,7 +125,7 @@
   border: 1px solid #2c59a5;
   margin: 5px;
   height: auto;
-  width: fit-content;
+  width: auto;
   grid-column: 1;
   grid-row-start: 1;
   grid-row-end: 3;
@@ -148,21 +149,19 @@
   border-radius: 10px;
 }
 
-.form-label label {
-  float: left;
-}
-
-.form-label input {
-  float: right;
-
+.form-label {
+  display: block;
+  margin: 5px auto 5px auto;
+  width: fit-content;
 }
 
 .modal-form {
   width: 400px;
   margin: 10px;
 }
-.modal-form div {
-  margin: 5px;
+
+.modal-form .form-error {
+  background-color: #60c7cb;
 }
 .rating-selector + label {
   display: block;
@@ -256,6 +255,12 @@
 
 .img-modal .thumb {
   margin: 5px;
+}
+
+.img-modal .selected {
+  border: 2px #f4f4f4 solid;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 .tile-body {
@@ -707,7 +712,7 @@
 
 .RICList {
   display: inline-flex;
-  width: 1050px;
+  width: 1150px;
   height: auto;
   overflow: hidden;
 }
@@ -751,12 +756,12 @@
   border: 1px solid #2c59a5;
   width: 200px;
   height: 280px;
-  margin-right: 10px;
+  margin-right: 30px;
   padding-bottom: 1.5px;
   float: left;
   background-color: #232323;
 
-  transform: translateX(calc(105% * var(--offset)));
+  transform: translateX(calc(113% * var(--offset)));
   transition: transform 0.5s ease-in-out;
 }
 
@@ -959,7 +964,6 @@
   content: "★";
   position: absolute;
   left: 0vh;
-  top: -0.1vh;
   width: var(--width);
   overflow: hidden;
   color: #2c59a5;
