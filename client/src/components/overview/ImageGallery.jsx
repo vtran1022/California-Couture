@@ -26,7 +26,7 @@ const ImageGallery = ({ style, styleid, theme }) => {
   }
 
   const handleArrowClick = (e) => {
-    switch (e.target.className) {
+    switch (e.target.id) {
       case 'left-button' :
         if (photoIndex > 0) {
           let next = photoIndex - 1;
@@ -47,18 +47,15 @@ const ImageGallery = ({ style, styleid, theme }) => {
   return (
     <div
     className={ showView
-      ? 'image-gallery-enlarged'
+      ? 'enlarged-image-gallery'
       : 'image-gallery'}
     >
 
       <div className={showView
-        ? 'enlarged-thumbs-overlay'
-        : 'default-thumbs-overlay'}>
-          <ThumbnailGallery
-            photolist={photoList}
-            handleThumbnailClick={handleThumbnailClick}/>
-
-          {/* {photoList.map((photo, index) =>
+        ? 'enlarged-image-gallery-overlay'
+        : 'image-gallery-overlay'}>
+        <div id='thumbs-reel'>
+          {photoList.map((photo, index) =>
             <Thumbnails
             key={index}
             cname={
@@ -68,7 +65,11 @@ const ImageGallery = ({ style, styleid, theme }) => {
             photo={ photo }
             photoList={ photoList }
             handleThumbnailClick={handleThumbnailClick}/>
-          )} */}
+          )}
+          </div>
+        <a id='left-button' onClick={handleArrowClick}>&#10094;</a>
+        <a id='right-button' onClick={handleArrowClick}>&#10095;</a>
+        <i className="fas fa-expand enlarge-button" onClick={handleViewClick}></i>
       </div>
 
 
@@ -85,13 +86,6 @@ const ImageGallery = ({ style, styleid, theme }) => {
             alt='One of the preview pictures of the selected style'/>
         </div>
       }
-
-
-
-
-      <a className='left-button' onClick={handleArrowClick}>&#10094;</a>
-      <a className='right-button' onClick={handleArrowClick}>&#10095;</a>
-      <i className="fas fa-expand enlarge-button" onClick={handleViewClick}></i>
     </div>
   )
 }
