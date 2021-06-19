@@ -68,12 +68,13 @@
 
 .review-container {
   padding-top: 20px;
-  width: 100%;
+  width: auto;
   display: grid;
-  margin-left: 15%;
+  margin-left: 5%;
   grid-template-columns: 30% 70%;
   grid-template-rows: 40px 1fr 20px;
   height: 600px;
+  column-gap: 10px;
 }
 
 .review-table {
@@ -140,22 +141,21 @@
   border-radius: 10px;
 }
 
-.form-label label {
-  float: left;
-}
-
-.form-label input {
-  float: right;
-
+.form-label {
+  display: block;
+  margin: 5px auto 5px auto;
+  width: fit-content;
 }
 
 .modal-form {
   width: 400px;
   margin: 10px;
 }
-.modal-form div {
-  margin: 5px;
+
+.modal-form .form-error {
+  background-color: yellow;
 }
+
 .rating-selector + label {
   display: block;
 }
@@ -247,6 +247,12 @@
 
 .img-modal .thumb {
   margin: 5px;
+}
+
+.img-modal .selected {
+  border: 2px #f4f4f4 solid;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 .tile-body {
