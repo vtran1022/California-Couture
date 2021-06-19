@@ -140,7 +140,7 @@ const Ratings = (props) => {
       <div className='ratings-forms'>
         <form>
           {/* sort drop down */}
-          <label>Sort by: </label>
+          <label>Sort by: &nbsp;</label>
           <select value={sort} onChange={handleChange}>
             <option value='helpful'>Helpful</option>
             <option value='newest'>Newest</option>
@@ -148,7 +148,7 @@ const Ratings = (props) => {
           </select>
         </form>
         <form>
-          <label htmlFor='search'>Search Reviews: </label>
+          <label htmlFor='search'>Search Reviews: &nbsp;</label>
           <input id='search' type='text' value={search} onChange={handleSearch}></input>
         </form>
       </div>
@@ -169,7 +169,7 @@ const Ratings = (props) => {
           setShowForm(true);
         }}>Add a Review</button>
         <button onClick={clearFilters}>Clear all Filters</button>
-        <label> Showing {filtered.length} of {Object.values(props.meta.ratings).reduce((total, n) => Number(total) + Number(n))} reviews</label>
+        <label className='add-label'> Showing {filtered.length} of {Object.values(props.meta.ratings).reduce((total, n) => Number(total) + Number(n))} reviews</label>
       </div>
       {/* product breakdown */}
       <div className='breakdown'>

@@ -75,9 +75,8 @@
 
 .review-container {
   padding-top: 20px;
-  width: auto;
+  width: 1150px;
   display: grid;
-  margin-left: 5%;
   grid-template-columns: 30% 70%;
   grid-template-rows: 40px 1fr 20px;
   height: 600px;
@@ -99,7 +98,9 @@
 
 .review-buttons button {
   background-color: #2c59a5;
-  color: black;
+  border: 1px solid white;
+  color: white;
+  font-family: inherit;
   margin-right: 3px;
 }
 .review-buttons button:hover{
@@ -108,11 +109,25 @@
 }
 
 .ratings-forms {
-  grid-column: 2;
-  grid-row: 1
+  display: inline-flex;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-top: 10px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.ratings-forms select {
+  font-family: inherit;
+  font-size: 12px;
+}
+
+.add-label {
+  font-size: 12px;
 }
 
 .list-container {
+  margin-left: 10px;
   height: auto;
   width: auto;
   overflow-y: scroll;
@@ -123,7 +138,7 @@
 .breakdown {
   border: 1px solid #2c59a5;
   margin: 5px;
-  height: auto;
+  height: 600px;
   width: fit-content;
   grid-column: 1;
   grid-row-start: 1;
@@ -176,7 +191,7 @@
   border-bottom: 1px solid #2c59a5;
   display: grid;
   grid-template-columns: 300px 300px auto auto;
-  grid-template-rows: auto auto 10px auto auto 50px fit-content(100px) 20px 50px;
+  grid-template-rows: auto auto 10px auto auto 15px fit-content(100px) 20px 30px;
 }
 
 .review-stars {
@@ -187,7 +202,21 @@
   grid-column: 1;
   grid-row: 2;
   font-weight: bold;
+  font-size: 13px;
 }
+
+.tile-body {
+  font-size: 13px;
+}
+
+.tile-recommend {
+  font-size: 10px;
+}
+
+.tile-helpful {
+  font-size: 10px;
+}
+
 .tile-date {
   grid-column: 4;
   grid-row: 1;
@@ -295,7 +324,7 @@
   display: inline-block;
   height: 10px;
   position: relative;
-  background: #959797;
+  background: #a9aaaa;
   width: 250px;
   margin-left: 5px;
   margin-right: 5px;
@@ -313,7 +342,7 @@
   border: 1px solid #f4f4f4;
   position: relative;
   background: #2c59a5;
-  height: 10px;
+  height: 5px;
   width: auto;
 }
 
@@ -347,7 +376,7 @@
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 10px solid #2c59a5;
+  border-top: 10px solid white;
   position: relative;
 }
 .review-container mark {
@@ -363,6 +392,11 @@
 
 .helpful-button {
   background: #2c59a5;
+  border: 1px solid white;
+  font-family: inherit;
+  color: white;
+  font-size: 10px;
+  margin-right: 1px;
 }
 
 .review-container button:disabled {

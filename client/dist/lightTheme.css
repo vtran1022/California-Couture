@@ -67,10 +67,8 @@
 }
 
 .review-container {
-  padding-top: 20px;
-  width: auto;
+  width: 1150px;
   display: grid;
-  margin-left: 5%;
   grid-template-columns: 30% 70%;
   grid-template-rows: 40px 1fr 20px;
   height: 600px;
@@ -90,8 +88,9 @@
 }
 
 .review-buttons button {
+  border: 1px solid black;
+  font-family: inherit;
   background-color: #60c7cb;
-  color: black;
   margin-right: 3px;
 
 }
@@ -101,11 +100,26 @@
 }
 
 .ratings-forms {
+  display: inline-flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-left: 10px;
   grid-column: 2;
-  grid-row: 1
+  grid-row: 1;
+  font-size: 14px;
+}
+
+.ratings-forms select {
+  font-family: inherit;
+  font-size: 12px;
+}
+
+.add-label {
+  font-size: 12px;
 }
 
 .list-container {
+  margin-left: 10px;
   height: auto;
   width: auto;
   overflow-y: scroll;
@@ -116,7 +130,7 @@
 .breakdown {
   border: 1px solid black;
   margin: 5px;
-  height: auto;
+  height: 600px;
   width: fit-content;
   grid-column: 1;
   grid-row-start: 1;
@@ -170,7 +184,7 @@
   border-bottom: 1px solid black;
   display: grid;
   grid-template-columns: 300px 300px auto auto;
-  grid-template-rows: auto auto 10px auto auto 50px fit-content(100px) 20px 50px;
+  grid-template-rows: auto auto 10px auto auto 15px fit-content(100px) 20px 30px;
 }
 
 .review-stars {
@@ -181,7 +195,21 @@
   grid-column: 1;
   grid-row: 2;
   font-weight: bold;
+  font-size: 13px;
 }
+
+.tile-body {
+  font-size: 13px;
+}
+
+.tile-recommend {
+  font-size: 10px;
+}
+
+.tile-helpful {
+  font-size: 10px;
+}
+
 .tile-date {
   grid-column: 4;
   grid-row: 1;
@@ -306,7 +334,7 @@
   border: 1px solid black;
   position: relative;
   background: #60c7cb;
-  height: 10px;
+  height: 5px;
   width: auto;
 }
 
@@ -356,6 +384,10 @@
 
 .helpful-button {
   background: none;
+  border: 1px solid black;
+  font-family: inherit;
+  font-size: 10px;
+  margin-right: 1px;
 }
 
 .review-container button:disabled {
