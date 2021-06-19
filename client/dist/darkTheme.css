@@ -388,7 +388,7 @@
 }
 
 .image-gallery, .enlarged-image-gallery {
-  border: 1px black solid;
+  border: 1px #2c59a5 solid;
   background-color: #1a1a1a;
   display: flex;
   align-items: center;
@@ -497,7 +497,7 @@
   width: 150px;
   opacity: 1;
   border: 1px solid lightgray;
-  background-color: #1a1a1a;
+  background-color: #2c59a5;
   background-repeat: no-repeat
 }
 
