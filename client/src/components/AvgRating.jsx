@@ -11,9 +11,7 @@ const AvgRating = ({ productId }) => {
     let ratings = 0;
     for (let number in data) {
       sum += Number(number) * Number(data[number]);
-      console.log(sum);
       ratings += Number(data[number]);
-      console.log(ratings);
     }
     return (sum / ratings).toFixed(2);
   };
