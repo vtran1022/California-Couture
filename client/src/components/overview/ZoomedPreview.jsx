@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ZoomedPreview = ({ view, preview }) => {
+const ZoomedPreview = ({ preview }) => {
   const [[x, y], setXY] = useState([0, 0]);
   const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
   const [showMagnifier, setShowMagnifier] = useState(false);

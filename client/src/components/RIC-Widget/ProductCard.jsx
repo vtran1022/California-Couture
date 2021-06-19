@@ -86,10 +86,10 @@ const ProductCard = ({ productId, index, listState, triggerDelete, triggerModal,
           : <span className='prod-price'>${price.default}</span>
         }
         <br />
-        <span id='prod-star'>
+        <div id='prod-star'>
           <AvgRating
             productId={productId}/>
-        </span>
+        </div>
       </div>
     </span>
   );
