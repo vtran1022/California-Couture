@@ -5,7 +5,6 @@ import Ratings from './RatingsReview.jsx';
 import RICWidget from './RIC-Widget.jsx';
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
-import StarRating from './StarRating.jsx';
 
 
 class App extends React.Component {
