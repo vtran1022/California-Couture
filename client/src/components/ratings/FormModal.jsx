@@ -56,7 +56,7 @@ const FormModal = (props) => {
   };
   const validateForm = () => {
     var valid = true;
-    var obj = {}
+    var obj = {};
     if (formData.rating === -1) {
       obj.rating = true;
       valid = false;
