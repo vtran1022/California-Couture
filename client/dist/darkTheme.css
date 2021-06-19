@@ -101,7 +101,7 @@
   border: 1px solid white;
   color: white;
   font-family: inherit;
-  margin-right: 3px;
+  margin-left: 10px;
 }
 .review-buttons button:hover{
   color: #ecf4f4;
@@ -124,11 +124,12 @@
 
 .add-label {
   font-size: 12px;
+  margin-left: 10px;
 }
 
 .list-container {
   margin-left: 10px;
-  height: auto;
+  height: 530px;
   width: auto;
   overflow-y: scroll;
   grid-column: 2;

@@ -57,7 +57,7 @@ const Breakdown = (props) => {
       let value = data[char].value;
       let pos = Number(value) * 60;
       res.push(
-        <div key={char}>
+        <div key={char} className='qualities'>
           {char}: <br />
           <div className='review-indicator' style={{ marginLeft: `${pos + 5}px` }} />
           <div className='review-char-breakdown'>
@@ -84,7 +84,7 @@ const Breakdown = (props) => {
 
   //render
   return (<div className='review-breakdown'>
-    <b className='rating-title'>Ratings Breakdown</b> <br/>
+    <b className='rating-title'>Ratings Breakdown</b>
     <div>{avg} <StarRating rating={avg} key={props.data.id} /></div> <br />
     {rec}% of reviewers recommend this product. <br />
     {bd} <br />
