@@ -14,22 +14,25 @@ const Description = ({ currentProduct }) => {
   return (
     <div className='description-features'>
       <div className='description'>
-      <h1>{slogan}</h1>
+      <h3>{slogan}</h3>
       <span>{description}</span><br></br>
       </div>
 
       <div className='features'>
-        <span className='feature'>Features:</span>
+        <b className='feature-title'>Features:</b>
+
+        <ul>
         {features.map((feature, index) =>
           feature.value !== null
-          ? <span
+          ? <li
           key={index}
           className='feature'>
-          ✓{feature.feature} - {feature.value}</span>
-          : <span
+          &nbsp; {feature.feature} - {feature.value}</li>
+          : <li
           key={index}
           className='feature'>
-          ✓{feature.feature}</span>)}
+          &nbsp; {feature.feature}</li>)}
+        </ul>
         </div>
       </div>
   );

@@ -44,14 +44,10 @@ const ImageGallery = ({ style, styleid, theme }) => {
 
   return (
     <div
-    className={ showView
-      ? 'enlarged-image-gallery'
-      : 'image-gallery'}
+    className='image-gallery'
     >
 
-      <div className={showView
-        ? 'enlarged-image-gallery-overlay'
-        : 'image-gallery-overlay'}>
+      <div className='image-gallery-overlay'>
         <div id='thumbs-reel'>
           {photoList.map((photo, index) =>
             <Thumbnails
@@ -64,26 +60,22 @@ const ImageGallery = ({ style, styleid, theme }) => {
             photoList={ photoList }
             handleThumbnailClick={handleThumbnailClick}/>
           )}
+          <i className="fas fa-expand enlarge-button" onClick={handleViewClick}></i>
           </div>
         <a id='left-button' onClick={handleArrowClick}>&#10094;</a>
         <a id='right-button' onClick={handleArrowClick}>&#10095;</a>
-        <i className="fas fa-expand enlarge-button" onClick={handleViewClick}></i>
       </div>
 
 
 
-      {showView
-        ? <ZoomedPreview
-        preview={ currentPhoto.url }
-        />
-        : <div className='preview-container'>
+<div className='preview-container'>
           <img
             className='preview'
             onClick={handleViewClick}
             src={ currentPhoto.url }
             alt='One of the preview pictures of the selected style'/>
         </div>
-      }
+
     </div>
   )
 }

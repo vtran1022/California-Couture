@@ -30,6 +30,7 @@ const Overview = ({ theme, productId, styles, product }) => {
 
   return (
     <div data-testid="overview-1" className='overview'>
+      <div className='first-layer'>
         <ImageGallery
           key='1'
           style={ style }
@@ -44,6 +45,7 @@ const Overview = ({ theme, productId, styles, product }) => {
         handleStyleSelect={ handleStyleSelect }
         currentProduct={ currentProduct }
         />
+      </div>
 
         <Description
         key='3'

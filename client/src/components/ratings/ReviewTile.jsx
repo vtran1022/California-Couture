@@ -72,7 +72,7 @@ const ReviewTile = (props) => {
         <span className='tile-body'>{out}</span>
         <span className='tile-recommend'>{props.review.recommend ? '✓ I recommend this product' : null}</span>
         {props.review.response ? <span className='tile-response'>Response: {props.review.response}</span> : null}
-        <span className='tile-helpful'>Helpful? <button disabled={helpful} onClick={handleHelpful} className='helpful-button' value='Yes'>Yes</button> ({props.review.helpfulness + (clicked ? 1 : 0)})</span>
+        <span className='tile-helpful'>Was this review helpful? <button disabled={helpful} onClick={handleHelpful} className='helpful-button' value='Yes'>Yes</button> ({props.review.helpfulness + (clicked ? 1 : 0)}) <button className='helpful-button' disabled={helpful}>No</button> (0) </span>
         <span className='tile-images'>{props.review.photos.map((p, idx) => <img key={p.id} id={p.id} src={p.url} width={50} height={50} alt={'review image' + idx} onClick={e => openModal(idx)}></img>)}</span>
         {imgModal !== -1 ? <ImageModal idx={imgModal} photos={props.review.photos} /> : null}
       </div>

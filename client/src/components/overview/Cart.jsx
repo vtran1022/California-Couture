@@ -38,22 +38,21 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
   }, [selectedSize]);
 
   return (
-    <form className='cart' data-testid="cart-1" onSubmit={handleSubmit}>
+    <div className='cart' data-testid="cart-1" onSubmit={handleSubmit}>
 
+      <span className="cart-desc">
       <div className='cart-ratings'>
       <AvgRating productId={ currentProduct.id } />
       </div>
-
-      <span id='name'>{currentProduct.name}</span><br></br>
-
-      <span id='category'>{currentProduct.category}</span><br></br>
-
+        <span id='name'>{currentProduct.name} </span>
+      <span id='category'>{currentProduct.category} </span>
       {!price.sale
         ?<span className='price'>Price: ${price.default}</span>
         :<span className='price-sale'>Price: ${price.sale} <strike>${price.default}</strike></span>}
 
+      </span>
+
       <div className='styles-box'>
-        <h1><strong>Style</strong> > <em>{style.name}</em></h1>
         <div className='styles'>
         {stylesList.map( (stylePic, index) => {
           return <div className='style' key={stylePic.style_id}>
@@ -102,7 +101,7 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
         : <input type="submit" value="Add to Cart" ></input>
         }
       </div>
-    </form>
+    </div>
 
   )
 

@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = 3000 || process.env.PORT;
+const PORT = 2200 || process.env.PORT;
 
 const expressStaticGzip = require('express-static-gzip');
 const compression = require('compression')
