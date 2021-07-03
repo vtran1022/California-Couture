@@ -62,13 +62,13 @@ const ImageGallery = ({ style, styleid, theme }) => {
           )}
           <i className="fas fa-expand enlarge-button" onClick={handleViewClick}></i>
           </div>
-        <a id='left-button' onClick={handleArrowClick}>&#10094;</a>
-        <a id='right-button' onClick={handleArrowClick}>&#10095;</a>
+        {/* <a id='left-button' onClick={handleArrowClick}>&#10094;</a> */}
+        {/* <a id='right-button' onClick={handleArrowClick}>&#10095;</a> */}
       </div>
 
 
 
-<div className='preview-container'>
+        <div className='preview-container'>
           <img
             className='preview'
             onClick={handleViewClick}
