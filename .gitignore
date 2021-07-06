@@ -5,3 +5,4 @@ package-lock.json
 vy-test-notes
 coverage
 client/dist/bundle.js.br
+.DS_Store
