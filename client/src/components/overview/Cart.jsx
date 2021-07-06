@@ -70,17 +70,19 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
         })}
       </div>
 
-      <div className='size-select'>
-      <select name='size' id='size-select' onChange={(e) => setSize(e.target.value)}>
-        <option>Select Size</option>
+
+      <div className="cart-buttons">
+      {/* <span className='size-select'> */}
+      <select className='cart-size' onChange={(e) => setSize(e.target.value)}>
+        <option>--Select Size--</option>
         {skus.map((sku, index) =>
         <option key={index}>{sku.size}</option>)}
       </select>
-      </div>
+      {/* </span> */}
 
 
-      <div className='quantity-select'>
-      {!quantities
+      {/* <span className='quantity-select'> */}
+      {/* {!quantities
        ? null
        : <select name='quantity' id='quantity-select' onChange={(e) => setQuantity(e.target.value)}>
           <option>Quantity</option>
@@ -90,15 +92,29 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
             }})
           }
       </select>
-    }
+    } */}
+    <select className="cart-quanity">
+      <option>--</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+      {/* </span> */}
       </div>
 
       <div className="cart-submit">
-        {!selectedQuantity
-        ?  <input type="submit" value="Add to Cart" hidden ></input>
-        : <input type="submit" value="Add to Cart" ></input>
-        }
+        <input type="submit" value="Add to Cart" ></input>
       </div>
+
+      <div className="social-media">
+      <a href='https://facebook.com' target="_parent"><i className="fab fa-facebook-f"></i></a>
+      <a href='https://twitter.com' target="_parent"><i className="fab fa-twitter"></i></a>
+      <a href='https://pinterest.com' target="_parent"><i className="fab fa-pinterest-p"></i></a>
+      </div>
+
+
     </div>
 
   )

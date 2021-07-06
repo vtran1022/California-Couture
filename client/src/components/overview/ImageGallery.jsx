@@ -60,7 +60,7 @@ const ImageGallery = ({ style, styleid, theme }) => {
             photoList={ photoList }
             handleThumbnailClick={handleThumbnailClick}/>
           )}
-          <i className="fas fa-expand enlarge-button" onClick={handleViewClick}></i>
+          {/* <i className="fas fa-expand enlarge-button" onClick={handleViewClick}></i> */}
           </div>
         {/* <a id='left-button' onClick={handleArrowClick}>&#10094;</a> */}
         {/* <a id='right-button' onClick={handleArrowClick}>&#10095;</a> */}

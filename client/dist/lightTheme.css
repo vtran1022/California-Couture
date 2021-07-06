@@ -88,10 +88,12 @@
 }
 
 .review-buttons button {
-  border: 1px solid black;
+  border: 1px solid transparent;
   font-family: inherit;
   background-color: #60c7cb;
+  color: white;
   margin-left: 10px;
+  border-radius: 8px;
 }
 .review-buttons button:hover{
   color: #ecf4f4;
@@ -433,12 +435,13 @@
   display: flex;
   flex-direction: row;
   /* justify-content: center; */
+  margin-bottom: 20px;
 }
 
 .image-gallery {
   overflow: hidden;
   width: 780px;
-  height: 550px;
+  height: 500px;
   display:flex;
   justify-content: center;
 }
@@ -459,7 +462,7 @@
 .preview {
   /* position: relative; */
   width: 400px;
-  height: 550px;
+  height: 500px;
   object-fit: fill;
 }
 
@@ -470,7 +473,7 @@
   /* justify-content: center; */
   position: relative;
   left: 20px;
-  width: 300px;
+  width: 280px;
   height: 500px;
 }
 
@@ -633,7 +636,7 @@
   color:red
 }
 
-.size-select {
+/* .size-select {
   display:flex;
   justify-content: center;
   width: 15vw;
@@ -643,9 +646,9 @@
 .size-select select {
   width: 150px;
   height: 40px;
-}
+} */
 
-.quantity-select {
+/* .quantity-select {
   display:flex;
   justify-content: center;
   width: 15vw;
@@ -654,9 +657,9 @@
 .quantity-select select {
   width: 150px;
   height: 40px;
-}
+} */
 
-.cart-submit {
+/* .cart-submit {
   width: 30vw;
   display: flex;
   justify-content: center;
@@ -667,7 +670,63 @@
 .cart-submit input {
   width: 321px;
   height: 40px;
+} */
+
+.cart-buttons {
+  margin-bottom: 30px;
+  margin-top: 30px;
 }
+
+.cart-buttons select {
+  font-family: inherit;
+  font-size: 12px;
+  height: 40px;
+}
+
+.cart-size {
+  width: 180px;
+  margin-right: 10px;
+}
+
+.cart-quanity {
+  width: 50px;
+}
+
+.cart-submit input {
+  font-family: inherit;
+  font-size: 15px;
+  border: 1px solid transparent;
+  background-color: #60c7cb;
+  color: white;
+  line-height: 40px;
+  padding-left: 80px;
+  padding-right: 80px;
+  border-radius: 30px;
+}
+
+.social-media {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.social-media a {
+  color: black;
+}
+
+.fa-facebook-f,
+.fa-twitter,
+.fa-pinterest-p {
+  width: 50px;
+}
+
+.fa-facebook-f:hover,
+.fa-twitter:hover,
+.fa-pinterest-p:hover{
+  color: #60c7cb;
+}
+
 
 .styles-box {
   width: 280px;
