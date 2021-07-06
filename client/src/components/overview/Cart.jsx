@@ -40,23 +40,22 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
   return (
     <div className='cart' data-testid="cart-1" onSubmit={handleSubmit}>
 
-      <span className="cart-desc">
+      <div className="cart-desc">
       <div className='cart-ratings'>
       <AvgRating productId={ currentProduct.id } />
       </div>
         <span id='name'>{currentProduct.name} </span>
-      <span id='category'>{currentProduct.category} </span>
+      <span id='category'><b>Category:</b> &nbsp;{currentProduct.category}</span>
       {!price.sale
-        ?<span className='price'>Price: ${price.default}</span>
-        :<span className='price-sale'>Price: ${price.sale} <strike>${price.default}</strike></span>}
-      <span className='cartcolor'>Color:</span>
-      </span>
+        ?<span className='price'><b>Price:</b> &nbsp;${price.default}</span>
+        :<span className='price-sale'><b>Price:</b> &nbsp;${price.sale} <strike>${price.default}</strike></span>}
+      <span className='cartcolor'><b>Style:</b> &nbsp;{style.name}</span>
+      </div>
 
       <div className='styles-box'>
-        <div className='styles'>
         {stylesList.map( (stylePic, index) => {
           return <div className='style' key={stylePic.style_id}>
-            <span className='style-caption'>{stylePic.name}</span>
+            {/* <span className='style-caption'>{stylePic.name}</span> */}
             <img
             className={
               (stylePic === style)
@@ -69,7 +68,6 @@ const Cart = ( { stylesList, style, handleStyleSelect, currentProduct } ) => {
             onClick={(e) => handleStyleSelect(e.currentTarget.getAttribute('pic-id'))}/>
           </div>
         })}
-        </div>
       </div>
 
       <div className='size-select'>
