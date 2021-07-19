@@ -12,7 +12,7 @@ I worked with a team of engineers to build a front-end online retail web applica
 
 # Application Details
 ## Related Items
-A dynamic photo carousel where each product card also renders a thumbnail photo carousel to allow the user to view additional photos. The user can select the star icon to compare the current product item to the related item selected. 
+A dynamic photo carousel where each product card also renders a thumbnail photo carousel to allow the user to view additional photos. The user can select the star icon to bring up a comparison modal that compares the features of the current product item to the related item selected. 
 
 ## Your Outfit
 A dynamic photo carousel where the user can add the current product item to their list or delete the item via the 'x' icon.
@@ -30,10 +30,8 @@ Select photo to view enlarged photo
 <a href="https://drive.google.com/file/d/119IYu1kgEjr46BEKa9lJeET7RK1b611p/view?usp=sharing"><img src="https://drive.google.com/uc?export=view&id=119IYu1kgEjr46BEKa9lJeET7RK1b611p" width="100" height="100"></a>
 <a href="https://drive.google.com/file/d/1bPBO6qhXDHtLBfqUuK3i8JsWIW4peHi7/view?usp=sharing"><img src="https://drive.google.com/uc?export=view&id=1bPBO6qhXDHtLBfqUuK3i8JsWIW4peHi7" width="100" height="100"></a>
 
-
-
-
-
+##### Comparison Modal
+<a href="https://drive.google.com/file/d/1N0Gka123VUXdMmmvwyjrlE_hCImCE9eB/view?usp=sharing"><img src="https://drive.google.com/uc?export=view&id=1N0Gka123VUXdMmmvwyjrlE_hCImCE9eB" width="100" height="100"></a>
 
 
 # Tech Stack
