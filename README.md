@@ -12,10 +12,10 @@ I worked with a team of engineers to build a front-end online retail web applica
 
 # Application Details
 ## Related Items
-A dynamic photo carousel where each product card also renders a thumbnail photo carousel to allow the user to view additional photos. The user can select the star icon to bring up a comparison modal that compares the features of the current product item to the related item selected. 
+A dynamic photo carousel where each product card also renders a thumbnail photo carousel on hover. The user can look through this thumbnail carousel to view additional photos and render them to the product card. The user can select the star icon to bring up a comparison modal that compares the features of the current product item to the related item selected. 
 
 ## Your Outfit
-A dynamic photo carousel where the user can add the current product item to their list or delete the item via the 'x' icon.
+A dynamic photo carousel where the user can add the current product item to their list or delete the item via the 'x' icon. The product cards here also render a thumbnail photo carousel on hover.
 
 # Photos
 Select photo to view enlarged photo
