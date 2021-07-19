@@ -1,5 +1,5 @@
 # California Couture
-I worked with a team of engineers to build a front-end online retail web application. This repo is specifically for the Related Items section of the web application.
+I worked with a team of engineers to build a front-end online retail web application in two weeks. This repo is specifically for the Related Items section of the web application.
 
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/80929887/126221000-2fffe498-30fb-4675-8aae-5b69ffdf7bb2.gif)
 
