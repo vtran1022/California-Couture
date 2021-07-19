@@ -20,12 +20,12 @@ A dynamic photo carousel where the user can add the current product item to thei
 # Photos
 Select photo to view enlarged photo
 
-###### Photo Carousel Images
+##### Photo Carousel Images
 <a href="https://drive.google.com/file/d/1Fa8NhBKB6n6bRc6kdVHc6b5i1U1by6WZ/view?usp=sharing"><img src="https://drive.google.com/uc?export=view&id=1Fa8NhBKB6n6bRc6kdVHc6b5i1U1by6WZ" width="100" height="100"></a>
 <a href="https://drive.google.com/file/d/1oYBg-vJmLeqdS4iNBQB4oG8kuHR3NHfC/view?usp=sharing">
   <img src="https://drive.google.com/uc?export=view&id=1oYBg-vJmLeqdS4iNBQB4oG8kuHR3NHfC" width="100" height="100"></a>
 
-###### Close-up on Product Cards w/ Thumbnail Images
+##### Close-up on Product Cards w/ Thumbnail Images
 <a href="https://drive.google.com/file/d/1yCmjQf9a07VgFJ2exUuFPM_Z2D3rJoKV/view?usp=sharing"><img src="https://drive.google.com/uc?export=view&id=1yCmjQf9a07VgFJ2exUuFPM_Z2D3rJoKV" width="100" height="100"></a>
 <a href="https://drive.google.com/file/d/119IYu1kgEjr46BEKa9lJeET7RK1b611p/view?usp=sharing"><img src="https://drive.google.com/uc?export=view&id=119IYu1kgEjr46BEKa9lJeET7RK1b611p" width="100" height="100"></a>
 <a href="https://drive.google.com/file/d/1bPBO6qhXDHtLBfqUuK3i8JsWIW4peHi7/view?usp=sharing"><img src="https://drive.google.com/uc?export=view&id=1bPBO6qhXDHtLBfqUuK3i8JsWIW4peHi7" width="100" height="100"></a>
