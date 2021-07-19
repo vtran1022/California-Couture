@@ -7,8 +7,6 @@ A dynamic photo carousel where each product card also renders a thumbnail photo 
 ## Your Outfit
 A dynamic photo carousel where the user can add the current product item to their list or delete the item via the 'x' icon.
 
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/80929887/126218095-3bbfbe0b-41a7-4a18-9b38-1e0d599c2856.gif)
-
 
 # Tech Stack
 - React.js
