@@ -3,7 +3,7 @@ I worked with a team of engineers to build a front-end online retail web applica
 
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/80929887/126221000-2fffe498-30fb-4675-8aae-5b69ffdf7bb2.gif)
 
-# Table of Content
+# Table of Contents
 1. [Application Details](https://github.com/vtran1022/California-Couture#application-details)
 2. [Photos](https://github.com/vtran1022/California-Couture#photos)
 3. [Tech Stack](https://github.com/vtran1022/California-Couture#tech-stack)
